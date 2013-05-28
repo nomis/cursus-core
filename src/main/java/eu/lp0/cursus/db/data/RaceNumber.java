@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2011-2012  Simon Arlott
+	Copyright 2011-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import javax.persistence.UniqueConstraint;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ComparisonChain;
 
-import eu.lp0.cursus.util.Constants;
+import eu.lp0.cursus.db.Constants;
 
 @Entity(name = "race_no")
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "series_id", "organisation", "number" }) })

@@ -23,17 +23,16 @@ import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 
 public class ReflectionsUtil {
-	private static final Reflections reflections;
+	private static Reflections reflections;
 
-	static {
-		ConfigurationBuilder config = new ConfigurationBuilder();
-		config.setUrls(ClasspathHelper.forClass(ReflectionsUtil.class));
-		config.setScanners(new SubTypesScanner());
+	public static synchronized Reflections getInstance() {
+		if (reflections == null) {
+			ConfigurationBuilder config = new ConfigurationBuilder();
+			config.setUrls(ClasspathHelper.forPackage("eu.lp0.cursus", ClasspathHelper.contextClassLoader())); //$NON-NLS-1$
+			config.setScanners(new SubTypesScanner());
 
-		reflections = new Reflections(config);
-	}
-
-	public static Reflections getInstance() {
+			reflections = new Reflections(config);
+		}
 		return reflections;
 	}
 }

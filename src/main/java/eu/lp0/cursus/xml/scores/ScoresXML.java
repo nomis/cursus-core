@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,12 +26,12 @@ import java.util.TreeSet;
 
 import com.google.common.base.Preconditions;
 
+import eu.lp0.cursus.db.Constants;
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.util.Constants;
 import eu.lp0.cursus.xml.data.entity.DataXMLSeries;
 import eu.lp0.cursus.xml.scores.results.ScoresXMLEventResults;
 import eu.lp0.cursus.xml.scores.results.ScoresXMLRaceResults;
@@ -79,7 +79,7 @@ public class ScoresXML {
 		Preconditions.checkArgument(!checkSeries.isEmpty(), "No series"); //$NON-NLS-1$
 		Preconditions.checkArgument(checkSeries.size() == 1, "Multiple series not allowed"); //$NON-NLS-1$
 
-		generator = Constants.APP_DESC;
+		generator = Constants.LIB_DESC;
 		series = new DataXMLSeries(checkSeries.iterator().next(), events, races, pilots);
 	}
 

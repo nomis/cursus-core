@@ -18,7 +18,6 @@
 package eu.lp0.cursus.test.scoring;
 
 import org.junit.Test;
-import org.spka.cursus.scoring.SPKAConstants;
 
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
@@ -115,7 +114,7 @@ public class BasicRaceTest {
 		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
 		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2011);
+		Scorer scorer = ScorerFactory.newScorer(TestScorer1.UUID);
 		Scores scores = scorer.scoreSeries(series);
 
 		RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1);
@@ -188,7 +187,7 @@ public class BasicRaceTest {
 		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
 		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2011);
+		Scorer scorer = ScorerFactory.newScorer(TestScorer1.UUID);
 		Scores scores = scorer.scoreSeries(series);
 
 		RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1);

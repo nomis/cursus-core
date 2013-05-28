@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>eu.lp0</groupId>
-	<artifactId>cursus</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>eu.lp0.cursus</groupId>
+	<artifactId>cursus-core</artifactId>
+	<version>0.5.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>cursus</name>
+	<name>cursus (Core)</name>
 	<description>Race series management program</description>
 	<url>http://cursus.lp0.eu/</url>
 	<licenses>
@@ -15,8 +15,8 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:git:git://github.com/lp0/cursus.git</connection>
-		<url>https://github.com/lp0/cursus/</url>
+		<connection>scm:git:git://github.com/lp0/cursus-core.git</connection>
+		<url>https://github.com/lp0/cursus-core/</url>
 	</scm>
 	<organization>
 		<name>Simon Arlott</name>
@@ -53,11 +53,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.jgoodies</groupId>
-			<artifactId>forms</artifactId>
-			<version>1.2.1</version>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
@@ -79,11 +74,6 @@
 			<version>1.0.1.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-		</dependency>
-		<dependency>
 			<groupId>org.beanio</groupId>
 			<artifactId>beanio</artifactId>
 			<version>2.1.0.M1</version>
@@ -93,11 +83,6 @@
 			<artifactId>h2</artifactId>
 			<version>1.3.171</version>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.jgoodies</groupId>
-			<artifactId>looks</artifactId>
-			<version>2.2.2</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -131,103 +116,13 @@
 					<parallel>methods</parallel>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo.webstart</groupId>
-				<artifactId>webstart-maven-plugin</artifactId>
-				<version>1.0-beta-2</version>
-				<configuration>
-					<jnlp>
-						<mainClass>eu.lp0.cursus.app.Main</mainClass>
-					</jnlp>
-					<sign>
-						<keystore>${user.home}/.keystore-cursus.jks</keystore>
-						<alias>cursus</alias>
-						<storepass>password</storepass>
-						<keypass>password</keypass>
-					</sign>
-					<resourcesDirectory>${project.basedir}/src/main/jnlp/resources</resourcesDirectory>
-					<pack200>true</pack200>
-					<gzip>true</gzip>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>jnlp-inline</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-compiler-plugin
-										</artifactId>
-										<versionRange>
-											[2.3.2,)
-										</versionRange>
-										<goals>
-											<goal>compile</goal>
-											<goal>testCompile</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 	<profiles>
 		<profile>
 			<id>run</id>
 			<properties>
-				<mainClass>eu.lp0.cursus.app.Main</mainClass>
-			</properties>
-			<build>
-				<defaultGoal>compile</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<version>1.2.1</version>
-						<executions>
-							<execution>
-								<phase>compile</phase>
-								<goals>
-									<goal>java</goal>
-								</goals>
-								<configuration>
-									<mainClass>${mainClass}</mainClass>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>test-run</id>
-			<properties>
-				<mainClass>uk.me.sa.cursus.app.MainTest</mainClass>
+				<mainClass></mainClass>
 			</properties>
 			<build>
 				<defaultGoal>test-compile</defaultGoal>

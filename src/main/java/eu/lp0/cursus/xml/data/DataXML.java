@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@ package eu.lp0.cursus.xml.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.lp0.cursus.db.Constants;
 import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.util.Constants;
 import eu.lp0.cursus.xml.data.entity.DataXMLSeries;
 
 public class DataXML {
@@ -29,7 +29,7 @@ public class DataXML {
 	}
 
 	public DataXML(List<Series> seriesList) {
-		generator = Constants.APP_DESC;
+		generator = Constants.LIB_DESC;
 
 		this.series = new ArrayList<DataXMLSeries>(seriesList.size());
 		for (Series series_ : seriesList) {

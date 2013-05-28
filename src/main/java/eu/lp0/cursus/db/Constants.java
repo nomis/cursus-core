@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2011  Simon Arlott
+	Copyright 2011-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -15,27 +15,12 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.lp0.cursus.ui.actions;
+package eu.lp0.cursus.db;
 
-import java.awt.Dialog;
-import java.awt.event.ActionEvent;
+public class Constants {
+	public static final String LIB_NAME = "cursus-core"; //$NON-NLS-1$
+	public static final String LIB_VERSION = "0.5.0"; //$NON-NLS-1$
+	public static final String LIB_DESC = LIB_NAME + " " + LIB_VERSION; //$NON-NLS-1$
 
-import javax.swing.Action;
-
-import eu.lp0.cursus.util.SwingHacks;
-
-public class CancelDialogAction extends AbstractTranslatedAction {
-	private final Dialog dialog;
-
-	public CancelDialogAction(Dialog dialog) {
-		super("dialog.cancel", false); //$NON-NLS-1$
-		this.dialog = dialog;
-
-		putValue(Action.SMALL_ICON, SwingHacks.getCancelIcon());
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent ae) {
-		dialog.dispose();
-	}
+	public static final int MAX_STRING_LEN = 255;
 }

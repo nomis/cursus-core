@@ -25,8 +25,8 @@ import javax.persistence.Transient;
 
 import com.google.common.collect.ComparisonChain;
 
+import eu.lp0.cursus.db.Constants;
 import eu.lp0.cursus.i18n.TranslatedEnum;
-import eu.lp0.cursus.util.Constants;
 
 /**
  * Penalty

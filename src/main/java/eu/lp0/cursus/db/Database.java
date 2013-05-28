@@ -28,7 +28,6 @@ import org.slf4j.LoggerFactory;
 
 import eu.lp0.cursus.db.dao.CursusDAO;
 import eu.lp0.cursus.db.data.Cursus;
-import eu.lp0.cursus.util.Constants;
 import eu.lp0.cursus.util.ProgressMonitor;
 
 public abstract class Database {
@@ -117,7 +116,7 @@ public abstract class Database {
 		if (cursus == null) {
 			log.info("Database \"" + name + "\" has no version record, setting to " + DatabaseVersion.getLatest()); //$NON-NLS-1$ //$NON-NLS-2$
 
-			cursus = new Cursus(DatabaseVersion.getLatest().asLong(), Constants.APP_DESC);
+			cursus = new Cursus(DatabaseVersion.getLatest().asLong(), Constants.LIB_DESC);
 			cursusDAO.persist(cursus);
 		} else {
 			log.info("Database \"" + name + "\" has version " + DatabaseVersion.parseLong(cursus.getVersion())); //$NON-NLS-1$ //$NON-NLS-2$

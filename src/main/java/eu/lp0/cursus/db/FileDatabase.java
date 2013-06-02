@@ -78,7 +78,7 @@ public class FileDatabase extends Database {
 		return name;
 	}
 
-	public static File reformatForSave(File file) {
+	public static File reformatForDB(File file) {
 		String name = file.getAbsolutePath();
 		if (name.contains(";")) { //$NON-NLS-1$
 			return file;

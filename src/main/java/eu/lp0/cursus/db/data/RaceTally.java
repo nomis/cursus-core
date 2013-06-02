@@ -29,39 +29,38 @@ import javax.persistence.ManyToOne;
 import eu.lp0.cursus.db.Constants;
 
 /**
- * Race Event
+ * Race Tally
  */
-// TODO this needs a better name
 @Embeddable
-public final class RaceEvent {
+public final class RaceTally {
 	public enum Type {
 		START, LAP, INVALID_LAP, FINISH;
 	}
 
-	RaceEvent() {
+	RaceTally() {
 	}
 
-	public RaceEvent(Type type) {
+	public RaceTally(Type type) {
 		this(null, type);
 	}
 
-	public RaceEvent(Type type, String data) {
+	public RaceTally(Type type, String data) {
 		this(null, type, data);
 	}
 
-	public RaceEvent(Type type, String data, Pilot pilot) {
+	public RaceTally(Type type, String data, Pilot pilot) {
 		this(null, type, data, pilot);
 	}
 
-	public RaceEvent(Timestamp timestamp, Type type) {
+	public RaceTally(Timestamp timestamp, Type type) {
 		this(timestamp, type, "", null); //$NON-NLS-1$
 	}
 
-	public RaceEvent(Timestamp timestamp, Type type, String data) {
+	public RaceTally(Timestamp timestamp, Type type, String data) {
 		this(timestamp, type, data, null);
 	}
 
-	public RaceEvent(Timestamp timestamp, Type type, String data, Pilot pilot) {
+	public RaceTally(Timestamp timestamp, Type type, String data, Pilot pilot) {
 		setTimestamp(timestamp);
 		setType(type);
 		setData(data);

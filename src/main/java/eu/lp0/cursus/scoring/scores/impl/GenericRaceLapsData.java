@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.RaceEvent;
+import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.scoring.data.RacePenaltiesData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.scoring.scores.base.AbstractRaceLapsData;
@@ -125,19 +125,19 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 
 	protected Iterable<Pilot> extractRaceLaps(Race race) {
 		// Convert a list of race events into a list of valid pilot laps
-		return Iterables.filter(Iterables.transform(Iterables.unmodifiableIterable(race.getEvents()), new Function<RaceEvent, Pilot>() {
+		return Iterables.filter(Iterables.transform(Iterables.unmodifiableIterable(race.getTallies()), new Function<RaceTally, Pilot>() {
 			boolean scoring = scoreBeforeStart;
 
 			@Override
-			public Pilot apply(RaceEvent event) {
-				switch (event.getType()) {
+			public Pilot apply(RaceTally tally) {
+				switch (tally.getType()) {
 				case START:
 					scoring = true;
 					break;
 
 				case LAP:
 					if (scoring) {
-						return event.getPilot();
+						return tally.getPilot();
 					}
 					break;
 

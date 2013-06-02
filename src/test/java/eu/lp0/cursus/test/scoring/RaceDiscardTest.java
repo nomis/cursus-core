@@ -23,7 +23,7 @@ import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.RaceEvent;
+import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.scorer.Scorer;
@@ -83,20 +83,20 @@ public class RaceDiscardTest {
 		pilot3.getRaces().put(race4, race4.getAttendees().get(pilot3));
 		series.getPilots().add(pilot3);
 
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race4.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
 		Scorer scorer = ScorerFactory.newScorer(TestScorer1.UUID);
 		Scores scores = scorer.scoreSeries(series);
@@ -200,20 +200,20 @@ public class RaceDiscardTest {
 		pilot6.getRaces().put(race1, race1.getAttendees().get(pilot6));
 		series.getPilots().add(pilot6);
 
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race4.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
 		Scorer scorer = ScorerFactory.newScorer(TestScorer1.UUID);
 		Scores scores = scorer.scoreSeries(series);
@@ -332,20 +332,20 @@ public class RaceDiscardTest {
 		pilot6.getRaces().put(race1, race1.getAttendees().get(pilot6));
 		series.getPilots().add(pilot6);
 
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race4.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
 		Scorer scorer = ScorerFactory.newScorer(TestScorer1.UUID);
 		Scores scores = scorer.scoreSeries(series);
@@ -464,20 +464,20 @@ public class RaceDiscardTest {
 		pilot6.getRaces().put(race1, race1.getAttendees().get(pilot6));
 		series.getPilots().add(pilot6);
 
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race4.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
 		Scorer scorer = ScorerFactory.newScorer(TestScorer1.UUID);
 		Scores scores = scorer.scoreSeries(series);
@@ -596,20 +596,20 @@ public class RaceDiscardTest {
 		pilot6.getRaces().put(race1, race1.getAttendees().get(pilot6));
 		series.getPilots().add(pilot6);
 
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race1.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
-		race2.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
-		race3.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot2)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot2)); //$NON-NLS-1$
 
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.START));
-		race4.getEvents().add(new RaceEvent(RaceEvent.Type.LAP, "", pilot1)); //$NON-NLS-1$
+		race4.getTallies().add(new RaceTally(RaceTally.Type.START));
+		race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot1)); //$NON-NLS-1$
 
 		Scorer scorer = ScorerFactory.newScorer(TestScorer1.UUID);
 		Scores scores = scorer.scoreSeries(series);

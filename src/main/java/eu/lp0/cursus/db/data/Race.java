@@ -118,21 +118,21 @@ public final class Race extends AbstractEntity implements Comparable<Race>, Race
 		this.attendees = attendees;
 	}
 
-	private List<RaceEvent> raceEvents = new ArrayList<RaceEvent>();
+	private List<RaceTally> raceTallies = new ArrayList<RaceTally>();
 
 	@ElementCollection
 	@CollectionTable(name = "race_events", joinColumns = @JoinColumn(name = "race_id"))
 	@OrderColumn(name = "race_event_order")
-	public List<RaceEvent> getEvents() {
-		while (raceEvents.remove(null)) {
+	public List<RaceTally> getTallies() {
+		while (raceTallies.remove(null)) {
 		}
-		return raceEvents;
+		return raceTallies;
 	}
 
-	public void setEvents(List<RaceEvent> raceEvents) {
-		while (raceEvents.remove(null)) {
+	public void setTallies(List<RaceTally> raceTallies) {
+		while (raceTallies.remove(null)) {
 		}
-		this.raceEvents = raceEvents;
+		this.raceTallies = raceTallies;
 	}
 
 	@Override

@@ -168,8 +168,6 @@ public class FileDatabase extends Database {
 					if (progress.isCanceled()) {
 						throw new InterruptedException();
 					}
-
-					Thread.sleep(100);
 				}
 			} catch (Exception e) {
 				error = e;

@@ -50,7 +50,7 @@ public class FileDatabase extends Database {
 	}
 
 	protected FileDatabase(File file, Mode mode) throws SQLException, InvalidDatabaseException {
-		super(filenameToName(file), "jdbc:h2:" + filenameToURL(file) + ";FILE_LOCK=FS", "SA", "", mode); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+		super(filenameToName(file), "jdbc:h2:" + filenameToURL(file) + ";FILE_LOCK=FS;TRACE_LEVEL_FILE=4", "SA", "", mode); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		this.file = file;
 	}
 

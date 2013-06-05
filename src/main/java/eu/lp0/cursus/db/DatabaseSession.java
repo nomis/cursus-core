@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2011  Simon Arlott
+	Copyright 2011,2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ import com.google.common.base.Preconditions;
 public class DatabaseSession {
 	private static final ThreadLocal<EntityManager> THREADS = new ThreadLocal<EntityManager>();
 	private final EntityManagerFactory emf;
+	private long openCount;
 
 	DatabaseSession(EntityManagerFactory emf) {
 		this.emf = emf;
@@ -33,6 +34,10 @@ public class DatabaseSession {
 
 	void startSession() {
 		Preconditions.checkState(THREADS.get() == null, "Session already open"); //$NON-NLS-1$
+		synchronized (this) {
+			Preconditions.checkState(emf.isOpen(), "Factory not open"); //$NON-NLS-1$
+			openCount++;
+		}
 		THREADS.set(emf.createEntityManager());
 	}
 
@@ -50,10 +55,6 @@ public class DatabaseSession {
 		getTransaction().begin();
 	}
 
-	public static boolean isActive() {
-		return getTransaction().isActive();
-	}
-
 	public static void commit() {
 		getTransaction().commit();
 	}
@@ -64,6 +65,33 @@ public class DatabaseSession {
 
 	void endSession() {
 		getEntityManager().close();
+		synchronized (this) {
+			openCount--;
+		}
 		THREADS.set(null);
+	}
+
+	boolean isFactoryActive() {
+		synchronized (this) {
+			return openCount > 0;
+		}
+	}
+
+	boolean closeFactory(boolean force) {
+		synchronized (this) {
+			if (openCount == 0 || force) {
+				emf.close();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		if (emf.isOpen()) {
+			emf.close();
+		}
 	}
 }

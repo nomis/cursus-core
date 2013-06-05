@@ -89,26 +89,40 @@ public abstract class Database {
 				return ro;
 			}
 
-			ro.startSession();
 			try {
-				DatabaseSession.begin();
-				checkVersion(true);
-				DatabaseSession.commit();
+				ro.startSession();
+				try {
+					DatabaseSession.begin();
+					checkVersion(true);
+					DatabaseSession.commit();
+				} finally {
+					ro.endSession();
+				}
 			} finally {
-				ro.endSession();
+				ro.closeFactory(true);
 			}
 		}
 
 		DatabaseSession rw = new DatabaseSession(Persistence.createEntityManagerFactory(getClass().getPackage().getName() + UPDATE, config));
-		rw.startSession();
+		boolean ok = false;
+
 		try {
-			DatabaseSession.begin();
-			checkVersion(false);
-			DatabaseSession.commit();
+			rw.startSession();
+			try {
+				DatabaseSession.begin();
+				checkVersion(false);
+				DatabaseSession.commit();
+			} finally {
+				rw.endSession();
+			}
+
+			ok = true;
+			return rw;
 		} finally {
-			rw.endSession();
+			if (!ok) {
+				rw.closeFactory(true);
+			}
 		}
-		return rw;
 	}
 
 	private void checkVersion(boolean checkSchema) throws InvalidDatabaseException {
@@ -132,15 +146,16 @@ public abstract class Database {
 		}
 	}
 
-	public abstract boolean isSaved();
+	public boolean isSaved() {
+		return !sessionFactory.isFactoryActive();
+	}
 
-	public FileDatabase saveAs(ProgressMonitor progress, File file) throws Exception {
+	public final FileDatabase saveAs(ProgressMonitor progress, File file) throws Exception {
 		return FileDatabase.save(progress, this, file);
 	}
 
-	public boolean close(boolean force) {
-		// TODO consider database saved if all connections in the pool are closed
-		return force || isSaved();
+	public final boolean close(boolean force) {
+		return sessionFactory.closeFactory(force);
 	}
 
 	public void delete() {

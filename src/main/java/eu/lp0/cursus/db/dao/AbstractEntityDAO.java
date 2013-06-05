@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2011  Simon Arlott
+	Copyright 2011,2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ public abstract class AbstractEntityDAO<E extends AbstractEntity> implements Ent
 	 */
 	public void detach(E entity) {
 		// Don't detach during a transaction as there may be persisted changes not yet committed
-		Preconditions.checkState(!DatabaseSession.isActive(), "Transaction active"); //$NON-NLS-1$
+		Preconditions.checkState(!DatabaseSession.getTransaction().isActive(), "Transaction active"); //$NON-NLS-1$
 		Preconditions.checkNotNull(entity);
 		DatabaseSession.getEntityManager().detach(entity);
 	}

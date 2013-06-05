@@ -54,11 +54,6 @@ public class FileDatabase extends Database {
 		this.file = file;
 	}
 
-	@Override
-	public boolean isSaved() {
-		return true;
-	}
-
 	public static String filenameToURL(File file) throws InvalidDatabaseException {
 		String name = file.getAbsolutePath();
 		if (name.contains(";")) { //$NON-NLS-1$

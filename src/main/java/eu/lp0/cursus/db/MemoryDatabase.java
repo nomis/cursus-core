@@ -22,7 +22,7 @@ import java.util.UUID;
 
 public class MemoryDatabase extends Database {
 	public MemoryDatabase(String name) throws SQLException, InvalidDatabaseException {
-		super(name, "jdbc:h2:mem:" + UUID.randomUUID() + ";TRACE_LEVEL_FILE=4", "SA", "", Mode.FORCE_OPEN); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ 
+		super(name, "jdbc:h2:mem:" + UUID.randomUUID() + ";TRACE_LEVEL_FILE=4;DB_CLOSE_DELAY=-1", "SA", "", Mode.FORCE_OPEN); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ 
 	}
 
 	@Override

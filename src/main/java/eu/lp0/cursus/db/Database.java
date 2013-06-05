@@ -154,8 +154,15 @@ public abstract class Database {
 		return FileDatabase.save(progress, this, file);
 	}
 
+	void postClose() {
+	}
+
 	public final boolean close(boolean force) {
-		return sessionFactory.closeFactory(force);
+		boolean closed = sessionFactory.closeFactory(force);
+		if (closed) {
+			postClose();
+		}
+		return closed;
 	}
 
 	public void delete() {

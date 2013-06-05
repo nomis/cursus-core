@@ -29,4 +29,9 @@ public class MemoryDatabase extends Database {
 	public boolean isSaved() {
 		return false;
 	}
+
+	@Override
+	void postClose() {
+		System.gc();
+	}
 }

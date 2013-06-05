@@ -78,20 +78,36 @@ public class DatabaseSession {
 	}
 
 	boolean closeFactory(boolean force) {
+		if (!emf.isOpen()) {
+			return true;
+		}
+
 		synchronized (this) {
 			if (openCount == 0 || force) {
-				emf.close();
+				shutdown();
 				return true;
 			}
 		}
 		return false;
 	}
 
+	private void shutdown() {
+		EntityManager em = emf.createEntityManager();
+		try {
+			em.getTransaction().begin();
+			em.createNativeQuery("SHUTDOWN").executeUpdate(); //$NON-NLS-1$
+		} finally {
+			em.close();
+		}
+
+		emf.close();
+	}
+
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();
 		if (emf.isOpen()) {
-			emf.close();
+			shutdown();
 		}
 	}
 }

@@ -37,7 +37,7 @@ import eu.lp0.cursus.scoring.scores.impl.TopCountryRacePointsData;
 public class CCScoresFactory2013 extends FISLYScoresFactory2010 {
 	@Override
 	public RacePenaltiesData newRacePenaltiesData(Scores scores) {
-		return new GenericRacePenaltiesData<Scores>(scores, GenericRacePenaltiesData.CumulativeMethod.EVENT, true);
+		return new GenericRacePenaltiesData<Scores>(scores, GenericRacePenaltiesData.CumulativeMethod.RACE, true);
 	}
 
 	@Override

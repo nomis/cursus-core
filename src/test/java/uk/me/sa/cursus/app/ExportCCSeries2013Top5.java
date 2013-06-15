@@ -55,6 +55,7 @@ public class ExportCCSeries2013Top5 {
 
 			createDatabase();
 			createEvent1Races();
+			createEvent2Races();
 
 			db.startSession();
 			try {

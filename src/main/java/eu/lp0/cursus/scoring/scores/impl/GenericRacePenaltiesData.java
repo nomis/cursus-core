@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -30,20 +30,27 @@ import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
+import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.scoring.scores.base.AbstractRacePenaltiesData;
 
-public class GenericRacePenaltiesData<T extends ScoredData> extends AbstractRacePenaltiesData<T> {
+public class GenericRacePenaltiesData<T extends ScoredData & RacePointsData> extends AbstractRacePenaltiesData<T> {
 	private final CumulativeMethod method;
+	private final boolean zeroRacePenaltiesForSimulated;
 
 	public enum CumulativeMethod {
 		RACE, EVENT, SERIES;
 	}
 
 	public GenericRacePenaltiesData(T scores, CumulativeMethod method) {
+		this(scores, method, false);
+	}
+
+	public GenericRacePenaltiesData(T scores, CumulativeMethod method, boolean noPenaltiesForSimulated) {
 		super(scores);
 
 		this.method = method;
+		this.zeroRacePenaltiesForSimulated = noPenaltiesForSimulated;
 	}
 
 	@Override
@@ -51,6 +58,12 @@ public class GenericRacePenaltiesData<T extends ScoredData> extends AbstractRace
 		RaceAttendee attendee = race.getAttendees().get(pilot);
 		if (attendee == null) {
 			return 0;
+		}
+
+		if (zeroRacePenaltiesForSimulated) {
+			if (scores.hasSimulatedRacePoints(pilot, race)) {
+				return 0;
+			}
 		}
 
 		int autoPenalties = countPreviousAutomaticPenalties(pilot, race);

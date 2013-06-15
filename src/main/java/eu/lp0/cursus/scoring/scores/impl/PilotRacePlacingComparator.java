@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & 
 	private final Map<Pilot, Supplier<List<Integer>>> racePlacings;
 
 	public enum PlacingMethod {
-		INCLUDING_DISCARDS, EXCLUDING_DISCARDS;
+		INCLUDING_DISCARDS, EXCLUDING_DISCARDS, EXCLUDING_SIMULATED;
 	}
 
 	public PilotRacePlacingComparator(T scores, PlacingMethod method) {
@@ -55,7 +55,11 @@ public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & 
 
 	@Override
 	public int compare(Pilot o1, Pilot o2) {
-		return Ordering.<Integer>natural().lexicographical().compare(racePlacings.get(o1).get(), racePlacings.get(o2).get());
+		if (method == PlacingMethod.EXCLUDING_SIMULATED) {
+			return Ordering.<Integer>natural().reverse().lexicographical().reverse().compare(racePlacings.get(o1).get(), racePlacings.get(o2).get());
+		} else {
+			return Ordering.<Integer>natural().lexicographical().compare(racePlacings.get(o1).get(), racePlacings.get(o2).get());
+		}
 	}
 
 	protected class RacePlacingSupplier implements Supplier<List<Integer>> {
@@ -74,6 +78,10 @@ public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & 
 			case EXCLUDING_DISCARDS:
 				return Ordering.natural().sortedCopy(
 						Maps.filterKeys(scores.getRacePoints(pilot), Predicates.not(Predicates.in(scores.getDiscardedRaces(pilot)))).values());
+
+			case EXCLUDING_SIMULATED:
+				return Ordering.natural().sortedCopy(
+						Maps.filterKeys(scores.getRacePoints(pilot), Predicates.not(Predicates.in(scores.getSimulatedRacePoints(pilot)))).values());
 			}
 			return null;
 		}

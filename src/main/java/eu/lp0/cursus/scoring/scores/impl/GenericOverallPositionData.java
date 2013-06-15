@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -20,17 +20,24 @@ package eu.lp0.cursus.scoring.scores.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.SortedSet;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.PeekingIterator;
+import com.google.common.collect.Sets;
 import com.google.common.collect.TreeMultimap;
 
 import eu.lp0.cursus.db.data.Pilot;
+import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.OverallPointsData;
 import eu.lp0.cursus.scoring.data.RaceDiscardsData;
 import eu.lp0.cursus.scoring.data.RacePointsData;
@@ -41,16 +48,23 @@ import eu.lp0.cursus.util.PilotRaceNumberComparator;
 public class GenericOverallPositionData<T extends ScoredData & RacePointsData & RaceDiscardsData & OverallPointsData> extends AbstractOverallPositionData<T> {
 	private final EqualPositioning equalPositioning;
 	private final PilotRacePlacingComparator.PlacingMethod placingMethod;
+	private final boolean allSimulatedToEnd;
 
 	public enum EqualPositioning {
 		ALWAYS, IF_REQUIRED;
 	}
 
 	public GenericOverallPositionData(T scores, EqualPositioning equalPositioning, PilotRacePlacingComparator.PlacingMethod placingMethod) {
+		this(scores, equalPositioning, placingMethod, false);
+	}
+
+	public GenericOverallPositionData(T scores, EqualPositioning equalPositioning, PilotRacePlacingComparator.PlacingMethod placingMethod,
+			boolean allSimulatedToEnd) {
 		super(scores);
 
 		this.equalPositioning = equalPositioning;
 		this.placingMethod = placingMethod;
+		this.allSimulatedToEnd = allSimulatedToEnd;
 	}
 
 	@Override
@@ -64,11 +78,39 @@ public class GenericOverallPositionData<T extends ScoredData & RacePointsData & 
 		// Calculate overall positions
 		LinkedListMultimap<Integer, Pilot> overallPositions = LinkedListMultimap.create();
 		List<Pilot> collectedPilots = new ArrayList<Pilot>(scores.getPilots().size());
+		LinkedList<SortedSet<Pilot>> pilotPointsOrdering = new LinkedList<SortedSet<Pilot>>();
 		int position = 1;
 
-		for (Integer points : invOverallPoints.keySet()) {
-			SortedSet<Pilot> pilots = invOverallPoints.get(points);
+		if (allSimulatedToEnd) {
+			final Map<Pilot, ? extends Set<Race>> simulatedPilotPoints = scores.getSimulatedPilotPoints();
+			Predicate<Pilot> allSimulatedPilot = new Predicate<Pilot>() {
+				private final int raceCount = scores.getRaces().size();
 
+				@Override
+				public boolean apply(Pilot input) {
+					return simulatedPilotPoints.get(input).size() == raceCount;
+				}
+			};
+
+			for (Integer points : invOverallPoints.keySet()) {
+				SortedSet<Pilot> pilots = Sets.filter(invOverallPoints.get(points), Predicates.not(allSimulatedPilot));
+				if (!pilots.isEmpty()) {
+					pilotPointsOrdering.add(pilots);
+				}
+			}
+			for (Integer points : invOverallPoints.keySet()) {
+				SortedSet<Pilot> pilots = Sets.filter(invOverallPoints.get(points), allSimulatedPilot);
+				if (!pilots.isEmpty()) {
+					pilotPointsOrdering.add(pilots);
+				}
+			}
+		} else {
+			for (Integer points : invOverallPoints.keySet()) {
+				pilotPointsOrdering.add(invOverallPoints.get(points));
+			}
+		}
+
+		for (SortedSet<Pilot> pilots : pilotPointsOrdering) {
 			switch (equalPositioning) {
 			case ALWAYS:
 				// Always put pilots with the same points in the same position

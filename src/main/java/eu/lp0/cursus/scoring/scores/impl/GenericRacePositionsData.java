@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -19,12 +19,14 @@ package eu.lp0.cursus.scoring.scores.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimaps;
@@ -43,15 +45,21 @@ import eu.lp0.cursus.util.PilotRaceNumberComparator;
 
 public class GenericRacePositionsData<T extends ScoredData & RaceLapsData & RacePointsData & RacePenaltiesData> extends AbstractRacePositionsData<T> {
 	private final EqualPositioning equalPositioning;
+	private final boolean simulatedToEnd;
 
 	public enum EqualPositioning {
 		ALWAYS, WITHOUT_LAPS, NEVER;
 	}
 
 	public GenericRacePositionsData(T scores, EqualPositioning equalPositioning) {
+		this(scores, equalPositioning, false);
+	}
+
+	public GenericRacePositionsData(T scores, EqualPositioning equalPositioning, boolean simulatedToEnd) {
 		super(scores);
 
 		this.equalPositioning = equalPositioning;
+		this.simulatedToEnd = simulatedToEnd;
 	}
 
 	@Override
@@ -78,11 +86,30 @@ public class GenericRacePositionsData<T extends ScoredData & RaceLapsData & Race
 
 		// Calculate race positions
 		LinkedListMultimap<Integer, Pilot> racePositions = LinkedListMultimap.create();
+		LinkedList<SortedSet<Pilot>> pilotPointsOrdering = new LinkedList<SortedSet<Pilot>>();
 		int position = 1;
 
-		for (Integer points : invRacePoints.keySet()) {
-			SortedSet<Pilot> pilots = invRacePoints.get(points);
+		if (simulatedToEnd) {
+			Set<Pilot> simulatedRacePoints = scores.getSimulatedRacePoints(race);
+			for (Integer points : invRacePoints.keySet()) {
+				SortedSet<Pilot> pilots = Sets.filter(invRacePoints.get(points), Predicates.not(Predicates.in(simulatedRacePoints)));
+				if (!pilots.isEmpty()) {
+					pilotPointsOrdering.add(pilots);
+				}
+			}
+			for (Integer points : invRacePoints.keySet()) {
+				SortedSet<Pilot> pilots = Sets.filter(invRacePoints.get(points), Predicates.in(simulatedRacePoints));
+				if (!pilots.isEmpty()) {
+					pilotPointsOrdering.add(pilots);
+				}
+			}
+		} else {
+			for (Integer points : invRacePoints.keySet()) {
+				pilotPointsOrdering.add(invRacePoints.get(points));
+			}
+		}
 
+		for (SortedSet<Pilot> pilots : pilotPointsOrdering) {
 			switch (equalPositioning) {
 			case ALWAYS:
 				// Always put pilots with the same points in the same position

@@ -37,7 +37,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 	protected final String SERIES_NAME = "Celtic Challenge 2013"; //$NON-NLS-1$
 	protected final int SERIES_FLEET = 15;
 	protected final int SERIES_FLEET_AT_EVENT1 = 15;
-	protected final int SERIES_FLEET_AT_EVENT2 = 19;
+	protected final int SERIES_FLEET_AT_EVENT2 = 21;
 
 	protected final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
 	protected final String EVENT1_DESC = "Benone (25/05/2013 and 26/05/2013)"; //$NON-NLS-1$
@@ -62,7 +62,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 	protected final int RACE6_PILOTS = 15;
 
 	protected final String EVENT2_NAME = "Race Event 2"; //$NON-NLS-1$
-	protected final String EVENT2_DESC = "Luce Bay (15/06/2013)"; //$NON-NLS-1$
+	protected final String EVENT2_DESC = "Luce Bay (15/06/2013 and 16/06/2013)"; //$NON-NLS-1$
 	protected final int EVENT2_FLEET = 19;
 	protected final String RACE7_NAME = "Race 7"; //$NON-NLS-1$
 	protected final String RACE7_DESC = "Luce Bay (15/06/2013)"; //$NON-NLS-1$
@@ -1126,7 +1126,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
 			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
 			// 5
-			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
 			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
 			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
 			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
@@ -1195,7 +1195,9 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 			race9.getAttendees().put(sco116, new RaceAttendee(race9, sco116, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco156, new RaceAttendee(race9, sco156, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco159, new RaceAttendee(race9, sco159, RaceAttendee.Type.PILOT));
-			race9.getAttendees().put(sco179, new RaceAttendee(race9, sco179, RaceAttendee.Type.PILOT));
+			RaceAttendee att179 = new RaceAttendee(race9, sco179, RaceAttendee.Type.PILOT);
+			att179.getPenalties().add(new Penalty(Penalty.Type.AUTOMATIC, "Mounted IR1")); //$NON-NLS-1$
+			race9.getAttendees().put(sco179, att179);
 			race9.getAttendees().put(sco200, new RaceAttendee(race9, sco200, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco528, new RaceAttendee(race9, sco528, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco666, new RaceAttendee(race9, sco666, RaceAttendee.Type.PILOT));

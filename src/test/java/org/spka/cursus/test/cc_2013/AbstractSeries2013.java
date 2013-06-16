@@ -62,11 +62,23 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 	protected final int RACE6_PILOTS = 15;
 
 	protected final String EVENT2_NAME = "Race Event 2"; //$NON-NLS-1$
-	protected final String EVENT2_DESC = "West Sands (15/06/2013)"; //$NON-NLS-1$
-	protected final int EVENT2_FLEET = 0;
+	protected final String EVENT2_DESC = "Luce Bay (15/06/2013)"; //$NON-NLS-1$
+	protected final int EVENT2_FLEET = 19;
 	protected final String RACE7_NAME = "Race 7"; //$NON-NLS-1$
-	protected final String RACE7_DESC = "West Sands (15/06/2013)"; //$NON-NLS-1$
+	protected final String RACE7_DESC = "Luce Bay (15/06/2013)"; //$NON-NLS-1$
 	protected final int RACE7_PILOTS = 19;
+	protected final String RACE8_NAME = "Race 8"; //$NON-NLS-1$
+	protected final String RACE8_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
+	protected final int RACE8_PILOTS = 18;
+	protected final String RACE9_NAME = "Race 9"; //$NON-NLS-1$
+	protected final String RACE9_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
+	protected final int RACE9_PILOTS = 18;
+	protected final String RACE10_NAME = "Race 10"; //$NON-NLS-1$
+	protected final String RACE10_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
+	protected final int RACE10_PILOTS = 18;
+	protected final String RACE11_NAME = "Race 11"; //$NON-NLS-1$
+	protected final String RACE11_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
+	protected final int RACE11_PILOTS = 18;
 
 	protected Scorer scorer = ScorerFactory.newScorer(FISLYConstants.UUID_2010);
 
@@ -102,6 +114,10 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 	private Race _race6;
 	private Event _event2;
 	private Race _race7;
+	private Race _race8;
+	private Race _race9;
+	private Race _race10;
+	private Race _race11;
 
 	protected void createSeriesData() throws Exception {
 		if (_series != null) {
@@ -880,6 +896,10 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 
 	protected void createEvent2Races() throws Exception {
 		createRace7Data();
+		createRace8Data();
+		createRace9Data();
+		createRace10Data();
+		createRace11Data();
 	}
 
 	protected void createRace7Data() throws Exception {
@@ -1012,6 +1032,575 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 			DatabaseSession.commit();
 
 			_race7 = race7;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createRace8Data() throws Exception {
+		createEvent2Data();
+
+		if (_race8 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event2 = eventDAO.find(series, EVENT2_NAME);
+
+			Race race8 = new Race(event2, RACE8_NAME, RACE8_DESC);
+			event2.getRaces().add(race8);
+			race8.getAttendees().put(sco068, new RaceAttendee(race8, sco068, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco087, new RaceAttendee(race8, sco087, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco116, new RaceAttendee(race8, sco116, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco156, new RaceAttendee(race8, sco156, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco159, new RaceAttendee(race8, sco159, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco179, new RaceAttendee(race8, sco179, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco200, new RaceAttendee(race8, sco200, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco528, new RaceAttendee(race8, sco528, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco666, new RaceAttendee(race8, sco666, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(sco808, new RaceAttendee(race8, sco808, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(ir001, new RaceAttendee(race8, ir001, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(ir016, new RaceAttendee(race8, ir016, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(ir025, new RaceAttendee(race8, ir025, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(ir053, new RaceAttendee(race8, ir053, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(ir077, new RaceAttendee(race8, ir077, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(ir085, new RaceAttendee(race8, ir085, RaceAttendee.Type.PILOT));
+			race8.getAttendees().put(ir181, new RaceAttendee(race8, ir181, RaceAttendee.Type.PILOT));
+			race8.getTallies().add(new RaceTally(RaceTally.Type.START));
+			// 1
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir077)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			// 2
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir077)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			// 3
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir077)); //$NON-NLS-1$
+			// 4
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			// 5
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			// 6
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir077)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			// 7
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir077)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race8.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			raceDAO.persist(race8);
+
+			DatabaseSession.commit();
+
+			_race8 = race8;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createRace9Data() throws Exception {
+		createEvent2Data();
+
+		if (_race9 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event2 = eventDAO.find(series, EVENT2_NAME);
+
+			Race race9 = new Race(event2, RACE9_NAME, RACE9_DESC);
+			event2.getRaces().add(race9);
+			race9.getAttendees().put(sco068, new RaceAttendee(race9, sco068, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco087, new RaceAttendee(race9, sco087, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco116, new RaceAttendee(race9, sco116, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco156, new RaceAttendee(race9, sco156, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco159, new RaceAttendee(race9, sco159, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco179, new RaceAttendee(race9, sco179, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco200, new RaceAttendee(race9, sco200, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco528, new RaceAttendee(race9, sco528, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco666, new RaceAttendee(race9, sco666, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco808, new RaceAttendee(race9, sco808, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(ir001, new RaceAttendee(race9, ir001, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(ir016, new RaceAttendee(race9, ir016, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(ir025, new RaceAttendee(race9, ir025, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(ir053, new RaceAttendee(race9, ir053, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(ir077, new RaceAttendee(race9, ir077, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(ir085, new RaceAttendee(race9, ir085, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(ir181, new RaceAttendee(race9, ir181, RaceAttendee.Type.PILOT));
+			race9.getTallies().add(new RaceTally(RaceTally.Type.START));
+			// 1
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			// 2
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			// 3
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			// 4
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			// 5
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			// 6
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			// 7
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race9.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			raceDAO.persist(race9);
+
+			DatabaseSession.commit();
+
+			_race9 = race9;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createRace10Data() throws Exception {
+		createEvent2Data();
+
+		if (_race10 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event2 = eventDAO.find(series, EVENT2_NAME);
+
+			Race race10 = new Race(event2, RACE10_NAME, RACE10_DESC);
+			event2.getRaces().add(race10);
+			race10.getAttendees().put(sco068, new RaceAttendee(race10, sco068, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco087, new RaceAttendee(race10, sco087, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco116, new RaceAttendee(race10, sco116, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco156, new RaceAttendee(race10, sco156, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco159, new RaceAttendee(race10, sco159, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco179, new RaceAttendee(race10, sco179, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco200, new RaceAttendee(race10, sco200, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco528, new RaceAttendee(race10, sco528, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco666, new RaceAttendee(race10, sco666, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(sco808, new RaceAttendee(race10, sco808, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(ir001, new RaceAttendee(race10, ir001, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(ir016, new RaceAttendee(race10, ir016, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(ir025, new RaceAttendee(race10, ir025, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(ir053, new RaceAttendee(race10, ir053, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(ir077, new RaceAttendee(race10, ir077, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(ir085, new RaceAttendee(race10, ir085, RaceAttendee.Type.PILOT));
+			race10.getAttendees().put(ir181, new RaceAttendee(race10, ir181, RaceAttendee.Type.PILOT));
+			race10.getTallies().add(new RaceTally(RaceTally.Type.START));
+			// 1
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir077)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			// 2
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir077)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			// 3
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			// 4
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			// 5
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			// 6
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			// 7
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco068)); //$NON-NLS-1$
+			race10.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			raceDAO.persist(race10);
+
+			DatabaseSession.commit();
+
+			_race10 = race10;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createRace11Data() throws Exception {
+		createEvent2Data();
+
+		if (_race11 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event2 = eventDAO.find(series, EVENT2_NAME);
+
+			Race race11 = new Race(event2, RACE11_NAME, RACE11_DESC);
+			event2.getRaces().add(race11);
+			race11.getAttendees().put(sco068, new RaceAttendee(race11, sco068, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco087, new RaceAttendee(race11, sco087, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco116, new RaceAttendee(race11, sco116, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco156, new RaceAttendee(race11, sco156, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco159, new RaceAttendee(race11, sco159, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco179, new RaceAttendee(race11, sco179, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco200, new RaceAttendee(race11, sco200, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco528, new RaceAttendee(race11, sco528, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco666, new RaceAttendee(race11, sco666, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(sco808, new RaceAttendee(race11, sco808, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(ir001, new RaceAttendee(race11, ir001, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(ir016, new RaceAttendee(race11, ir016, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(ir025, new RaceAttendee(race11, ir025, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(ir053, new RaceAttendee(race11, ir053, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(ir077, new RaceAttendee(race11, ir077, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(ir085, new RaceAttendee(race11, ir085, RaceAttendee.Type.PILOT));
+			race11.getAttendees().put(ir181, new RaceAttendee(race11, ir181, RaceAttendee.Type.PILOT));
+			race11.getTallies().add(new RaceTally(RaceTally.Type.START));
+			// 1
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			// 2
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco087)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			// 3
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			// 4
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			// 5
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			// 6
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco156)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco666)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			// 7
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir025)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir085)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir053)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir016)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
+			race11.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
+			raceDAO.persist(race11);
+
+			DatabaseSession.commit();
+
+			_race11 = race11;
 		} finally {
 			db.endSession();
 		}

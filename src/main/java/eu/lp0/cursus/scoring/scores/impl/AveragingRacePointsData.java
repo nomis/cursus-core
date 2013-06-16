@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -60,33 +60,6 @@ public class AveragingRacePointsData<T extends Scores> extends GenericRacePoints
 
 	public enum AveragingMethod {
 		BEFORE_DISCARDS, AFTER_DISCARDS, SET_NULL;
-	}
-
-	public enum Rounding {
-		/** @see BigDecimal#ROUND_DOWN */
-		ROUND_DOWN (BigDecimal.ROUND_DOWN),
-
-		/** @see BigDecimal#ROUND_HALF_DOWN */
-		ROUND_HALF_DOWN (BigDecimal.ROUND_HALF_DOWN),
-
-		/** @see BigDecimal#ROUND_HALF_EVEN */
-		ROUND_HALF_EVEN (BigDecimal.ROUND_HALF_EVEN),
-
-		/** @see BigDecimal#ROUND_HALF_UP */
-		ROUND_HALF_UP (BigDecimal.ROUND_HALF_UP),
-
-		/** @see BigDecimal#ROUND_UP */
-		ROUND_UP (BigDecimal.ROUND_UP);
-
-		private int value;
-
-		private Rounding(int value) {
-			this.value = value;
-		}
-
-		public int getValue() {
-			return value;
-		}
 	}
 
 	public AveragingRacePointsData(T scores, FleetMethod fleetMethod, AveragingMethod averagingMethod, Rounding rounding) {

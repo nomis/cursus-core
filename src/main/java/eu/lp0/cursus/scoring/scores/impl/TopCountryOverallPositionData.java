@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -36,14 +36,13 @@ import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.util.PilotRaceNumberComparator;
 
-public class PilotRacePlacingOverallPositionData<T extends ScoredData & RacePointsData & RaceDiscardsData & OverallPointsData> extends
-		GenericOverallPositionData<T> {
-	private final PilotRacePlacingComparator.PlacingMethod placingMethod;
+public class TopCountryOverallPositionData<T extends ScoredData & RacePointsData & RaceDiscardsData & OverallPointsData> extends GenericOverallPositionData<T> {
+	private final Rounding rounding;
 
-	public PilotRacePlacingOverallPositionData(T scores, PilotRacePlacingComparator.PlacingMethod placingMethod) {
-		super(scores, EqualPositioning.IF_REQUIRED, placingMethod, true);
+	public TopCountryOverallPositionData(T scores, Rounding rounding) {
+		super(scores, EqualPositioning.IF_REQUIRED, PilotRacePlacingComparator.PlacingMethod.EXCLUDING_SIMULATED, true);
 
-		this.placingMethod = placingMethod;
+		this.rounding = rounding;
 	}
 
 	@Override
@@ -52,9 +51,10 @@ public class PilotRacePlacingOverallPositionData<T extends ScoredData & RacePoin
 			return super.calculateOverallPositionsWithOrder();
 		}
 
+		Comparator<Pilot> averagePoints = new AveragePointsComparator<T>(scores, placingMethod, rounding);
 		Comparator<Pilot> racePlacings = new PilotRacePlacingComparator<T>(scores, placingMethod);
 		Comparator<Pilot> fallbackOrdering = new PilotRaceNumberComparator();
-		SortedSet<Pilot> pilots = new TreeSet<Pilot>(Ordering.from(racePlacings).compound(fallbackOrdering));
+		SortedSet<Pilot> pilots = new TreeSet<Pilot>(Ordering.from(averagePoints).compound(racePlacings).compound(fallbackOrdering));
 		pilots.addAll(scores.getPilots());
 
 		LinkedListMultimap<Integer, Pilot> overallPositions = LinkedListMultimap.create();

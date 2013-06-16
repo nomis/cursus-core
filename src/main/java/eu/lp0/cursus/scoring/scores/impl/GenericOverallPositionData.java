@@ -47,7 +47,7 @@ import eu.lp0.cursus.util.PilotRaceNumberComparator;
 
 public class GenericOverallPositionData<T extends ScoredData & RacePointsData & RaceDiscardsData & OverallPointsData> extends AbstractOverallPositionData<T> {
 	private final EqualPositioning equalPositioning;
-	private final PilotRacePlacingComparator.PlacingMethod placingMethod;
+	protected final PilotRacePlacingComparator.PlacingMethod placingMethod;
 	private final boolean allSimulatedToEnd;
 
 	public enum EqualPositioning {

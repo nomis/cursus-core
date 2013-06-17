@@ -17,18 +17,19 @@
  */
 package eu.lp0.cursus.test.scoring;
 
+import java.math.RoundingMode;
+
 import org.fisly.cursus.scoring.FISLYScoresFactory2010;
 
 import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.scores.impl.AveragingRacePointsData;
 import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
-import eu.lp0.cursus.scoring.scores.impl.Rounding;
 
 public class TestScoresFactory1 extends FISLYScoresFactory2010 {
 	@Override
 	public RacePointsData newRacePointsData(Scores scores) {
 		return new AveragingRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.RACE, AveragingRacePointsData.AveragingMethod.AFTER_DISCARDS,
-				Rounding.ROUND_HALF_UP);
+				RoundingMode.HALF_UP);
 	}
 }

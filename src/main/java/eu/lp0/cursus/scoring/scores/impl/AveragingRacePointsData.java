@@ -18,6 +18,7 @@
 package eu.lp0.cursus.scoring.scores.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -39,7 +40,7 @@ import eu.lp0.cursus.scoring.scores.base.ForwardingScores;
 public class AveragingRacePointsData<T extends Scores> extends GenericRacePointsData<T> {
 	private final ScoresBeforeAveraging scoresBeforeAveraging = new ScoresBeforeAveraging();
 	private final AveragingMethod method;
-	private final Rounding rounding;
+	private final RoundingMode rounding;
 	protected final Supplier<Table<Pilot, Race, Integer>> lazyRacePointsBeforeAveraging = Suppliers.memoize(new Supplier<Table<Pilot, Race, Integer>>() {
 		@Override
 		public Table<Pilot, Race, Integer> get() {
@@ -62,14 +63,15 @@ public class AveragingRacePointsData<T extends Scores> extends GenericRacePoints
 		BEFORE_DISCARDS, AFTER_DISCARDS, SET_NULL;
 	}
 
-	public AveragingRacePointsData(T scores, FleetMethod fleetMethod, AveragingMethod averagingMethod, Rounding rounding) {
+	public AveragingRacePointsData(T scores, FleetMethod fleetMethod, AveragingMethod averagingMethod, RoundingMode rounding) {
 		super(scores, fleetMethod);
 
 		this.method = averagingMethod;
 		this.rounding = rounding;
 	}
 
-	public AveragingRacePointsData(T scores, FleetMethod raceFleetMethod, FleetMethod nonAttendeeFleetMethod, AveragingMethod averagingMethod, Rounding rounding) {
+	public AveragingRacePointsData(T scores, FleetMethod raceFleetMethod, FleetMethod nonAttendeeFleetMethod, AveragingMethod averagingMethod,
+			RoundingMode rounding) {
 		super(scores, raceFleetMethod, nonAttendeeFleetMethod);
 
 		this.method = averagingMethod;
@@ -130,7 +132,7 @@ public class AveragingRacePointsData<T extends Scores> extends GenericRacePoints
 					}
 
 					// Calculate and apply the average
-					points = BigDecimal.valueOf(points).divide(BigDecimal.valueOf(otherRaces.size()), rounding.getValue()).intValue();
+					points = BigDecimal.valueOf(points).divide(BigDecimal.valueOf(otherRaces.size()), rounding).intValue();
 					racePoints.row(pilot).put(race, points);
 				}
 			}

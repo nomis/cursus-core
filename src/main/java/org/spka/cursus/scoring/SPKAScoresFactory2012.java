@@ -17,18 +17,19 @@
  */
 package org.spka.cursus.scoring;
 
+import java.math.RoundingMode;
+
 import org.fisly.cursus.scoring.FISLYScoresFactory2010;
 
 import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.scores.impl.AveragingRacePointsData;
 import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
-import eu.lp0.cursus.scoring.scores.impl.Rounding;
 
 public class SPKAScoresFactory2012 extends FISLYScoresFactory2010 {
 	@Override
 	public RacePointsData newRacePointsData(Scores scores) {
 		return new AveragingRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.EVENT, GenericRacePointsData.FleetMethod.SERIES,
-				AveragingRacePointsData.AveragingMethod.AFTER_DISCARDS, Rounding.ROUND_HALF_UP);
+				AveragingRacePointsData.AveragingMethod.AFTER_DISCARDS, RoundingMode.HALF_UP);
 	}
 }

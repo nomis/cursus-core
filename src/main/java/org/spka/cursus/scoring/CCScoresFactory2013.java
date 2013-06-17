@@ -30,7 +30,6 @@ import eu.lp0.cursus.scoring.scores.impl.GenericRacePenaltiesData;
 import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
 import eu.lp0.cursus.scoring.scores.impl.GenericRacePositionsData;
 import eu.lp0.cursus.scoring.scores.impl.NoDiscards;
-import eu.lp0.cursus.scoring.scores.impl.Rounding;
 import eu.lp0.cursus.scoring.scores.impl.TopCountryOverallPositionData;
 import eu.lp0.cursus.scoring.scores.impl.TopCountryRacePointsData;
 
@@ -58,6 +57,6 @@ public class CCScoresFactory2013 extends FISLYScoresFactory2010 {
 
 	@Override
 	public OverallPositionData newOverallPositionData(Scores scores) {
-		return new TopCountryOverallPositionData<Scores>(scores, Rounding.ROUND_HALF_UP);
+		return new TopCountryOverallPositionData<Scores>(scores);
 	}
 }

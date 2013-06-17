@@ -18,6 +18,7 @@
 package eu.lp0.cursus.scoring.scores.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.Map;
 
@@ -26,31 +27,33 @@ import com.google.common.collect.ComparisonChain;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.RaceDiscardsData;
+import eu.lp0.cursus.scoring.data.RacePenaltiesData;
 import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.scoring.scores.impl.PilotRacePlacingComparator.PlacingMethod;
 
-public class AveragePointsComparator<T extends ScoredData & RacePointsData & RaceDiscardsData> implements Comparator<Pilot> {
+public class AveragePointsComparator<T extends ScoredData & RacePointsData & RacePenaltiesData & RaceDiscardsData> implements Comparator<Pilot> {
 	private final T scores;
 	private final PlacingMethod placingMethod;
-	private final Rounding rounding;
 
-	public AveragePointsComparator(T scores, PlacingMethod placingMethod, Rounding rounding) {
+	public AveragePointsComparator(T scores, PlacingMethod placingMethod) {
 		this.scores = scores;
 		this.placingMethod = placingMethod;
-		this.rounding = rounding;
 	}
 
 	@Override
 	public int compare(Pilot o1, Pilot o2) {
 		Map<Race, Integer> racePoints1 = scores.getRacePoints(o1);
+		Map<Race, Integer> racePenalties1 = scores.getRacePenalties(o1);
 		int points1 = 0;
 		int races1 = 0;
-		int average1 = 0;
+		BigDecimal average1 = BigDecimal.ZERO;
+
 		Map<Race, Integer> racePoints2 = scores.getRacePoints(o2);
+		Map<Race, Integer> racePenalties2 = scores.getRacePenalties(o2);
 		int points2 = 0;
 		int races2 = 0;
-		int average2 = 0;
+		BigDecimal average2 = BigDecimal.ZERO;
 
 		for (Race race : scores.getRaces()) {
 			boolean include1 = false;
@@ -75,21 +78,23 @@ public class AveragePointsComparator<T extends ScoredData & RacePointsData & Rac
 
 			if (include1) {
 				points1 += racePoints1.get(race);
+				points1 += racePenalties1.get(race);
 				races1++;
 			}
 
 			if (include2) {
 				points2 += racePoints2.get(race);
+				points2 += racePenalties2.get(race);
 				races2++;
 			}
 		}
 
 		// Calculate the averages
 		if (races1 != 0) {
-			average1 = BigDecimal.valueOf(points1).divide(BigDecimal.valueOf(races1), rounding.getValue()).intValue();
+			average1 = BigDecimal.valueOf(points1).divide(BigDecimal.valueOf(races1), 50, RoundingMode.HALF_EVEN);
 		}
 		if (races2 != 0) {
-			average2 = BigDecimal.valueOf(points2).divide(BigDecimal.valueOf(races2), rounding.getValue()).intValue();
+			average2 = BigDecimal.valueOf(points2).divide(BigDecimal.valueOf(races2), 50, RoundingMode.HALF_EVEN);
 		}
 
 		if (races1 == 0 || races2 == 0) {

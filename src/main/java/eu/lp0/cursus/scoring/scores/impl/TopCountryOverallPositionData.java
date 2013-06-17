@@ -32,17 +32,15 @@ import com.google.common.collect.PeekingIterator;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.scoring.data.OverallPointsData;
 import eu.lp0.cursus.scoring.data.RaceDiscardsData;
+import eu.lp0.cursus.scoring.data.RacePenaltiesData;
 import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.util.PilotRaceNumberComparator;
 
-public class TopCountryOverallPositionData<T extends ScoredData & RacePointsData & RaceDiscardsData & OverallPointsData> extends GenericOverallPositionData<T> {
-	private final Rounding rounding;
-
-	public TopCountryOverallPositionData(T scores, Rounding rounding) {
+public class TopCountryOverallPositionData<T extends ScoredData & RacePointsData & RacePenaltiesData & RaceDiscardsData & OverallPointsData> extends
+		GenericOverallPositionData<T> {
+	public TopCountryOverallPositionData(T scores) {
 		super(scores, EqualPositioning.IF_REQUIRED, PilotRacePlacingComparator.PlacingMethod.EXCLUDING_SIMULATED, true);
-
-		this.rounding = rounding;
 	}
 
 	@Override
@@ -51,7 +49,7 @@ public class TopCountryOverallPositionData<T extends ScoredData & RacePointsData
 			return super.calculateOverallPositionsWithOrder();
 		}
 
-		Comparator<Pilot> averagePoints = new AveragePointsComparator<T>(scores, placingMethod, rounding);
+		Comparator<Pilot> averagePoints = new AveragePointsComparator<T>(scores, placingMethod);
 		Comparator<Pilot> racePlacings = new PilotRacePlacingComparator<T>(scores, placingMethod);
 		Comparator<Pilot> fallbackOrdering = new PilotRaceNumberComparator();
 		SortedSet<Pilot> pilots = new TreeSet<Pilot>(Ordering.from(averagePoints).compound(racePlacings).compound(fallbackOrdering));

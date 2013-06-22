@@ -27,11 +27,10 @@ import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.scorer.AbstractScorer;
-import eu.lp0.cursus.scoring.scorer.Scorer;
 import eu.lp0.cursus.scoring.scorer.ScoringSystem;
 
 @ScoringSystem(uuid = TestScorer1.UUID, name = TestScorer1.NAME)
-public class TestScorer1 extends AbstractScorer implements Scorer {
+public class TestScorer1 extends AbstractScorer {
 	public static final String UUID = "62c7480f-ca72-46f6-92c9-8d956b2a5d75"; //$NON-NLS-1$
 	public static final String NAME = "Test Scorer 1"; //$NON-NLS-1$
 

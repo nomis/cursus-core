@@ -29,28 +29,28 @@ import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.RaceNumber;
+import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.scorer.Scorer;
 import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 import eu.lp0.cursus.test.db.AbstractDatabaseTest;
 
 public abstract class AbstractSeries2011 extends AbstractDatabaseTest {
-	protected final String SERIES_NAME = "FISLY European Championships 2011"; //$NON-NLS-1$
-	protected final int SERIES_PILOTS = 74;
-	protected final int SERIES_M_FLEET = 61;
-	protected final int SERIES_F_FLEET = 13;
+	protected static final String SERIES_NAME = "FISLY European Championships 2011"; //$NON-NLS-1$
+	protected static final int SERIES_PILOTS = 74;
+	protected static final int SERIES_M_FLEET = 61;
+	protected static final int SERIES_F_FLEET = 13;
 
-	protected final String EVENT1_NAME = "Class 8"; //$NON-NLS-1$
-	protected final int EVENT1_M_FLEET = 61;
-	protected final int EVENT1_F_FLEET = 12;
-	protected final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
-	protected final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
-	protected final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
-	protected final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
-	protected final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
-	protected final String RACE6_NAME = "Race 6"; //$NON-NLS-1$
+	protected static final String EVENT1_NAME = "Class 8"; //$NON-NLS-1$
+	protected static final int EVENT1_M_FLEET = 61;
+	protected static final int EVENT1_F_FLEET = 12;
+	protected static final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
+	protected static final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
+	protected static final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
+	protected static final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
+	protected static final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
+	protected static final String RACE6_NAME = "Race 6"; //$NON-NLS-1$
 
 	protected Scorer scorer = ScorerFactory.newScorer(FISLYConstants.UUID_2010);
 

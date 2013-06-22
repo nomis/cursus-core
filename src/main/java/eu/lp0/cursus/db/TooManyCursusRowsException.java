@@ -22,6 +22,7 @@ public class TooManyCursusRowsException extends InvalidDatabaseException {
 
 	public TooManyCursusRowsException(int rows) {
 		super("Too many cursus rows in database: " + rows); //$NON-NLS-1$
+		this.rows = rows;
 	}
 
 	public int getRows() {

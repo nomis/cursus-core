@@ -28,11 +28,13 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
+import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.scoring.data.RaceDiscardsData;
 import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 
+@SuppressWarnings({ "SE_COMPARATOR_SHOULD_BE_SERIALIZABLE" })
 public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & RaceDiscardsData> implements Comparator<Pilot> {
 	private final T scores;
 	private final PlacingMethod method;

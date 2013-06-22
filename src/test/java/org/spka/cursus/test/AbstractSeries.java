@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -21,9 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 
+import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
@@ -31,8 +34,9 @@ import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.test.db.AbstractDatabaseTest;
 
+@SuppressWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE", "SIC_INNER_SHOULD_BE_STATIC_ANON" })
 public class AbstractSeries extends AbstractDatabaseTest {
-	protected final String SERIES_COUNTRY = "Scotland"; //$NON-NLS-1$
+	protected static final String SERIES_COUNTRY = "Scotland"; //$NON-NLS-1$
 
 	protected void attendEvent(Event event, Pilot pilot) {
 		pilot = pilotDAO.get(pilot);
@@ -43,10 +47,10 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	/**
 	 * Get all the pilots in a Scotland series
 	 */
-	protected Set<Pilot> getSeriesResultsPilots(Series series) throws Exception {
+	protected static Set<Pilot> getSeriesResultsPilots(Series series) throws Exception {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
-			public boolean apply(Pilot pilot) {
+			public boolean apply(@Nonnull Pilot pilot) {
 				return pilot.getCountry().equals(SERIES_COUNTRY);
 			}
 		});
@@ -56,10 +60,10 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	 * Get all the pilots at a Scotland event (including non-Scotland pilots)
 	 * (but only up to and including the specified event)
 	 */
-	protected Set<Pilot> getEventResultsPilots(Series series, final Event event) {
+	protected static Set<Pilot> getEventResultsPilots(Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
-			public boolean apply(Pilot pilot) {
+			public boolean apply(@Nonnull Pilot pilot) {
 				for (Race race : event.getRaces()) {
 					if (race.getAttendees().containsKey(pilot)) {
 						return true;
@@ -86,10 +90,10 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	/**
 	 * Get all the pilots in a Scotland series (only up to and including the specified event)
 	 */
-	protected Set<Pilot> getSeriesResultsPilots(Series series, final Event event) {
+	protected static Set<Pilot> getSeriesResultsPilots(Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
-			public boolean apply(Pilot pilot) {
+			public boolean apply(@Nonnull Pilot pilot) {
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
 						return pilot.getCountry().equals(SERIES_COUNTRY);
@@ -110,16 +114,16 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	/**
 	 * Get all the events up to and and including the specified event
 	 */
-	protected Set<Event> getSeriesResultsEvents(Series series, final Event event) {
+	protected static Set<Event> getSeriesResultsEvents(Series series, final Event event) {
 		return Sets.filter(Sets.newHashSet(series.getEvents()), new Predicate<Event>() {
 			@Override
-			public boolean apply(Event event_) {
+			public boolean apply(@Nonnull Event event_) {
 				return (event_.compareTo(event) <= 0);
 			}
 		});
 	}
 
-	protected void debugPrintScores(Scores scores) {
+	protected static void debugPrintScores(Scores scores) {
 		List<Event> events = new ArrayList<Event>();
 		for (Race race : scores.getRaces()) {
 			if (!events.contains(race.getEvent())) {

@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -72,18 +73,38 @@ public abstract class AbstractXMLFile<T> {
 	}
 
 	public void from(File file) throws ImportException {
+		FileInputStream in;
 		try {
-			from(new FileInputStream(file));
+			in = new FileInputStream(file);
 		} catch (FileNotFoundException e) {
 			throw new ImportException(e);
+		}
+
+		try {
+			from(in);
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+			}
 		}
 	}
 
 	public void to(File file) throws ExportException {
+		FileOutputStream out;
 		try {
-			to(new FileOutputStream(file));
+			out = new FileOutputStream(file);
 		} catch (FileNotFoundException e) {
 			throw new ExportException(e);
+		}
+
+		try {
+			to(out);
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+			}
 		}
 	}
 

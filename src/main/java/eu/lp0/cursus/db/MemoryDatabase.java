@@ -20,6 +20,8 @@ package eu.lp0.cursus.db;
 import java.sql.SQLException;
 import java.util.UUID;
 
+import edu.umd.cs.findbugs.annotations.SuppressWarnings;
+
 public class MemoryDatabase extends Database {
 	public MemoryDatabase(String name) throws SQLException, InvalidDatabaseException {
 		super(name, "jdbc:h2:mem:" + UUID.randomUUID() + ";TRACE_LEVEL_FILE=4;DB_CLOSE_DELAY=-1", "SA", "", Mode.FORCE_OPEN); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ 
@@ -31,6 +33,7 @@ public class MemoryDatabase extends Database {
 	}
 
 	@Override
+	@SuppressWarnings({ "DM_GC" })
 	void postClose() {
 		System.gc();
 	}

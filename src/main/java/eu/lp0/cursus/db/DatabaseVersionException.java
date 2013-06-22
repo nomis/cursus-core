@@ -20,7 +20,7 @@ package eu.lp0.cursus.db;
 import eu.lp0.cursus.db.data.Cursus;
 
 public class DatabaseVersionException extends InvalidDatabaseException {
-	private final Cursus cursus;
+	private final transient Cursus cursus;
 
 	public DatabaseVersionException(Cursus cursus) {
 		super("Unsupported database version " + cursus.getVersion()); //$NON-NLS-1$

@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -97,15 +97,15 @@ public class XMLScores {
 	}
 
 	public GenericScores newInstance(ScoresXMLSeriesResults results) {
-		return newInstance(results, new Subset(results));
+		return newInstance(results, new Subset(this, results));
 	}
 
 	public GenericScores newInstance(ScoresXMLEventResults results) {
-		return newInstance(results, new Subset(results));
+		return newInstance(results, new Subset(this, results));
 	}
 
 	public GenericScores newInstance(ScoresXMLRaceResults results) {
-		return newInstance(results, new Subset(results));
+		return newInstance(results, new Subset(this, results));
 	}
 
 	Series dereference(DataXMLSeriesRef seriesRef) {
@@ -126,6 +126,26 @@ public class XMLScores {
 
 	Race dereference(DataXMLRaceRef raceRef) {
 		return races.get(raceRef.getRace());
+	}
+
+	ScoresXML getScoresXML() {
+		return scoresXML;
+	}
+
+	Map<Race, ScoresXMLEventRaceResults> getSeriesEventRaceResults() {
+		return seriesEventRaceResults;
+	}
+
+	Map<Race, ScoresXMLEventRaceResults> getEventEventRaceResults(ScoresXMLEventResults eventResults) {
+		return eventEventRaceResults.row(eventResults);
+	}
+
+	Table<Pilot, Race, ScoresXMLRaceScore> getResultsPilotRaceScores(AbstractScoresXMLResults results) {
+		return resultsPilotRaceScores.get(results);
+	}
+
+	Map<Pilot, ScoresXMLOverallScore> getResultsPilotOverallScores(AbstractScoresXMLResults results) {
+		return resultsPilotOverallScores.row(results);
 	}
 
 	private void extractEntities() {
@@ -269,7 +289,7 @@ public class XMLScores {
 				ImmutableSet.copyOf(resultsEvents.get(results)), Predicates.<Pilot>alwaysTrue(), new XMLScoresFactory(this, subset), new XMLScorer());
 	}
 
-	class Subset {
+	static class Subset {
 		private final ScoresXMLSeriesResults seriesResults;
 		private final ScoresXMLEventResults eventResults;
 		private final ScoresXMLRaceResults raceResults;
@@ -278,37 +298,37 @@ public class XMLScores {
 		private final Table<Pilot, Race, ScoresXMLRaceScore> pilotRaceScores;
 		private final Map<Pilot, ScoresXMLOverallScore> pilotOverallScores;
 
-		public Subset(ScoresXMLSeriesResults seriesResults) {
+		public Subset(XMLScores xmlScores, ScoresXMLSeriesResults seriesResults) {
 			Preconditions.checkNotNull(seriesResults);
-			Preconditions.checkArgument(scoresXML.getSeriesResults().equals(seriesResults));
+			Preconditions.checkArgument(xmlScores.getScoresXML().getSeriesResults().equals(seriesResults));
 			this.seriesResults = seriesResults;
 			this.eventResults = null;
 			this.raceResults = null;
-			this.eventRaceResults = seriesEventRaceResults;
-			this.pilotRaceScores = resultsPilotRaceScores.get(seriesResults);
-			this.pilotOverallScores = resultsPilotOverallScores.row(seriesResults);
+			this.eventRaceResults = xmlScores.getSeriesEventRaceResults();
+			this.pilotRaceScores = xmlScores.getResultsPilotRaceScores(seriesResults);
+			this.pilotOverallScores = xmlScores.getResultsPilotOverallScores(seriesResults);
 		}
 
-		public Subset(ScoresXMLEventResults eventResults) {
+		public Subset(XMLScores xmlScores, ScoresXMLEventResults eventResults) {
 			Preconditions.checkNotNull(eventResults);
-			Preconditions.checkArgument(scoresXML.getEventResults().contains(eventResults));
+			Preconditions.checkArgument(xmlScores.getScoresXML().getEventResults().contains(eventResults));
 			this.seriesResults = null;
 			this.eventResults = eventResults;
 			this.raceResults = null;
-			this.eventRaceResults = eventEventRaceResults.row(eventResults);
-			this.pilotRaceScores = resultsPilotRaceScores.get(eventResults);
-			this.pilotOverallScores = resultsPilotOverallScores.row(eventResults);
+			this.eventRaceResults = xmlScores.getEventEventRaceResults(eventResults);
+			this.pilotRaceScores = xmlScores.getResultsPilotRaceScores(eventResults);
+			this.pilotOverallScores = xmlScores.getResultsPilotOverallScores(eventResults);
 		}
 
-		public Subset(ScoresXMLRaceResults raceResults) {
+		public Subset(XMLScores xmlScores, ScoresXMLRaceResults raceResults) {
 			Preconditions.checkNotNull(raceResults);
-			Preconditions.checkArgument(scoresXML.getRaceResults().contains(raceResults));
+			Preconditions.checkArgument(xmlScores.getScoresXML().getRaceResults().contains(raceResults));
 			this.seriesResults = null;
 			this.eventResults = null;
 			this.raceResults = raceResults;
 			this.eventRaceResults = null;
-			this.pilotRaceScores = resultsPilotRaceScores.get(raceResults);
-			this.pilotOverallScores = resultsPilotOverallScores.row(raceResults);
+			this.pilotRaceScores = xmlScores.getResultsPilotRaceScores(raceResults);
+			this.pilotOverallScores = xmlScores.getResultsPilotOverallScores(raceResults);
 		}
 
 		public int getDiscards() {

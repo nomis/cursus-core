@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.data.ScoresFactorySubset;
 
-public abstract class ForwardingScores extends AbstractForwardingScores implements ScoresFactorySubset {
+public abstract class ForwardingScores extends AbstractForwardingScores {
 	private final Supplier<RaceLapsData> raceLapsData = Suppliers.memoize(new Supplier<RaceLapsData>() {
 		@Override
 		public RaceLapsData get() {

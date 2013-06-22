@@ -17,8 +17,6 @@
  */
 package eu.lp0.cursus.db.data;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
@@ -52,28 +50,28 @@ public final class RaceTally {
 		this(null, type, data, pilot);
 	}
 
-	public RaceTally(Timestamp timestamp, Type type) {
+	public RaceTally(Long timestamp, Type type) {
 		this(timestamp, type, "", null); //$NON-NLS-1$
 	}
 
-	public RaceTally(Timestamp timestamp, Type type, String data) {
+	public RaceTally(Long timestamp, Type type, String data) {
 		this(timestamp, type, data, null);
 	}
 
-	public RaceTally(Timestamp timestamp, Type type, String data, Pilot pilot) {
+	public RaceTally(Long timestamp, Type type, String data, Pilot pilot) {
 		setTimestamp(timestamp);
 		setType(type);
 		setData(data);
 		setPilot(pilot);
 	}
 
-	private Timestamp timestamp;
+	private Long timestamp;
 
-	public Timestamp getTimestamp() {
+	public Long getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Timestamp timestamp) {
+	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
 	}
 

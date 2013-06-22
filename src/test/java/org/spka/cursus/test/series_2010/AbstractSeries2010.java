@@ -28,47 +28,47 @@ import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.RaceNumber;
+import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.scorer.Scorer;
 import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 
 public abstract class AbstractSeries2010 extends AbstractSeries {
-	protected final String SERIES_NAME = "SPKA Race Series 2010/11"; //$NON-NLS-1$
-	protected final int SERIES_FLEET = 19;
+	protected static final String SERIES_NAME = "SPKA Race Series 2010/11"; //$NON-NLS-1$
+	protected static final int SERIES_FLEET = 19;
 
-	protected final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
-	protected final String EVENT1_DESC = "Luce Bay (16/10/2010 and 17/10/2010)"; //$NON-NLS-1$
-	protected final int EVENT1_FLEET = 17;
-	protected final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
-	protected final String RACE1_DESC = "Luce Bay (17/10/2010)"; //$NON-NLS-1$
-	protected final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
-	protected final String RACE2_DESC = "Luce Bay (17/10/2010)"; //$NON-NLS-1$
-	protected final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
-	protected final String RACE3_DESC = "Luce Bay (17/10/2010)"; //$NON-NLS-1$
+	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
+	protected static final String EVENT1_DESC = "Luce Bay (16/10/2010 and 17/10/2010)"; //$NON-NLS-1$
+	protected static final int EVENT1_FLEET = 17;
+	protected static final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
+	protected static final String RACE1_DESC = "Luce Bay (17/10/2010)"; //$NON-NLS-1$
+	protected static final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
+	protected static final String RACE2_DESC = "Luce Bay (17/10/2010)"; //$NON-NLS-1$
+	protected static final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
+	protected static final String RACE3_DESC = "Luce Bay (17/10/2010)"; //$NON-NLS-1$
 
-	protected final String EVENT2_NAME = "Race Event 2"; //$NON-NLS-1$
-	protected final String EVENT2_DESC = "West Sands (27/11/2010)"; //$NON-NLS-1$
-	protected final int EVENT2_FLEET = 13;
-	protected final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
-	protected final String RACE4_DESC = "West Sands (27/11/2010)"; //$NON-NLS-1$
+	protected static final String EVENT2_NAME = "Race Event 2"; //$NON-NLS-1$
+	protected static final String EVENT2_DESC = "West Sands (27/11/2010)"; //$NON-NLS-1$
+	protected static final int EVENT2_FLEET = 13;
+	protected static final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
+	protected static final String RACE4_DESC = "West Sands (27/11/2010)"; //$NON-NLS-1$
 
-	protected final String EVENT3_NAME = "Race Event 3"; //$NON-NLS-1$
-	protected final String EVENT3_DESC = "Luce Bay (12/02/2011 and 13/02/2011)"; //$NON-NLS-1$
-	protected final int EVENT3_FLEET = 15;
-	protected final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
-	protected final String RACE5_DESC = "Luce Bay (12/02/2011)"; //$NON-NLS-1$
+	protected static final String EVENT3_NAME = "Race Event 3"; //$NON-NLS-1$
+	protected static final String EVENT3_DESC = "Luce Bay (12/02/2011 and 13/02/2011)"; //$NON-NLS-1$
+	protected static final int EVENT3_FLEET = 15;
+	protected static final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
+	protected static final String RACE5_DESC = "Luce Bay (12/02/2011)"; //$NON-NLS-1$
 
-	protected final String EVENT4_NAME = "Race Event 4"; //$NON-NLS-1$
-	protected final String EVENT4_DESC = "West Sands (18/06/2011 and 19/06/2011)"; //$NON-NLS-1$
-	protected final int EVENT4_FLEET = 15;
-	protected final String RACE6_NAME = "Race 6"; //$NON-NLS-1$
-	protected final String RACE6_DESC = "West Sands (18/06/2011)"; //$NON-NLS-1$
-	protected final String RACE7_NAME = "Race 7"; //$NON-NLS-1$
-	protected final String RACE7_DESC = "West Sands (18/06/2011)"; //$NON-NLS-1$
-	protected final String RACE8_NAME = "Race 8"; //$NON-NLS-1$
-	protected final String RACE8_DESC = "West Sands (19/06/2011)"; //$NON-NLS-1$
+	protected static final String EVENT4_NAME = "Race Event 4"; //$NON-NLS-1$
+	protected static final String EVENT4_DESC = "West Sands (18/06/2011 and 19/06/2011)"; //$NON-NLS-1$
+	protected static final int EVENT4_FLEET = 15;
+	protected static final String RACE6_NAME = "Race 6"; //$NON-NLS-1$
+	protected static final String RACE6_DESC = "West Sands (18/06/2011)"; //$NON-NLS-1$
+	protected static final String RACE7_NAME = "Race 7"; //$NON-NLS-1$
+	protected static final String RACE7_DESC = "West Sands (18/06/2011)"; //$NON-NLS-1$
+	protected static final String RACE8_NAME = "Race 8"; //$NON-NLS-1$
+	protected static final String RACE8_DESC = "West Sands (19/06/2011)"; //$NON-NLS-1$
 
 	protected Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2010);
 

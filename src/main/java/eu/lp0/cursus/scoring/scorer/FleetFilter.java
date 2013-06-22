@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -19,14 +19,18 @@ package eu.lp0.cursus.scoring.scorer;
 
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Sets;
 
+import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 import eu.lp0.cursus.db.data.Class;
 import eu.lp0.cursus.db.data.Gender;
 import eu.lp0.cursus.db.data.Pilot;
 
+@SuppressWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE" })
 public class FleetFilter {
 	public static Predicate<Pilot> from(final Set<Class> classes) {
 		if (classes.isEmpty()) {
@@ -35,7 +39,7 @@ public class FleetFilter {
 
 		return new Predicate<Pilot>() {
 			@Override
-			public boolean apply(Pilot pilot) {
+			public boolean apply(@Nonnull Pilot pilot) {
 				return !Sets.intersection(pilot.getClasses(), classes).isEmpty();
 			}
 		};
@@ -48,7 +52,7 @@ public class FleetFilter {
 
 		return new Predicate<Pilot>() {
 			@Override
-			public boolean apply(Pilot pilot) {
+			public boolean apply(@Nonnull Pilot pilot) {
 				return pilot.getGender() == gender || pilot.getGender() == null;
 			}
 		};
@@ -68,7 +72,7 @@ public class FleetFilter {
 
 		return new Predicate<Pilot>() {
 			@Override
-			public boolean apply(Pilot pilot) {
+			public boolean apply(@Nonnull Pilot pilot) {
 				return genderFilter.apply(pilot) && classFilter.apply(pilot);
 			}
 		};

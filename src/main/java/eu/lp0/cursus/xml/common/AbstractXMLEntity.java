@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -45,6 +45,24 @@ public abstract class AbstractXMLEntity<T extends AbstractEntity> implements Com
 
 	@Override
 	public int compareTo(AbstractXMLEntity<T> o) {
-		return ComparisonChain.start().compare(getClass().getSimpleName(), o.getClass().getSimpleName()).compare(getId(), o.getId()).result();
+		return ComparisonChain.start().compare(getId(), o.getId()).result();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof AbstractXMLEntity)) {
+			return false;
+		}
+
+		if (o == this) {
+			return true;
+		}
+
+		return getId().equals((((AbstractXMLEntity<?>)o).getId()));
+	}
+
+	@Override
+	public int hashCode() {
+		return getId().hashCode();
 	}
 }

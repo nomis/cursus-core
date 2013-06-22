@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -42,5 +42,23 @@ public class DataXMLClassMember implements DataXMLClassRef, Comparable<DataXMLCl
 	@Override
 	public int compareTo(DataXMLClassMember o) {
 		return getClass_().compareTo(o.getClass_());
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof DataXMLClassMember)) {
+			return false;
+		}
+
+		if (o == this) {
+			return true;
+		}
+
+		return getClass_().equals(((DataXMLClassMember)o).getClass_());
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass_().hashCode();
 	}
 }

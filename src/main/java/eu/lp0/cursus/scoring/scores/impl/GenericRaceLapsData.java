@@ -25,6 +25,8 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import javax.annotation.Nonnull;
+
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
@@ -34,6 +36,7 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
+import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
@@ -44,6 +47,7 @@ import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.scoring.scores.base.AbstractRaceLapsData;
 import eu.lp0.cursus.util.PilotRaceNumberComparator;
 
+@SuppressWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE" })
 public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> extends AbstractRaceLapsData<T> {
 	private static final int EXPECTED_MAXIMUM_LAPS = 32;
 	private final boolean scoreBeforeStart;
@@ -129,7 +133,7 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 			boolean scoring = scoreBeforeStart;
 
 			@Override
-			public Pilot apply(RaceTally tally) {
+			public Pilot apply(@Nonnull RaceTally tally) {
 				switch (tally.getType()) {
 				case START:
 					scoring = true;

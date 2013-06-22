@@ -26,11 +26,10 @@ import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scorer.Scorer;
 import eu.lp0.cursus.scoring.scorer.ScoringSystem;
 
 @ScoringSystem(uuid = CCConstants.UUID_2013, name = CCConstants.NAME_2013)
-public class CCScorer2013 extends AbstractSPKAScorer implements Scorer {
+public class CCScorer2013 extends AbstractSPKAScorer {
 	@Override
 	public Scores scoreRaces(List<Race> races, Set<Pilot> pilots, Set<Event> events, Predicate<Pilot> fleetFilter) {
 		return new CCScoresFactory2013().newScores(pilots, races, events, fleetFilter, this);

@@ -27,5 +27,5 @@ public class FISLYConstants {
 	 * There are no changes to scoring in the 2012-06-14 rules.
 	 */
 	public static final String NAME_2010 = "FISLY 2010-09-29..2012-06-14+"; //$NON-NLS-1$
-	public static final String UUID_2010 = "306e22d7-027f-55d8-8b02-db8944b742ec"; //$NON-NLS-1$
+	public static final String UUID_2010 = "8f20f14f-0760-5b77-9a9d-dc32a4e19443"; //$NON-NLS-1$
 }

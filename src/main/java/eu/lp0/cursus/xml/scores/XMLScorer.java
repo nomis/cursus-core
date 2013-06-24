@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012  Simon Arlott
+	Copyright 2012-2013  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.scorer.AbstractScorer;
 import eu.lp0.cursus.scoring.scorer.ScoringSystem;
 
-@ScoringSystem(uuid = "4063fecb-3dbd-5c0a-baeb-1e41769b8091", name = "XML Import", hide = true)
+@ScoringSystem(uuid = "aff488dc-3c20-5e6a-8631-df44c3bc53fd", name = "XML Import", hide = true)
 public class XMLScorer extends AbstractScorer {
 	@Override
 	public Scores scoreRaces(List<Race> races, Set<Pilot> pilots, Set<Event> events, Predicate<Pilot> fleetFilter) {

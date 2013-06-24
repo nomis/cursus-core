@@ -19,7 +19,7 @@ package org.spka.cursus.scoring;
 
 public class CCConstants {
 	public static final String NAME_2013 = "Celtic Challenge 2013"; //$NON-NLS-1$
-	public static final String UUID_2013 = "9c519f8f-267a-5f9c-8978-da7447dac5b2"; //$NON-NLS-1$
+	public static final String UUID_2013 = "d4f1b715-f838-51c3-9274-f52a02162ecf"; //$NON-NLS-1$
 
 	public static final int TOP_COUNTRY_PILOTS_2013 = 5;
 }

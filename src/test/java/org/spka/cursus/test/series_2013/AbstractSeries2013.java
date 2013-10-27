@@ -42,13 +42,13 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 	protected static final String EVENT1_DESC = "Luce Bay (26/10/2013)"; //$NON-NLS-1$
 	protected static final int EVENT1_FLEET = 11;
 	protected static final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
-	protected static final String RACE1_DESC = "West Sands (26/10/2012)"; //$NON-NLS-1$
+	protected static final String RACE1_DESC = "Luce Bay (26/10/2013)"; //$NON-NLS-1$
 	protected static final int RACE1_PILOTS = 11;
 	protected static final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
-	protected static final String RACE2_DESC = "West Sands (26/10/2012)"; //$NON-NLS-1$
+	protected static final String RACE2_DESC = "Luce Bay (26/10/2013)"; //$NON-NLS-1$
 	protected static final int RACE2_PILOTS = 11;
 	protected static final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
-	protected static final String RACE3_DESC = "West Sands (26/10/2012)"; //$NON-NLS-1$
+	protected static final String RACE3_DESC = "Luce Bay (26/10/2013)"; //$NON-NLS-1$
 	protected static final int RACE3_PILOTS = 11;
 
 	protected Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2012);

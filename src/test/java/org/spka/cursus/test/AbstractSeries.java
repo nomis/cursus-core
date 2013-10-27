@@ -19,6 +19,7 @@ package org.spka.cursus.test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -30,6 +31,7 @@ import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
+import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.test.db.AbstractDatabaseTest;
@@ -162,6 +164,18 @@ public class AbstractSeries extends AbstractDatabaseTest {
 				System.out.print("\t" + scores.getRaceDiscard(pilot, i)); //$NON-NLS-1$ 
 			}
 			System.out.println("\t" + scores.getOverallPoints(pilot)); //$NON-NLS-1$ 
+		}
+	}
+
+	protected void addLaps(Race race, String laps) {
+		laps: for (String lap : laps.split(",", -1)) { //$NON-NLS-1$
+			for (Pilot pilot : race.getAttendees().keySet()) {
+				if (pilot.getRaceNumber().getNumber() == Integer.parseInt(lap)) {
+					race.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot)); //$NON-NLS-1$
+					continue laps;
+				}
+			}
+			throw new NoSuchElementException("Can't find pilot " + lap); //$NON-NLS-1$
 		}
 	}
 }

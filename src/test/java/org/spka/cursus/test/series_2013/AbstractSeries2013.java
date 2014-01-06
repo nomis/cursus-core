@@ -36,10 +36,10 @@ import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 
 public abstract class AbstractSeries2013 extends AbstractSeries {
 	protected static final String SERIES_NAME = "SPKA Race Series 2013/14"; //$NON-NLS-1$
-	protected static final int SERIES_FLEET = 11;
+	protected static final int SERIES_FLEET = 14;
 	protected static final int SERIES_FLEET_AT_EVENT1 = 11;
 	protected static final int SERIES_FLEET_AT_EVENT2 = 12;
-	protected static final int SERIES_FLEET_AT_EVENT3 = 13;
+	protected static final int SERIES_FLEET_AT_EVENT3 = 14;
 
 	protected static final String EVENT1_NAME = "Event 1"; //$NON-NLS-1$
 	protected static final String EVENT1_DESC = "Luce Bay (26/10/2013)"; //$NON-NLS-1$
@@ -66,10 +66,10 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 
 	protected static final String EVENT3_NAME = "Event 3"; //$NON-NLS-1$
 	protected static final String EVENT3_DESC = "West Sands (04/01/2014)"; //$NON-NLS-1$
-	protected static final int EVENT3_FLEET = 10;
+	protected static final int EVENT3_FLEET = 11;
 	protected static final String RACE6_NAME = "Race 6"; //$NON-NLS-1$
 	protected static final String RACE6_DESC = "West Sands (04/01/2014)"; //$NON-NLS-1$
-	protected static final int RACE6_PILOTS = 10;
+	protected static final int RACE6_PILOTS = 11;
 
 	protected Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2012);
 
@@ -81,6 +81,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 	protected Pilot sco087;
 	protected Pilot sco116;
 	protected Pilot sco117;
+	protected Pilot sco153;
 	protected Pilot sco156;
 	protected Pilot sco159;
 	protected Pilot sco179;
@@ -138,6 +139,10 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 
 			sco117 = new Pilot(series, "SCO117", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco117);
+
+			sco153 = new Pilot(series, "SCO153", Gender.FEMALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco153.getClasses().add(_16inWheel);
+			series.getPilots().add(sco153);
 
 			sco156 = new Pilot(series, "SCO156", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco156.getClasses().add(junior);
@@ -520,6 +525,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 			att116.getPenalties().add(new Penalty(Penalty.Type.AUTOMATIC, "Hit mark 2")); //$NON-NLS-1$
 			race6.getAttendees().put(sco116, att116);
 			race6.getAttendees().put(sco117, new RaceAttendee(race6, sco117, RaceAttendee.Type.PILOT));
+			race6.getAttendees().put(sco153, new RaceAttendee(race6, sco153, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(sco156, new RaceAttendee(race6, sco156, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(sco159, new RaceAttendee(race6, sco159, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(sco179, new RaceAttendee(race6, sco179, RaceAttendee.Type.PILOT));

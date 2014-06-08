@@ -1,5 +1,5 @@
 language: java
-before-install:
+install:
   - git clone git://github.com/lp0/cursus.git __cursus__
   - cd __cursus__
   - mvn -B -V install

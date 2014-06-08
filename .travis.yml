@@ -1,6 +1,6 @@
 language: java
 install:
-  - git clone git://github.com/lp0/cursus.git __cursus__
+  - git clone --depth=1 git://github.com/lp0/cursus.git __cursus__
   - cd __cursus__
   - mvn -B -V install
   - cd ..

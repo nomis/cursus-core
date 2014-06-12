@@ -32,19 +32,25 @@ import eu.lp0.cursus.scoring.data.Scores;
 public class RaceAssertUtil {
 	private final Scores scores;
 	private final Race race;
+	private final boolean allowSimulatedWithoutLaps;
 
 	private final Set<Pilot> expectedRaceOrder = new LinkedHashSet<Pilot>();
 	private boolean done = false;
 
 	public RaceAssertUtil(Scores scores, Race race) {
+		this(scores, race, false);
+	}
+
+	public RaceAssertUtil(Scores scores, Race race, boolean allowSimulatedWithoutLaps) {
 		this.scores = scores;
 		this.race = race;
+		this.allowSimulatedWithoutLaps = allowSimulatedWithoutLaps;
 	}
 
 	public void assertPilot(Pilot pilot, int expectedLaps, int expectedPenalties, boolean expectedSimulatedRacePoints, int expectedPoints, int expectedPosition) {
 		Assert.assertFalse(done);
 
-		if (expectedSimulatedRacePoints) {
+		if (expectedSimulatedRacePoints && !allowSimulatedWithoutLaps) {
 			Assert.assertEquals("Pilot " + pilot.getName() + " cannot have simulated race points with non-zero laps", 0, expectedLaps); //$NON-NLS-1$//$NON-NLS-2$
 		}
 

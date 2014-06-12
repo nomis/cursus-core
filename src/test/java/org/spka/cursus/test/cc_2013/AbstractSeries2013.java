@@ -66,19 +66,19 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 	protected static final int EVENT2_FLEET = 19;
 	protected static final String RACE7_NAME = "Race 7"; //$NON-NLS-1$
 	protected static final String RACE7_DESC = "Luce Bay (15/06/2013)"; //$NON-NLS-1$
-	protected static final int RACE7_PILOTS = 19;
+	protected static final int RACE7_PILOTS = 18;
 	protected static final String RACE8_NAME = "Race 8"; //$NON-NLS-1$
 	protected static final String RACE8_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
-	protected static final int RACE8_PILOTS = 18;
+	protected static final int RACE8_PILOTS = 17;
 	protected static final String RACE9_NAME = "Race 9"; //$NON-NLS-1$
 	protected static final String RACE9_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
-	protected static final int RACE9_PILOTS = 18;
+	protected static final int RACE9_PILOTS = 17;
 	protected static final String RACE10_NAME = "Race 10"; //$NON-NLS-1$
 	protected static final String RACE10_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
-	protected static final int RACE10_PILOTS = 18;
+	protected static final int RACE10_PILOTS = 17;
 	protected static final String RACE11_NAME = "Race 11"; //$NON-NLS-1$
 	protected static final String RACE11_DESC = "Luce Bay (16/06/2013)"; //$NON-NLS-1$
-	protected static final int RACE11_PILOTS = 18;
+	protected static final int RACE11_PILOTS = 17;
 
 	protected Scorer scorer = ScorerFactory.newScorer(FISLYConstants.UUID_2010);
 

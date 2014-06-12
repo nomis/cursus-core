@@ -46,14 +46,18 @@ public class AbstractSeries extends AbstractDatabaseTest {
 		pilotDAO.persist(pilot);
 	}
 
+	private static boolean isPrivateSeries(Series series) {
+		return series.getName().startsWith("SPKA "); //$NON-NLS-1$
+	}
+
 	/**
 	 * Get all the pilots in a Scotland series
 	 */
-	protected static Set<Pilot> getSeriesResultsPilots(Series series) throws Exception {
+	protected static Set<Pilot> getSeriesResultsPilots(final Series series) throws Exception {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				return pilot.getCountry().equals(SERIES_COUNTRY);
+				return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
 			}
 		});
 	}
@@ -62,7 +66,7 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	 * Get all the pilots at a Scotland event (including non-Scotland pilots)
 	 * (but only up to and including the specified event)
 	 */
-	protected static Set<Pilot> getEventResultsPilots(Series series, final Event event) {
+	protected static Set<Pilot> getEventResultsPilots(final Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
@@ -74,13 +78,13 @@ public class AbstractSeries extends AbstractDatabaseTest {
 
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
 					}
 				}
 
@@ -92,19 +96,19 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	/**
 	 * Get all the pilots in a Scotland series (only up to and including the specified event)
 	 */
-	protected static Set<Pilot> getSeriesResultsPilots(Series series, final Event event) {
+	protected static Set<Pilot> getSeriesResultsPilots(final Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
 					}
 				}
 

@@ -25,6 +25,8 @@ import java.nio.charset.Charset;
 import java.util.Locale;
 
 import org.junit.Ignore;
+import org.spka.cursus.scoring.AbstractSPKAScorer;
+import org.spka.cursus.scoring.CCScorer2013;
 import org.spka.cursus.scoring.Scorer2010;
 import org.spka.cursus.scoring.Scorer2011;
 import org.spka.cursus.test.AbstractSeries;
@@ -85,6 +87,8 @@ public class CreateSPKATests extends AbstractSeries {
 					hasRaces = true;
 				}
 			}
+
+			String raceAssertUtilExtra = (scorer instanceof CCScorer2013) ? ", true" : "";
 
 			out.println("/*");
 			out.println("	cursus - Race series management program");
@@ -253,17 +257,19 @@ public class CreateSPKATests extends AbstractSeries {
 					out.println("		Assert.assertEquals(SERIES_FLEET_AT_" + eventConstantName + ", scores.getPilots().size());");
 				}
 
-				for (Event event : series.getEvents()) {
-					for (Race race : event.getRaces()) {
-						out.print("		Assert.assertEquals(");
-						if (scorer instanceof Scorer2010) {
-							out.print(event.getName().replace("Race Event ", "EVENT") + "_FLEET");
-						} else if (scorer instanceof Scorer2011) {
-							out.print("SERIES_FLEET_AT_" + eventConstantName);
-						} else {
-							out.print(race.getName().replace("Race ", "RACE") + "_PILOTS");
+				if (scorer instanceof AbstractSPKAScorer) {
+					for (Event event : series.getEvents()) {
+						for (Race race : event.getRaces()) {
+							out.print("		Assert.assertEquals(");
+							if (scorer instanceof Scorer2010) {
+								out.print(event.getName().replace("Race Event ", "EVENT") + "_FLEET");
+							} else if (scorer instanceof Scorer2011) {
+								out.print("SERIES_FLEET_AT_" + eventConstantName);
+							} else {
+								out.print(race.getName().replace("Race ", "RACE") + "_PILOTS");
+							}
+							out.println(", scores.getFleetSize(" + race.getName().replace("Race ", "race") + "));");
 						}
-						out.println(", scores.getFleetSize(" + race.getName().replace("Race ", "race") + "));");
 					}
 				}
 
@@ -272,7 +278,7 @@ public class CreateSPKATests extends AbstractSeries {
 						String raceName = race.getName().replace("Race ", "race");
 
 						out.println("");
-						out.println("		RaceAssertUtil " + raceName + "AssertUtil = new RaceAssertUtil(scores, " + raceName + ");");
+						out.println("		RaceAssertUtil " + raceName + "AssertUtil = new RaceAssertUtil(scores, " + raceName + raceAssertUtilExtra + ");");
 
 						int simulPilots = 0;
 						for (Pilot pilot : seriesScores.getRaceOrder(race)) {
@@ -344,17 +350,19 @@ public class CreateSPKATests extends AbstractSeries {
 				out.println("");
 				out.println("			Scores scores = scorer.scoreEvent(" + eventFieldName + ", Predicates.in(getEventResultsPilots(series, " + eventFieldName
 						+ ")));");
-				out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getPilots().size());");
-				for (Race race : fileEvent.getRaces()) {
-					out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize(" + race.getName().replace("Race ", "race")
-							+ "));");
+				if (scorer instanceof AbstractSPKAScorer) {
+					out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getPilots().size());");
+					for (Race race : fileEvent.getRaces()) {
+						out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize(" + race.getName().replace("Race ", "race")
+								+ "));");
+					}
 				}
 
 				for (Race race : fileEvent.getRaces()) {
 					String raceName = race.getName().replace("Race ", "race");
 
 					out.println("");
-					out.println("			RaceAssertUtil " + raceName + "AssertUtil = new RaceAssertUtil(scores, " + raceName + ");");
+					out.println("			RaceAssertUtil " + raceName + "AssertUtil = new RaceAssertUtil(scores, " + raceName + raceAssertUtilExtra + ");");
 
 					int simulPilots = 0;
 					for (Pilot pilot : eventScores.getRaceOrder(race)) {
@@ -407,12 +415,15 @@ public class CreateSPKATests extends AbstractSeries {
 					out.println("			Race " + raceName + " = raceDAO.find(" + eventFieldName + ", " + race.getName().replace("Race ", "RACE") + "_NAME);");
 					out.println("");
 					out.println("			Scores scores = scorer.scoreRace(" + raceName + ", Predicates.in(getEventResultsPilots(series, " + eventFieldName + ")));");
-					out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getPilots().size());");
-					out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize(" + race.getName().replace("Race ", "race")
-							+ "));");
+
+					if (scorer instanceof AbstractSPKAScorer) {
+						out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getPilots().size());");
+						out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize(" + race.getName().replace("Race ", "race")
+								+ "));");
+					}
 
 					out.println("");
-					out.println("			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, " + raceName + ");");
+					out.println("			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, " + raceName + raceAssertUtilExtra + ");");
 
 					int simulPilots = 0;
 					for (Pilot pilot : raceScores.getRaceOrder(race)) {

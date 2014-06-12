@@ -455,8 +455,6 @@ public class CreateSPKATests extends AbstractSeries {
 			db.endSession();
 		}
 
-		closeDatabase();
-
 		superClass = className;
 		anyRaces |= hasRaces;
 	}

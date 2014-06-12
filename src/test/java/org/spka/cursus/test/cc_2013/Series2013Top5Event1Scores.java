@@ -38,8 +38,10 @@ import eu.lp0.cursus.test.util.RaceAssertUtil;
  * Scores at the end of event 1 (25/05/2013 to 26/05/2013)
  */
 public class Series2013Top5Event1Scores extends AbstractSeries2013Top5 {
+	@Override
 	@Before
 	public void createDatabase() throws Exception {
+		super.createDatabase();
 		createEvent1Races();
 	}
 

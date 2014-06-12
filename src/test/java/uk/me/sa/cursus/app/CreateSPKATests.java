@@ -144,14 +144,10 @@ public class CreateSPKATests extends AbstractSeries {
 					+ fileEvent.getDescription().split("\\(")[1].split("\\)")[0].replace(" and ", " to ") + ")");
 			out.println(" */");
 			out.println("public class " + className + " extends " + superClass + " {");
-			if (!superClass.startsWith("Abstract")) {
-				out.println("	@Override");
-			}
+			out.println("	@Override");
 			out.println("	@Before");
-			out.println("	public void createData() throws Exception {");
-			if (!superClass.startsWith("Abstract")) {
-				out.println("		super.createData();");
-			}
+			out.println("	public void createDatabase() throws Exception {");
+			out.println("		super.createDatabase();");
 			out.println("		create" + eventMethodName + (className.contains("NonEvent") ? "Data" : "Races") + "();");
 			out.println("	}");
 

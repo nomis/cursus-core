@@ -40,8 +40,8 @@ import eu.lp0.cursus.test.util.RaceAssertUtil;
 public class Series2010Event3Scores extends Series2010Event2Scores {
 	@Override
 	@Before
-	public void createData() throws Exception {
-		super.createData();
+	public void createDatabase() throws Exception {
+		super.createDatabase();
 		createEvent3Races();
 	}
 

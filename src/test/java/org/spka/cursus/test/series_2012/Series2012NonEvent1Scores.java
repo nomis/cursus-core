@@ -29,8 +29,10 @@ import eu.lp0.cursus.db.data.Series;
  * Scores at the end of non-event 1 (20/10/2012 to 21/10/2012)
  */
 public class Series2012NonEvent1Scores extends AbstractSeries2012 {
+	@Override
 	@Before
-	public void createData() throws Exception {
+	public void createDatabase() throws Exception {
+		super.createDatabase();
 		createNonEvent1Data();
 	}
 

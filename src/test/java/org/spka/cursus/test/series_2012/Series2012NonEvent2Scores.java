@@ -31,8 +31,8 @@ import eu.lp0.cursus.db.data.Series;
 public class Series2012NonEvent2Scores extends Series2012NonEvent1Scores {
 	@Override
 	@Before
-	public void createData() throws Exception {
-		super.createData();
+	public void createDatabase() throws Exception {
+		super.createDatabase();
 		createNonEvent2Data();
 	}
 

@@ -40,8 +40,8 @@ import eu.lp0.cursus.test.util.RaceAssertUtil;
 public class Series2013Top5Event2Scores extends Series2013Top5Event1Scores {
 	@Override
 	@Before
-	public void createData() throws Exception {
-		super.createData();
+	public void createDatabase() throws Exception {
+		super.createDatabase();
 		createEvent2Races();
 	}
 

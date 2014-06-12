@@ -39,7 +39,7 @@ import eu.lp0.cursus.test.util.RaceAssertUtil;
  */
 public class Series2013Top5Event1Scores extends AbstractSeries2013Top5 {
 	@Before
-	public void createData() throws Exception {
+	public void createDatabase() throws Exception {
 		createEvent1Races();
 	}
 

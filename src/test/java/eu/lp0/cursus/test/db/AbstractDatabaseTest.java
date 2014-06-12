@@ -38,5 +38,6 @@ public abstract class AbstractDatabaseTest extends AbstractDataTest {
 	@After
 	public void closeDatabase() {
 		db.close(true);
+		db = null;
 	}
 }

@@ -63,7 +63,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 
 	protected static final String EVENT2_NAME = "Race Event 2"; //$NON-NLS-1$
 	protected static final String EVENT2_DESC = "Luce Bay (15/06/2013 and 16/06/2013)"; //$NON-NLS-1$
-	protected static final int EVENT2_FLEET = 19;
+	protected static final int EVENT2_FLEET = 18;
 	protected static final String RACE7_NAME = "Race 7"; //$NON-NLS-1$
 	protected static final String RACE7_DESC = "Luce Bay (15/06/2013)"; //$NON-NLS-1$
 	protected static final int RACE7_PILOTS = 18;

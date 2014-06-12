@@ -39,22 +39,22 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 	protected static final int SERIES_FLEET_AT_EVENT2 = 0;
 
 	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
-	protected static final String EVENT1_DESC = "Benone (24/05/2013 and 25/05/2013)"; //$NON-NLS-1$
+	protected static final String EVENT1_DESC = "Bettystown (24/05/2013 and 25/05/2013)"; //$NON-NLS-1$
 	protected static final int EVENT1_FLEET = 10;
 	protected static final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
-	protected static final String RACE1_DESC = "Benone"; //$NON-NLS-1$
+	protected static final String RACE1_DESC = "Bettystown"; //$NON-NLS-1$
 	protected static final int RACE1_PILOTS = 10;
 	protected static final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
-	protected static final String RACE2_DESC = "Benone"; //$NON-NLS-1$
+	protected static final String RACE2_DESC = "Bettystown"; //$NON-NLS-1$
 	protected static final int RACE2_PILOTS = 10;
 	protected static final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
-	protected static final String RACE3_DESC = "Benone"; //$NON-NLS-1$
+	protected static final String RACE3_DESC = "Bettystown"; //$NON-NLS-1$
 	protected static final int RACE3_PILOTS = 10;
 	protected static final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
-	protected static final String RACE4_DESC = "Benone"; //$NON-NLS-1$
+	protected static final String RACE4_DESC = "Bettystown"; //$NON-NLS-1$
 	protected static final int RACE4_PILOTS = 10;
 	protected static final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
-	protected static final String RACE5_DESC = "Benonee"; //$NON-NLS-1$
+	protected static final String RACE5_DESC = "Bettystown"; //$NON-NLS-1$
 	protected static final int RACE5_PILOTS = 10;
 
 	protected static final String EVENT2_NAME = "Race Event 2"; //$NON-NLS-1$

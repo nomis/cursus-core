@@ -69,11 +69,11 @@
   <events>
    <event xml:id="Event12f32b244510f">
     <name xml:space="preserve">Race Event 1</name>
-    <description xml:space="preserve">Benone (24/05/2013 and 25/05/2013)</description>
+    <description xml:space="preserve">Bettystown (24/05/2013 and 25/05/2013)</description>
     <races>
      <race xml:id="Race12f32b2445110">
       <name xml:space="preserve">Race 1</name>
-      <description xml:space="preserve">Benone</description>
+      <description xml:space="preserve">Bettystown</description>
       <raceAttendee pilot="Pilot12f32b24450fa" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fb" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fc" type="PILOT"/>
@@ -87,7 +87,7 @@
      </race>
      <race xml:id="Race12f32b244511b">
       <name xml:space="preserve">Race 2</name>
-      <description xml:space="preserve">Benone</description>
+      <description xml:space="preserve">Bettystown</description>
       <raceAttendee pilot="Pilot12f32b24450fa" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fb" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fc" type="PILOT"/>
@@ -101,7 +101,7 @@
      </race>
      <race xml:id="Race12f32b2445126">
       <name xml:space="preserve">Race 3</name>
-      <description xml:space="preserve">Benone</description>
+      <description xml:space="preserve">Bettystown</description>
       <raceAttendee pilot="Pilot12f32b24450fa" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fb" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fc" type="PILOT"/>
@@ -115,7 +115,7 @@
      </race>
      <race xml:id="Race12f32b2445131">
       <name xml:space="preserve">Race 4</name>
-      <description xml:space="preserve">Benone</description>
+      <description xml:space="preserve">Bettystown</description>
       <raceAttendee pilot="Pilot12f32b24450fa" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fb" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fc" type="PILOT"/>
@@ -129,7 +129,7 @@
      </race>
      <race xml:id="Race12f32b244513c">
       <name xml:space="preserve">Race 5</name>
-      <description xml:space="preserve">Benonee</description>
+      <description xml:space="preserve">Bettystown</description>
       <raceAttendee pilot="Pilot12f32b24450fa" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fb" type="PILOT"/>
       <raceAttendee pilot="Pilot12f32b24450fc" type="PILOT"/>

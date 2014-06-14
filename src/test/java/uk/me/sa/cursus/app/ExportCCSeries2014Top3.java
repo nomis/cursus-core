@@ -23,35 +23,31 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.Ignore;
-import org.spka.cursus.scoring.CCConstants;
-import org.spka.cursus.test.cc_2014.AbstractSeries2014;
+import org.spka.cursus.test.cc_2014.AbstractSeries2014Top3;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 import eu.lp0.cursus.xml.scores.ScoresXML;
 import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 import eu.lp0.cursus.xml.scores.XMLScores;
 import eu.lp0.cursus.xml.scores.results.ScoresXMLEventResults;
 import eu.lp0.cursus.xml.scores.results.ScoresXMLRaceResults;
 
-public class ExportCCSeries2014Top5 {
-	public static final File SERIES_FILE1 = new File("target/cc2014top5_1.xml"); //$NON-NLS-1$
-	public static final File SERIES_FILE2 = new File("target/cc2014top5_2.xml"); //$NON-NLS-1$
+public class ExportCCSeries2014Top3 {
+	public static final File SERIES_FILE1 = new File("target/cc2014top3_1.xml"); //$NON-NLS-1$
+	public static final File SERIES_FILE2 = new File("target/cc2014top3_2.xml"); //$NON-NLS-1$
 
 	@Ignore
-	public static class AllScores extends AbstractSeries2014 {
+	public static class AllScores extends AbstractSeries2014Top3 {
 		public final ScoresXMLFile export;
 
 		public AllScores() throws Exception {
 			Scores seriesScores;
 			List<Scores> eventScores = new ArrayList<Scores>();
 			List<Scores> raceScores = new ArrayList<Scores>();
-
-			scorer = ScorerFactory.newScorer(CCConstants.UUID_2013);
 
 			createDatabase();
 			createEvent1Races();

@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2013-2014  Simon Arlott
+	Copyright 2014  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -17,14 +17,22 @@
  */
 package org.spka.cursus.scoring;
 
-public class CCConstants {
-	public static final String NAME_2013 = "Celtic Challenge 2013"; //$NON-NLS-1$
-	public static final String UUID_2013 = "d4f1b715-f838-51c3-9274-f52a02162ecf"; //$NON-NLS-1$
+import java.util.List;
+import java.util.Set;
 
-	public static final int TOP_COUNTRY_PILOTS_2013 = 5;
+import com.google.common.base.Predicate;
 
-	public static final String NAME_2014 = "Celtic Challenge 2014"; //$NON-NLS-1$
-	public static final String UUID_2014 = "5763bb63-eb9a-589e-871f-660ef4aa17e7"; //$NON-NLS-1$
+import eu.lp0.cursus.db.data.Event;
+import eu.lp0.cursus.db.data.Pilot;
+import eu.lp0.cursus.db.data.Race;
+import eu.lp0.cursus.scoring.data.Scores;
+import eu.lp0.cursus.scoring.scorer.AbstractScorer;
+import eu.lp0.cursus.scoring.scorer.ScoringSystem;
 
-	public static final int TOP_COUNTRY_PILOTS_2014 = 3;
+@ScoringSystem(uuid = CCConstants.UUID_2014, name = CCConstants.NAME_2014)
+public class CCScorer2014 extends AbstractScorer {
+	@Override
+	public Scores scoreRaces(List<Race> races, Set<Pilot> pilots, Set<Event> events, Predicate<Pilot> fleetFilter) {
+		return new CCScoresFactory2014().newScores(pilots, races, events, fleetFilter, this);
+	}
 }

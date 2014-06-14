@@ -128,7 +128,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 		try {
 			DatabaseSession.begin();
 
-			// Create the 2012/13 series
+			// Create the 2013 series
 			Series series = new Series(SERIES_NAME);
 
 			// Add all the pilots

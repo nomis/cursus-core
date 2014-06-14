@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2013-2014  Simon Arlott
+	Copyright 2014  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -17,14 +17,15 @@
  */
 package org.spka.cursus.scoring;
 
-public class CCConstants {
-	public static final String NAME_2013 = "Celtic Challenge 2013"; //$NON-NLS-1$
-	public static final String UUID_2013 = "d4f1b715-f838-51c3-9274-f52a02162ecf"; //$NON-NLS-1$
+import eu.lp0.cursus.scoring.data.RacePointsData;
+import eu.lp0.cursus.scoring.data.Scores;
+import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
+import eu.lp0.cursus.scoring.scores.impl.TopCountryRacePointsData;
 
-	public static final int TOP_COUNTRY_PILOTS_2013 = 5;
-
-	public static final String NAME_2014 = "Celtic Challenge 2014"; //$NON-NLS-1$
-	public static final String UUID_2014 = "5763bb63-eb9a-589e-871f-660ef4aa17e7"; //$NON-NLS-1$
-
-	public static final int TOP_COUNTRY_PILOTS_2014 = 3;
+public class CCScoresFactory2014 extends CCScoresFactory2013 {
+	@Override
+	public RacePointsData newRacePointsData(Scores scores) {
+		return new TopCountryRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.EVENT, GenericRacePointsData.FleetMethod.SERIES,
+				CCConstants.TOP_COUNTRY_PILOTS_2014);
+	}
 }

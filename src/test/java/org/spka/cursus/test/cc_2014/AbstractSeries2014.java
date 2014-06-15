@@ -78,10 +78,10 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 	protected Pilot sco179;
 	protected Pilot sco808;
 	protected Pilot ir000;
-	protected Pilot ir002;
 	protected Pilot ir014;
 	protected Pilot ir016;
 	protected Pilot ir025;
+	protected Pilot ir027;
 	protected Pilot ir053;
 	protected Pilot ir181;
 
@@ -136,9 +136,6 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			ir000 = new Pilot(series, "IR000", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir000);
 
-			ir002 = new Pilot(series, "IR002", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
-			series.getPilots().add(ir002);
-
 			ir014 = new Pilot(series, "IR014", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir014);
 
@@ -147,6 +144,9 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 
 			ir025 = new Pilot(series, "IR025", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir025);
+
+			ir027 = new Pilot(series, "IR027", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			series.getPilots().add(ir027);
 
 			ir053 = new Pilot(series, "IR053", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir053);
@@ -224,13 +224,13 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			race1.getAttendees().put(sco153, new RaceAttendee(race1, sco153, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(sco179, new RaceAttendee(race1, sco179, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir000, new RaceAttendee(race1, ir000, RaceAttendee.Type.PILOT));
-			race1.getAttendees().put(ir002, new RaceAttendee(race1, ir002, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir014, new RaceAttendee(race1, ir014, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir016, new RaceAttendee(race1, ir016, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir025, new RaceAttendee(race1, ir025, RaceAttendee.Type.PILOT));
+			race1.getAttendees().put(ir027, new RaceAttendee(race1, ir027, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir053, new RaceAttendee(race1, ir053, RaceAttendee.Type.PILOT));
 			race1.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race1, "14,179,116,2,53,16,60,25,153"); //$NON-NLS-1$
+			addLaps(race1, "14,179,116,27,53,16,60,25,153"); //$NON-NLS-1$
 			raceDAO.persist(race1);
 
 			DatabaseSession.commit();
@@ -262,13 +262,13 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			race2.getAttendees().put(sco153, new RaceAttendee(race2, sco153, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(sco179, new RaceAttendee(race2, sco179, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir000, new RaceAttendee(race2, ir000, RaceAttendee.Type.PILOT));
-			race2.getAttendees().put(ir002, new RaceAttendee(race2, ir002, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir014, new RaceAttendee(race2, ir014, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir016, new RaceAttendee(race2, ir016, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir025, new RaceAttendee(race2, ir025, RaceAttendee.Type.PILOT));
+			race2.getAttendees().put(ir027, new RaceAttendee(race2, ir027, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir053, new RaceAttendee(race2, ir053, RaceAttendee.Type.PILOT));
 			race2.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race2, "14,2,53,179,25,16,60,153,116"); //$NON-NLS-1$
+			addLaps(race2, "14,27,53,179,25,16,60,153,116"); //$NON-NLS-1$
 			raceDAO.persist(race2);
 
 			DatabaseSession.commit();
@@ -300,13 +300,13 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			race3.getAttendees().put(sco153, new RaceAttendee(race3, sco153, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(sco179, new RaceAttendee(race3, sco179, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir000, new RaceAttendee(race3, ir000, RaceAttendee.Type.PILOT));
-			race3.getAttendees().put(ir002, new RaceAttendee(race3, ir002, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir014, new RaceAttendee(race3, ir014, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir016, new RaceAttendee(race3, ir016, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir025, new RaceAttendee(race3, ir025, RaceAttendee.Type.PILOT));
+			race3.getAttendees().put(ir027, new RaceAttendee(race3, ir027, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir053, new RaceAttendee(race3, ir053, RaceAttendee.Type.PILOT));
 			race3.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race3, "2,179,116,53,25,16,60,0,153"); //$NON-NLS-1$
+			addLaps(race3, "27,179,116,53,25,16,60,0,153"); //$NON-NLS-1$
 			raceDAO.persist(race3);
 
 			DatabaseSession.commit();
@@ -338,13 +338,13 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			race4.getAttendees().put(sco153, new RaceAttendee(race4, sco153, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(sco179, new RaceAttendee(race4, sco179, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir000, new RaceAttendee(race4, ir000, RaceAttendee.Type.PILOT));
-			race4.getAttendees().put(ir002, new RaceAttendee(race4, ir002, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir014, new RaceAttendee(race4, ir014, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir016, new RaceAttendee(race4, ir016, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir025, new RaceAttendee(race4, ir025, RaceAttendee.Type.PILOT));
+			race4.getAttendees().put(ir027, new RaceAttendee(race4, ir027, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir053, new RaceAttendee(race4, ir053, RaceAttendee.Type.PILOT));
 			race4.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race4, "179,2,14,116,53,60,16,153,25"); //$NON-NLS-1$
+			addLaps(race4, "179,27,14,116,53,60,16,153,25"); //$NON-NLS-1$
 			raceDAO.persist(race4);
 
 			DatabaseSession.commit();
@@ -376,13 +376,13 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			race5.getAttendees().put(sco153, new RaceAttendee(race5, sco153, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(sco179, new RaceAttendee(race5, sco179, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir000, new RaceAttendee(race5, ir000, RaceAttendee.Type.PILOT));
-			race5.getAttendees().put(ir002, new RaceAttendee(race5, ir002, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir014, new RaceAttendee(race5, ir014, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir016, new RaceAttendee(race5, ir016, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir025, new RaceAttendee(race5, ir025, RaceAttendee.Type.PILOT));
+			race5.getAttendees().put(ir027, new RaceAttendee(race5, ir027, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir053, new RaceAttendee(race5, ir053, RaceAttendee.Type.PILOT));
 			race5.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race5, "2,116,179,14,53,25,0,153,60"); //$NON-NLS-1$
+			addLaps(race5, "27,116,179,14,53,25,0,153,60"); //$NON-NLS-1$
 			raceDAO.persist(race5);
 
 			DatabaseSession.commit();
@@ -445,26 +445,26 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			race6.getAttendees().put(sco159, new RaceAttendee(race6, sco159, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(sco179, new RaceAttendee(race6, sco179, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(sco808, new RaceAttendee(race6, sco808, RaceAttendee.Type.PILOT));
-			race6.getAttendees().put(ir002, new RaceAttendee(race6, ir002, RaceAttendee.Type.PILOT));
+			race6.getAttendees().put(ir027, new RaceAttendee(race6, ir027, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(ir053, new RaceAttendee(race6, ir053, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(ir181, new RaceAttendee(race6, ir181, RaceAttendee.Type.PILOT));
 			race6.getTallies().add(new RaceTally(RaceTally.Type.START));
 			// 1
-			addLaps(race6, "2,116,181,179,808,159"); //$NON-NLS-1$
+			addLaps(race6, "27,116,181,179,808,159"); //$NON-NLS-1$
 			// 2
-			addLaps(race6, "2,116,181,179,53,808,159"); //$NON-NLS-1$
+			addLaps(race6, "27,116,181,179,53,808,159"); //$NON-NLS-1$
 			// 3
-			addLaps(race6, "2,116,181,179,53"); //$NON-NLS-1$
+			addLaps(race6, "27,116,181,179,53"); //$NON-NLS-1$
 			// 4
-			addLaps(race6, "116,181,179,2,159,808"); //$NON-NLS-1$
+			addLaps(race6, "116,181,179,27,159,808"); //$NON-NLS-1$
 			// 5
-			addLaps(race6, "116,2,181,179,808,159,53"); //$NON-NLS-1$
+			addLaps(race6, "116,27,181,179,808,159,53"); //$NON-NLS-1$
 			// 6
-			addLaps(race6, "116,2,179,181,808,159,53"); //$NON-NLS-1$
+			addLaps(race6, "116,27,179,181,808,159,53"); //$NON-NLS-1$
 			// 7
-			addLaps(race6, "116,2,179,181,808,159"); //$NON-NLS-1$
+			addLaps(race6, "116,27,179,181,808,159"); //$NON-NLS-1$
 			// 8
-			addLaps(race6, "2,116,179,181,53,808,159"); //$NON-NLS-1$
+			addLaps(race6, "27,116,179,181,53,808,159"); //$NON-NLS-1$
 			raceDAO.persist(race6);
 
 			DatabaseSession.commit();
@@ -497,26 +497,26 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 			race7.getAttendees().put(sco159, new RaceAttendee(race7, sco159, RaceAttendee.Type.PILOT));
 			race7.getAttendees().put(sco179, new RaceAttendee(race7, sco179, RaceAttendee.Type.PILOT));
 			race7.getAttendees().put(sco808, new RaceAttendee(race7, sco808, RaceAttendee.Type.PILOT));
-			race7.getAttendees().put(ir002, new RaceAttendee(race7, ir002, RaceAttendee.Type.PILOT));
+			race7.getAttendees().put(ir027, new RaceAttendee(race7, ir027, RaceAttendee.Type.PILOT));
 			race7.getAttendees().put(ir053, new RaceAttendee(race7, ir053, RaceAttendee.Type.PILOT));
 			race7.getAttendees().put(ir181, new RaceAttendee(race7, ir181, RaceAttendee.Type.PILOT));
 			race7.getTallies().add(new RaceTally(RaceTally.Type.START));
 			// 1
-			addLaps(race7, "2,181,179,116,808,159,53"); //$NON-NLS-1$
+			addLaps(race7, "27,181,179,116,808,159,53"); //$NON-NLS-1$
 			// 2
-			addLaps(race7, "2,76,181,808,179,116,159"); //$NON-NLS-1$
+			addLaps(race7, "27,76,181,808,179,116,159"); //$NON-NLS-1$
 			// 3
-			addLaps(race7, "2,181,179,808,116,53,159,76"); //$NON-NLS-1$
+			addLaps(race7, "27,181,179,808,116,53,159,76"); //$NON-NLS-1$
 			// 4
-			addLaps(race7, "2,181,179,808,116,53"); //$NON-NLS-1$
+			addLaps(race7, "27,181,179,808,116,53"); //$NON-NLS-1$
 			// 5
-			addLaps(race7, "2,159,181,179,116,808,53"); //$NON-NLS-1$
+			addLaps(race7, "27,159,181,179,116,808,53"); //$NON-NLS-1$
 			// 6
-			addLaps(race7, "2,181,179,116,159,808,53,181"); //$NON-NLS-1$
+			addLaps(race7, "27,181,179,116,159,808,53,181"); //$NON-NLS-1$
 			// 7
-			addLaps(race7, "2,179,116,808,159,53,181,76"); //$NON-NLS-1$
+			addLaps(race7, "27,179,116,808,159,53,181,76"); //$NON-NLS-1$
 			// 8
-			addLaps(race7, "2,179,116,808,159,53"); //$NON-NLS-1$
+			addLaps(race7, "27,179,116,808,159,53"); //$NON-NLS-1$
 			raceDAO.persist(race7);
 
 			DatabaseSession.commit();

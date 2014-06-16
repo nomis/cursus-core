@@ -23,6 +23,6 @@ import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 
 public class AbstractSeries2014Top3 extends AbstractSeries2014 {
 	public AbstractSeries2014Top3() {
-		scorer = ScorerFactory.newScorer(CCConstants.UUID_2014);
+		scorer = ScorerFactory.newScorer(CCConstants.UUID_2013);
 	}
 }

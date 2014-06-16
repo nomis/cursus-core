@@ -27,7 +27,6 @@ import java.util.Locale;
 import org.junit.Ignore;
 import org.spka.cursus.scoring.AbstractSPKAScorer;
 import org.spka.cursus.scoring.CCScorer2013;
-import org.spka.cursus.scoring.CCScorer2014;
 import org.spka.cursus.scoring.Scorer2010;
 import org.spka.cursus.scoring.Scorer2011;
 import org.spka.cursus.test.AbstractSeries;
@@ -89,7 +88,7 @@ public class CreateSPKATests extends AbstractSeries {
 				}
 			}
 
-			String raceAssertUtilExtra = (scorer instanceof CCScorer2013 || scorer instanceof CCScorer2014) ? ", true" : "";
+			String raceAssertUtilExtra = (scorer instanceof CCScorer2013) ? ", true" : "";
 
 			out.println("/*");
 			out.println("	cursus - Race series management program");

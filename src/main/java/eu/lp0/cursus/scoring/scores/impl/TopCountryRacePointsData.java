@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
@@ -29,17 +30,49 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 
+import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.Scores;
 
 public class TopCountryRacePointsData<T extends Scores> extends GenericRacePointsData<T> {
-	private final int count;
+	private final int minCount;
+	private final int maxCount;
+	protected final Supplier<Map<Event, Integer>> lazyCount = Suppliers.memoize(new Supplier<Map<Event, Integer>>() {
+		@Override
+		public Map<Event, Integer> get() {
+			Map<Event, Integer> eventCount = new HashMap<Event, Integer>();
+			for (Event event : scores.getEvents()) {
+				Multimap<String, Pilot> countryPilots = HashMultimap.create();
+
+				for (Race race : event.getRaces()) {
+					for (Pilot pilot : race.getAttendees().keySet()) {
+						countryPilots.put(pilot.getCountry(), pilot);
+					}
+				}
+
+				int value = maxCount;
+
+				for (String country : countryPilots.keySet()) {
+					if (countryPilots.get(country).size() < minCount) {
+						throw new IllegalStateException(
+								"Country " + countryPilots + " does not have " + minCount + " pilot(s) for every race in event " + event.getName()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					}
+
+					value = Math.min(value, countryPilots.get(country).size());
+				}
+
+				eventCount.put(event, value);
+			}
+			return eventCount;
+		}
+	});
 	protected final Supplier<Multimap<Race, Pilot>> lazyScoredPilots = Suppliers.memoize(new Supplier<Multimap<Race, Pilot>>() {
 		@Override
 		public Multimap<Race, Pilot> get() {
-			Multimap<Race, Pilot> scoredPilots = HashMultimap.create(scores.getRaces().size(), count);
+			Multimap<Race, Pilot> scoredPilots = HashMultimap.create(scores.getRaces().size(), maxCount);
 			for (Race race : scores.getRaces()) {
+				int count = lazyCount.get().get(race.getEvent());
 				Multimap<String, Pilot> countryPilots = HashMultimap.create();
 
 				for (Pilot pilot : scores.getLapOrder(race)) {
@@ -50,7 +83,7 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 
 				for (String country : countryPilots.keySet()) {
 					if (countryPilots.get(country).size() != count) {
-						throw new IllegalStateException("Country " + countryPilots + " does not have " + count + " pilot(s)"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						throw new IllegalStateException("Country " + country + " does not have " + count + " pilot(s) for race " + race.getName()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 					}
 				}
 
@@ -60,16 +93,18 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 		}
 	});
 
-	public TopCountryRacePointsData(T scores, FleetMethod fleetMethod, int count) {
-		super(scores, fleetMethod);
-
-		this.count = count;
+	public TopCountryRacePointsData(T scores, FleetMethod fleetMethod, int minCount, int maxCount) {
+		this(scores, fleetMethod, fleetMethod, minCount, maxCount);
 	}
 
-	public TopCountryRacePointsData(T scores, FleetMethod raceFleetMethod, FleetMethod nonAttendeeFleetMethod, int count) {
+	public TopCountryRacePointsData(T scores, FleetMethod raceFleetMethod, FleetMethod nonAttendeeFleetMethod, int minCount, int maxCount) {
 		super(scores, raceFleetMethod, nonAttendeeFleetMethod);
 
-		this.count = count;
+		Preconditions.checkArgument(minCount > 0);
+		Preconditions.checkArgument(maxCount >= minCount);
+
+		this.minCount = minCount;
+		this.maxCount = maxCount;
 	}
 
 	@Override

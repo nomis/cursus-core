@@ -27,7 +27,7 @@ import java.util.Locale;
 import org.junit.Ignore;
 import org.spka.cursus.scoring.AbstractSPKAScorer;
 import org.spka.cursus.scoring.CCScorer2013;
-import org.spka.cursus.scoring.Scorer2009;
+import org.spka.cursus.scoring.Scorer2008;
 import org.spka.cursus.scoring.Scorer2010;
 import org.spka.cursus.scoring.Scorer2011;
 import org.spka.cursus.test.AbstractSeries;
@@ -157,7 +157,7 @@ public class CreateSPKATests extends AbstractSeries {
 
 			if (hasRaces) {
 				Scores seriesScores;
-				if (scorer instanceof Scorer2009 || scorer instanceof Scorer2010) {
+				if (scorer instanceof Scorer2008 || scorer instanceof Scorer2010) {
 					seriesScores = scorer.scoreSeries(series, Predicates.in(getSeriesResultsPilots(series)));
 				} else {
 					seriesScores = scorer.scoreSeries(series, getSeriesResultsPilots(series, fileEvent),
@@ -176,7 +176,7 @@ public class CreateSPKATests extends AbstractSeries {
 				out.println("");
 				out.println("			Series series = seriesDAO.find(SERIES_NAME);");
 
-				if (scorer instanceof Scorer2009 || scorer instanceof Scorer2010) {
+				if (scorer instanceof Scorer2008 || scorer instanceof Scorer2010) {
 					out.println("			Scores scores = scorer.scoreSeries(series, Predicates.in(getSeriesResultsPilots(series)));");
 				} else {
 					out.println("			Event " + eventFieldName + " = eventDAO.find(series, " + eventConstantName + "_NAME);");
@@ -217,7 +217,7 @@ public class CreateSPKATests extends AbstractSeries {
 					out.println("			races.addAll(" + event.getName().replace("Race Event ", "event") + ".getRaces());");
 				}
 				out.println("");
-				if (scorer instanceof Scorer2009 || scorer instanceof Scorer2010) {
+				if (scorer instanceof Scorer2008 || scorer instanceof Scorer2010) {
 					out.println("			Scores scores = scorer.scoreRaces(races, getSeriesResultsPilots(series), Predicates.in(getSeriesResultsPilots(series)));");
 				} else {
 					out.println("			Scores scores = scorer.scoreRaces(races, getSeriesResultsPilots(series, " + eventFieldName
@@ -251,13 +251,13 @@ public class CreateSPKATests extends AbstractSeries {
 				}
 
 				out.println("");
-				if (scorer instanceof Scorer2009 || scorer instanceof Scorer2010) {
+				if (scorer instanceof Scorer2008 || scorer instanceof Scorer2010) {
 					out.println("		Assert.assertEquals(SERIES_FLEET, scores.getPilots().size());");
 				} else {
 					out.println("		Assert.assertEquals(SERIES_FLEET_AT_" + eventConstantName + ", scores.getPilots().size());");
 				}
 
-				if (scorer instanceof AbstractSPKAScorer && !(scorer instanceof Scorer2009)) {
+				if (scorer instanceof AbstractSPKAScorer && !(scorer instanceof Scorer2008)) {
 					for (Event event : series.getEvents()) {
 						for (Race race : event.getRaces()) {
 							out.print("		Assert.assertEquals(");

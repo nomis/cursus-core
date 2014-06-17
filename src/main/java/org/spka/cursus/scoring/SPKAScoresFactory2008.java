@@ -26,7 +26,7 @@ import eu.lp0.cursus.scoring.scores.impl.AveragingRacePointsData;
 import eu.lp0.cursus.scoring.scores.impl.GenericRacePenaltiesData;
 import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
 
-public class SPKAScoresFactory2009 extends SPKAScoresFactory2010 {
+public class SPKAScoresFactory2008 extends SPKAScoresFactory2010 {
 	@Override
 	public RacePointsData newRacePointsData(Scores scores) {
 		return new AveragingRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.EVENT, AveragingRacePointsData.AveragingMethod.AFTER_DISCARDS,

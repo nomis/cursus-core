@@ -18,6 +18,7 @@
 package org.spka.cursus.test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -31,6 +32,7 @@ import edu.umd.cs.findbugs.annotations.SuppressWarnings;
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
+import eu.lp0.cursus.db.data.RaceNumber;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
@@ -39,12 +41,6 @@ import eu.lp0.cursus.test.db.AbstractDatabaseTest;
 @SuppressWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE", "SIC_INNER_SHOULD_BE_STATIC_ANON" })
 public class AbstractSeries extends AbstractDatabaseTest {
 	protected static final String SERIES_COUNTRY = "Scotland"; //$NON-NLS-1$
-
-	protected void attendEvent(Event event, Pilot pilot) {
-		pilot = pilotDAO.get(pilot);
-		pilot.getEvents().add(event);
-		pilotDAO.persist(pilot);
-	}
 
 	private static boolean isPrivateSeries(Series series) {
 		return series.getName().startsWith("SPKA "); //$NON-NLS-1$
@@ -169,6 +165,18 @@ public class AbstractSeries extends AbstractDatabaseTest {
 			}
 			System.out.println("\t" + scores.getOverallPoints(pilot)); //$NON-NLS-1$ 
 		}
+	}
+
+	protected void createRaceNumbers(Collection<Pilot> pilots) {
+		for (Pilot pilot : pilots) {
+			pilot.setRaceNumber(RaceNumber.valueOfFor(pilot.getName().split("@")[0], pilot)); //$NON-NLS-1$
+		}
+	}
+
+	protected void attendEvent(Event event, Pilot pilot) {
+		pilot = pilotDAO.get(pilot);
+		pilot.getEvents().add(event);
+		pilotDAO.persist(pilot);
 	}
 
 	protected void addLaps(Race race, String laps) {

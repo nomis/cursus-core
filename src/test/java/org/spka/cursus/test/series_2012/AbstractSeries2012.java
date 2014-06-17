@@ -28,7 +28,6 @@ import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.RaceNumber;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.scorer.Scorer;
@@ -164,7 +163,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 	protected Pilot sco666;
 	protected Pilot sco777;
 	protected Pilot sco808;
-	protected Pilot ir001;
+	protected Pilot ir027;
 	protected Pilot ir053;
 	protected Pilot ir075;
 	protected Pilot ir085;
@@ -222,98 +221,95 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			series.getClasses().add(_16inWheel);
 
 			// Add all the pilots
-			sco018 = new Pilot(series, "SCO018", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco018 = new Pilot(series, "SCO018@2011", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco018);
 
-			sco060 = new Pilot(series, "SCO060", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco060 = new Pilot(series, "SCO060@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco060);
 
-			sco076 = new Pilot(series, "SCO076", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco076 = new Pilot(series, "SCO076@2012", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco076);
 
-			sco081 = new Pilot(series, "SCO081", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco081 = new Pilot(series, "SCO081@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco081);
 
-			sco087 = new Pilot(series, "SCO087", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco087 = new Pilot(series, "SCO087@2009", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco087);
 
-			sco100 = new Pilot(series, "SCO100", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco100 = new Pilot(series, "SCO100@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco100.getClasses().add(_16inWheel);
 			series.getPilots().add(sco100);
 
-			sco116 = new Pilot(series, "SCO116", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco116 = new Pilot(series, "SCO116@2010", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco116.getClasses().add(junior);
 			series.getPilots().add(sco116);
 
-			sco117 = new Pilot(series, "SCO117", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco117 = new Pilot(series, "SCO117@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco117);
 
-			sco153 = new Pilot(series, "SCO153", Gender.FEMALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco153 = new Pilot(series, "SCO153@2010", Gender.FEMALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco153.getClasses().add(_16inWheel);
 			series.getPilots().add(sco153);
 
-			sco156 = new Pilot(series, "SCO156", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco156 = new Pilot(series, "SCO156@2010", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco156.getClasses().add(junior);
 			series.getPilots().add(sco156);
 
-			sco158 = new Pilot(series, "SCO158", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco158 = new Pilot(series, "SCO158@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco158.getClasses().add(_16inWheel);
 			series.getPilots().add(sco158);
 
-			sco159 = new Pilot(series, "SCO159", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco159 = new Pilot(series, "SCO159@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco159);
 
-			sco179 = new Pilot(series, "SCO179", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco179 = new Pilot(series, "SCO179@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco179);
 
-			sco200 = new Pilot(series, "SCO200", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco200 = new Pilot(series, "SCO200@2006", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco200);
 
-			sco315 = new Pilot(series, "SCO315", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco315 = new Pilot(series, "SCO315@2011", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco315.getClasses().add(_16inWheel);
 			series.getPilots().add(sco315);
 
-			sco320 = new Pilot(series, "SCO320", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco320 = new Pilot(series, "SCO320@2011", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco320.getClasses().add(_16inWheel);
 			series.getPilots().add(sco320);
 
-			sco467 = new Pilot(series, "SCO467", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco467 = new Pilot(series, "SCO467@2011", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco467);
 
-			sco528 = new Pilot(series, "SCO528", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco528 = new Pilot(series, "SCO528@2011", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco528);
 
-			sco561 = new Pilot(series, "SCO561", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco561 = new Pilot(series, "SCO561@2012", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco561);
 
-			sco666 = new Pilot(series, "SCO666", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco666 = new Pilot(series, "SCO666@2012", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco666);
 
-			sco777 = new Pilot(series, "SCO777", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco777 = new Pilot(series, "SCO777@2012", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco777);
 
-			sco808 = new Pilot(series, "SCO808", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco808 = new Pilot(series, "SCO808@2010", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco808);
 
-			ir001 = new Pilot(series, "IR001", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
-			series.getPilots().add(ir001);
+			ir027 = new Pilot(series, "IR027@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			series.getPilots().add(ir027);
 
-			ir053 = new Pilot(series, "IR053", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir053 = new Pilot(series, "IR053@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir053);
 
-			ir075 = new Pilot(series, "IR075", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir075 = new Pilot(series, "IR075@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir075);
 
-			ir085 = new Pilot(series, "IR085", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir085 = new Pilot(series, "IR085@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir085);
 
-			ir181 = new Pilot(series, "IR181", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir181 = new Pilot(series, "IR181@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir181);
 
-			// Create race numbers
-			for (Pilot pilot : series.getPilots()) {
-				pilot.setRaceNumber(RaceNumber.valueOfFor(pilot.getName(), pilot));
-			}
+			createRaceNumbers(series.getPilots());
 
 			// Save
 			seriesDAO.persist(series);
@@ -482,7 +478,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			RaceAttendee att808 = new RaceAttendee(race1, sco808, RaceAttendee.Type.PILOT);
 			att808.getPenalties().add(new Penalty(Penalty.Type.AUTOMATIC, "Hit a mark")); //$NON-NLS-1$
 			race1.getAttendees().put(sco808, att808);
-			race1.getAttendees().put(ir001, new RaceAttendee(race1, ir001, RaceAttendee.Type.PILOT));
+			race1.getAttendees().put(ir027, new RaceAttendee(race1, ir027, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir053, new RaceAttendee(race1, ir053, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir075, new RaceAttendee(race1, ir075, RaceAttendee.Type.PILOT));
 			race1.getAttendees().put(ir085, new RaceAttendee(race1, ir085, RaceAttendee.Type.PILOT));
@@ -490,7 +486,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race1.getTallies().add(new RaceTally(RaceTally.Type.START));
 			// 1
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir075)); //$NON-NLS-1$
@@ -509,7 +505,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco315)); //$NON-NLS-1$
 			// 2
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco081)); //$NON-NLS-1$
@@ -525,7 +521,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco158)); //$NON-NLS-1$
 			// 3
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
@@ -538,7 +534,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco777)); //$NON-NLS-1$
 			// 4
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
@@ -548,7 +544,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco076)); //$NON-NLS-1$
 			// 5
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
 			race1.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
@@ -594,7 +590,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race2.getAttendees().put(sco666, new RaceAttendee(race2, sco666, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(sco777, new RaceAttendee(race2, sco777, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(sco808, new RaceAttendee(race2, sco808, RaceAttendee.Type.PILOT));
-			race2.getAttendees().put(ir001, new RaceAttendee(race2, ir001, RaceAttendee.Type.PILOT));
+			race2.getAttendees().put(ir027, new RaceAttendee(race2, ir027, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir053, new RaceAttendee(race2, ir053, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir075, new RaceAttendee(race2, ir075, RaceAttendee.Type.PILOT));
 			race2.getAttendees().put(ir085, new RaceAttendee(race2, ir085, RaceAttendee.Type.PILOT));
@@ -612,7 +608,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco076)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco060)); //$NON-NLS-1$
-			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco117)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco018)); //$NON-NLS-1$
 			// 2
@@ -625,7 +621,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco081)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
-			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco076)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco117)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco060)); //$NON-NLS-1$
@@ -637,7 +633,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco081)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
-			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco076)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco117)); //$NON-NLS-1$
@@ -650,7 +646,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco081)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
-			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco076)); //$NON-NLS-1$
 			race2.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco060)); //$NON-NLS-1$
@@ -717,7 +713,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race3.getAttendees().put(sco666, new RaceAttendee(race3, sco666, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(sco777, new RaceAttendee(race3, sco777, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(sco808, new RaceAttendee(race3, sco808, RaceAttendee.Type.PILOT));
-			race3.getAttendees().put(ir001, new RaceAttendee(race3, ir001, RaceAttendee.Type.PILOT));
+			race3.getAttendees().put(ir027, new RaceAttendee(race3, ir027, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir053, new RaceAttendee(race3, ir053, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir075, new RaceAttendee(race3, ir075, RaceAttendee.Type.PILOT));
 			race3.getAttendees().put(ir085, new RaceAttendee(race3, ir085, RaceAttendee.Type.PILOT));
@@ -725,7 +721,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race3.getTallies().add(new RaceTally(RaceTally.Type.START));
 			// 1
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
-			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
@@ -742,7 +738,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			// 2
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
@@ -756,7 +752,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
-			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
@@ -768,7 +764,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
@@ -777,7 +773,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
-			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco116)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco159)); //$NON-NLS-1$
 			race3.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco528)); //$NON-NLS-1$
@@ -824,7 +820,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race4.getAttendees().put(sco666, new RaceAttendee(race4, sco666, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(sco777, new RaceAttendee(race4, sco777, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(sco808, new RaceAttendee(race4, sco808, RaceAttendee.Type.PILOT));
-			race4.getAttendees().put(ir001, new RaceAttendee(race4, ir001, RaceAttendee.Type.PILOT));
+			race4.getAttendees().put(ir027, new RaceAttendee(race4, ir027, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir053, new RaceAttendee(race4, ir053, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir075, new RaceAttendee(race4, ir075, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(ir085, new RaceAttendee(race4, ir085, RaceAttendee.Type.PILOT));
@@ -835,7 +831,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			// 1
 			race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco179)); //$NON-NLS-1$
 			race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir181)); //$NON-NLS-1$
-			race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir001)); //$NON-NLS-1$
+			race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir027)); //$NON-NLS-1$
 			race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco200)); //$NON-NLS-1$
 			race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", sco808)); //$NON-NLS-1$
 			race4.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", ir075)); //$NON-NLS-1$
@@ -929,7 +925,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race5.getAttendees().put(sco666, new RaceAttendee(race5, sco666, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(sco777, new RaceAttendee(race5, sco777, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(sco808, new RaceAttendee(race5, sco808, RaceAttendee.Type.PILOT));
-			race5.getAttendees().put(ir001, new RaceAttendee(race5, ir001, RaceAttendee.Type.PILOT));
+			race5.getAttendees().put(ir027, new RaceAttendee(race5, ir027, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir053, new RaceAttendee(race5, ir053, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir075, new RaceAttendee(race5, ir075, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(ir085, new RaceAttendee(race5, ir085, RaceAttendee.Type.PILOT));
@@ -1038,7 +1034,7 @@ public abstract class AbstractSeries2012 extends AbstractSeries {
 			race6.getAttendees().put(sco666, new RaceAttendee(race6, sco666, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(sco777, new RaceAttendee(race6, sco777, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(sco808, new RaceAttendee(race6, sco808, RaceAttendee.Type.PILOT));
-			race6.getAttendees().put(ir001, new RaceAttendee(race6, ir001, RaceAttendee.Type.PILOT));
+			race6.getAttendees().put(ir027, new RaceAttendee(race6, ir027, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(ir053, new RaceAttendee(race6, ir053, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(ir075, new RaceAttendee(race6, ir075, RaceAttendee.Type.PILOT));
 			race6.getAttendees().put(ir085, new RaceAttendee(race6, ir085, RaceAttendee.Type.PILOT));

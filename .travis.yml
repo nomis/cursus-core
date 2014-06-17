@@ -5,3 +5,4 @@ install:
   - mvn -q -B -V install
   - cd ..
   - rm -rf __cursus__
+  - mvn -q -B -V install -DskipTests=true

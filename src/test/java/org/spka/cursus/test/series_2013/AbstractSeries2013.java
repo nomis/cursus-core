@@ -206,7 +206,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 			series.getClasses().add(_16inWheel);
 
 			// Add all the pilots
-			sco018 = new Pilot(series, "SCO018@2011", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco018 = new Pilot(series, "SCO018@2010", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco018);
 
 			sco066 = new Pilot(series, "SCO066@2013", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$

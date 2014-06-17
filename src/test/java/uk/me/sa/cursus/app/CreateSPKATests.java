@@ -143,7 +143,11 @@ public class CreateSPKATests extends AbstractSeries {
 			out.println("/**");
 			out.print(" * Scores at the end of " + eventName.replace("Race ", "").toLowerCase(Locale.ROOT));
 			if (!fileEvent.getDescription().isEmpty()) {
-				out.print(" (" + fileEvent.getDescription().split("\\(")[1].split("\\)")[0].replace(" and ", " to ") + ")");
+				if (fileEvent.getDescription().indexOf('(') != -1) {
+					out.print(" (" + fileEvent.getDescription().split("\\(")[1].split("\\)")[0].replace(" and ", " to ") + ")");
+				} else {
+					out.print(" (" + fileEvent.getDescription() + ")");
+				}
 			}
 			out.println();
 			out.println(" */");
@@ -286,7 +290,7 @@ public class CreateSPKATests extends AbstractSeries {
 								simulPilots++;
 							}
 
-							out.println("		" + raceName + "AssertUtil.assertPilot(" + pilot.getName().toLowerCase(Locale.ROOT) + ", "
+							out.println("		" + raceName + "AssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
 									+ seriesScores.getLaps(pilot, race) + ", " + seriesScores.getRacePenalties(pilot, race) + ", "
 									+ seriesScores.hasSimulatedRacePoints(pilot, race) + ", " + seriesScores.getRacePoints(pilot, race) + ", "
 									+ seriesScores.getRacePosition(pilot, race) + ");");
@@ -300,8 +304,9 @@ public class CreateSPKATests extends AbstractSeries {
 				out.println("		OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);");
 
 				for (Pilot pilot : seriesScores.getOverallOrder()) {
-					out.print("		overallAssertUtil.assertPilot(" + pilot.getName().toLowerCase(Locale.ROOT) + ", " + seriesScores.getOverallPenalties(pilot)
-							+ ", " + seriesScores.getOverallPoints(pilot) + ", " + seriesScores.getOverallPosition(pilot));
+					out.print("		overallAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+							+ seriesScores.getOverallPenalties(pilot) + ", " + seriesScores.getOverallPoints(pilot) + ", "
+							+ seriesScores.getOverallPosition(pilot));
 					for (Race race : seriesScores.getDiscardedRaces(pilot)) {
 						out.print(", " + seriesScores.getRacePoints(pilot, race));
 					}
@@ -353,8 +358,13 @@ public class CreateSPKATests extends AbstractSeries {
 				if (scorer instanceof AbstractSPKAScorer) {
 					out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getPilots().size());");
 					for (Race race : fileEvent.getRaces()) {
-						out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize(" + race.getName().replace("Race ", "race")
-								+ "));");
+						if (scorer instanceof Scorer2005) {
+							out.println("			Assert.assertEquals(" + race.getName().replace("Race ", "RACE") + "_FLEET, scores.getFleetSize("
+									+ race.getName().replace("Race ", "race") + "));");
+						} else {
+							out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize("
+									+ race.getName().replace("Race ", "race") + "));");
+						}
 					}
 				}
 
@@ -370,7 +380,7 @@ public class CreateSPKATests extends AbstractSeries {
 							simulPilots++;
 						}
 
-						out.println("			" + raceName + "AssertUtil.assertPilot(" + pilot.getName().toLowerCase(Locale.ROOT) + ", "
+						out.println("			" + raceName + "AssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
 								+ eventScores.getLaps(pilot, race) + ", " + eventScores.getRacePenalties(pilot, race) + ", "
 								+ eventScores.hasSimulatedRacePoints(pilot, race) + ", " + eventScores.getRacePoints(pilot, race) + ", "
 								+ eventScores.getRacePosition(pilot, race) + ");");
@@ -383,8 +393,9 @@ public class CreateSPKATests extends AbstractSeries {
 				out.println("			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);");
 
 				for (Pilot pilot : eventScores.getOverallOrder()) {
-					out.print("			overallAssertUtil.assertPilot(" + pilot.getName().toLowerCase(Locale.ROOT) + ", " + eventScores.getOverallPenalties(pilot)
-							+ ", " + eventScores.getOverallPoints(pilot) + ", " + eventScores.getOverallPosition(pilot));
+					out.print("			overallAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+							+ eventScores.getOverallPenalties(pilot) + ", " + eventScores.getOverallPoints(pilot) + ", "
+							+ eventScores.getOverallPosition(pilot));
 					for (Race race : eventScores.getDiscardedRaces(pilot)) {
 						out.print(", " + eventScores.getRacePoints(pilot, race));
 					}
@@ -402,6 +413,7 @@ public class CreateSPKATests extends AbstractSeries {
 				for (Race race : fileEvent.getRaces()) {
 					Scores raceScores = scorer.scoreRace(race, Predicates.in(getEventResultsPilots(series, fileEvent)));
 					String raceName = race.getName().replace("Race ", "race");
+					String raceConstantName = raceName.toUpperCase(Locale.ROOT);
 
 					out.println("");
 					out.println("	@Test");
@@ -418,8 +430,13 @@ public class CreateSPKATests extends AbstractSeries {
 
 					if (scorer instanceof AbstractSPKAScorer) {
 						out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getPilots().size());");
-						out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize(" + race.getName().replace("Race ", "race")
-								+ "));");
+						if (scorer instanceof Scorer2005) {
+							out.println("			Assert.assertEquals(" + raceConstantName + "_FLEET, scores.getFleetSize(" + race.getName().replace("Race ", "race")
+									+ "));");
+						} else {
+							out.println("			Assert.assertEquals(" + eventConstantName + "_FLEET, scores.getFleetSize("
+									+ race.getName().replace("Race ", "race") + "));");
+						}
 					}
 
 					out.println("");
@@ -431,9 +448,10 @@ public class CreateSPKATests extends AbstractSeries {
 							simulPilots++;
 						}
 
-						out.println("			raceAssertUtil.assertPilot(" + pilot.getName().toLowerCase(Locale.ROOT) + ", " + raceScores.getLaps(pilot, race) + ", "
-								+ raceScores.getRacePenalties(pilot, race) + ", " + raceScores.hasSimulatedRacePoints(pilot, race) + ", "
-								+ raceScores.getRacePoints(pilot, race) + ", " + raceScores.getRacePosition(pilot, race) + ");");
+						out.println("			raceAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+								+ raceScores.getLaps(pilot, race) + ", " + raceScores.getRacePenalties(pilot, race) + ", "
+								+ raceScores.hasSimulatedRacePoints(pilot, race) + ", " + raceScores.getRacePoints(pilot, race) + ", "
+								+ raceScores.getRacePosition(pilot, race) + ");");
 					}
 
 					out.println("			raceAssertUtil.assertDone(" + simulPilots + ");");
@@ -442,7 +460,7 @@ public class CreateSPKATests extends AbstractSeries {
 					out.println("			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);");
 
 					for (Pilot pilot : raceScores.getOverallOrder()) {
-						out.println("			overallAssertUtil.assertPilot(" + pilot.getName().toLowerCase(Locale.ROOT) + ", "
+						out.println("			overallAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
 								+ raceScores.getOverallPenalties(pilot) + ", " + raceScores.getOverallPoints(pilot) + ", "
 								+ raceScores.getOverallPosition(pilot) + ");");
 					}

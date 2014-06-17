@@ -31,7 +31,7 @@ import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
 public class SPKAScoresFactory2005 extends FISLYScoresFactory2010 {
 	@Override
 	public RacePointsData newRacePointsData(Scores scores) {
-		return new AveragingRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.EVENT, AveragingRacePointsData.AveragingMethod.AFTER_DISCARDS,
+		return new AveragingRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.RACE, AveragingRacePointsData.AveragingMethod.AFTER_DISCARDS,
 				RoundingMode.HALF_UP);
 	}
 

@@ -28,10 +28,10 @@ import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.scorer.ScoringSystem;
 
-@ScoringSystem(uuid = SPKAConstants.UUID_2008, name = SPKAConstants.NAME_2008)
-public class Scorer2008 extends AbstractSPKAScorer {
+@ScoringSystem(uuid = SPKAConstants.UUID_2005, name = SPKAConstants.NAME_2005)
+public class Scorer2005 extends AbstractSPKAScorer {
 	@Override
 	public Scores scoreRaces(List<Race> races, Set<Pilot> pilots, Set<Event> events, Predicate<Pilot> fleetFilter) {
-		return new SPKAScoresFactory2008().newScores(pilots, races, events, fleetFilter, this);
+		return new SPKAScoresFactory2005().newScores(pilots, races, events, fleetFilter, this);
 	}
 }

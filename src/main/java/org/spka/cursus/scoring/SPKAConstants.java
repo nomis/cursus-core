@@ -18,8 +18,8 @@
 package org.spka.cursus.scoring;
 
 public class SPKAConstants {
-	public static final String NAME_2008 = "SPKA 2008/09..2009/10"; //$NON-NLS-1$
-	public static final String UUID_2008 = "6562309e-a88e-5211-86a5-ab97e6cd170e"; //$NON-NLS-1$
+	public static final String NAME_2005 = "SPKA 2005/06..2009/10"; //$NON-NLS-1$
+	public static final String UUID_2005 = "1b21469b-ca05-551d-8583-39755cd059fa"; //$NON-NLS-1$
 
 	public static final String NAME_2010 = "SPKA 2010/11"; //$NON-NLS-1$
 	public static final String UUID_2010 = "bc4a8a41-0053-50b3-9e15-bd39729234a9"; //$NON-NLS-1$

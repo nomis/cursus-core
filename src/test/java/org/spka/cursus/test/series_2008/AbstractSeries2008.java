@@ -85,7 +85,7 @@ public abstract class AbstractSeries2008 extends AbstractSeries {
 	protected static final String RACE12_NAME = "Race 12"; //$NON-NLS-1$
 	protected static final String RACE12_DESC = ""; //$NON-NLS-1$
 
-	protected Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2008);
+	protected Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2005);
 
 	protected Pilot sco019;
 	protected Pilot sco021;

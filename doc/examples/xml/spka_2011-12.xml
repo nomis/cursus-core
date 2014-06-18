@@ -302,7 +302,7 @@
        </penalty>
       </raceAttendee>
       <raceAttendee pilot="Pilot2bc42654f7f8d" type="PILOT">
-       <penalty type="LAPS" value="-1">
+       <penalty type="ADJUST_LAPS" value="-1">
         <reason>Jumped start</reason>
        </penalty>
       </raceAttendee>

@@ -36,7 +36,7 @@ import eu.lp0.cursus.scoring.scores.base.AbstractRacePenaltiesData;
 
 public class GenericRacePenaltiesData<T extends ScoredData & RacePointsData> extends AbstractRacePenaltiesData<T> {
 	private final CumulativeMethod method;
-	private final boolean zeroRacePenaltiesForSimulated;
+	private final boolean noRacePenaltiesForSimulated;
 
 	public enum CumulativeMethod {
 		RACE, EVENT, SERIES;
@@ -50,7 +50,7 @@ public class GenericRacePenaltiesData<T extends ScoredData & RacePointsData> ext
 		super(scores);
 
 		this.method = method;
-		this.zeroRacePenaltiesForSimulated = noPenaltiesForSimulated;
+		this.noRacePenaltiesForSimulated = noPenaltiesForSimulated;
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class GenericRacePenaltiesData<T extends ScoredData & RacePointsData> ext
 			return 0;
 		}
 
-		if (zeroRacePenaltiesForSimulated) {
+		if (noRacePenaltiesForSimulated) {
 			if (scores.hasSimulatedRacePoints(pilot, race)) {
 				return 0;
 			}
@@ -91,7 +91,7 @@ public class GenericRacePenaltiesData<T extends ScoredData & RacePointsData> ext
 				penalties += penalty.getValue();
 				break;
 
-			case LAPS:
+			case ADJUST_LAPS:
 				// This is applied in RaceLapsData
 				break;
 

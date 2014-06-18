@@ -26,14 +26,18 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multiset;
 import com.google.common.collect.Ordering;
 
 import edu.umd.cs.findbugs.annotations.SuppressWarnings;
@@ -50,6 +54,7 @@ import eu.lp0.cursus.util.PilotRaceNumberComparator;
 @SuppressWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE" })
 public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> extends AbstractRaceLapsData<T> {
 	private static final int EXPECTED_MAXIMUM_LAPS = 32;
+	private static final int EXPECTED_MAXIMUM_PENALTIES = 2;
 	private final boolean scoreBeforeStart;
 	private final boolean scoreAfterFinish;
 
@@ -64,16 +69,46 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 	protected List<Pilot> calculateRaceLapsInOrder(Race race, Map<Pilot, Integer> laps) {
 		ListMultimap<Integer, Pilot> raceOrder = ArrayListMultimap.create(EXPECTED_MAXIMUM_LAPS, scores.getPilots().size());
 
-		for (Pilot pilot : scores.getPilots()) {
-			laps.put(pilot, 0);
+		extractRaceLaps(race, laps, raceOrder, null);
+
+		// Get penalties for each pilot
+		ListMultimap<Pilot, Penalty> lapPenalties = ArrayListMultimap.create(EXPECTED_MAXIMUM_PENALTIES, scores.getPilots().size());
+		ListMultimap<Pilot, Penalty> adjustLaps = ArrayListMultimap.create(EXPECTED_MAXIMUM_PENALTIES, scores.getPilots().size());
+		for (RaceAttendee attendee : Maps.filterKeys(race.getAttendees(), Predicates.in(scores.getPilots())).values()) {
+			for (Penalty penalty : Iterables.concat(Ordering.natural().sortedCopy(attendee.getPenalties()),
+					scores.getSimulatedRacePenalties(attendee.getPilot(), race))) {
+				if (penalty.getLaps() != 0) {
+					lapPenalties.put(attendee.getPilot(), penalty);
+				}
+				if (penalty.getType() == Penalty.Type.ADJUST_LAPS && penalty.getValue() != 0) {
+					adjustLaps.put(attendee.getPilot(), penalty);
+				}
+			}
 		}
 
-		for (Pilot pilot : extractRaceLaps(race)) {
-			int lapCount = laps.get(pilot);
+		// Apply lap penalties
+		if (!lapPenalties.isEmpty()) {
+			final Multiset<Pilot> pilotLaps = HashMultiset.create(laps.size());
 
-			raceOrder.remove(lapCount, pilot);
-			laps.put(pilot, ++lapCount);
-			raceOrder.put(lapCount, pilot);
+			for (Map.Entry<Pilot, Integer> pilotLapCount : laps.entrySet()) {
+				pilotLaps.setCount(pilotLapCount.getKey(), pilotLapCount.getValue());
+			}
+
+			for (Map.Entry<Pilot, Penalty> entry : lapPenalties.entries()) {
+				int value = entry.getValue().getLaps();
+				if (value < 0) {
+					pilotLaps.remove(entry.getKey(), Math.abs(value));
+				} else {
+					pilotLaps.add(entry.getKey(), value);
+				}
+			}
+
+			extractRaceLaps(race, laps, raceOrder, new Predicate<Pilot>() {
+				@Override
+				public boolean apply(@Nullable Pilot pilot) {
+					return pilotLaps.remove(pilot);
+				}
+			});
 		}
 
 		// Save pilot order
@@ -82,27 +117,22 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 		Set<Integer> changed = new HashSet<Integer>();
 
 		// It is intentional that pilots can end up having 0 laps but be considered to have completed the race
-		for (RaceAttendee attendee : Maps.filterKeys(race.getAttendees(), Predicates.in(scores.getPilots())).values()) {
-			for (Penalty penalty : Iterables.concat(Ordering.natural().sortedCopy(attendee.getPenalties()),
-					scores.getSimulatedRacePenalties(attendee.getPilot(), race))) {
-				if (penalty.getType() == Penalty.Type.LAPS && penalty.getValue() != 0) {
-					Pilot pilot = attendee.getPilot();
-					int lapCount = laps.get(pilot);
+		for (Map.Entry<Pilot, Penalty> entry : adjustLaps.entries()) {
+			Pilot pilot = entry.getKey();
+			int lapCount = laps.get(pilot);
 
-					raceOrder.remove(lapCount, pilot);
-					changed.add(lapCount);
+			raceOrder.remove(lapCount, pilot);
+			changed.add(lapCount);
 
-					lapCount += penalty.getValue();
-					if (lapCount <= 0) {
-						lapCount = 0;
-						noLaps.add(pilot);
-					}
-					laps.put(pilot, lapCount);
-
-					raceOrder.put(lapCount, pilot);
-					changed.add(lapCount);
-				}
+			lapCount += entry.getValue().getValue();
+			if (lapCount <= 0) {
+				lapCount = 0;
+				noLaps.add(pilot);
 			}
+			laps.put(pilot, lapCount);
+
+			raceOrder.put(lapCount, pilot);
+			changed.add(lapCount);
 		}
 
 		// Apply original pilot order
@@ -119,15 +149,31 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 		}
 	}
 
-	protected List<Pilot> getPilotOrder(ListMultimap<Integer, Pilot> raceOrder) {
-		List<Pilot> pilotOrder = new ArrayList<Pilot>(scores.getPilots().size());
-		for (Integer lap : Ordering.natural().reverse().sortedCopy(raceOrder.keySet())) {
-			pilotOrder.addAll(raceOrder.get(lap));
+	private void extractRaceLaps(Race race, Map<Pilot, Integer> laps, ListMultimap<Integer, Pilot> raceOrder, Predicate<Pilot> filter) {
+		for (Pilot pilot : scores.getPilots()) {
+			laps.put(pilot, 0);
 		}
-		return pilotOrder;
+
+		raceOrder.clear();
+
+		for (Pilot pilot : extractRaceLaps(race, filter)) {
+			int lapCount = laps.get(pilot);
+
+			raceOrder.remove(lapCount, pilot);
+			laps.put(pilot, ++lapCount);
+			raceOrder.put(lapCount, pilot);
+		}
 	}
 
-	protected Iterable<Pilot> extractRaceLaps(Race race) {
+	protected Iterable<Pilot> extractRaceLaps(Race race, Predicate<Pilot> filter) {
+		// If they aren't marked as attending the race as a pilot, they don't get scored
+		Predicate<Pilot> attending = Predicates.in(filteredPilots(race));
+		if (filter != null) {
+			filter = Predicates.and(attending, filter);
+		} else {
+			filter = attending;
+		}
+
 		// Convert a list of race events into a list of valid pilot laps
 		return Iterables.filter(Iterables.transform(Iterables.unmodifiableIterable(race.getTallies()), new Function<RaceTally, Pilot>() {
 			boolean scoring = scoreBeforeStart;
@@ -156,8 +202,15 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 				return null;
 			}
 
-			// If they aren't marked as attending the race as a pilot, they don't get scored.
-		}), Predicates.in(filteredPilots(race)));
+		}), filter);
+	}
+
+	protected List<Pilot> getPilotOrder(ListMultimap<Integer, Pilot> raceOrder) {
+		List<Pilot> pilotOrder = new ArrayList<Pilot>(scores.getPilots().size());
+		for (Integer lap : Ordering.natural().reverse().sortedCopy(raceOrder.keySet())) {
+			pilotOrder.addAll(raceOrder.get(lap));
+		}
+		return pilotOrder;
 	}
 
 	private Set<Pilot> filteredPilots(Race race) {

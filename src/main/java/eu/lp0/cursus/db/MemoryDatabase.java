@@ -20,7 +20,7 @@ package eu.lp0.cursus.db;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import edu.umd.cs.findbugs.annotations.SuppressWarnings;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class MemoryDatabase extends Database {
 	public MemoryDatabase(String name) throws SQLException, InvalidDatabaseException {
@@ -33,7 +33,7 @@ public class MemoryDatabase extends Database {
 	}
 
 	@Override
-	@SuppressWarnings({ "DM_GC" })
+	@SuppressFBWarnings({ "DM_GC" })
 	void postClose() {
 		System.gc();
 	}

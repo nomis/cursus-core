@@ -24,7 +24,7 @@ import java.util.Map;
 
 import com.google.common.collect.ComparisonChain;
 
-import edu.umd.cs.findbugs.annotations.SuppressWarnings;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.RaceDiscardsData;
@@ -33,7 +33,7 @@ import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.scoring.scores.impl.PilotRacePlacingComparator.PlacingMethod;
 
-@SuppressWarnings({ "SE_COMPARATOR_SHOULD_BE_SERIALIZABLE" })
+@SuppressFBWarnings({ "SE_COMPARATOR_SHOULD_BE_SERIALIZABLE" })
 public class AveragePointsComparator<T extends ScoredData & RacePointsData & RacePenaltiesData & RaceDiscardsData> implements Comparator<Pilot> {
 	private final T scores;
 	private final PlacingMethod placingMethod;

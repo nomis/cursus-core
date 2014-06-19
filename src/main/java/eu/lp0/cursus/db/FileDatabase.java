@@ -27,7 +27,7 @@ import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import edu.umd.cs.findbugs.annotations.SuppressWarnings;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import eu.lp0.cursus.util.ProgressMonitor;
 
 public class FileDatabase extends Database {
@@ -186,7 +186,7 @@ public class FileDatabase extends Database {
 	}
 
 	@Override
-	@SuppressWarnings({ "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE" })
+	@SuppressFBWarnings({ "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE" })
 	public void delete() {
 		super.delete();
 		file.delete();

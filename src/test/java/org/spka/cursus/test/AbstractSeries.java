@@ -30,7 +30,7 @@ import javax.annotation.Nonnull;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 
-import edu.umd.cs.findbugs.annotations.SuppressWarnings;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
@@ -40,7 +40,7 @@ import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.test.db.AbstractDatabaseTest;
 
-@SuppressWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE", "SIC_INNER_SHOULD_BE_STATIC_ANON" })
+@SuppressFBWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE", "SIC_INNER_SHOULD_BE_STATIC_ANON" })
 public class AbstractSeries extends AbstractDatabaseTest {
 	protected final Set<String> SERIES_COUNTRIES = new HashSet<String>(Arrays.asList("Scotland")); //$NON-NLS-1$
 

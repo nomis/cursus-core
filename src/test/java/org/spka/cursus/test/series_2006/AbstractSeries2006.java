@@ -507,6 +507,7 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 		createRace5Data();
 		createRace6Data();
 		createRace7Data();
+		createRace8Data();
 	}
 
 	protected void createRace4Data() throws Exception {

@@ -40,6 +40,8 @@ public class CreateSPKATests2008 {
 			create.generate("Series2008Event5Scores");
 			createEvent6Races();
 			create.generate("Series2008Event6Scores");
+
+			closeDatabase();
 		}
 	}
 

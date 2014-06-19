@@ -40,6 +40,9 @@ public final class Penalty implements Comparable<Penalty>, Cloneable {
 		/** Total fixed penalty points to be applied */
 		FIXED ("penalty.fixed", 1), //$NON-NLS-1$
 
+		/** Lap count cancellation to be applied */
+		CANCEL_LAPS ("penalty.cancel-laps", 1), //$NON-NLS-1$
+
 		/** Lap count adjustment to be applied */
 		ADJUST_LAPS ("penalty.adjust-laps", 0), //$NON-NLS-1$
 
@@ -73,29 +76,16 @@ public final class Penalty implements Comparable<Penalty>, Cloneable {
 	}
 
 	public Penalty(Type type, int value) {
-		this(type, value, "", 0); //$NON-NLS-1$
-	}
-
-	public Penalty(Type type, int value, int laps) {
-		this(type, value, "", laps); //$NON-NLS-1$
+		this(type, value, ""); //$NON-NLS-1$
 	}
 
 	public Penalty(Type type, String reason) {
-		this(type, type.getDefaultValue(), reason, 0);
-	}
-
-	public Penalty(Type type, String reason, int laps) {
-		this(type, 0, reason, laps);
+		this(type, type.getDefaultValue(), reason);
 	}
 
 	public Penalty(Type type, int value, String reason) {
-		this(type, value, reason, 0);
-	}
-
-	public Penalty(Type type, int value, String reason, int laps) {
 		setType(type);
 		setValue(value);
-		setLaps(laps);
 		setReason(reason);
 	}
 
@@ -120,17 +110,6 @@ public final class Penalty implements Comparable<Penalty>, Cloneable {
 
 	public void setValue(int value) {
 		this.value = value;
-	}
-
-	private int laps;
-
-	@Column(nullable = false)
-	public int getLaps() {
-		return laps;
-	}
-
-	public void setLaps(int laps) {
-		this.laps = laps;
 	}
 
 	private String reason;
@@ -160,8 +139,7 @@ public final class Penalty implements Comparable<Penalty>, Cloneable {
 
 	@Override
 	public int compareTo(Penalty o) {
-		return ComparisonChain.start().compare(getType(), o.getType()).compare(o.getValue(), getValue()).compare(getLaps(), o.getLaps())
-				.compare(getReason(), o.getReason()).result();
+		return ComparisonChain.start().compare(getType(), o.getType()).compare(o.getValue(), getValue()).compare(getReason(), o.getReason()).result();
 	}
 
 	@Override

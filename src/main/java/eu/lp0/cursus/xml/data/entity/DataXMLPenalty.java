@@ -27,7 +27,6 @@ public class DataXMLPenalty {
 	public DataXMLPenalty(Penalty penalty) {
 		type = penalty.getType();
 		value = penalty.getValue();
-		laps = penalty.getLaps();
 		reason = penalty.getReason();
 	}
 
@@ -49,16 +48,6 @@ public class DataXMLPenalty {
 
 	public void setValue(int value) {
 		this.value = value;
-	}
-
-	private int laps;
-
-	public int getLaps() {
-		return laps;
-	}
-
-	public void setLaps(int laps) {
-		this.laps = laps;
 	}
 
 	private String reason;

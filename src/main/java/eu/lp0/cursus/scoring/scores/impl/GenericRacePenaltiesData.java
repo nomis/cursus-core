@@ -91,8 +91,9 @@ public class GenericRacePenaltiesData<T extends ScoredData & RacePointsData> ext
 				penalties += penalty.getValue();
 				break;
 
+			case CANCEL_LAPS:
 			case ADJUST_LAPS:
-				// This is applied in RaceLapsData
+				// These is applied in RaceLapsData
 				break;
 
 			case EVENT_NON_ATTENDANCE:

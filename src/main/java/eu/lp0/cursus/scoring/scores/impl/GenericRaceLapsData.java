@@ -72,34 +72,42 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 		extractRaceLaps(race, laps, raceOrder, null);
 
 		// Get penalties for each pilot
-		ListMultimap<Pilot, Penalty> lapPenalties = ArrayListMultimap.create(EXPECTED_MAXIMUM_PENALTIES, scores.getPilots().size());
+		ListMultimap<Pilot, Penalty> cancelLaps = ArrayListMultimap.create(EXPECTED_MAXIMUM_PENALTIES, scores.getPilots().size());
 		ListMultimap<Pilot, Penalty> adjustLaps = ArrayListMultimap.create(EXPECTED_MAXIMUM_PENALTIES, scores.getPilots().size());
 		for (RaceAttendee attendee : Maps.filterKeys(race.getAttendees(), Predicates.in(scores.getPilots())).values()) {
 			for (Penalty penalty : Iterables.concat(Ordering.natural().sortedCopy(attendee.getPenalties()),
 					scores.getSimulatedRacePenalties(attendee.getPilot(), race))) {
-				if (penalty.getLaps() != 0) {
-					lapPenalties.put(attendee.getPilot(), penalty);
-				}
-				if (penalty.getType() == Penalty.Type.ADJUST_LAPS && penalty.getValue() != 0) {
-					adjustLaps.put(attendee.getPilot(), penalty);
+				if (penalty.getValue() != 0) {
+					switch (penalty.getType()) {
+					case CANCEL_LAPS:
+						cancelLaps.put(attendee.getPilot(), penalty);
+						break;
+
+					case ADJUST_LAPS:
+						adjustLaps.put(attendee.getPilot(), penalty);
+						break;
+
+					default:
+						break;
+					}
 				}
 			}
 		}
 
-		// Apply lap penalties
-		if (!lapPenalties.isEmpty()) {
+		// Apply lap cancellation penalties
+		if (!cancelLaps.isEmpty()) {
 			final Multiset<Pilot> pilotLaps = HashMultiset.create(laps.size());
 
 			for (Map.Entry<Pilot, Integer> pilotLapCount : laps.entrySet()) {
 				pilotLaps.setCount(pilotLapCount.getKey(), pilotLapCount.getValue());
 			}
 
-			for (Map.Entry<Pilot, Penalty> entry : lapPenalties.entries()) {
-				int value = entry.getValue().getLaps();
-				if (value < 0) {
-					pilotLaps.remove(entry.getKey(), Math.abs(value));
+			for (Map.Entry<Pilot, Penalty> entry : cancelLaps.entries()) {
+				int value = entry.getValue().getValue();
+				if (value > 0) {
+					pilotLaps.remove(entry.getKey(), value);
 				} else {
-					pilotLaps.add(entry.getKey(), value);
+					pilotLaps.add(entry.getKey(), Math.abs(value));
 				}
 			}
 

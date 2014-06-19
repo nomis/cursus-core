@@ -77,6 +77,7 @@ public class GenericOverallPenaltiesData<T extends ScoredData & RacePenaltiesDat
 
 			case AUTOMATIC:
 				// This can only be applied in RacePenaltiesData
+			case CANCEL_LAPS:
 			case ADJUST_LAPS:
 				// This can only be applied in RaceLapsData
 				Preconditions.checkArgument(false, "Invalid overall penalty type: " + penalty.getType()); //$NON-NLS-1$

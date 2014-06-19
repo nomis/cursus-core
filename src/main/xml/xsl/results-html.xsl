@@ -362,7 +362,6 @@
 	<xsl:template match="d:penalty" mode="r:internal">
 		<xsl:param name="race"/>
 		<xsl:variable name="absvalue" select="@value * (@value >= 0) - @value * (@value &lt; 0)"/>
-		<xsl:variable name="abslaps" select="@laps * (@laps >= 0) - @laps * (@laps &lt; 0)"/>
 
 		<li>
 			<xsl:if test="$race"><xsl:apply-templates select="$race" mode="r:penalty"/>: </xsl:if>
@@ -371,33 +370,26 @@
 				<xsl:otherwise><xsl:value-of select="d:reason"/></xsl:otherwise>
 			</xsl:choose>
 			<xsl:text> (</xsl:text>
-			<xsl:if test="@value != 0 or @laps = 0">
-				<xsl:choose>
-					<xsl:when test="@type = 'AUTOMATIC'">
-							<xsl:value-of select="@value"/> penalt<xsl:choose><xsl:when test="$absvalue = 1">y</xsl:when><xsl:otherwise>s</xsl:otherwise></xsl:choose>
-					</xsl:when>
-					<xsl:when test="@type = 'FIXED'">
-						<xsl:if test="@value != 0 or @laps = 0">
-							<xsl:value-of select="@value"/> point<xsl:if test="$absvalue != 1">s</xsl:if>
-						</xsl:if>
-					</xsl:when>
-					<xsl:when test="@type = 'ADJUST_LAPS'">
-						<xsl:value-of select="$absvalue"/> lap<xsl:if test="$absvalue != 1">s</xsl:if><xsl:choose><xsl:when test="@value > 0"> added</xsl:when><xsl:otherwise> removed</xsl:otherwise></xsl:choose>
-					</xsl:when>
-					<xsl:when test="@type = 'EVENT_NON_ATTENDANCE'">
-						<xsl:value-of select="@value"/> point<xsl:if test="$absvalue != 1">s</xsl:if>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:value-of select="@value"/><xsl:text> </xsl:text><xsl:value-of select="@type"/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:if>
-			<xsl:if test="@laps != 0">
-				<xsl:if test="@value != 0">
-					<xsl:text>, </xsl:text>
-				</xsl:if>
-				<xsl:value-of select="$abslaps"/> lap<xsl:if test="$abslaps != 1">s</xsl:if><xsl:choose><xsl:when test="@laps > 0"> readmitted</xsl:when><xsl:otherwise> cancelled</xsl:otherwise></xsl:choose>
-			</xsl:if>
+			<xsl:choose>
+				<xsl:when test="@type = 'AUTOMATIC'">
+					<xsl:value-of select="@value"/> penalt<xsl:choose><xsl:when test="$absvalue = 1">y</xsl:when><xsl:otherwise>s</xsl:otherwise></xsl:choose>
+				</xsl:when>
+				<xsl:when test="@type = 'FIXED'">
+					<xsl:value-of select="@value"/> point<xsl:if test="$absvalue != 1">s</xsl:if>
+				</xsl:when>
+				<xsl:when test="@type = 'CANCEL_LAPS'">
+					<xsl:value-of select="$absvalue"/> lap<xsl:if test="$absvalue != 1">s</xsl:if><xsl:choose><xsl:when test="@value > 0"> cancelled</xsl:when><xsl:otherwise> readmitted</xsl:otherwise></xsl:choose>
+				</xsl:when>
+				<xsl:when test="@type = 'ADJUST_LAPS'">
+					<xsl:value-of select="$absvalue"/> lap<xsl:if test="$absvalue != 1">s</xsl:if><xsl:choose><xsl:when test="@value > 0"> added</xsl:when><xsl:otherwise> removed</xsl:otherwise></xsl:choose>
+				</xsl:when>
+				<xsl:when test="@type = 'EVENT_NON_ATTENDANCE'">
+					<xsl:value-of select="@value"/> point<xsl:if test="$absvalue != 1">s</xsl:if>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="@value"/><xsl:text> </xsl:text><xsl:value-of select="@type"/>
+				</xsl:otherwise>
+			</xsl:choose>
 			<xsl:text>)</xsl:text>
 		</li>
 	</xsl:template>

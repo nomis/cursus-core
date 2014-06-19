@@ -536,7 +536,7 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 			race4.getAttendees().put(sco109, new RaceAttendee(race4, sco109, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(sco117, new RaceAttendee(race4, sco117, RaceAttendee.Type.PILOT));
 			RaceAttendee att135 = new RaceAttendee(race4, sco135, RaceAttendee.Type.PILOT);
-			att135.getPenalties().add(new Penalty(Penalty.Type.FIXED, "Running over a marker flag", -1)); //$NON-NLS-1$
+			att135.getPenalties().add(new Penalty(Penalty.Type.CANCEL_LAPS, "Running over a marker flag")); //$NON-NLS-1$
 			race4.getAttendees().put(sco135, att135);
 			race4.getAttendees().put(sco136, new RaceAttendee(race4, sco136, RaceAttendee.Type.PILOT));
 			race4.getAttendees().put(sco154, new RaceAttendee(race4, sco154, RaceAttendee.Type.PILOT));
@@ -589,7 +589,7 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 			race5.getAttendees().put(sco109, new RaceAttendee(race5, sco109, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(sco117, new RaceAttendee(race5, sco117, RaceAttendee.Type.PILOT));
 			RaceAttendee att135 = new RaceAttendee(race5, sco135, RaceAttendee.Type.PILOT);
-			att135.getPenalties().add(new Penalty(Penalty.Type.FIXED, "Running over a marker flag", -1)); //$NON-NLS-1$
+			att135.getPenalties().add(new Penalty(Penalty.Type.CANCEL_LAPS, "Running over a marker flag")); //$NON-NLS-1$
 			race5.getAttendees().put(sco135, att135);
 			race5.getAttendees().put(sco136, new RaceAttendee(race5, sco136, RaceAttendee.Type.PILOT));
 			race5.getAttendees().put(sco154, new RaceAttendee(race5, sco154, RaceAttendee.Type.PILOT));
@@ -698,7 +698,7 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 			race7.getAttendees().put(sco135, new RaceAttendee(race7, sco135, RaceAttendee.Type.PILOT));
 			race7.getAttendees().put(sco136, new RaceAttendee(race7, sco136, RaceAttendee.Type.PILOT));
 			RaceAttendee att154 = new RaceAttendee(race7, sco154, RaceAttendee.Type.PILOT);
-			att154.getPenalties().add(new Penalty(Penalty.Type.FIXED, "Running over a marker flag", -1)); //$NON-NLS-1$
+			att154.getPenalties().add(new Penalty(Penalty.Type.CANCEL_LAPS, "Running over a marker flag")); //$NON-NLS-1$
 			race7.getAttendees().put(sco154, att154);
 			race7.getAttendees().put(sco158, new RaceAttendee(race7, sco158, RaceAttendee.Type.PILOT));
 			race7.getAttendees().put(sco159, new RaceAttendee(race7, sco159, RaceAttendee.Type.PILOT));
@@ -950,7 +950,7 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 			race11.getAttendees().put(sco159, new RaceAttendee(race11, sco159, RaceAttendee.Type.PILOT));
 			race11.getAttendees().put(sco179, new RaceAttendee(race11, sco179, RaceAttendee.Type.PILOT));
 			RaceAttendee att197 = new RaceAttendee(race11, sco197, RaceAttendee.Type.PILOT);
-			att197.getPenalties().add(new Penalty(Penalty.Type.FIXED, "Running over a marker flag", -1)); //$NON-NLS-1$
+			att197.getPenalties().add(new Penalty(Penalty.Type.CANCEL_LAPS, "Running over a marker flag")); //$NON-NLS-1$
 			race11.getAttendees().put(sco197, att197);
 			race11.getAttendees().put(sco198, new RaceAttendee(race11, sco198, RaceAttendee.Type.M_MARSHAL));
 			race11.getAttendees().put(sco200, new RaceAttendee(race11, sco200, RaceAttendee.Type.PILOT));

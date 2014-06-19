@@ -179,7 +179,7 @@ public abstract class AbstractSeries2013 extends AbstractSeries {
 			ir025 = new Pilot(series, "IR025@2013", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir025);
 
-			ir027 = new Pilot(series, "IR027@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir027 = new Pilot(series, "IR027@2005", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir027);
 
 			ir053 = new Pilot(series, "IR053@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$

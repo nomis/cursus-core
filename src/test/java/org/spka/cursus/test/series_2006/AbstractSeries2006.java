@@ -142,7 +142,7 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 		try {
 			DatabaseSession.begin();
 
-			// Create the 2007/08 series
+			// Create the 2006/07 series
 			Series series = new Series(SERIES_NAME);
 
 			// Add all the pilots

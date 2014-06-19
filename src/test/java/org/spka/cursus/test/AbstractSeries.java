@@ -18,7 +18,9 @@
 package org.spka.cursus.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -40,7 +42,7 @@ import eu.lp0.cursus.test.db.AbstractDatabaseTest;
 
 @SuppressWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE", "SIC_INNER_SHOULD_BE_STATIC_ANON" })
 public class AbstractSeries extends AbstractDatabaseTest {
-	protected static final String SERIES_COUNTRY = "Scotland"; //$NON-NLS-1$
+	protected final Set<String> SERIES_COUNTRIES = new HashSet<String>(Arrays.asList("Scotland")); //$NON-NLS-1$
 
 	private static boolean isPrivateSeries(Series series) {
 		return series.getName().startsWith("SPKA "); //$NON-NLS-1$
@@ -49,11 +51,11 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	/**
 	 * Get all the pilots in a Scotland series
 	 */
-	protected static Set<Pilot> getSeriesResultsPilots(final Series series) throws Exception {
+	protected Set<Pilot> getSeriesResultsPilots(final Series series) throws Exception {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
+				return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
 			}
 		});
 	}
@@ -62,7 +64,7 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	 * Get all the pilots at a Scotland event (including non-Scotland pilots)
 	 * (but only up to and including the specified event)
 	 */
-	protected static Set<Pilot> getEventResultsPilots(final Series series, final Event event) {
+	protected Set<Pilot> getEventResultsPilots(final Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
@@ -74,13 +76,13 @@ public class AbstractSeries extends AbstractDatabaseTest {
 
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
@@ -92,19 +94,19 @@ public class AbstractSeries extends AbstractDatabaseTest {
 	/**
 	 * Get all the pilots in a Scotland series (only up to and including the specified event)
 	 */
-	protected static Set<Pilot> getSeriesResultsPilots(final Series series, final Event event) {
+	protected Set<Pilot> getSeriesResultsPilots(final Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || pilot.getCountry().equals(SERIES_COUNTRY);
+						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 

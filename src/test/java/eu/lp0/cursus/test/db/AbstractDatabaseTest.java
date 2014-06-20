@@ -37,7 +37,11 @@ public abstract class AbstractDatabaseTest extends AbstractDataTest {
 
 	@After
 	public void closeDatabase() {
-		db.close(true);
+		try {
+			db.close(true);
+		} catch (Exception e) {
+			// TODO log
+		}
 		db = null;
 	}
 }

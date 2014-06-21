@@ -17,105 +17,14 @@
  */
 package uk.me.sa.cursus.app;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import org.junit.Ignore;
 import org.spka.cursus.test.cc_2013.CCSeries2013;
 
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.xml.scores.ScoresXML;
-import eu.lp0.cursus.xml.scores.ScoresXMLFile;
-import eu.lp0.cursus.xml.scores.XMLScores;
-import eu.lp0.cursus.xml.scores.results.ScoresXMLEventResults;
-import eu.lp0.cursus.xml.scores.results.ScoresXMLRaceResults;
-
-public class ExportCCSeries2013Top5 {
-	public static final File SERIES_FILE1 = new File("target/cc2013top5_1.xml"); //$NON-NLS-1$
-	public static final File SERIES_FILE2 = new File("target/cc2013top5_2.xml"); //$NON-NLS-1$
-
-	@Ignore
-	public static class AllScores extends CCSeries2013 {
-		public final ScoresXMLFile export;
-
-		public AllScores() throws Exception {
-			super(true);
-
-			Scores seriesScores;
-			List<Scores> eventScores = new ArrayList<Scores>();
-			List<Scores> raceScores = new ArrayList<Scores>();
-
-			createAllData();
-
-			db.startSession();
-			try {
-				DatabaseSession.begin();
-
-				Series series = seriesDAO.find(SERIES_NAME);
-				seriesScores = scorer.scoreSeries(series);
-
-				for (Event event : series.getEvents()) {
-					if (!event.getRaces().isEmpty()) {
-						eventScores.add(scorer.scoreRaces(event.getRaces()));
-
-						for (Race race : event.getRaces()) {
-							raceScores.add(scorer.scoreRaces(Collections.singletonList(race)));
-						}
-					}
-				}
-
-				export = new ScoresXMLFile(seriesScores, eventScores, raceScores);
-
-				System.out.println(seriesScores.getSeries().getName());
-				debugPrintScores(seriesScores);
-
-				for (Scores scores : eventScores) {
-					System.out.println();
-					System.out.println(scores.getEvents().iterator().next().getName());
-					debugPrintScores(scores);
-				}
-				for (Scores scores : raceScores) {
-					System.out.println();
-					System.out.println(scores.getRaces().iterator().next().getName());
-					debugPrintScores(scores);
-				}
-
-				DatabaseSession.commit();
-			} finally {
-				db.endSession();
-			}
-
-			closeDatabase();
-		}
+public class ExportCCSeries2013Top5 extends ExportSeries {
+	public ExportCCSeries2013Top5() {
+		super("cc_2013_top5", new CCSeries2013(true)); //$NON-NLS-1$
 	}
 
 	public static void main(String[] args) throws Exception {
-		ScoresXMLFile export1 = new AllScores().export;
-		export1.to(SERIES_FILE1);
-
-		ScoresXMLFile import_ = new ScoresXMLFile();
-		import_.from(SERIES_FILE1);
-
-		ScoresXML file = import_.getData();
-		Scores seriesScores;
-		List<Scores> eventScores = new ArrayList<Scores>();
-		List<Scores> raceScores = new ArrayList<Scores>();
-		XMLScores xmlScores = new XMLScores(file);
-		seriesScores = xmlScores.newInstance(file.getSeriesResults());
-		for (ScoresXMLEventResults scores : file.getEventResults()) {
-			eventScores.add(xmlScores.newInstance(scores));
-		}
-		for (ScoresXMLRaceResults scores : file.getRaceResults()) {
-			raceScores.add(xmlScores.newInstance(scores));
-		}
-
-		ScoresXMLFile export2 = new ScoresXMLFile(seriesScores, eventScores, raceScores);
-		export2.to(SERIES_FILE2);
+		new ExportCCSeries2013Top5().export();
 	}
 }

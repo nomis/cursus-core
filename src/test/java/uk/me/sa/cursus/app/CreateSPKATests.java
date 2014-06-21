@@ -49,6 +49,7 @@ public class CreateSPKATests extends AbstractDataTest {
 	private String packageName;
 	private String classPrefix;
 
+	private boolean cc;
 	private Database db;
 	private Scorer scorer;
 
@@ -60,10 +61,17 @@ public class CreateSPKATests extends AbstractDataTest {
 		this.packageName = packageName;
 		this.classPrefix = classPrefix;
 
+		this.cc = classPrefix.startsWith("CC"); //$NON-NLS-1$
 		this.db = testSeries.getDatabase();
 		this.scorer = testSeries.getScorer();
 
 		superClass = classPrefix;
+		if (cc) {
+			if (classPrefix.contains("Top")) { //$NON-NLS-1$
+				superClass = classPrefix.substring(0, classPrefix.length() - 4);
+			}
+			this.classPrefix = classPrefix.substring(2);
+		}
 	}
 
 	@SuppressWarnings("nls")
@@ -154,6 +162,14 @@ public class CreateSPKATests extends AbstractDataTest {
 			out.println();
 			out.println(" */");
 			out.println("public class " + className + " extends " + superClass + " {");
+
+			if (cc && superClass.startsWith("CC")) {
+				out.println("	public " + className + "() {");
+				out.println("		super(" + className.contains("Top") + ");");
+				out.println("	}");
+				out.println();
+			}
+
 			out.println("	@Override");
 			out.println("	@Before");
 			out.println("	public void createDatabase() throws Exception {");

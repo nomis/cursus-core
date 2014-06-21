@@ -20,26 +20,26 @@ package uk.me.sa.cursus.app;
 import org.junit.Ignore;
 import org.spka.cursus.test.cc_2014.CCSeries2014;
 
-public class CreateCCTests2014Top3 {
-	@Ignore
-	public static class AllScores extends CCSeries2014 {
-		@SuppressWarnings("nls")
-		public AllScores() throws Exception {
-			super(true);
-
-			createDatabase();
-			CreateSPKATests create = new CreateSPKATests(this, "cc_2014", "CCSeries2014Top3");
-
-			createEvent1Races();
-			create.generate("Series2014Top3Event1Scores");
-			createEvent2Races();
-			create.generate("Series2014Top3Event2Scores");
-
-			closeDatabase();
-		}
+@Ignore
+@SuppressWarnings("nls")
+public class CreateCCTests2014Top3 extends CCSeries2014 {
+	public static void main(String[] args) throws Exception {
+		new CreateCCTests2014Top3().createTests();
 	}
 
-	public static void main(String[] args) throws Exception {
-		new AllScores();
+	public CreateCCTests2014Top3() {
+		super(true);
+	}
+
+	private void createTests() throws Exception {
+		createDatabase();
+		CreateSPKATests create = new CreateSPKATests(this, "cc_2014", "CCSeries2014Top3");
+
+		createEvent1Races();
+		create.generate("Series2014Top3Event1Scores");
+		createEvent2Races();
+		create.generate("Series2014Top3Event2Scores");
+
+		closeDatabase();
 	}
 }

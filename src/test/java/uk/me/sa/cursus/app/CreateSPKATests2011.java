@@ -20,36 +20,34 @@ package uk.me.sa.cursus.app;
 import org.junit.Ignore;
 import org.spka.cursus.test.series_2011.Series2011;
 
-public class CreateSPKATests2011 {
-	@Ignore
-	public static class AllScores extends Series2011 {
-		@SuppressWarnings("nls")
-		public AllScores() throws Exception {
-			createDatabase();
-			CreateSPKATests create = new CreateSPKATests(this, "series_2011", "Series2011");
-
-			createNonEvent1Data();
-			create.generate("Series2011NonEvent1Scores");
-			createEvent1Races();
-			create.generate("Series2011Event1Scores");
-			createNonEvent2Data();
-			create.generate("Series2011NonEvent2Scores");
-			createEvent2Races();
-			create.generate("Series2011Event2Scores");
-			createNonEvent3Data();
-			create.generate("Series2011NonEvent3Scores");
-			createEvent3Races();
-			create.generate("Series2011Event3Scores");
-			createEvent4Races();
-			create.generate("Series2011Event4Scores");
-			createEvent5Races();
-			create.generate("Series2011Event5Scores");
-
-			closeDatabase();
-		}
+@Ignore
+@SuppressWarnings("nls")
+public class CreateSPKATests2011 extends Series2011 {
+	public static void main(String[] args) throws Exception {
+		new CreateSPKATests2011().createTests();
 	}
 
-	public static void main(String[] args) throws Exception {
-		new AllScores();
+	private void createTests() throws Exception {
+		createDatabase();
+		CreateSPKATests create = new CreateSPKATests(this, "series_2011", "Series2011");
+
+		createNonEvent1Data();
+		create.generate("Series2011NonEvent1Scores");
+		createEvent1Races();
+		create.generate("Series2011Event1Scores");
+		createNonEvent2Data();
+		create.generate("Series2011NonEvent2Scores");
+		createEvent2Races();
+		create.generate("Series2011Event2Scores");
+		createNonEvent3Data();
+		create.generate("Series2011NonEvent3Scores");
+		createEvent3Races();
+		create.generate("Series2011Event3Scores");
+		createEvent4Races();
+		create.generate("Series2011Event4Scores");
+		createEvent5Races();
+		create.generate("Series2011Event5Scores");
+
+		closeDatabase();
 	}
 }

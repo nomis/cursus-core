@@ -20,32 +20,30 @@ package uk.me.sa.cursus.app;
 import org.junit.Ignore;
 import org.spka.cursus.test.series_2013.Series2013;
 
-public class CreateSPKATests2013 {
-	@Ignore
-	public static class AllScores extends Series2013 {
-		@SuppressWarnings("nls")
-		public AllScores() throws Exception {
-			createDatabase();
-			CreateSPKATests create = new CreateSPKATests(this, "series_2013", "Series2013");
-
-			createEvent1Races();
-			create.generate("Series2013Event1Scores");
-			createEvent2Races();
-			create.generate("Series2013Event2Scores");
-			createEvent3Races();
-			create.generate("Series2013Event3Scores");
-			createEvent4Races();
-			create.generate("Series2013Event4Scores");
-			createEvent5Races();
-			create.generate("Series2013Event5Scores");
-			createEvent6Races();
-			create.generate("Series2013Event6Scores");
-
-			closeDatabase();
-		}
+@Ignore
+@SuppressWarnings("nls")
+public class CreateSPKATests2013 extends Series2013 {
+	public static void main(String[] args) throws Exception {
+		new CreateSPKATests2013().createTests();
 	}
 
-	public static void main(String[] args) throws Exception {
-		new AllScores();
+	private void createTests() throws Exception {
+		createDatabase();
+		CreateSPKATests create = new CreateSPKATests(this, "series_2013", "Series2013");
+
+		createEvent1Races();
+		create.generate("Series2013Event1Scores");
+		createEvent2Races();
+		create.generate("Series2013Event2Scores");
+		createEvent3Races();
+		create.generate("Series2013Event3Scores");
+		createEvent4Races();
+		create.generate("Series2013Event4Scores");
+		createEvent5Races();
+		create.generate("Series2013Event5Scores");
+		createEvent6Races();
+		create.generate("Series2013Event6Scores");
+
+		closeDatabase();
 	}
 }

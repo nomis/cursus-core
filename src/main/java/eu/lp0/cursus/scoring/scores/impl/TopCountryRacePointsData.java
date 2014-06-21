@@ -28,6 +28,7 @@ import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
 import eu.lp0.cursus.db.data.Event;
@@ -46,7 +47,7 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 				Multimap<String, Pilot> countryPilots = HashMultimap.create();
 
 				for (Race race : event.getRaces()) {
-					for (Pilot pilot : race.getAttendees().keySet()) {
+					for (Pilot pilot : Maps.filterKeys(race.getAttendees(), Predicates.in(scores.getFleet())).keySet()) {
 						countryPilots.put(pilot.getCountry(), pilot);
 					}
 				}
@@ -55,8 +56,8 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 
 				for (String country : countryPilots.keySet()) {
 					if (countryPilots.get(country).size() < minCount) {
-						throw new IllegalStateException(
-								"Country " + countryPilots + " does not have " + minCount + " pilot(s) for every race in event " + event.getName()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						throw new IllegalStateException("Country " + country + " does not have " + minCount + " pilot(s) for every race in event " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+								+ event.getName() + ": " + countryPilots.get(country)); //$NON-NLS-1$
 					}
 
 					value = Math.min(value, countryPilots.get(country).size());
@@ -83,7 +84,8 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 
 				for (String country : countryPilots.keySet()) {
 					if (countryPilots.get(country).size() != count) {
-						throw new IllegalStateException("Country " + country + " does not have " + count + " pilot(s) for race " + race.getName()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						throw new IllegalStateException("Country " + country + " does not have " + count + " pilot(s) for race " + race.getName() //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+								+ ": " + countryPilots.get(country)); //$NON-NLS-1$
 					}
 				}
 

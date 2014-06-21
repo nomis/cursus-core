@@ -12,91 +12,91 @@
   <d:pilots>
    <d:pilot xml:id="Pilota217ad088acfd">
     <d:name xml:space="preserve">F11</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="11" organisation="F"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088acfe">
     <d:name xml:space="preserve">F12</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="12" organisation="F"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088acff">
     <d:name xml:space="preserve">F13</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="13" organisation="F"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad0a">
     <d:name xml:space="preserve">G31</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="31" organisation="G"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad0b">
     <d:name xml:space="preserve">G32</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="32" organisation="G"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad0c">
     <d:name xml:space="preserve">G33</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="33" organisation="G"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad0d">
     <d:name xml:space="preserve">G34</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="34" organisation="G"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad0e">
     <d:name xml:space="preserve">G35</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="35" organisation="G"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad0f">
     <d:name xml:space="preserve">G36</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="36" organisation="G"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad1a">
     <d:name xml:space="preserve">K51</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="51" organisation="K"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad1b">
     <d:name xml:space="preserve">K52</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="52" organisation="K"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad1c">
     <d:name xml:space="preserve">K53</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="53" organisation="K"/>
     <d:member class="Classa217ad088ad3d"/>
    </d:pilot>
    <d:pilot xml:id="Pilota217ad088ad35">
     <d:name xml:space="preserve">SCO113</d:name>
-    <d:gender>FEMALE</d:gender>
+    <d:sex>FEMALE</d:sex>
     <d:country xml:space="preserve"/>
     <d:raceNumber number="113" organisation="SCO"/>
     <d:member class="Classa217ad088ad3d"/>

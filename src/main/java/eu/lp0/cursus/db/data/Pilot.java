@@ -52,14 +52,14 @@ public final class Pilot extends AbstractEntity {
 		this(series, name, null, ""); //$NON-NLS-1$
 	}
 
-	public Pilot(Series series, String name, Gender gender) {
-		this(series, name, gender, ""); //$NON-NLS-1$
+	public Pilot(Series series, String name, Sex sex) {
+		this(series, name, sex, ""); //$NON-NLS-1$
 	}
 
-	public Pilot(Series series, String name, Gender gender, String country) {
+	public Pilot(Series series, String name, Sex sex, String country) {
 		setSeries(series);
 		setName(name);
-		setGender(gender);
+		setSex(sex);
 		setCountry(country);
 	}
 
@@ -86,15 +86,15 @@ public final class Pilot extends AbstractEntity {
 		this.name = name;
 	}
 
-	private Gender gender;
+	private Sex sex;
 
 	@Enumerated(EnumType.STRING)
-	public Gender getGender() {
-		return gender;
+	public Sex getSex() {
+		return sex;
 	}
 
-	public void setGender(Gender gender) {
-		this.gender = gender;
+	public void setSex(Sex sex) {
+		this.sex = sex;
 	}
 
 	private String country;
@@ -178,6 +178,6 @@ public final class Pilot extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return "Pilot [name=" + name + ", gender=" + gender + ", country=" + country + ", number=" + number + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$//$NON-NLS-4$ //$NON-NLS-5$
+		return "Pilot [name=" + name + ", sex=" + sex + ", country=" + country + ", number=" + number + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$//$NON-NLS-4$ //$NON-NLS-5$
 	}
 }

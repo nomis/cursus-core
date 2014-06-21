@@ -7,85 +7,85 @@
   <pilots>
    <pilot xml:id="Pilot2bb8699cff9ee">
     <name xml:space="preserve">SCO019@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="19" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9ef">
     <name xml:space="preserve">SCO021@2008</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="21" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f0">
     <name xml:space="preserve">SCO023@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="23" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f1">
     <name xml:space="preserve">SCO060@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="60" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f2">
     <name xml:space="preserve">SCO071@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="71" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f3">
     <name xml:space="preserve">SCO081@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="81" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f4">
     <name xml:space="preserve">SCO117@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="117" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f5">
     <name xml:space="preserve">SCO136@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="136" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f6">
     <name xml:space="preserve">SCO154@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="154" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f7">
     <name xml:space="preserve">SCO158@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="158" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f8">
     <name xml:space="preserve">SCO159@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="159" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9f9">
     <name xml:space="preserve">SCO179@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="179" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9fa">
     <name xml:space="preserve">SCO197@2006</name>
-    <gender>FEMALE</gender>
+    <sex>FEMALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="197" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb8699cff9fb">
     <name xml:space="preserve">SCO200@2006</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="200" organisation="SCO"/>
    </pilot>

@@ -27,7 +27,7 @@ import com.google.common.collect.Sets;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import eu.lp0.cursus.db.data.Class;
-import eu.lp0.cursus.db.data.Gender;
+import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.db.data.Pilot;
 
 @SuppressFBWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE" })
@@ -45,35 +45,35 @@ public class FleetFilter {
 		};
 	}
 
-	public static Predicate<Pilot> from(final Gender gender) {
-		if (gender == null) {
+	public static Predicate<Pilot> from(final Sex sex) {
+		if (sex == null) {
 			return Predicates.alwaysTrue();
 		}
 
 		return new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				return pilot.getGender() == gender || pilot.getGender() == null;
+				return pilot.getSex() == sex || pilot.getSex() == null;
 			}
 		};
 	}
 
-	public static Predicate<Pilot> from(final Set<Class> classes, final Gender gender) {
+	public static Predicate<Pilot> from(final Set<Class> classes, final Sex sex) {
 		if (classes.isEmpty()) {
-			return from(gender);
+			return from(sex);
 		}
 
-		if (gender == null) {
+		if (sex == null) {
 			return from(classes);
 		}
 
 		final Predicate<Pilot> classFilter = FleetFilter.from(classes);
-		final Predicate<Pilot> genderFilter = FleetFilter.from(gender);
+		final Predicate<Pilot> sexFilter = FleetFilter.from(sex);
 
 		return new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				return genderFilter.apply(pilot) && classFilter.apply(pilot);
+				return sexFilter.apply(pilot) && classFilter.apply(pilot);
 			}
 		};
 	}

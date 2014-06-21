@@ -160,7 +160,7 @@ public class XMLScores {
 		}
 
 		for (DataXMLPilot xmlPilot : xmlSeries.getPilots()) {
-			Pilot pilot_ = new Pilot(series_, wrapNull(xmlPilot.getName()), xmlPilot.getGender(), wrapNull(xmlPilot.getCountry()));
+			Pilot pilot_ = new Pilot(series_, wrapNull(xmlPilot.getName()), xmlPilot.getSex(), wrapNull(xmlPilot.getCountry()));
 			pilots.put(xmlPilot.getId(), pilot_);
 			series_.getPilots().add(pilot_);
 

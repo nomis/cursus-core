@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Gender;
+import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
@@ -56,8 +56,8 @@ public class Series2011Class8Scores extends FISLYSeries2011 {
 			Race race5 = raceDAO.find(event1, RACE5_NAME);
 			Race race6 = raceDAO.find(event1, RACE6_NAME);
 			Assert.assertEquals(SERIES_PILOTS, series.getPilots().size());
-			Scores mScores = scorer.scoreSeries(series, FleetFilter.from(Gender.MALE));
-			Scores fScores = scorer.scoreSeries(series, FleetFilter.from(Gender.FEMALE));
+			Scores mScores = scorer.scoreSeries(series, FleetFilter.from(Sex.MALE));
+			Scores fScores = scorer.scoreSeries(series, FleetFilter.from(Sex.FEMALE));
 
 			Assert.assertEquals(SERIES_M_FLEET, mScores.getPilots().size());
 			Assert.assertEquals(SERIES_M_FLEET, mScores.getFleet().size());

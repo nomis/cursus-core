@@ -7,97 +7,97 @@
   <pilots>
    <pilot xml:id="Pilot2bb88fa8c5c93">
     <name xml:space="preserve">SCO019@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="19" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c94">
     <name xml:space="preserve">SCO023@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="23" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c95">
     <name xml:space="preserve">SCO042@2009</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="42" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c96">
     <name xml:space="preserve">SCO060@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="60" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c97">
     <name xml:space="preserve">SCO068@2009</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="68" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c98">
     <name xml:space="preserve">SCO071@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="71" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c99">
     <name xml:space="preserve">SCO081@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="81" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c9a">
     <name xml:space="preserve">SCO087@2009</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="87" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c9b">
     <name xml:space="preserve">SCO117@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="117" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c9c">
     <name xml:space="preserve">SCO154@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="154" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c9d">
     <name xml:space="preserve">SCO158@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="158" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c9e">
     <name xml:space="preserve">SCO159@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="159" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5c9f">
     <name xml:space="preserve">SCO179@2005</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="179" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5ca0">
     <name xml:space="preserve">SCO193@2009</name>
-    <gender>FEMALE</gender>
+    <sex>FEMALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="193" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5ca1">
     <name xml:space="preserve">SCO197@2006</name>
-    <gender>FEMALE</gender>
+    <sex>FEMALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="197" organisation="SCO"/>
    </pilot>
    <pilot xml:id="Pilot2bb88fa8c5ca2">
     <name xml:space="preserve">K071@2009</name>
-    <gender>MALE</gender>
+    <sex>MALE</sex>
     <country xml:space="preserve">England</country>
     <raceNumber number="71" organisation="K"/>
    </pilot>

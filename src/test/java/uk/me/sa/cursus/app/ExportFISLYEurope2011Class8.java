@@ -23,7 +23,7 @@ import org.fisly.cursus.test.europe_2011.FISLYSeries2011;
 import org.junit.Ignore;
 
 import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Gender;
+import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.scoring.scorer.FleetFilter;
@@ -58,8 +58,8 @@ public class ExportFISLYEurope2011Class8 {
 
 				Series series = seriesDAO.find(SERIES_NAME);
 				seriesScoresA = scorer.scoreSeries(series);
-				seriesScoresM = scorer.scoreSeries(series, FleetFilter.from(Gender.MALE));
-				seriesScoresF = scorer.scoreSeries(series, FleetFilter.from(Gender.FEMALE));
+				seriesScoresM = scorer.scoreSeries(series, FleetFilter.from(Sex.MALE));
+				seriesScoresF = scorer.scoreSeries(series, FleetFilter.from(Sex.FEMALE));
 
 				exportA = new ScoresXMLFile(seriesScoresA, null, null);
 				exportM = new ScoresXMLFile(seriesScoresM, null, null);

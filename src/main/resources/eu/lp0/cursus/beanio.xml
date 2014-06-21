@@ -20,8 +20,8 @@
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
 
-	<typeHandler type="eu.lp0.cursus.db.data.Gender" class="eu.lp0.cursus.xml.EnumTypeHandler">
-		<property name="enum" value="eu.lp0.cursus.db.data.Gender"/>
+	<typeHandler type="eu.lp0.cursus.db.data.Sex" class="eu.lp0.cursus.xml.EnumTypeHandler">
+		<property name="enum" value="eu.lp0.cursus.db.data.Sex"/>
 	</typeHandler>
 
 	<typeHandler type="eu.lp0.cursus.db.data.RaceAttendee$Type" class="eu.lp0.cursus.xml.EnumTypeHandler">
@@ -47,7 +47,7 @@
 			<segment name="pilots" minOccurs="0" maxOccurs="unbounded" class="eu.lp0.cursus.xml.data.entity.DataXMLPilot" xmlName="pilot" collection="list">
 				<field name="id" minOccurs="1" xmlType="attribute" xmlNamespace="http://www.w3.org/XML/1998/namespace"/>
 				<include template="name"/>
-				<field name="gender" minOccurs="0"/>
+				<field name="sex" minOccurs="0"/>
 				<segment name="country">
 					<field name="space" ignore="true" default="preserve" xmlType="attribute" xmlNamespace="http://www.w3.org/XML/1998/namespace"/>
 					<field name="country" minOccurs="1" xmlType="text"/>

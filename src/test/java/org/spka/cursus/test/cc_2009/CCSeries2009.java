@@ -23,7 +23,7 @@ import org.spka.cursus.test.AbstractSPKASeries;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Gender;
+import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
@@ -115,70 +115,70 @@ public class CCSeries2009 extends AbstractSPKASeries {
 			Series series = new Series(SERIES_NAME);
 
 			// Add all the pilots
-			sco019 = new Pilot(series, "SCO019@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco019 = new Pilot(series, "SCO019@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco019);
 
-			sco023 = new Pilot(series, "SCO023@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco023 = new Pilot(series, "SCO023@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco023);
 
-			sco060 = new Pilot(series, "SCO060@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco060 = new Pilot(series, "SCO060@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco060);
 
-			sco081 = new Pilot(series, "SCO081@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco081 = new Pilot(series, "SCO081@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco081);
 
-			sco154 = new Pilot(series, "SCO154@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco154 = new Pilot(series, "SCO154@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco154);
 
-			sco159 = new Pilot(series, "SCO159@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco159 = new Pilot(series, "SCO159@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco159);
 
-			sco179 = new Pilot(series, "SCO179@2005", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco179 = new Pilot(series, "SCO179@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco179);
 
-			sco197 = new Pilot(series, "SCO197@2006", Gender.FEMALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco197 = new Pilot(series, "SCO197@2006", Sex.FEMALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco197);
 
-			ir014 = new Pilot(series, "IR014@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir014 = new Pilot(series, "IR014@2009", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir014);
 
-			ir022 = new Pilot(series, "IR022@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir022 = new Pilot(series, "IR022@2009", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir022);
 
-			ir025 = new Pilot(series, "IR025@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir025 = new Pilot(series, "IR025@2009", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir025);
 
-			ir027 = new Pilot(series, "IR027@2005", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir027 = new Pilot(series, "IR027@2005", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir027);
 
-			ir028 = new Pilot(series, "IR028@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir028 = new Pilot(series, "IR028@2009", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir028);
 
-			ir043 = new Pilot(series, "IR043@2005", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir043 = new Pilot(series, "IR043@2005", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir043);
 
-			ir073 = new Pilot(series, "IR073@2008", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir073 = new Pilot(series, "IR073@2008", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir073);
 
-			ir077 = new Pilot(series, "IR077@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir077 = new Pilot(series, "IR077@2009", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir077);
 
-			ir085 = new Pilot(series, "IR085@2008", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir085 = new Pilot(series, "IR085@2008", Sex.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir085);
 
-			k015 = new Pilot(series, "K015@2009", Gender.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
+			k015 = new Pilot(series, "K015@2009", Sex.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(k015);
 
-			k016 = new Pilot(series, "K016@2009", Gender.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
+			k016 = new Pilot(series, "K016@2009", Sex.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(k016);
 
-			k078 = new Pilot(series, "K078@2009", Gender.FEMALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
+			k078 = new Pilot(series, "K078@2009", Sex.FEMALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(k078);
 
-			k099 = new Pilot(series, "K099@2009", Gender.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
+			k099 = new Pilot(series, "K099@2009", Sex.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(k099);
 
-			k877 = new Pilot(series, "K877@2009", Gender.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
+			k877 = new Pilot(series, "K877@2009", Sex.MALE, "England"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(k877);
 
 			createRaceNumbers(series.getPilots());

@@ -19,16 +19,16 @@ package eu.lp0.cursus.db.data;
 
 import eu.lp0.cursus.i18n.TranslatedEnum;
 
-public enum Gender implements TranslatedEnum {
+public enum Sex implements TranslatedEnum {
 	/** Male */
-	MALE ("gender.male"), //$NON-NLS-1$
+	MALE ("sex.male"), //$NON-NLS-1$
 
 	/** Female */
-	FEMALE ("gender.female"); //$NON-NLS-1$
+	FEMALE ("sex.female"); //$NON-NLS-1$
 
 	private final String key;
 
-	private Gender(String key) {
+	private Sex(String key) {
 		this.key = key;
 	}
 

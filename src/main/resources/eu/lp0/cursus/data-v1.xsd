@@ -100,7 +100,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="name"/>
-				<xs:element ref="gender" minOccurs="0"/>
+				<xs:element ref="sex" minOccurs="0"/>
 				<xs:element ref="country"/>
 				<xs:element ref="raceNumber" minOccurs="0"/>
 				<xs:element ref="member" minOccurs="0" maxOccurs="unbounded"/>
@@ -110,10 +110,10 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="gender" type="gender"/>
+	<xs:element name="sex" type="sex"/>
 	<xs:element name="country" type="string"/>
 
-	<xs:simpleType name="gender">
+	<xs:simpleType name="sex">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="MALE"/>
 			<xs:enumeration value="FEMALE"/>

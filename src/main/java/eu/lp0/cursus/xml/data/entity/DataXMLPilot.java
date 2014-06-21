@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import eu.lp0.cursus.db.data.Class;
-import eu.lp0.cursus.db.data.Gender;
+import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.xml.common.AbstractXMLEntity;
 import eu.lp0.cursus.xml.data.ref.DataXMLClassMember;
@@ -34,7 +34,7 @@ public class DataXMLPilot extends AbstractXMLEntity<Pilot> {
 		super(pilot);
 
 		name = pilot.getName();
-		gender = pilot.getGender();
+		sex = pilot.getSex();
 		country = pilot.getCountry();
 		if (pilot.getRaceNumber() != null) {
 			raceNumber = new DataXMLRaceNumber(pilot.getRaceNumber());
@@ -59,14 +59,14 @@ public class DataXMLPilot extends AbstractXMLEntity<Pilot> {
 		this.name = name;
 	}
 
-	private Gender gender;
+	private Sex sex;
 
-	public Gender getGender() {
-		return gender;
+	public Sex getSex() {
+		return sex;
 	}
 
-	public void setGender(Gender gender) {
-		this.gender = gender;
+	public void setSex(Sex sex) {
+		this.sex = sex;
 	}
 
 	private String country;

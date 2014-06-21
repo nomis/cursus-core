@@ -32,7 +32,7 @@ import eu.lp0.cursus.db.data.Series;
 
 public class CCSeries2014 extends AbstractSPKASeries {
 	public CCSeries2014(boolean top5) {
-		super("Celtic Challenge 2014", top5 ? CCConstants.UUID_2013 : FISLYConstants.UUID_2010); //$NON-NLS-1$
+		super("Celtic Challenge 2014", top5 ? CCConstants.UUID_2013 : FISLYConstants.UUID_2010, "Scotland", "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	}
 
 	protected static final int SERIES_FLEET = 15;
@@ -100,11 +100,6 @@ public class CCSeries2014 extends AbstractSPKASeries {
 		createDatabase();
 		createEvent1Races();
 		createEvent2Races();
-	}
-
-	@Override
-	protected boolean isPrivateSeries() {
-		return false;
 	}
 
 	protected void createSeriesData() throws Exception {

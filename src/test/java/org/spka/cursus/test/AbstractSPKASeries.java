@@ -82,8 +82,8 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 		return Arrays.asList(new ScoresXMLFile(seriesScores, eventScores, raceScores));
 	}
 
-	protected boolean isPrivateSeries() {
-		return true;
+	protected boolean isStrictCountryFilter() {
+		return false;
 	}
 
 	/**
@@ -93,7 +93,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
+				return SERIES_COUNTRIES.contains(pilot.getCountry());
 			}
 		});
 	}
@@ -103,6 +103,10 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 	 * (but only up to and including the specified event)
 	 */
 	public Set<Pilot> getEventResultsPilots(final Series series, final Event event) {
+		if (isStrictCountryFilter()) {
+			return getSeriesResultsPilots(series, event);
+		}
+
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
@@ -114,13 +118,13 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
@@ -138,13 +142,13 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 			public boolean apply(@Nonnull Pilot pilot) {
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 

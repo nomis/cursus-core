@@ -60,7 +60,7 @@
     <raceNumber number="0" organisation="IR"/>
    </pilot>
    <pilot xml:id="Pilot2bb830639c3b4">
-    <name xml:space="preserve">IR014@2013</name>
+    <name xml:space="preserve">IR014@2009</name>
     <gender>MALE</gender>
     <country xml:space="preserve">Ireland</country>
     <raceNumber number="14" organisation="IR"/>
@@ -72,7 +72,7 @@
     <raceNumber number="16" organisation="IR"/>
    </pilot>
    <pilot xml:id="Pilot2bb830639c3b6">
-    <name xml:space="preserve">IR025@2013</name>
+    <name xml:space="preserve">IR025@2009</name>
     <gender>MALE</gender>
     <country xml:space="preserve">Ireland</country>
     <raceNumber number="25" organisation="IR"/>

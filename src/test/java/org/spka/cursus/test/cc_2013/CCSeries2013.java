@@ -182,13 +182,13 @@ public class CCSeries2013 extends AbstractSPKASeries {
 			sco808 = new Pilot(series, "SCO808@2010", Gender.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco808);
 
-			ir014 = new Pilot(series, "IR014@2013", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir014 = new Pilot(series, "IR014@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir014);
 
 			ir016 = new Pilot(series, "IR016@2013", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir016);
 
-			ir025 = new Pilot(series, "IR025@2013", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir025 = new Pilot(series, "IR025@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir025);
 
 			ir027 = new Pilot(series, "IR027@2005", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -197,7 +197,7 @@ public class CCSeries2013 extends AbstractSPKASeries {
 			ir053 = new Pilot(series, "IR053@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir053);
 
-			ir077 = new Pilot(series, "IR077@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir077 = new Pilot(series, "IR077@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir077);
 
 			ir085 = new Pilot(series, "IR085@2008", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$

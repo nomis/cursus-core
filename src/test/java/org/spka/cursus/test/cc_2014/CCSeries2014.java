@@ -147,13 +147,13 @@ public class CCSeries2014 extends AbstractSPKASeries {
 			ir000 = new Pilot(series, "IR000@2014", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir000);
 
-			ir014 = new Pilot(series, "IR014@2013", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir014 = new Pilot(series, "IR014@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir014);
 
 			ir016 = new Pilot(series, "IR016@2013", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir016);
 
-			ir025 = new Pilot(series, "IR025@2013", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir025 = new Pilot(series, "IR025@2009", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir025);
 
 			ir027 = new Pilot(series, "IR027@2005", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$

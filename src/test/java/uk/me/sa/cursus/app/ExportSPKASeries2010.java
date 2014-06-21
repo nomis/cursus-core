@@ -61,10 +61,12 @@ public class ExportSPKASeries2010 {
 				seriesScores = scorer.scoreSeries(series, Predicates.in(getSeriesResultsPilots(series)));
 
 				for (Event event : series.getEvents()) {
-					eventScores.add(scorer.scoreRaces(event.getRaces(), Predicates.in(getSeriesResultsPilots(series))));
+					if (!event.getRaces().isEmpty()) {
+						eventScores.add(scorer.scoreRaces(event.getRaces(), Predicates.in(getEventResultsPilots(series, event))));
 
-					for (Race race : event.getRaces()) {
-						raceScores.add(scorer.scoreRaces(Collections.singletonList(race), Predicates.in(getSeriesResultsPilots(series))));
+						for (Race race : event.getRaces()) {
+							raceScores.add(scorer.scoreRaces(Collections.singletonList(race), Predicates.in(getEventResultsPilots(series, event))));
+						}
 					}
 				}
 

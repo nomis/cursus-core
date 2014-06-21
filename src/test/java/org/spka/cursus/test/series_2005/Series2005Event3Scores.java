@@ -53,7 +53,8 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Scores scores = scorer.scoreSeries(series, Predicates.in(getSeriesResultsPilots(series)));
+			Event event3 = eventDAO.find(series, EVENT3_NAME);
+			Scores scores = scorer.scoreSeries(series, getSeriesResultsPilots(series, event3), Predicates.in(getSeriesResultsPilots(series, event3)));
 			checkSeriesAtEvent3(scores);
 
 			DatabaseSession.commit();
@@ -78,7 +79,8 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 			races.addAll(event2.getRaces());
 			races.addAll(event3.getRaces());
 
-			Scores scores = scorer.scoreRaces(races, getSeriesResultsPilots(series), Predicates.in(getSeriesResultsPilots(series)));
+			Scores scores = scorer.scoreRaces(races, getSeriesResultsPilots(series, event3), getSeriesResultsEvents(series, event3),
+					Predicates.in(getSeriesResultsPilots(series, event3)));
 			checkSeriesAtEvent3(scores);
 
 			DatabaseSession.commit();
@@ -101,7 +103,7 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		Event event3 = eventDAO.find(series, EVENT3_NAME);
 		Race race8 = raceDAO.find(event3, RACE8_NAME);
 
-		Assert.assertEquals(SERIES_FLEET, scores.getPilots().size());
+		Assert.assertEquals(SERIES_FLEET_AT_EVENT3, scores.getPilots().size());
 
 		RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1);
 		race1AssertUtil.assertPilot(sco023, 3, 0, false, 0, 1);
@@ -122,11 +124,8 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race1AssertUtil.assertPilot(sco109, 0, 0, false, 17, 12);
 		race1AssertUtil.assertPilot(sco117, 0, 0, false, 17, 12);
 		race1AssertUtil.assertPilot(sco135, 0, 0, false, 17, 12);
-		race1AssertUtil.assertPilot(sco143, 0, 0, false, 17, 12);
 		race1AssertUtil.assertPilot(sco154, 0, 0, false, 17, 12);
 		race1AssertUtil.assertPilot(sco169, 0, 0, false, 17, 12);
-		race1AssertUtil.assertPilot(sco178, 0, 0, false, 17, 12);
-		race1AssertUtil.assertPilot(sco179, 0, 0, false, 17, 12);
 		race1AssertUtil.assertDone(0);
 
 		RaceAssertUtil race2AssertUtil = new RaceAssertUtil(scores, race2);
@@ -148,11 +147,8 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race2AssertUtil.assertPilot(sco100, 0, 0, false, 17, 14);
 		race2AssertUtil.assertPilot(sco105, 0, 0, false, 17, 14);
 		race2AssertUtil.assertPilot(sco117, 0, 0, false, 17, 14);
-		race2AssertUtil.assertPilot(sco143, 0, 0, false, 17, 14);
 		race2AssertUtil.assertPilot(sco159, 0, 0, false, 17, 14);
 		race2AssertUtil.assertPilot(sco169, 0, 0, false, 17, 14);
-		race2AssertUtil.assertPilot(sco178, 0, 0, false, 17, 14);
-		race2AssertUtil.assertPilot(sco179, 0, 0, false, 17, 14);
 		race2AssertUtil.assertDone(0);
 
 		RaceAssertUtil race3AssertUtil = new RaceAssertUtil(scores, race3);
@@ -175,10 +171,7 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race3AssertUtil.assertPilot(sco071, 0, 0, false, 17, 16);
 		race3AssertUtil.assertPilot(sco100, 0, 0, false, 17, 16);
 		race3AssertUtil.assertPilot(sco105, 0, 0, false, 17, 16);
-		race3AssertUtil.assertPilot(sco143, 0, 0, false, 17, 16);
 		race3AssertUtil.assertPilot(sco169, 0, 0, false, 17, 16);
-		race3AssertUtil.assertPilot(sco178, 0, 0, false, 17, 16);
-		race3AssertUtil.assertPilot(sco179, 0, 0, false, 17, 16);
 		race3AssertUtil.assertDone(0);
 
 		RaceAssertUtil race4AssertUtil = new RaceAssertUtil(scores, race4);
@@ -201,10 +194,7 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race4AssertUtil.assertPilot(sco071, 0, 0, false, 17, 16);
 		race4AssertUtil.assertPilot(sco100, 0, 0, false, 17, 16);
 		race4AssertUtil.assertPilot(sco105, 0, 0, false, 17, 16);
-		race4AssertUtil.assertPilot(sco143, 0, 0, false, 17, 16);
 		race4AssertUtil.assertPilot(sco169, 0, 0, false, 17, 16);
-		race4AssertUtil.assertPilot(sco178, 0, 0, false, 17, 16);
-		race4AssertUtil.assertPilot(sco179, 0, 0, false, 17, 16);
 		race4AssertUtil.assertDone(0);
 
 		RaceAssertUtil race5AssertUtil = new RaceAssertUtil(scores, race5);
@@ -227,10 +217,7 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race5AssertUtil.assertPilot(sco020, 0, 0, false, 18, 17);
 		race5AssertUtil.assertPilot(sco060, 0, 0, false, 18, 17);
 		race5AssertUtil.assertPilot(sco105, 0, 0, false, 18, 17);
-		race5AssertUtil.assertPilot(sco143, 0, 0, false, 18, 17);
 		race5AssertUtil.assertPilot(sco169, 0, 0, false, 18, 17);
-		race5AssertUtil.assertPilot(sco178, 0, 0, false, 18, 17);
-		race5AssertUtil.assertPilot(sco179, 0, 0, false, 18, 17);
 		race5AssertUtil.assertDone(0);
 
 		RaceAssertUtil race6AssertUtil = new RaceAssertUtil(scores, race6);
@@ -253,10 +240,7 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race6AssertUtil.assertPilot(sco060, 4, 0, false, 17, 17);
 		race6AssertUtil.assertPilot(sco020, 0, 0, false, 18, 18);
 		race6AssertUtil.assertPilot(sco105, 0, 0, false, 18, 18);
-		race6AssertUtil.assertPilot(sco143, 0, 0, false, 18, 18);
 		race6AssertUtil.assertPilot(sco169, 0, 0, false, 18, 18);
-		race6AssertUtil.assertPilot(sco178, 0, 0, false, 18, 18);
-		race6AssertUtil.assertPilot(sco179, 0, 0, false, 18, 18);
 		race6AssertUtil.assertDone(0);
 
 		RaceAssertUtil race7AssertUtil = new RaceAssertUtil(scores, race7);
@@ -279,10 +263,7 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race7AssertUtil.assertPilot(sco071, 1, 0, false, 17, 17);
 		race7AssertUtil.assertPilot(sco020, 0, 0, false, 18, 18);
 		race7AssertUtil.assertPilot(sco105, 0, 0, false, 18, 18);
-		race7AssertUtil.assertPilot(sco143, 0, 0, false, 18, 18);
 		race7AssertUtil.assertPilot(sco169, 0, 0, false, 18, 18);
-		race7AssertUtil.assertPilot(sco178, 0, 0, false, 18, 18);
-		race7AssertUtil.assertPilot(sco179, 0, 0, false, 18, 18);
 		race7AssertUtil.assertDone(0);
 
 		RaceAssertUtil race8AssertUtil = new RaceAssertUtil(scores, race8);
@@ -305,10 +286,7 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		race8AssertUtil.assertPilot(sco020, 0, 0, false, 16, 16);
 		race8AssertUtil.assertPilot(sco105, 0, 0, false, 16, 16);
 		race8AssertUtil.assertPilot(sco135, 0, 0, false, 16, 16);
-		race8AssertUtil.assertPilot(sco143, 0, 0, false, 16, 16);
 		race8AssertUtil.assertPilot(sco158, 0, 0, false, 16, 16);
-		race8AssertUtil.assertPilot(sco178, 0, 0, false, 16, 16);
-		race8AssertUtil.assertPilot(sco179, 0, 0, false, 16, 16);
 		race8AssertUtil.assertDone(0);
 
 		OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
@@ -332,9 +310,6 @@ public class Series2005Event3Scores extends Series2005Event2Scores {
 		overallAssertUtil.assertPilot(sco071, 0, 76, 18, 17, 17);
 		overallAssertUtil.assertPilot(sco169, 0, 90, 19, 18, 18);
 		overallAssertUtil.assertPilot(sco105, 0, 92, 20, 18, 18);
-		overallAssertUtil.assertPilot(sco143, 0, 102, 21, 18, 18);
-		overallAssertUtil.assertPilot(sco178, 0, 102, 21, 18, 18);
-		overallAssertUtil.assertPilot(sco179, 0, 102, 21, 18, 18);
 		overallAssertUtil.assertOrder();
 	}
 

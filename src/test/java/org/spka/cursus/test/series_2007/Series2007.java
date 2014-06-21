@@ -34,7 +34,10 @@ public class Series2007 extends AbstractSPKASeries {
 		super("SPKA Race Series 2007/08", SPKAConstants.UUID_2005); //$NON-NLS-1$
 	}
 
-	protected static final int SERIES_FLEET = 22;
+	protected static final int SERIES_FLEET_AT_EVENT1 = 20;
+	protected static final int SERIES_FLEET_AT_EVENT2 = 21;
+	protected static final int SERIES_FLEET_AT_EVENT3 = 21;
+	protected static final int SERIES_FLEET_AT_EVENT4 = 22;
 
 	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
 	protected static final String EVENT1_DESC = ""; //$NON-NLS-1$

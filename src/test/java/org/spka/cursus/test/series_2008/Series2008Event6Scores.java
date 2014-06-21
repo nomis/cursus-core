@@ -53,7 +53,8 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Scores scores = scorer.scoreSeries(series, Predicates.in(getSeriesResultsPilots(series)));
+			Event event6 = eventDAO.find(series, EVENT6_NAME);
+			Scores scores = scorer.scoreSeries(series, getSeriesResultsPilots(series, event6), Predicates.in(getSeriesResultsPilots(series, event6)));
 			checkSeriesAtEvent6(scores);
 
 			DatabaseSession.commit();
@@ -84,7 +85,8 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 			races.addAll(event5.getRaces());
 			races.addAll(event6.getRaces());
 
-			Scores scores = scorer.scoreRaces(races, getSeriesResultsPilots(series), Predicates.in(getSeriesResultsPilots(series)));
+			Scores scores = scorer.scoreRaces(races, getSeriesResultsPilots(series, event6), getSeriesResultsEvents(series, event6),
+					Predicates.in(getSeriesResultsPilots(series, event6)));
 			checkSeriesAtEvent6(scores);
 
 			DatabaseSession.commit();
@@ -114,7 +116,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 		Race race11 = raceDAO.find(event6, RACE11_NAME);
 		Race race12 = raceDAO.find(event6, RACE12_NAME);
 
-		Assert.assertEquals(SERIES_FLEET, scores.getPilots().size());
+		Assert.assertEquals(SERIES_FLEET_AT_EVENT6, scores.getPilots().size());
 
 		RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1);
 		race1AssertUtil.assertPilot(sco023, 4, 0, false, 0, 1);
@@ -353,10 +355,10 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 
 			Scores scores = scorer.scoreEvent(event6, Predicates.in(getEventResultsPilots(series, event6)));
 			Assert.assertEquals(EVENT6_FLEET, scores.getPilots().size());
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race9));
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race10));
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race11));
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race12));
+			Assert.assertEquals(RACE9_FLEET, scores.getFleetSize(race9));
+			Assert.assertEquals(RACE10_FLEET, scores.getFleetSize(race10));
+			Assert.assertEquals(RACE11_FLEET, scores.getFleetSize(race11));
+			Assert.assertEquals(RACE12_FLEET, scores.getFleetSize(race12));
 
 			RaceAssertUtil race9AssertUtil = new RaceAssertUtil(scores, race9);
 			race9AssertUtil.assertPilot(sco081, 7, 0, false, 0, 1);
@@ -451,7 +453,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 
 			Scores scores = scorer.scoreRace(race9, Predicates.in(getEventResultsPilots(series, event6)));
 			Assert.assertEquals(EVENT6_FLEET, scores.getPilots().size());
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race9));
+			Assert.assertEquals(RACE9_FLEET, scores.getFleetSize(race9));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race9);
 			raceAssertUtil.assertPilot(sco081, 7, 0, false, 0, 1);
@@ -501,7 +503,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 
 			Scores scores = scorer.scoreRace(race10, Predicates.in(getEventResultsPilots(series, event6)));
 			Assert.assertEquals(EVENT6_FLEET, scores.getPilots().size());
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race10));
+			Assert.assertEquals(RACE10_FLEET, scores.getFleetSize(race10));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race10);
 			raceAssertUtil.assertPilot(sco081, 8, 0, false, 0, 1);
@@ -551,7 +553,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 
 			Scores scores = scorer.scoreRace(race11, Predicates.in(getEventResultsPilots(series, event6)));
 			Assert.assertEquals(EVENT6_FLEET, scores.getPilots().size());
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race11));
+			Assert.assertEquals(RACE11_FLEET, scores.getFleetSize(race11));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race11);
 			raceAssertUtil.assertPilot(sco200, 8, 0, false, 0, 1);
@@ -601,7 +603,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 
 			Scores scores = scorer.scoreRace(race12, Predicates.in(getEventResultsPilots(series, event6)));
 			Assert.assertEquals(EVENT6_FLEET, scores.getPilots().size());
-			Assert.assertEquals(EVENT6_FLEET, scores.getFleetSize(race12));
+			Assert.assertEquals(RACE12_FLEET, scores.getFleetSize(race12));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race12);
 			raceAssertUtil.assertPilot(sco200, 8, 0, false, 0, 1);

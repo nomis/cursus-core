@@ -35,55 +35,72 @@ public class Series2008 extends AbstractSPKASeries {
 		super("SPKA Race Series 2008/09", SPKAConstants.UUID_2005); //$NON-NLS-1$
 	}
 
-	protected static final int SERIES_FLEET = 14;
+	protected static final int SERIES_FLEET_AT_EVENT1 = 11;
+	protected static final int SERIES_FLEET_AT_EVENT2 = 12;
+	protected static final int SERIES_FLEET_AT_EVENT3 = 14;
+	protected static final int SERIES_FLEET_AT_EVENT4 = 14;
+	protected static final int SERIES_FLEET_AT_EVENT5 = 14;
+	protected static final int SERIES_FLEET_AT_EVENT6 = 14;
 
 	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
 	protected static final String EVENT1_DESC = ""; //$NON-NLS-1$
 	protected static final int EVENT1_FLEET = 11;
 	protected static final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
 	protected static final String RACE1_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE1_FLEET = 11;
 	protected static final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
 	protected static final String RACE2_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE2_FLEET = 11;
 
 	protected static final String EVENT2_NAME = "Race Event 2"; //$NON-NLS-1$
 	protected static final String EVENT2_DESC = ""; //$NON-NLS-1$
 	protected static final int EVENT2_FLEET = 12;
 	protected static final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
 	protected static final String RACE3_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE3_FLEET = 12;
 
 	protected static final String EVENT3_NAME = "Race Event 3"; //$NON-NLS-1$
 	protected static final String EVENT3_DESC = ""; //$NON-NLS-1$
 	protected static final int EVENT3_FLEET = 13;
 	protected static final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
 	protected static final String RACE4_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE4_FLEET = 13;
 
 	protected static final String EVENT4_NAME = "Race Event 4"; //$NON-NLS-1$
 	protected static final String EVENT4_DESC = ""; //$NON-NLS-1$
 	protected static final int EVENT4_FLEET = 12;
 	protected static final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
 	protected static final String RACE5_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE5_FLEET = 12;
 	protected static final String RACE6_NAME = "Race 6"; //$NON-NLS-1$
 	protected static final String RACE6_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE6_FLEET = 12;
 
 	protected static final String EVENT5_NAME = "Race Event 5"; //$NON-NLS-1$
 	protected static final String EVENT5_DESC = ""; //$NON-NLS-1$
 	protected static final int EVENT5_FLEET = 10;
 	protected static final String RACE7_NAME = "Race 7"; //$NON-NLS-1$
 	protected static final String RACE7_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE7_FLEET = 10;
 	protected static final String RACE8_NAME = "Race 8"; //$NON-NLS-1$
 	protected static final String RACE8_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE8_FLEET = 10;
 
 	protected static final String EVENT6_NAME = "Race Event 6"; //$NON-NLS-1$
 	protected static final String EVENT6_DESC = ""; //$NON-NLS-1$
 	protected static final int EVENT6_FLEET = 12;
 	protected static final String RACE9_NAME = "Race 9"; //$NON-NLS-1$
 	protected static final String RACE9_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE9_FLEET = 12;
 	protected static final String RACE10_NAME = "Race 10"; //$NON-NLS-1$
 	protected static final String RACE10_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE10_FLEET = 12;
 	protected static final String RACE11_NAME = "Race 11"; //$NON-NLS-1$
 	protected static final String RACE11_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE11_FLEET = 12;
 	protected static final String RACE12_NAME = "Race 12"; //$NON-NLS-1$
 	protected static final String RACE12_DESC = ""; //$NON-NLS-1$
+	protected static final int RACE12_FLEET = 12;
 
 	protected Pilot sco019;
 	protected Pilot sco021;

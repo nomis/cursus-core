@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2013-2014  Simon Arlott
+	Copyright 2014  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -17,14 +17,27 @@
  */
 package uk.me.sa.cursus.app;
 
+import org.junit.Ignore;
 import org.spka.cursus.test.cc_2008.CCSeries2008;
 
-public class ExportCCSeries2008Top4 extends ExportSeries {
-	public ExportCCSeries2008Top4() {
-		super("cc_2008_top4", new CCSeries2008(true)); //$NON-NLS-1$
+@Ignore
+@SuppressWarnings("nls")
+public class CreateCCTests2008Top3 extends CCSeries2008 {
+	public static void main(String[] args) throws Exception {
+		new CreateCCTests2008Top3().createTests();
 	}
 
-	public static void main(String[] args) throws Exception {
-		new ExportCCSeries2008Top4().export();
+	public CreateCCTests2008Top3() {
+		super(true);
+	}
+
+	private void createTests() throws Exception {
+		createDatabase();
+		CreateSPKATests create = new CreateSPKATests(this, "cc_2008", "CCSeries2008Top3");
+
+		createEvent1Races();
+		create.generate("Series2008Top3Event1Scores");
+
+		closeDatabase();
 	}
 }

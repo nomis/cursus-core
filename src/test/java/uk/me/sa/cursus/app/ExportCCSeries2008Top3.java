@@ -15,17 +15,16 @@
 	You should have received a copy of the GNU Affero General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.spka.cursus.scoring;
+package uk.me.sa.cursus.app;
 
-import eu.lp0.cursus.scoring.data.RacePointsData;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
-import eu.lp0.cursus.scoring.scores.impl.TopCountryRacePointsData;
+import org.spka.cursus.test.cc_2008.CCSeries2008;
 
-public class CCScoresFactory2013 extends CCScoresFactory2008 {
-	@Override
-	public RacePointsData newRacePointsData(Scores scores) {
-		return new TopCountryRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.EVENT, GenericRacePointsData.FleetMethod.SERIES,
-				CCConstants.TOP_COUNTRY_MIN_PILOTS_2013, CCConstants.TOP_COUNTRY_MAX_PILOTS_2013);
+public class ExportCCSeries2008Top3 extends ExportSeries {
+	public ExportCCSeries2008Top3() {
+		super("cc_2008_top3", new CCSeries2008(true)); //$NON-NLS-1$
+	}
+
+	public static void main(String[] args) throws Exception {
+		new ExportCCSeries2008Top3().export();
 	}
 }

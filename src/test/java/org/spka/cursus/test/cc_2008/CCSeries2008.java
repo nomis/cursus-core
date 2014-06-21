@@ -31,8 +31,8 @@ import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 
 public class CCSeries2008 extends AbstractSPKASeries {
-	public CCSeries2008(boolean top4) {
-		super("Celtic Challenge 2008", top4 ? CCConstants.UUID_2013 : SPKAConstants.UUID_2005); //$NON-NLS-1$
+	public CCSeries2008(boolean top3) {
+		super("Celtic Challenge 2008", top3 ? CCConstants.UUID_2008 : SPKAConstants.UUID_2005); //$NON-NLS-1$
 	}
 
 	protected static final int SERIES_FLEET_AT_EVENT1 = 18;

@@ -15,29 +15,24 @@
 	You should have received a copy of the GNU Affero General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.me.sa.cursus.app;
+package org.spka.cursus.scoring;
 
-import org.junit.Ignore;
-import org.spka.cursus.test.cc_2008.CCSeries2008;
+import java.util.List;
+import java.util.Set;
 
-@Ignore
-@SuppressWarnings("nls")
-public class CreateCCTests2008Top4 extends CCSeries2008 {
-	public static void main(String[] args) throws Exception {
-		new CreateCCTests2008Top4().createTests();
-	}
+import com.google.common.base.Predicate;
 
-	public CreateCCTests2008Top4() {
-		super(true);
-	}
+import eu.lp0.cursus.db.data.Event;
+import eu.lp0.cursus.db.data.Pilot;
+import eu.lp0.cursus.db.data.Race;
+import eu.lp0.cursus.scoring.data.Scores;
+import eu.lp0.cursus.scoring.scorer.AbstractScorer;
+import eu.lp0.cursus.scoring.scorer.ScoringSystem;
 
-	private void createTests() throws Exception {
-		createDatabase();
-		CreateSPKATests create = new CreateSPKATests(this, "cc_2008", "CCSeries2008Top4");
-
-		createEvent1Races();
-		create.generate("Series2008Top4Event1Scores");
-
-		closeDatabase();
+@ScoringSystem(uuid = CCConstants.UUID_2008, name = CCConstants.NAME_2008)
+public class CCScorer2008 extends AbstractScorer {
+	@Override
+	public Scores scoreRaces(List<Race> races, Set<Pilot> pilots, Set<Event> events, Predicate<Pilot> fleetFilter) {
+		return new CCScoresFactory2008().newScores(pilots, races, events, fleetFilter, this);
 	}
 }

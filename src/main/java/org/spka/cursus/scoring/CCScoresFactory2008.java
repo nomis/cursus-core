@@ -41,8 +41,8 @@ public class CCScoresFactory2008 extends FISLYScoresFactory2010 {
 
 	@Override
 	public RacePointsData newRacePointsData(Scores scores) {
-		return new TopCountryRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.RACE, CCConstants.TOP_COUNTRY_MIN_PILOTS_2008,
-				CCConstants.TOP_COUNTRY_MAX_PILOTS_2008);
+		return new TopCountryRacePointsData<Scores>(scores, GenericRacePointsData.FleetMethod.RACE, CCConstants.TOP_COUNTRY_PILOTS_2008,
+				CCConstants.TOP_COUNTRY_PILOTS_2008);
 	}
 
 	@Override

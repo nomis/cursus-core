@@ -314,7 +314,7 @@ public class Series2012 extends AbstractSPKASeries {
 			ir075 = new Pilot(series, "IR075@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir075);
 
-			ir085 = new Pilot(series, "IR085@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
+			ir085 = new Pilot(series, "IR085@2008", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(ir085);
 
 			ir181 = new Pilot(series, "IR181@2012", Gender.MALE, "Ireland"); //$NON-NLS-1$ //$NON-NLS-2$

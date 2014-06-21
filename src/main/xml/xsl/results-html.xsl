@@ -372,7 +372,7 @@
 			<xsl:text> (</xsl:text>
 			<xsl:choose>
 				<xsl:when test="@type = 'AUTOMATIC'">
-					<xsl:value-of select="@value"/> penalt<xsl:choose><xsl:when test="$absvalue = 1">y</xsl:when><xsl:otherwise>s</xsl:otherwise></xsl:choose>
+					<xsl:value-of select="@value"/> penalt<xsl:choose><xsl:when test="$absvalue = 1">y</xsl:when><xsl:otherwise>ies</xsl:otherwise></xsl:choose>
 				</xsl:when>
 				<xsl:when test="@type = 'FIXED'">
 					<xsl:value-of select="@value"/> point<xsl:if test="$absvalue != 1">s</xsl:if>

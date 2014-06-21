@@ -128,6 +128,7 @@ public class ValidateScoresXML {
 		} finally {
 			db.endSession();
 		}
+		db.close(true);
 	}
 
 	private static void validate(ScoresXMLFile scores) throws Exception {

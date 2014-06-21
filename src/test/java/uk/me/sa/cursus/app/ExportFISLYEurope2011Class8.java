@@ -19,7 +19,7 @@ package uk.me.sa.cursus.app;
 
 import java.io.File;
 
-import org.fisly.cursus.test.europe_2011.AbstractSeries2011;
+import org.fisly.cursus.test.europe_2011.FISLYSeries2011;
 import org.junit.Ignore;
 
 import eu.lp0.cursus.db.DatabaseSession;
@@ -40,7 +40,7 @@ public class ExportFISLYEurope2011Class8 {
 	public static final File SERIES_FILE_F2 = new File("target/fislyEurope2011Class8_f2.xml"); //$NON-NLS-1$
 
 	@Ignore
-	public static class AllScores extends AbstractSeries2011 {
+	public static class AllScores extends FISLYSeries2011 {
 		public final ScoresXMLFile exportA;
 		public final ScoresXMLFile exportM;
 		public final ScoresXMLFile exportF;
@@ -50,8 +50,7 @@ public class ExportFISLYEurope2011Class8 {
 			Scores seriesScoresM;
 			Scores seriesScoresF;
 
-			createDatabase();
-			createEvent1Races();
+			createAllData();
 
 			db.startSession();
 			try {

@@ -26,7 +26,7 @@ import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
 import eu.lp0.cursus.db.data.Series;
 
-public class Series2011DataTests extends AbstractSeries2011 {
+public class Series2011DataTests extends Series2011 {
 	@Test
 	public void checkPilots() throws Exception {
 		createSeriesData();

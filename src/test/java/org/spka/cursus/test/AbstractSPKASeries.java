@@ -20,6 +20,7 @@ package org.spka.cursus.test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -28,6 +29,7 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Sets;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -38,14 +40,50 @@ import eu.lp0.cursus.db.data.RaceNumber;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.test.db.AbstractDatabaseTest;
+import eu.lp0.cursus.test.AbstractSeries;
+import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 
-@SuppressFBWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE", "SIC_INNER_SHOULD_BE_STATIC_ANON" })
-public class AbstractSeries extends AbstractDatabaseTest {
-	protected final Set<String> SERIES_COUNTRIES = new HashSet<String>(Arrays.asList("Scotland")); //$NON-NLS-1$
+@SuppressFBWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE" })
+public abstract class AbstractSPKASeries extends AbstractSeries {
+	private final Set<String> SERIES_COUNTRIES;
 
-	private static boolean isPrivateSeries(Series series) {
-		return series.getName().startsWith("SPKA "); //$NON-NLS-1$
+	public AbstractSPKASeries(String seriesName, String scorerUUID) {
+		this(seriesName, scorerUUID, "Scotland"); //$NON-NLS-1$
+	}
+
+	public AbstractSPKASeries(String seriesName, String scorerUUID, String... seriesCountries) {
+		super(seriesName, scorerUUID);
+		SERIES_COUNTRIES = new HashSet<String>(Arrays.asList(seriesCountries));
+	}
+
+	public String[] getSeriesCountries() {
+		return SERIES_COUNTRIES.toArray(new String[0]);
+	}
+
+	@Override
+	public List<ScoresXMLFile> createScores() throws Exception {
+		Scores seriesScores;
+		List<Scores> eventScores = new ArrayList<Scores>();
+		List<Scores> raceScores = new ArrayList<Scores>();
+
+		Series series = seriesDAO.find(SERIES_NAME);
+		seriesScores = scorer.scoreSeries(series, Predicates.in(getSeriesResultsPilots(series)));
+
+		for (Event event : series.getEvents()) {
+			if (!event.getRaces().isEmpty()) {
+				eventScores.add(scorer.scoreRaces(event.getRaces(), Predicates.in(getEventResultsPilots(series, event))));
+
+				for (Race race : event.getRaces()) {
+					raceScores.add(scorer.scoreRaces(Collections.singletonList(race), Predicates.in(getEventResultsPilots(series, event))));
+				}
+			}
+		}
+
+		return Arrays.asList(new ScoresXMLFile(seriesScores, eventScores, raceScores));
+	}
+
+	protected boolean isPrivateSeries() {
+		return true;
 	}
 
 	/**
@@ -55,7 +93,7 @@ public class AbstractSeries extends AbstractDatabaseTest {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
+				return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
 			}
 		});
 	}
@@ -76,13 +114,13 @@ public class AbstractSeries extends AbstractDatabaseTest {
 
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
@@ -100,13 +138,13 @@ public class AbstractSeries extends AbstractDatabaseTest {
 			public boolean apply(@Nonnull Pilot pilot) {
 				for (Race race : pilot.getRaces().keySet()) {
 					if (race.getEvent().compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 
 				for (Event event_ : pilot.getEvents()) {
 					if (event_.compareTo(event) <= 0) {
-						return !isPrivateSeries(series) || SERIES_COUNTRIES.contains(pilot.getCountry());
+						return !isPrivateSeries() || SERIES_COUNTRIES.contains(pilot.getCountry());
 					}
 				}
 

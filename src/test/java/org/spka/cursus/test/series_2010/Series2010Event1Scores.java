@@ -37,7 +37,7 @@ import eu.lp0.cursus.test.util.RaceAssertUtil;
 /**
  * Scores at the end of event 1 (16/10/2010 to 17/10/2010)
  */
-public class Series2010Event1Scores extends AbstractSeries2010 {
+public class Series2010Event1Scores extends Series2010 {
 	@Override
 	@Before
 	public void createDatabase() throws Exception {

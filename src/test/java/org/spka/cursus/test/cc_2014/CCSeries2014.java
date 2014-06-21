@@ -18,7 +18,8 @@
 package org.spka.cursus.test.cc_2014;
 
 import org.fisly.cursus.scoring.FISLYConstants;
-import org.spka.cursus.test.AbstractSeries;
+import org.spka.cursus.scoring.CCConstants;
+import org.spka.cursus.test.AbstractSPKASeries;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
@@ -28,11 +29,12 @@ import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.scorer.Scorer;
-import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 
-public abstract class AbstractSeries2014 extends AbstractSeries {
-	protected static final String SERIES_NAME = "Celtic Challenge 2014"; //$NON-NLS-1$
+public class CCSeries2014 extends AbstractSPKASeries {
+	public CCSeries2014(boolean top5) {
+		super("Celtic Challenge 2014", top5 ? CCConstants.UUID_2013 : FISLYConstants.UUID_2010); //$NON-NLS-1$
+	}
+
 	protected static final int SERIES_FLEET = 15;
 	protected static final int SERIES_FLEET_AT_EVENT1 = 10;
 	protected static final int SERIES_FLEET_AT_EVENT2 = 15;
@@ -66,8 +68,6 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 	protected static final String RACE7_DESC = "West Sands (14/06/2014)"; //$NON-NLS-1$
 	protected static final int RACE7_PILOTS = 9;
 
-	protected Scorer scorer = ScorerFactory.newScorer(FISLYConstants.UUID_2010);
-
 	protected Pilot sco060;
 	protected Pilot sco066;
 	protected Pilot sco076;
@@ -94,6 +94,18 @@ public abstract class AbstractSeries2014 extends AbstractSeries {
 	private Event _event2;
 	private Race _race6;
 	private Race _race7;
+
+	@Override
+	public void createAllData() throws Exception {
+		createDatabase();
+		createEvent1Races();
+		createEvent2Races();
+	}
+
+	@Override
+	protected boolean isPrivateSeries() {
+		return false;
+	}
 
 	protected void createSeriesData() throws Exception {
 		if (_series != null) {

@@ -28,7 +28,7 @@ import eu.lp0.cursus.db.data.Series;
 /**
  * Scores at the end of non-event 1 (01/10/2011 to 02/10/2011)
  */
-public class Series2011NonEvent1Scores extends AbstractSeries2011 {
+public class Series2011NonEvent1Scores extends Series2011 {
 	@Override
 	@Before
 	public void createDatabase() throws Exception {

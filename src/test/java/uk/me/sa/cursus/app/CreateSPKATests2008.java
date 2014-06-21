@@ -18,15 +18,15 @@
 package uk.me.sa.cursus.app;
 
 import org.junit.Ignore;
-import org.spka.cursus.test.series_2008.AbstractSeries2008;
+import org.spka.cursus.test.series_2008.Series2008;
 
 public class CreateSPKATests2008 {
 	@Ignore
-	public static class AllScores extends AbstractSeries2008 {
+	public static class AllScores extends Series2008 {
 		@SuppressWarnings("nls")
 		public AllScores() throws Exception {
 			createDatabase();
-			CreateSPKATests create = new CreateSPKATests(db, "series_2008", "Series2008", SERIES_NAME, scorer);
+			CreateSPKATests create = new CreateSPKATests(db, "series_2008", "Series2008", SERIES_NAME, scorer.getUUID());
 
 			createEvent1Races();
 			create.generate("Series2008Event1Scores");

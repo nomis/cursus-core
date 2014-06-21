@@ -30,7 +30,7 @@ import org.spka.cursus.scoring.CCScorer2013;
 import org.spka.cursus.scoring.Scorer2005;
 import org.spka.cursus.scoring.Scorer2010;
 import org.spka.cursus.scoring.Scorer2011;
-import org.spka.cursus.test.AbstractSeries;
+import org.spka.cursus.test.AbstractSPKASeries;
 
 import com.google.common.base.Predicates;
 
@@ -41,27 +41,25 @@ import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scorer.Scorer;
 
 @Ignore
-public class CreateSPKATests extends AbstractSeries {
+public class CreateSPKATests extends AbstractSPKASeries {
 	private String packageName;
 	private String classPrefix;
 	private String seriesName;
-	private Scorer scorer;
 
 	private String superClass;
 	private boolean anyRaces;
 
-	@SuppressWarnings("nls")
-	public CreateSPKATests(Database db, String packageName, String classPrefix, String seriesName, Scorer scorer) {
+	public CreateSPKATests(Database db, String packageName, String classPrefix, String seriesName, String scorerUUID, String... countries) {
+		super(seriesName, scorerUUID, countries);
+
 		this.db = db;
 		this.packageName = packageName;
 		this.classPrefix = classPrefix;
 		this.seriesName = seriesName;
-		this.scorer = scorer;
 
-		superClass = "Abstract" + classPrefix;
+		superClass = classPrefix;
 	}
 
 	@SuppressWarnings("nls")
@@ -486,5 +484,10 @@ public class CreateSPKATests extends AbstractSeries {
 
 		superClass = className;
 		anyRaces |= hasRaces;
+	}
+
+	@Override
+	public void createAllData() throws Exception {
+
 	}
 }

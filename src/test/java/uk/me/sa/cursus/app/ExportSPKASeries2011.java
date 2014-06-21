@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.Ignore;
-import org.spka.cursus.test.series_2011.AbstractSeries2011;
+import org.spka.cursus.test.series_2011.Series2011;
 
 import com.google.common.base.Predicates;
 
@@ -43,7 +43,7 @@ public class ExportSPKASeries2011 {
 	public static final File SERIES_FILE2 = new File("target/spka2011_2.xml"); //$NON-NLS-1$
 
 	@Ignore
-	public static class AllScores extends AbstractSeries2011 {
+	public static class AllScores extends Series2011 {
 		public final ScoresXMLFile export;
 
 		public AllScores() throws Exception {
@@ -51,15 +51,7 @@ public class ExportSPKASeries2011 {
 			List<Scores> eventScores = new ArrayList<Scores>();
 			List<Scores> raceScores = new ArrayList<Scores>();
 
-			createDatabase();
-			createNonEvent1Data();
-			createEvent1Races();
-			createNonEvent2Data();
-			createEvent2Races();
-			createNonEvent3Data();
-			createEvent3Races();
-			createEvent4Races();
-			createEvent5Races();
+			createAllData();
 
 			db.startSession();
 			try {

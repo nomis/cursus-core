@@ -15,14 +15,25 @@
 	You should have received a copy of the GNU Affero General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.spka.cursus.test.cc_2014;
+package eu.lp0.cursus.test;
 
-import org.spka.cursus.scoring.CCConstants;
+import java.util.List;
 
+import eu.lp0.cursus.scoring.scorer.Scorer;
 import eu.lp0.cursus.scoring.scorer.ScorerFactory;
+import eu.lp0.cursus.test.db.AbstractDatabaseTest;
+import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 
-public class AbstractSeries2014Top3 extends AbstractSeries2014 {
-	public AbstractSeries2014Top3() {
-		scorer = ScorerFactory.newScorer(CCConstants.UUID_2013);
+public abstract class AbstractSeries extends AbstractDatabaseTest {
+	protected final String SERIES_NAME;
+	protected final Scorer scorer;
+
+	public AbstractSeries(String seriesName, String scorerUUID) {
+		this.SERIES_NAME = seriesName;
+		this.scorer = ScorerFactory.newScorer(scorerUUID);
 	}
+
+	public abstract void createAllData() throws Exception;
+
+	public abstract List<ScoresXMLFile> createScores() throws Exception;
 }

@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.Ignore;
-import org.spka.cursus.test.cc_2014.AbstractSeries2014;
+import org.spka.cursus.test.cc_2014.CCSeries2014;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
@@ -41,17 +41,17 @@ public class ExportCCSeries2014 {
 	public static final File SERIES_FILE2 = new File("target/cc2014_2.xml"); //$NON-NLS-1$
 
 	@Ignore
-	public static class AllScores extends AbstractSeries2014 {
+	public static class AllScores extends CCSeries2014 {
 		public final ScoresXMLFile export;
 
 		public AllScores() throws Exception {
+			super(false);
+
 			Scores seriesScores;
 			List<Scores> eventScores = new ArrayList<Scores>();
 			List<Scores> raceScores = new ArrayList<Scores>();
 
-			createDatabase();
-			createEvent1Races();
-			createEvent2Races();
+			createAllData();
 
 			db.startSession();
 			try {

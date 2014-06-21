@@ -229,7 +229,8 @@
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="AUTOMATIC"/>
 			<xs:enumeration value="FIXED"/>
-			<xs:enumeration value="LAPS"/>
+			<xs:enumeration value="CANCEL_LAPS"/>
+			<xs:enumeration value="ADJUST_LAPS"/>
 			<xs:enumeration value="EVENT_NON_ATTENDANCE"/>
 		</xs:restriction>
 	</xs:simpleType>

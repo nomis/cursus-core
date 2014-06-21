@@ -17,7 +17,9 @@
  */
 package org.fisly.cursus.test.europe_2011;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.fisly.cursus.scoring.FISLYConstants;
 
@@ -32,12 +34,16 @@ import eu.lp0.cursus.db.data.RaceAttendee;
 import eu.lp0.cursus.db.data.RaceNumber;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.scorer.Scorer;
-import eu.lp0.cursus.scoring.scorer.ScorerFactory;
-import eu.lp0.cursus.test.db.AbstractDatabaseTest;
+import eu.lp0.cursus.scoring.data.Scores;
+import eu.lp0.cursus.scoring.scorer.FleetFilter;
+import eu.lp0.cursus.test.AbstractSeries;
+import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 
-public abstract class AbstractSeries2011 extends AbstractDatabaseTest {
-	protected static final String SERIES_NAME = "FISLY European Championships 2011"; //$NON-NLS-1$
+public class FISLYSeries2011 extends AbstractSeries {
+	public FISLYSeries2011() {
+		super("FISLY European Championships 2011", FISLYConstants.UUID_2010); //$NON-NLS-1$
+	}
+
 	protected static final int SERIES_PILOTS = 74;
 	protected static final int SERIES_M_FLEET = 61;
 	protected static final int SERIES_F_FLEET = 13;
@@ -51,8 +57,6 @@ public abstract class AbstractSeries2011 extends AbstractDatabaseTest {
 	protected static final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
 	protected static final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
 	protected static final String RACE6_NAME = "Race 6"; //$NON-NLS-1$
-
-	protected Scorer scorer = ScorerFactory.newScorer(FISLYConstants.UUID_2010);
 
 	protected Pilot F01;
 	protected Pilot F02;
@@ -137,6 +141,23 @@ public abstract class AbstractSeries2011 extends AbstractDatabaseTest {
 	private Race _race4;
 	private Race _race5;
 	private Race _race6;
+
+	@Override
+	public void createAllData() throws Exception {
+		createDatabase();
+		createEvent1Races();
+	}
+
+	@Override
+	public List<ScoresXMLFile> createScores() throws Exception {
+		Series series = seriesDAO.find(SERIES_NAME);
+		Scores seriesScoresA = scorer.scoreSeries(series);
+		Scores seriesScoresM = scorer.scoreSeries(series, FleetFilter.from(Gender.MALE));
+		Scores seriesScoresF = scorer.scoreSeries(series, FleetFilter.from(Gender.FEMALE));
+
+		return Arrays.asList(new ScoresXMLFile(seriesScoresA, null, null), new ScoresXMLFile(seriesScoresM, null, null), new ScoresXMLFile(seriesScoresF, null,
+				null));
+	}
 
 	private void registerPilots(Race race) {
 		race.getAttendees().put(F01, new RaceAttendee(race, F01, RaceAttendee.Type.PILOT));

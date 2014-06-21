@@ -26,6 +26,10 @@ import eu.lp0.cursus.db.MemoryDatabase;
 public abstract class AbstractDatabaseTest extends AbstractDataTest {
 	protected Database db;
 
+	public Database getDatabase() {
+		return db;
+	}
+
 	@Before
 	public void createDatabase() throws Exception {
 		db = new MemoryDatabase(getClass().getName());
@@ -37,7 +41,11 @@ public abstract class AbstractDatabaseTest extends AbstractDataTest {
 
 	@After
 	public void closeDatabase() {
-		db.close(true);
+		try {
+			db.close(true);
+		} catch (Exception e) {
+			log.warn("Error closing database: " + e); //$NON-NLS-1$
+		}
 		db = null;
 	}
 }

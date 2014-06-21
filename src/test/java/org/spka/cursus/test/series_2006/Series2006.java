@@ -18,7 +18,7 @@
 package org.spka.cursus.test.series_2006;
 
 import org.spka.cursus.scoring.SPKAConstants;
-import org.spka.cursus.test.AbstractSeries;
+import org.spka.cursus.test.AbstractSPKASeries;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
@@ -29,11 +29,12 @@ import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.scorer.Scorer;
-import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 
-public abstract class AbstractSeries2006 extends AbstractSeries {
-	protected static final String SERIES_NAME = "SPKA Race Series 2006/07"; //$NON-NLS-1$
+public class Series2006 extends AbstractSPKASeries {
+	public Series2006() {
+		super("SPKA Race Series 2006/07", SPKAConstants.UUID_2005); //$NON-NLS-1$
+	}
+
 	protected static final int SERIES_FLEET = 26;
 
 	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
@@ -85,8 +86,6 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 	protected static final String RACE11_DESC = ""; //$NON-NLS-1$
 	protected static final int RACE11_FLEET = 21;
 
-	protected Scorer scorer = ScorerFactory.newScorer(SPKAConstants.UUID_2005);
-
 	protected Pilot sco019;
 	protected Pilot sco023;
 	protected Pilot sco033;
@@ -132,6 +131,15 @@ public abstract class AbstractSeries2006 extends AbstractSeries {
 	private Race _race9;
 	private Race _race10;
 	private Race _race11;
+
+	@Override
+	public void createAllData() throws Exception {
+		createDatabase();
+		createEvent1Races();
+		createEvent2Races();
+		createEvent3Races();
+		createEvent4Races();
+	}
 
 	protected void createSeriesData() throws Exception {
 		if (_series != null) {

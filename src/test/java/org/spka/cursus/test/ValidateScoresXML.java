@@ -25,6 +25,7 @@ import javax.xml.validation.Validator;
 
 import org.fisly.cursus.test.europe_2011.FISLYSeries2011;
 import org.junit.Test;
+import org.spka.cursus.test.cc_2008.CCSeries2008;
 import org.spka.cursus.test.cc_2013.CCSeries2013;
 import org.spka.cursus.test.cc_2014.CCSeries2014;
 import org.spka.cursus.test.series_2005.Series2005;
@@ -92,6 +93,16 @@ public class ValidateScoresXML {
 	@Test
 	public void series2013() throws Exception {
 		check(new Series2013());
+	}
+
+	@Test
+	public void cc2008() throws Exception {
+		check(new CCSeries2008(false));
+	}
+
+	@Test
+	public void cc2008top3() throws Exception {
+		check(new CCSeries2008(true));
 	}
 
 	@Test

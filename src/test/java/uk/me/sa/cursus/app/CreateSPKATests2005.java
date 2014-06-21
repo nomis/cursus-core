@@ -26,7 +26,7 @@ public class CreateSPKATests2005 {
 		@SuppressWarnings("nls")
 		public AllScores() throws Exception {
 			createDatabase();
-			CreateSPKATests create = new CreateSPKATests(db, "series_2005", "Series2005", SERIES_NAME, scorer.getUUID(), getSeriesCountries());
+			CreateSPKATests create = new CreateSPKATests(this, "series_2005", "Series2005");
 
 			createEvent1Races();
 			create.generate("Series2005Event1Scores");

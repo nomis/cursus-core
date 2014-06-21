@@ -89,7 +89,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 	/**
 	 * Get all the pilots in a Scotland series
 	 */
-	protected Set<Pilot> getSeriesResultsPilots(final Series series) throws Exception {
+	public Set<Pilot> getSeriesResultsPilots(final Series series) throws Exception {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
@@ -102,7 +102,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 	 * Get all the pilots at a Scotland event (including non-Scotland pilots)
 	 * (but only up to and including the specified event)
 	 */
-	protected Set<Pilot> getEventResultsPilots(final Series series, final Event event) {
+	public Set<Pilot> getEventResultsPilots(final Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
@@ -132,7 +132,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 	/**
 	 * Get all the pilots in a Scotland series (only up to and including the specified event)
 	 */
-	protected Set<Pilot> getSeriesResultsPilots(final Series series, final Event event) {
+	public Set<Pilot> getSeriesResultsPilots(final Series series, final Event event) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {

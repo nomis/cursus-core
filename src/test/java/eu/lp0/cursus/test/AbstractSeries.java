@@ -33,6 +33,14 @@ public abstract class AbstractSeries extends AbstractDatabaseTest {
 		this.scorer = ScorerFactory.newScorer(scorerUUID);
 	}
 
+	public final String getName() {
+		return SERIES_NAME;
+	}
+
+	public final Scorer getScorer() {
+		return scorer;
+	}
+
 	public abstract void createAllData() throws Exception;
 
 	public abstract List<ScoresXMLFile> createScores() throws Exception;

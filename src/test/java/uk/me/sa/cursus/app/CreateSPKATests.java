@@ -41,23 +41,28 @@ import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.data.Scores;
+import eu.lp0.cursus.scoring.scorer.Scorer;
+import eu.lp0.cursus.test.db.AbstractDataTest;
 
 @Ignore
-public class CreateSPKATests extends AbstractSPKASeries {
+public class CreateSPKATests extends AbstractDataTest {
+	private AbstractSPKASeries testSeries;
 	private String packageName;
 	private String classPrefix;
-	private String seriesName;
+
+	private Database db;
+	private Scorer scorer;
 
 	private String superClass;
 	private boolean anyRaces;
 
-	public CreateSPKATests(Database db, String packageName, String classPrefix, String seriesName, String scorerUUID, String... countries) {
-		super(seriesName, scorerUUID, countries);
-
-		this.db = db;
+	public CreateSPKATests(AbstractSPKASeries testSeries, String packageName, String classPrefix) {
+		this.testSeries = testSeries;
 		this.packageName = packageName;
 		this.classPrefix = classPrefix;
-		this.seriesName = seriesName;
+
+		this.db = testSeries.getDatabase();
+		this.scorer = testSeries.getScorer();
 
 		superClass = classPrefix;
 	}
@@ -78,7 +83,7 @@ public class CreateSPKATests extends AbstractSPKASeries {
 			String eventName = eventMethodName.startsWith("Non") ? eventMethodName.replace("NonEvent", "Non-Event ") : eventMethodName.replace("Event",
 					"Race Event ");
 
-			Series series = seriesDAO.find(seriesName);
+			Series series = seriesDAO.find(testSeries.getName());
 			Event fileEvent = eventDAO.find(series, eventName);
 
 			for (Event event : series.getEvents()) {
@@ -160,10 +165,10 @@ public class CreateSPKATests extends AbstractSPKASeries {
 			if (hasRaces) {
 				Scores seriesScores;
 				if (scorer instanceof Scorer2010) {
-					seriesScores = scorer.scoreSeries(series, Predicates.in(getSeriesResultsPilots(series)));
+					seriesScores = scorer.scoreSeries(series, Predicates.in(testSeries.getSeriesResultsPilots(series)));
 				} else {
-					seriesScores = scorer.scoreSeries(series, getSeriesResultsPilots(series, fileEvent),
-							Predicates.in(getSeriesResultsPilots(series, fileEvent)));
+					seriesScores = scorer.scoreSeries(series, testSeries.getSeriesResultsPilots(series, fileEvent),
+							Predicates.in(testSeries.getSeriesResultsPilots(series, fileEvent)));
 				}
 
 				out.println("");
@@ -333,7 +338,7 @@ public class CreateSPKATests extends AbstractSPKASeries {
 				out.println("		}");
 				out.println("	}");
 			} else {
-				Scores eventScores = scorer.scoreRaces(fileEvent.getRaces(), Predicates.in(getEventResultsPilots(series, fileEvent)));
+				Scores eventScores = scorer.scoreRaces(fileEvent.getRaces(), Predicates.in(testSeries.getEventResultsPilots(series, fileEvent)));
 
 				out.println("");
 				out.println("	@Test");
@@ -409,7 +414,7 @@ public class CreateSPKATests extends AbstractSPKASeries {
 				out.println("	}");
 
 				for (Race race : fileEvent.getRaces()) {
-					Scores raceScores = scorer.scoreRace(race, Predicates.in(getEventResultsPilots(series, fileEvent)));
+					Scores raceScores = scorer.scoreRace(race, Predicates.in(testSeries.getEventResultsPilots(series, fileEvent)));
 					String raceName = race.getName().replace("Race ", "race");
 					String raceConstantName = raceName.toUpperCase(Locale.ROOT);
 
@@ -484,10 +489,5 @@ public class CreateSPKATests extends AbstractSPKASeries {
 
 		superClass = className;
 		anyRaces |= hasRaces;
-	}
-
-	@Override
-	public void createAllData() throws Exception {
-
 	}
 }

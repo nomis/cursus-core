@@ -28,12 +28,14 @@ public class CreateCCTests2014Top3 {
 			super(true);
 
 			createDatabase();
-			CreateSPKATests create = new CreateSPKATests(db, "cc_2014", "CCSeries2014Top3", SERIES_NAME, scorer.getUUID());
+			CreateSPKATests create = new CreateSPKATests(this, "cc_2014", "CCSeries2014Top3");
 
 			createEvent1Races();
 			create.generate("Series2014Top3Event1Scores");
 			createEvent2Races();
 			create.generate("Series2014Top3Event2Scores");
+
+			closeDatabase();
 		}
 	}
 

@@ -1,0 +1,5 @@
+@media screen {
+	tr.pilot.num-org-SCO { color: #0065BD; }
+	tr.pilot.num-org-IR { color: #009B48; }
+	tbody tr.pilot:hover { color: inherit; }
+}

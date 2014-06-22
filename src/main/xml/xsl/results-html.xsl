@@ -271,6 +271,7 @@
 						<xsl:variable name="allSimulatedZero" select="not($races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@simulated != 'true' or $races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@points != 0)"/>
 
 						<tr>
+							<xsl:attribute name="class" xml:space="preserve">pilot num-org-<xsl:value-of select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:raceNumber/@organisation"/></xsl:attribute>
 							<th class="pos left"><xsl:value-of select="@position"/><xsl:if test="$joint">=</xsl:if></th>
 							<td class="pilot name"><xsl:value-of select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:name"/></td>
 							<xsl:for-each select="$classes">

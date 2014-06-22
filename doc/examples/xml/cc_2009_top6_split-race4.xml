@@ -3,6 +3,7 @@
 <cursus xmlns="urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1">
 	<load href="cc_2009_top6.xml"/>
 	<stylesheet href="spka.css"/>
+	<stylesheet href="spka-cc.css"/>
 	<flag name="top-country"/>
 	<split prefix="cc_2009_top6_split-" type="race" index="4" suffix=".xml"/>
 </cursus>

@@ -21,7 +21,7 @@ import org.spka.cursus.test.cc_2009.CCSeries2009;
 
 public class ExportCCSeries2009Top6 extends ExportSeries {
 	public ExportCCSeries2009Top6() {
-		super("cc_2009_top6", new CCSeries2009(true)); //$NON-NLS-1$
+		super("cc_2009_top6", new CCSeries2009(true), "spka-cc.css"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public static void main(String[] args) throws Exception {

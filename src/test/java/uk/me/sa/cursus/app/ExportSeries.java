@@ -31,10 +31,12 @@ import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 public class ExportSeries {
 	private final String fileName;
 	private final AbstractSeries series;
+	private final String[] styleSheets;
 
-	public ExportSeries(String fileName, AbstractSeries series) {
+	public ExportSeries(String fileName, AbstractSeries series, String... styleSheets) {
 		this.fileName = fileName;
 		this.series = series;
+		this.styleSheets = styleSheets;
 	}
 
 	public void export() throws Exception {
@@ -64,6 +66,9 @@ public class ExportSeries {
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+		for (String styleSheet : styleSheets) {
+			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
 		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 		}
@@ -76,6 +81,9 @@ public class ExportSeries {
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+		for (String styleSheet : styleSheets) {
+			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
 		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 		}
@@ -88,6 +96,9 @@ public class ExportSeries {
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+		for (String styleSheet : styleSheets) {
+			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
 		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 		}
@@ -102,6 +113,9 @@ public class ExportSeries {
 			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+			for (String styleSheet : styleSheets) {
+				bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
+			}
 			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 			}
@@ -117,6 +131,9 @@ public class ExportSeries {
 			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+			for (String styleSheet : styleSheets) {
+				bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
+			}
 			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 			}

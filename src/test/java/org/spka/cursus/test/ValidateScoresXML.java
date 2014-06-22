@@ -19,6 +19,8 @@ package org.spka.cursus.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Validator;
@@ -27,6 +29,7 @@ import org.fisly.cursus.test.europe_2011.FISLYSeries2011;
 import org.junit.Test;
 import org.spka.cursus.test.cc_2008.CCSeries2008;
 import org.spka.cursus.test.cc_2009.CCSeries2009;
+import org.spka.cursus.test.cc_2010.CCSeries2010;
 import org.spka.cursus.test.cc_2013.CCSeries2013;
 import org.spka.cursus.test.cc_2014.CCSeries2014;
 import org.spka.cursus.test.series_2005.Series2005;
@@ -117,6 +120,16 @@ public class ValidateScoresXML {
 	}
 
 	@Test
+	public void cc2010() throws Exception {
+		check(new CCSeries2010(false));
+	}
+
+	@Test
+	public void cc2010top5() throws Exception {
+		check(new CCSeries2010(true));
+	}
+
+	@Test
 	public void cc2013() throws Exception {
 		check(new CCSeries2013(false));
 	}
@@ -137,6 +150,8 @@ public class ValidateScoresXML {
 	}
 
 	private static void check(AbstractSeries series) throws Exception {
+		List<byte[]> files = new ArrayList<byte[]>();
+
 		series.createAllData();
 
 		Database db = series.getDatabase();
@@ -144,16 +159,37 @@ public class ValidateScoresXML {
 		try {
 			DatabaseSession.begin();
 			for (ScoresXMLFile scoresFile : series.createScores()) {
-				validate(scoresFile);
+				files.add(validate(scoresFile));
 			}
 			DatabaseSession.commit();
 		} finally {
 			db.endSession();
 		}
 		db.close(true);
+
+		for (byte[] data : files) {
+			ScoresXMLFile import_ = new ScoresXMLFile();
+			import_.from(new ByteArrayInputStream(data));
+			import_.getData();
+
+			// TODO export, compare
+			// ScoresXML file = import_.getData();
+			// Scores seriesScores;
+			// List<Scores> eventScores = new ArrayList<Scores>();
+			// List<Scores> raceScores = new ArrayList<Scores>();
+			// XMLScores xmlScores = new XMLScores(file);
+			// seriesScores = xmlScores.newInstance(file.getSeriesResults());
+			// for (ScoresXMLEventResults scores : file.getEventResults()) {
+			// eventScores.add(xmlScores.newInstance(scores));
+			// }
+			// for (ScoresXMLRaceResults scores : file.getRaceResults()) {
+			// raceScores.add(xmlScores.newInstance(scores));
+			// }
+		}
+
 	}
 
-	private static void validate(ScoresXMLFile scores) throws Exception {
+	private static byte[] validate(ScoresXMLFile scores) throws Exception {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		scores.to(os);
 
@@ -161,5 +197,7 @@ public class ValidateScoresXML {
 
 		Validator validator = Namespace.SCORES_V1.newValidator();
 		validator.validate(new StreamSource(is));
+
+		return os.toByteArray();
 	}
 }

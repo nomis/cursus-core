@@ -21,27 +21,33 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
+import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import eu.lp0.cursus.db.data.Pilot;
+import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.RaceDiscardsData;
+import eu.lp0.cursus.scoring.data.RacePenaltiesData;
 import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 
 @SuppressFBWarnings({ "SE_COMPARATOR_SHOULD_BE_SERIALIZABLE" })
-public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & RaceDiscardsData> implements Comparator<Pilot> {
+public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & RacePenaltiesData & RaceDiscardsData> implements Comparator<Pilot> {
 	private final T scores;
 	private final PlacingMethod method;
 	private final Map<Pilot, Supplier<List<Integer>>> racePlacings;
 
 	public enum PlacingMethod {
-		INCLUDING_DISCARDS, EXCLUDING_DISCARDS, EXCLUDING_SIMULATED;
+		INCLUDING_DISCARDS, EXCLUDING_DISCARDS, INCLUDING_PENALTIES_EXCLUDING_DISCARDS_EXCLUDING_SIMULATED;
 	}
 
 	public PilotRacePlacingComparator(T scores, PlacingMethod method) {
@@ -57,7 +63,7 @@ public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & 
 
 	@Override
 	public int compare(Pilot o1, Pilot o2) {
-		if (method == PlacingMethod.EXCLUDING_SIMULATED) {
+		if (method == PlacingMethod.INCLUDING_PENALTIES_EXCLUDING_DISCARDS_EXCLUDING_SIMULATED) {
 			return Ordering.<Integer>natural().reverse().lexicographical().reverse().compare(racePlacings.get(o1).get(), racePlacings.get(o2).get());
 		} else {
 			return Ordering.<Integer>natural().lexicographical().compare(racePlacings.get(o1).get(), racePlacings.get(o2).get());
@@ -81,9 +87,22 @@ public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & 
 				return Ordering.natural().immutableSortedCopy(
 						Maps.filterKeys(scores.getRacePoints(pilot), Predicates.not(Predicates.in(scores.getDiscardedRaces(pilot)))).values());
 
-			case EXCLUDING_SIMULATED:
+			case INCLUDING_PENALTIES_EXCLUDING_DISCARDS_EXCLUDING_SIMULATED:
+				final Map<Race, Integer> racePoints = scores.getRacePoints(pilot);
+				final Map<Race, Integer> racePenalties = scores.getRacePenalties(pilot);
+
 				return Ordering.natural().immutableSortedCopy(
-						Maps.filterKeys(scores.getRacePoints(pilot), Predicates.not(Predicates.in(scores.getSimulatedRacePoints(pilot)))).values());
+						Iterables.transform(
+								Iterables.filter(
+										scores.getRaces(),
+										Predicates.not(Predicates.or(Predicates.in(scores.getSimulatedRacePoints(pilot)),
+												Predicates.in(scores.getDiscardedRaces(pilot))))), new Function<Race, Integer>() {
+									@Override
+									@Nullable
+									public Integer apply(@Nullable Race race) {
+										return racePoints.get(race) + racePenalties.get(race);
+									}
+								}));
 			}
 			return null;
 		}

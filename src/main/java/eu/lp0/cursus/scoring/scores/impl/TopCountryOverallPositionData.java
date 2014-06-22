@@ -40,7 +40,7 @@ import eu.lp0.cursus.util.PilotRaceNumberComparator;
 public class TopCountryOverallPositionData<T extends ScoredData & RacePointsData & RacePenaltiesData & RaceDiscardsData & OverallPointsData> extends
 		GenericOverallPositionData<T> {
 	public TopCountryOverallPositionData(T scores) {
-		super(scores, EqualPositioning.IF_REQUIRED, PilotRacePlacingComparator.PlacingMethod.EXCLUDING_SIMULATED, true);
+		super(scores, EqualPositioning.IF_REQUIRED, PilotRacePlacingComparator.PlacingMethod.INCLUDING_PENALTIES_EXCLUDING_DISCARDS_EXCLUDING_SIMULATED, true);
 	}
 
 	@Override

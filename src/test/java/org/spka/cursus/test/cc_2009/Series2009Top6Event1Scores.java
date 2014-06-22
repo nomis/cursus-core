@@ -457,8 +457,8 @@ public class Series2009Top6Event1Scores extends CCSeries2009 {
 			overallAssertUtil.assertPilot(ir027, 0, 2, 2);
 			overallAssertUtil.assertPilot(sco019, 0, 4, 3);
 			overallAssertUtil.assertPilot(ir043, 3, 6, 4);
-			overallAssertUtil.assertPilot(sco159, 1, 6, 5);
-			overallAssertUtil.assertPilot(sco179, 0, 6, 6);
+			overallAssertUtil.assertPilot(sco159, 1, 6, 4);
+			overallAssertUtil.assertPilot(sco179, 0, 6, 4);
 			overallAssertUtil.assertPilot(ir014, 0, 7, 7);
 			overallAssertUtil.assertPilot(sco154, 0, 8, 8);
 			overallAssertUtil.assertPilot(sco060, 0, 9, 9);
@@ -629,14 +629,14 @@ public class Series2009Top6Event1Scores extends CCSeries2009 {
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
 			overallAssertUtil.assertPilot(ir027, 0, 0, 1);
 			overallAssertUtil.assertPilot(sco023, 0, 2, 2);
+			overallAssertUtil.assertPilot(ir043, 0, 4, 3);
 			overallAssertUtil.assertPilot(sco154, 1, 4, 3);
-			overallAssertUtil.assertPilot(ir043, 0, 4, 4);
 			overallAssertUtil.assertPilot(ir022, 0, 5, 5);
 			overallAssertUtil.assertPilot(ir025, 0, 6, 6);
 			overallAssertUtil.assertPilot(ir073, 0, 7, 7);
 			overallAssertUtil.assertPilot(sco159, 1, 9, 8);
+			overallAssertUtil.assertPilot(sco060, 0, 10, 9);
 			overallAssertUtil.assertPilot(sco179, 1, 10, 9);
-			overallAssertUtil.assertPilot(sco060, 0, 10, 10);
 			overallAssertUtil.assertPilot(ir077, 0, 11, 11);
 			overallAssertUtil.assertPilot(sco081, 0, 12, 12);
 			overallAssertUtil.assertPilot(ir014, 0, 0, 13);

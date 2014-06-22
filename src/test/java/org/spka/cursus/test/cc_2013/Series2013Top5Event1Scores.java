@@ -412,11 +412,11 @@ public class Series2013Top5Event1Scores extends CCSeries2013 {
 			overallAssertUtil.assertPilot(ir027, 0, 3, 3);
 			overallAssertUtil.assertPilot(sco528, 0, 4, 4);
 			overallAssertUtil.assertPilot(sco159, 1, 6, 5);
-			overallAssertUtil.assertPilot(sco666, 0, 6, 6);
+			overallAssertUtil.assertPilot(sco666, 0, 6, 5);
 			overallAssertUtil.assertPilot(sco808, 0, 7, 7);
 			overallAssertUtil.assertPilot(ir085, 0, 8, 8);
 			overallAssertUtil.assertPilot(ir014, 1, 10, 9);
-			overallAssertUtil.assertPilot(ir053, 0, 10, 10);
+			overallAssertUtil.assertPilot(ir053, 0, 10, 9);
 			overallAssertUtil.assertPilot(ir016, 0, 0, 11);
 			overallAssertUtil.assertPilot(ir025, 0, 0, 11);
 			overallAssertUtil.assertPilot(ir077, 0, 0, 11);
@@ -519,7 +519,7 @@ public class Series2013Top5Event1Scores extends CCSeries2013 {
 			overallAssertUtil.assertPilot(sco159, 0, 3, 2);
 			overallAssertUtil.assertPilot(sco808, 0, 4, 3);
 			overallAssertUtil.assertPilot(ir027, 3, 5, 4);
-			overallAssertUtil.assertPilot(sco528, 0, 5, 5);
+			overallAssertUtil.assertPilot(sco528, 0, 5, 4);
 			overallAssertUtil.assertPilot(sco116, 0, 6, 6);
 			overallAssertUtil.assertPilot(ir085, 0, 7, 7);
 			overallAssertUtil.assertPilot(ir014, 0, 8, 8);
@@ -630,7 +630,7 @@ public class Series2013Top5Event1Scores extends CCSeries2013 {
 			overallAssertUtil.assertPilot(ir025, 0, 5, 5);
 			overallAssertUtil.assertPilot(sco159, 0, 6, 6);
 			overallAssertUtil.assertPilot(ir085, 1, 8, 7);
-			overallAssertUtil.assertPilot(sco528, 0, 8, 8);
+			overallAssertUtil.assertPilot(sco528, 0, 8, 7);
 			overallAssertUtil.assertPilot(ir077, 0, 9, 9);
 			overallAssertUtil.assertPilot(sco666, 0, 10, 10);
 			overallAssertUtil.assertPilot(ir016, 0, 0, 11);
@@ -680,9 +680,9 @@ public class Series2013Top5Event1Scores extends CCSeries2013 {
 			overallAssertUtil.assertPilot(sco116, 0, 0, 1);
 			overallAssertUtil.assertPilot(ir025, 0, 2, 2);
 			overallAssertUtil.assertPilot(ir014, 1, 4, 3);
-			overallAssertUtil.assertPilot(sco528, 0, 4, 4);
+			overallAssertUtil.assertPilot(sco528, 0, 4, 3);
+			overallAssertUtil.assertPilot(ir027, 0, 6, 5);
 			overallAssertUtil.assertPilot(sco808, 1, 6, 5);
-			overallAssertUtil.assertPilot(ir027, 0, 6, 6);
 			overallAssertUtil.assertPilot(ir016, 0, 7, 7);
 			overallAssertUtil.assertPilot(sco159, 0, 8, 8);
 			overallAssertUtil.assertPilot(ir053, 0, 9, 9);

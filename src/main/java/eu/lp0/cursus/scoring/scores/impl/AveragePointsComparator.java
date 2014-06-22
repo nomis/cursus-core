@@ -72,7 +72,7 @@ public class AveragePointsComparator<T extends ScoredData & RacePointsData & Rac
 				include2 = !scores.getDiscardedRaces(o2).contains(race);
 				break;
 
-			case EXCLUDING_SIMULATED:
+			case INCLUDING_PENALTIES_EXCLUDING_DISCARDS_EXCLUDING_SIMULATED:
 				include1 = !scores.hasSimulatedRacePoints(o1, race);
 				include2 = !scores.hasSimulatedRacePoints(o2, race);
 				break;

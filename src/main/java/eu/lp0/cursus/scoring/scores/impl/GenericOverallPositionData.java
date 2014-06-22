@@ -40,12 +40,14 @@ import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.OverallPointsData;
 import eu.lp0.cursus.scoring.data.RaceDiscardsData;
+import eu.lp0.cursus.scoring.data.RacePenaltiesData;
 import eu.lp0.cursus.scoring.data.RacePointsData;
 import eu.lp0.cursus.scoring.data.ScoredData;
 import eu.lp0.cursus.scoring.scores.base.AbstractOverallPositionData;
 import eu.lp0.cursus.util.PilotRaceNumberComparator;
 
-public class GenericOverallPositionData<T extends ScoredData & RacePointsData & RaceDiscardsData & OverallPointsData> extends AbstractOverallPositionData<T> {
+public class GenericOverallPositionData<T extends ScoredData & RacePointsData & RacePenaltiesData & RaceDiscardsData & OverallPointsData> extends
+		AbstractOverallPositionData<T> {
 	private final EqualPositioning equalPositioning;
 	protected final PilotRacePlacingComparator.PlacingMethod placingMethod;
 	private final boolean allSimulatedToEnd;

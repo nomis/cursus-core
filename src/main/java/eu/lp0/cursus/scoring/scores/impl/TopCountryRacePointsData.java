@@ -27,7 +27,9 @@ import com.google.common.base.Predicates;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
@@ -74,7 +76,7 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 			Multimap<Race, Pilot> scoredPilots = HashMultimap.create(scores.getRaces().size(), maxCount);
 			for (Race race : scores.getRaces()) {
 				int count = lazyCount.get().get(race.getEvent());
-				Multimap<String, Pilot> countryPilots = HashMultimap.create();
+				Multimap<String, Pilot> countryPilots = LinkedHashMultimap.create();
 
 				for (Pilot pilot : scores.getLapOrder(race)) {
 					if (countryPilots.get(pilot.getCountry()).size() < count) {
@@ -83,9 +85,20 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 				}
 
 				for (String country : countryPilots.keySet()) {
-					if (countryPilots.get(country).size() != count) {
-						throw new IllegalStateException("Country " + country + " does not have " + count + " pilot(s) for race " + race.getName() //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-								+ ": " + countryPilots.get(country)); //$NON-NLS-1$
+					if (countryPilots.get(country).size() < count) {
+						count = Math.min(count, countryPilots.get(country).size());
+
+						// If country has less than minCount, ignore this race
+						if (count < minCount) {
+							count = 0;
+						}
+					}
+				}
+
+				// Truncate all other countries down to the lowest country
+				for (String country : countryPilots.keySet()) {
+					if (countryPilots.get(country).size() > count) {
+						countryPilots.replaceValues(country, Iterables.limit(ImmutableList.copyOf(countryPilots.get(country)), count));
 					}
 				}
 

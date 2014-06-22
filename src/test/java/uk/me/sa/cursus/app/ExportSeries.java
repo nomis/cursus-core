@@ -69,6 +69,8 @@ public class ExportSeries {
 		for (String styleSheet : styleSheets) {
 			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
+		bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
+		bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
 		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 		}
@@ -84,6 +86,8 @@ public class ExportSeries {
 		for (String styleSheet : styleSheets) {
 			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
+		bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
+		bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
 		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 		}
@@ -99,6 +103,8 @@ public class ExportSeries {
 		for (String styleSheet : styleSheets) {
 			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
+		bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
+		bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
 		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 		}
@@ -116,6 +122,8 @@ public class ExportSeries {
 			for (String styleSheet : styleSheets) {
 				bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			}
+			bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
+			bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
 			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 			}
@@ -134,6 +142,8 @@ public class ExportSeries {
 			for (String styleSheet : styleSheets) {
 				bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			}
+			bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
+			bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
 			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
 				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
 			}

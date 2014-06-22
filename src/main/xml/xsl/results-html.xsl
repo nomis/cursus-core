@@ -43,12 +43,8 @@
 			<xsl:when test="$inLen = 1">_</xsl:when>
 			<xsl:otherwise>
 				<xsl:variable name="mid" select="floor($inLen div 2)" />
-				<xsl:call-template name="str2css">
-					<xsl:with-param name="in" select="substring($in, 1, $mid)" />
-				</xsl:call-template>
-				<xsl:call-template name="str2css">
-					<xsl:with-param name="in" select="substring($in, $mid+1, $inLen - $mid)" />
-				</xsl:call-template>
+				<xsl:call-template name="str2css"><xsl:with-param name="in" select="substring($in, 1, $mid)" /></xsl:call-template>
+				<xsl:call-template name="str2css"><xsl:with-param name="in" select="substring($in, $mid+1, $inLen - $mid)" /></xsl:call-template>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -74,19 +70,43 @@
 	<xsl:template match="s:raceResults" mode="r:index">race<xsl:value-of select="count(preceding-sibling::s:raceResults)+1"/></xsl:template>
 
 	<xsl:template match="d:event|d:race" mode="r:th">
+		<xsl:param name="class"/>
 		<span>
 			<xsl:if test="d:description != ''">
 				<xsl:attribute name="title">
-					<xsl:apply-templates select="." mode="r:description"/>
+					<xsl:apply-templates select="." mode="r:description">
+						<xsl:with-param name="class" select="$class"/>
+					</xsl:apply-templates>
 				</xsl:attribute>
 			</xsl:if>
-			<xsl:apply-templates select="." mode="r:name"/>
+			<xsl:apply-templates select="." mode="r:name">
+				<xsl:with-param name="class" select="$class"/>
+			</xsl:apply-templates>
 		</span>
 	</xsl:template>
 
-	<xsl:template match="d:race" mode="r:name">
+	<xsl:template name="compact-race">
+		<xsl:param name="race"/>
+		<!-- Class of results -->
+		<xsl:param name="class"/>
 		<xsl:choose>
-			<xsl:when test="$flags[@name='compact-race']">
+			<xsl:when test="$class = 'series' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($race/../../../d:event/d:races/d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:when test="$class = 'event' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($race/../d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:otherwise>0</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="d:race" mode="r:name">
+		<!-- Class of results -->
+		<xsl:param name="class"/>
+		<xsl:variable name="compact">
+			<xsl:call-template name="compact-race">
+				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="race" select="."/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$compact=1">
 				R<xsl:value-of select="count(preceding-sibling::d:race)+count(../../preceding-sibling::d:event/d:races/d:race)+1"/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -95,9 +115,28 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="d:event" mode="r:name">
+	<xsl:template name="compact-event">
+		<xsl:param name="event"/>
+		<!-- Class of results -->
+		<xsl:param name="class"/>
 		<xsl:choose>
-			<xsl:when test="$flags[@name='compact-event']">
+			<xsl:when test="$class = 'series' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($event/../../../d:event/d:races/d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:when test="$class = 'event' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($event/../d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:otherwise>0</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="d:event" mode="r:name">
+		<!-- Class of results -->
+		<xsl:param name="class"/>
+		<xsl:variable name="compact">
+			<xsl:call-template name="compact-race">
+				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="race" select="."/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$compact=1">
 				E<xsl:value-of select="count(preceding-sibling::d:event[count(d:races/d:race)>0])+1"/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -107,8 +146,16 @@
 	</xsl:template>
 
 	<xsl:template match="d:race" mode="r:description">
+		<!-- Class of results -->
+		<xsl:param name="class"/>
+		<xsl:variable name="compact">
+			<xsl:call-template name="compact-race">
+				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="race" select="."/>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$flags[@name='compact-race']">
+			<xsl:when test="$compact">
 				<xsl:value-of select="d:name"/> — <xsl:value-of select="d:description"/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -118,8 +165,16 @@
 	</xsl:template>
 
 	<xsl:template match="d:event" mode="r:description">
+		<!-- Class of results -->
+		<xsl:param name="class"/>
+		<xsl:variable name="compact">
+			<xsl:call-template name="compact-event">
+				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="event" select="."/>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$flags[@name='compact-event']">
+			<xsl:when test="$compact">
 				<xsl:value-of select="d:name"/> — <xsl:value-of select="d:description"/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -220,7 +275,9 @@
 								<xsl:attribute name="colspan">
 									<xsl:value-of select="count(s:eventRaceResults)"/>
 								</xsl:attribute>
-								<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event[@xml:id=current()/@event]" mode="r:th"/>
+								<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event[@xml:id=current()/@event]" mode="r:th">
+									<xsl:with-param name="class" select="$class"/>
+								</xsl:apply-templates>
 						</th>
 					</xsl:for-each>
 
@@ -240,7 +297,9 @@
 							</xsl:choose>
 						</xsl:attribute>
 						<xsl:if test="$parent">
-							<xsl:apply-templates select="$parent" mode="r:th"/>
+							<xsl:apply-templates select="$parent" mode="r:th">
+								<xsl:with-param name="class" select="$class"/>
+							</xsl:apply-templates>
 						</xsl:if>
 					</th>
 				</tr>
@@ -255,7 +314,9 @@
 					<!-- Output all the races -->
 					<xsl:for-each select="$races">
 						<th class="race">
-							<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=current()/@race]" mode="r:th"/>
+							<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=current()/@race]" mode="r:th">
+								<xsl:with-param name="class" select="$class"/>
+							</xsl:apply-templates>
 						</th>
 						<xsl:if test="$laps">
 							<th class="laps">Laps</th>
@@ -420,7 +481,7 @@
 						<xsl:sort select="."/>
 						<xsl:variable name="points" select="sum($scores[@pilot=$pilots/d:country[current()=.]/../@xml:id]/@points)"/>
 						<tr>
-							<xsl:attribute name="class">country country-<xsl:apply-templates name="str2css" select="."/></xsl:attribute>
+							<xsl:attribute name="class">country country-<xsl:call-template name="str2css"><xsl:with-param name="in" select="."/></xsl:call-template></xsl:attribute>
 							<td class="country name"><xsl:value-of select="."/></td>
 							<td class="pts"><xsl:value-of select="$points"/></td>
 						</tr>

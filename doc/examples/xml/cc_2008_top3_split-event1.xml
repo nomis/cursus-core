@@ -4,6 +4,8 @@
 	<load href="cc_2008_top3.xml"/>
 	<stylesheet href="spka.css"/>
 	<stylesheet href="spka-cc.css"/>
+	<flag name="compact-race">10</flag>
+	<flag name="compact-event">10</flag>
 	<flag name="top-country"/>
 	<split prefix="cc_2008_top3_split-" type="event" index="1" suffix=".xml"/>
 </cursus>

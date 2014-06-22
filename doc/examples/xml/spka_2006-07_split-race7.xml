@@ -3,5 +3,7 @@
 <cursus xmlns="urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1">
 	<load href="spka_2006-07.xml"/>
 	<stylesheet href="spka.css"/>
+	<flag name="compact-race">10</flag>
+	<flag name="compact-event">10</flag>
 	<split prefix="spka_2006-07_split-" type="race" index="7" suffix=".xml"/>
 </cursus>

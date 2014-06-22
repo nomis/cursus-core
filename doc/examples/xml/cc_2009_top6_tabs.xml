@@ -4,5 +4,7 @@
 	<load href="cc_2009_top6.xml"/>
 	<stylesheet href="spka.css"/>
 	<stylesheet href="spka-cc.css"/>
+	<flag name="compact-race">10</flag>
+	<flag name="compact-event">10</flag>
 	<flag name="top-country"/>
 </cursus>

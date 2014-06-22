@@ -31,6 +31,8 @@
 	<xsl:variable name="flags" select="/r:cursus/r:flag"/>
 	<xsl:variable name="classes" select="/r:cursus/r:class"/>
 
+	<xsl:key name="country" match="d:country/text()" use="."/>
+
 	<xsl:template name="str2css">
 		<xsl:param name="in"/>
 		<xsl:variable name="inLen" select="string-length($in)" />
@@ -203,7 +205,7 @@
 
 		<h1><xsl:value-of select="$name"/></h1>
 		<table>
-			<xsl:attribute name="class">results <xsl:value-of select="$class"/></xsl:attribute>
+			<xsl:attribute name="class">results normal <xsl:value-of select="$class"/></xsl:attribute>
 			<thead>
 				<tr>
 					<th class="type" colspan="2"><xsl:value-of select="$type"/></th>
@@ -397,6 +399,35 @@
 				<caption><xsl:value-of select="$desc"/></caption>
 			</xsl:if>
 		</table>
+
+		<xsl:if test="$topCountry">
+			<br/>
+			<table>
+				<xsl:attribute name="class">results topCountry <xsl:value-of select="$class"/></xsl:attribute>
+				<thead>
+					<tr>
+						<th class="country name">Country</th>
+						<th class="pts">Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					<xsl:variable name="scores" select="s:overallOrder/s:overallScore"/>
+					<xsl:variable name="pilots" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=$scores/@pilot]"/>
+					<xsl:variable name="countries" select="$pilots/d:country[not(text()=../preceding-sibling::d:pilot[.=$pilots]/d:country/text())]"/>
+
+					<xsl:for-each select="$countries">
+						<xsl:sort select="sum($scores[@pilot=$pilots/d:country[current()=.]/../@xml:id]/@points)" data-type="number"/>
+						<xsl:sort select="."/>
+						<xsl:variable name="points" select="sum($scores[@pilot=$pilots/d:country[current()=.]/../@xml:id]/@points)"/>
+						<tr>
+							<xsl:attribute name="class">country country-<xsl:apply-templates name="str2css" select="."/></xsl:attribute>
+							<td class="country name"><xsl:value-of select="."/></td>
+							<td class="pts"><xsl:value-of select="$points"/></td>
+						</tr>
+					</xsl:for-each>
+				</tbody>
+			</table>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="d:penalty" mode="r:internal">

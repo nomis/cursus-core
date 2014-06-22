@@ -30,6 +30,8 @@
 
 	<xsl:output method="html" version="5.0" encoding="UTF-8" indent="yes"/>
 
+	<xsl:variable name="header" select="/r:cursus/r:header"/>
+	<xsl:variable name="footer" select="/r:cursus/r:footer"/>
 	<xsl:variable name="stylesheet" select="/r:cursus/r:stylesheet"/>
 
 	<xsl:template match="/r:cursus">
@@ -50,7 +52,9 @@
 				</xsl:for-each>
 			</head>
 			<body>
+				<xsl:copy-of select="document($header/@href)"/>
 				<xsl:apply-templates select="s:seriesResults|s:eventResults|s:raceResults" mode="r:body"/>
+				<xsl:copy-of select="document($footer/@href)"/>
 			</body>
 		</html>
 	</xsl:template>

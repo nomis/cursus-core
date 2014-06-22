@@ -26,15 +26,29 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="load"/>
+				<xs:element ref="header" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="footer" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="stylesheet" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="flag" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="split" minOccurs="0"/>
+				<xs:element ref="split" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="class" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="load">
+		<xs:complexType>
+			<xs:attribute name="href" type="xs:anyURI" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="header">
+		<xs:complexType>
+			<xs:attribute name="href" type="xs:anyURI" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="footer">
 		<xs:complexType>
 			<xs:attribute name="href" type="xs:anyURI" use="required"/>
 		</xs:complexType>

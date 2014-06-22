@@ -54,7 +54,6 @@
 
 	<xs:simpleType name="flags">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="show-dnp"/>
 			<xs:enumeration value="compact-race"/>
 			<xs:enumeration value="compact-event"/>
 		</xs:restriction>

@@ -175,7 +175,7 @@
 		<!-- Determine if there are any penalties -->
 		<xsl:variable name="penalties" select="sum(s:overallOrder/s:overallScore/@penalties) > 0"/>
 		<!-- Show did not participate column -->
-		<xsl:variable name="dnp" select="$penalties and $flags[@name='show-dnp'] and $class = 'series'"/>
+		<xsl:variable name="dnp" select="$penalties and $class = 'series' and s:overallOrder/s:overallScore/d:penalty[@type = 'EVENT_NON_ATTENDANCE']"/>
 		<!-- Determine if there are any penalties -->
 		<xsl:variable name="notes" select="($class != 'series' and ($penalties or /s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=$races/@race]/d:raceAttendee/d:penalty)) or (not($dnp) and s:overallOrder/s:overallScore/d:penalty) or ($dnp and s:overallOrder/s:overallScore/d:penalty[@type != 'EVENT_NON_ATTENDANCE'])"/>
 

@@ -70,7 +70,7 @@
 					<xsl:for-each select="s:seriesResults|s:eventResults|s:raceResults">
 						<xsl:variable name="index"><xsl:apply-templates select="." mode="r:index"/></xsl:variable>
 						<li>
-							<xsl:attribute name="class"><xsl:value-of select="$index"/><xsl:text> </xsl:text><xsl:if test="$index = $this">current</xsl:if></xsl:attribute>
+							<xsl:attribute name="class"><xsl:value-of select="$index"/><xsl:if test="$index = $this"> current</xsl:if></xsl:attribute>
 							<xsl:text> </xsl:text>
 							<xsl:choose>
 								<xsl:when test="$index = $this"><xsl:apply-templates select="." mode="r:name"/></xsl:when>

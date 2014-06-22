@@ -40,6 +40,9 @@ public class EnumTypeHandler<T extends Enum<T>> implements ConfigurableTypeHandl
 	@SuppressWarnings("unchecked")
 	@Override
 	public String format(Object value) {
+		if (value == null) {
+			return null;
+		}
 		return ((T)value).name();
 	}
 

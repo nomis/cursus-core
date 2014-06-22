@@ -23,13 +23,13 @@ import org.spka.cursus.test.AbstractSPKASeries;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
+import eu.lp0.cursus.db.data.Sex;
 
 public class CCSeries2009 extends AbstractSPKASeries {
 	private boolean top6;
@@ -39,26 +39,26 @@ public class CCSeries2009 extends AbstractSPKASeries {
 		this.top6 = top6;
 	}
 
-	protected static final int SERIES_FLEET_AT_EVENT1 = 18;
+	protected static final int SERIES_FLEET_AT_EVENT1 = 17;
 
 	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
 	protected static final String EVENT1_DESC = ""; //$NON-NLS-1$
-	protected static final int EVENT1_FLEET = 17;
+	protected static final int EVENT1_FLEET = 22;
 	protected static final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
 	protected static final String RACE1_DESC = "Saturday"; //$NON-NLS-1$
-	protected static final int RACE1_FLEET = 17;
+	protected static final int RACE1_FLEET = 22;
 	protected static final String RACE2_NAME = "Race 2"; //$NON-NLS-1$
 	protected static final String RACE2_DESC = "Saturday"; //$NON-NLS-1$
-	protected static final int RACE2_FLEET = 17;
+	protected static final int RACE2_FLEET = 22;
 	protected static final String RACE3_NAME = "Race 3"; //$NON-NLS-1$
 	protected static final String RACE3_DESC = "Saturday"; //$NON-NLS-1$
-	protected static final int RACE3_FLEET = 17;
+	protected static final int RACE3_FLEET = 22;
 	protected static final String RACE4_NAME = "Race 4"; //$NON-NLS-1$
 	protected static final String RACE4_DESC = "Sunday"; //$NON-NLS-1$
-	protected static final int RACE4_FLEET = 17;
+	protected static final int RACE4_FLEET = 22;
 	protected static final String RACE5_NAME = "Race 5"; //$NON-NLS-1$
 	protected static final String RACE5_DESC = "Sunday"; //$NON-NLS-1$
-	protected static final int RACE5_FLEET = 17;
+	protected static final int RACE5_FLEET = 22;
 
 	protected Pilot sco019;
 	protected Pilot sco023;

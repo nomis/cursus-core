@@ -70,38 +70,36 @@
 	<xsl:template match="s:raceResults" mode="r:index">race<xsl:value-of select="count(preceding-sibling::s:raceResults)+1"/></xsl:template>
 
 	<xsl:template match="d:event|d:race" mode="r:th">
-		<xsl:param name="class"/>
+		<xsl:param name="level"/>
 		<span>
 			<xsl:if test="d:description != ''">
 				<xsl:attribute name="title">
 					<xsl:apply-templates select="." mode="r:description">
-						<xsl:with-param name="class" select="$class"/>
+						<xsl:with-param name="level" select="$level"/>
 					</xsl:apply-templates>
 				</xsl:attribute>
 			</xsl:if>
 			<xsl:apply-templates select="." mode="r:name">
-				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="level" select="$level"/>
 			</xsl:apply-templates>
 		</span>
 	</xsl:template>
 
 	<xsl:template name="compact-race">
 		<xsl:param name="race"/>
-		<!-- Class of results -->
-		<xsl:param name="class"/>
+		<xsl:param name="level"/>
 		<xsl:choose>
-			<xsl:when test="$class = 'series' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($race/../../../d:event/d:races/d:race) > $flags[@name='compact-race'])">1</xsl:when>
-			<xsl:when test="$class = 'event' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($race/../d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:when test="$level = 'series' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($race/../../../d:event/d:races/d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:when test="$level = 'event' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($race/../d:race) > $flags[@name='compact-race'])">1</xsl:when>
 			<xsl:otherwise>0</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="d:race" mode="r:name">
-		<!-- Class of results -->
-		<xsl:param name="class"/>
+		<xsl:param name="level"/>
 		<xsl:variable name="compact">
 			<xsl:call-template name="compact-race">
-				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="level" select="$level"/>
 				<xsl:with-param name="race" select="."/>
 			</xsl:call-template>
 		</xsl:variable>
@@ -117,21 +115,19 @@
 
 	<xsl:template name="compact-event">
 		<xsl:param name="event"/>
-		<!-- Class of results -->
-		<xsl:param name="class"/>
+		<xsl:param name="level"/>
 		<xsl:choose>
-			<xsl:when test="$class = 'series' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($event/../../../d:event/d:races/d:race) > $flags[@name='compact-race'])">1</xsl:when>
-			<xsl:when test="$class = 'event' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($event/../d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:when test="$level = 'series' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($event/../../../d:event/d:races/d:race) > $flags[@name='compact-race'])">1</xsl:when>
+			<xsl:when test="$level = 'event' and $flags[@name='compact-race'] and ($flags[@name='compact-race']='' or count($event/../d:race) > $flags[@name='compact-race'])">1</xsl:when>
 			<xsl:otherwise>0</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="d:event" mode="r:name">
-		<!-- Class of results -->
-		<xsl:param name="class"/>
+		<xsl:param name="level"/>
 		<xsl:variable name="compact">
 			<xsl:call-template name="compact-race">
-				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="level" select="$level"/>
 				<xsl:with-param name="race" select="."/>
 			</xsl:call-template>
 		</xsl:variable>
@@ -146,11 +142,10 @@
 	</xsl:template>
 
 	<xsl:template match="d:race" mode="r:description">
-		<!-- Class of results -->
-		<xsl:param name="class"/>
+		<xsl:param name="level"/>
 		<xsl:variable name="compact">
 			<xsl:call-template name="compact-race">
-				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="level" select="$level"/>
 				<xsl:with-param name="race" select="."/>
 			</xsl:call-template>
 		</xsl:variable>
@@ -165,11 +160,10 @@
 	</xsl:template>
 
 	<xsl:template match="d:event" mode="r:description">
-		<!-- Class of results -->
-		<xsl:param name="class"/>
+		<xsl:param name="level"/>
 		<xsl:variable name="compact">
 			<xsl:call-template name="compact-event">
-				<xsl:with-param name="class" select="$class"/>
+				<xsl:with-param name="level" select="$level"/>
 				<xsl:with-param name="event" select="."/>
 			</xsl:call-template>
 		</xsl:variable>
@@ -198,7 +192,7 @@
 		<xsl:apply-templates select="." mode="r:internal">
 			<xsl:with-param name="name"><xsl:apply-templates select="." mode="r:name"/></xsl:with-param>
 			<xsl:with-param name="desc"><xsl:apply-templates select="." mode="r:desc"/></xsl:with-param>
-			<xsl:with-param name="class">series</xsl:with-param>
+			<xsl:with-param name="level">series</xsl:with-param>
 			<xsl:with-param name="type"><xsl:apply-templates select="." mode="r:type"/></xsl:with-param>
 			<xsl:with-param name="events" select="s:seriesEventResults"/>
 			<xsl:with-param name="races" select="s:seriesEventResults/s:eventRaceResults"/>
@@ -210,7 +204,7 @@
 		<xsl:apply-templates select="." mode="r:internal">
 			<xsl:with-param name="name"><xsl:apply-templates select="." mode="r:name"/></xsl:with-param>
 			<xsl:with-param name="desc"><xsl:apply-templates select="." mode="r:desc"/></xsl:with-param>
-			<xsl:with-param name="class">event</xsl:with-param>
+			<xsl:with-param name="level">event</xsl:with-param>
 			<xsl:with-param name="type"><xsl:apply-templates select="." mode="r:type"/></xsl:with-param>
 			<xsl:with-param name="events" select="."/>
 			<xsl:with-param name="races" select="s:eventRaceResults"/>
@@ -223,7 +217,7 @@
 		<xsl:apply-templates select="." mode="r:internal">
 			<xsl:with-param name="name"><xsl:apply-templates select="." mode="r:name"/></xsl:with-param>
 			<xsl:with-param name="desc"><xsl:apply-templates select="." mode="r:desc"/></xsl:with-param>
-			<xsl:with-param name="class">race</xsl:with-param>
+			<xsl:with-param name="level">race</xsl:with-param>
 			<xsl:with-param name="type"><xsl:apply-templates select="." mode="r:type"/></xsl:with-param>
 			<xsl:with-param name="events" select="/.."/>
 			<xsl:with-param name="races" select="."/>
@@ -236,9 +230,9 @@
 		<xsl:param name="name"/>
 		<!-- Description of results -->
 		<xsl:param name="desc"/>
-		<!-- Class of results -->
-		<xsl:param name="class"/>
-		<!-- Type of results -->
+		<!-- Level of results -->
+		<xsl:param name="level"/>
+		<!-- Type of results (level name) -->
 		<xsl:param name="type"/>
 		<!-- Set of event results -->
 		<xsl:param name="events"/>
@@ -252,15 +246,15 @@
 		<!-- Determine if there are any penalties -->
 		<xsl:variable name="penalties" select="sum(s:overallOrder/s:overallScore/@penalties) > 0"/>
 		<!-- Show did not participate column -->
-		<xsl:variable name="dnp" select="$penalties and $class = 'series' and s:overallOrder/s:overallScore/d:penalty[@type = 'EVENT_NON_ATTENDANCE']"/>
+		<xsl:variable name="dnp" select="$penalties and $level = 'series' and s:overallOrder/s:overallScore/d:penalty[@type = 'EVENT_NON_ATTENDANCE']"/>
 		<!-- Determine if there are any penalties -->
-		<xsl:variable name="notes" select="($class != 'series' and ($penalties or /s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=$races/@race]/d:raceAttendee/d:penalty)) or (not($dnp) and s:overallOrder/s:overallScore/d:penalty) or ($dnp and s:overallOrder/s:overallScore/d:penalty[@type != 'EVENT_NON_ATTENDANCE'])"/>
+		<xsl:variable name="notes" select="($level != 'series' and ($penalties or /s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=$races/@race]/d:raceAttendee/d:penalty)) or (not($dnp) and s:overallOrder/s:overallScore/d:penalty) or ($dnp and s:overallOrder/s:overallScore/d:penalty[@type != 'EVENT_NON_ATTENDANCE'])"/>
 		<!-- Top country results -->
 		<xsl:variable name="topCountry" select="$flags[@name='top-country']"/>
 
 		<h1><xsl:value-of select="$name"/></h1>
 		<table>
-			<xsl:attribute name="class">results normal <xsl:value-of select="$class"/></xsl:attribute>
+			<xsl:attribute name="class">results normal <xsl:value-of select="$level"/></xsl:attribute>
 			<thead>
 				<tr>
 					<th class="type" colspan="2"><xsl:value-of select="$type"/></th>
@@ -276,7 +270,7 @@
 									<xsl:value-of select="count(s:eventRaceResults)"/>
 								</xsl:attribute>
 								<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event[@xml:id=current()/@event]" mode="r:th">
-									<xsl:with-param name="class" select="$class"/>
+									<xsl:with-param name="level" select="$level"/>
 								</xsl:apply-templates>
 						</th>
 					</xsl:for-each>
@@ -298,7 +292,7 @@
 						</xsl:attribute>
 						<xsl:if test="$parent">
 							<xsl:apply-templates select="$parent" mode="r:th">
-								<xsl:with-param name="class" select="$class"/>
+								<xsl:with-param name="level" select="$level"/>
 							</xsl:apply-templates>
 						</xsl:if>
 					</th>
@@ -315,7 +309,7 @@
 					<xsl:for-each select="$races">
 						<th class="race">
 							<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=current()/@race]" mode="r:th">
-								<xsl:with-param name="class" select="$class"/>
+								<xsl:with-param name="level" select="$level"/>
 							</xsl:apply-templates>
 						</th>
 						<xsl:if test="$laps">
@@ -433,9 +427,9 @@
 										<xsl:otherwise>
 											<xsl:variable name="realPenalties" select="/s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=$races/@race]/d:raceAttendee[@pilot=current()/@pilot]/d:penalty"/>
 											<xsl:variable name="simuPenalties" select="d:penalty"/>
-											<xsl:if test="($realPenalties and $class != 'series') or $simuPenalties">
+											<xsl:if test="($realPenalties and $level != 'series') or $simuPenalties">
 												<ul class="pen">
-													<xsl:if test="$class != 'series'">
+													<xsl:if test="$level != 'series'">
 														<xsl:for-each select="$realPenalties">
 															<xsl:apply-templates select="." mode="r:internal">
 																<xsl:with-param name="race" select="current()/../.."/>
@@ -464,7 +458,7 @@
 		<xsl:if test="$topCountry">
 			<br/>
 			<table>
-				<xsl:attribute name="class">results topCountry <xsl:value-of select="$class"/></xsl:attribute>
+				<xsl:attribute name="class">results topCountry <xsl:value-of select="$level"/></xsl:attribute>
 				<thead>
 					<tr>
 						<th class="country name">Country</th>

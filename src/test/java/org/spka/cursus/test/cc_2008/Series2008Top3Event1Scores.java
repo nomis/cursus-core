@@ -98,7 +98,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 
 		Assert.assertEquals(SERIES_FLEET_AT_EVENT1, scores.getPilots().size());
 
-		RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1);
+		RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1, true);
 		race1AssertUtil.assertPilot(ir027, 6, 0, false, 0, 1);
 		race1AssertUtil.assertPilot(sco200, 6, 0, false, 2, 2);
 		race1AssertUtil.assertPilot(sco019, 6, 0, false, 3, 3);
@@ -119,7 +119,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 		race1AssertUtil.assertPilot(sco197, 0, 0, true, 0, 12);
 		race1AssertUtil.assertDone(12);
 
-		RaceAssertUtil race2AssertUtil = new RaceAssertUtil(scores, race2);
+		RaceAssertUtil race2AssertUtil = new RaceAssertUtil(scores, race2, true);
 		race2AssertUtil.assertPilot(sco200, 8, 0, false, 0, 1);
 		race2AssertUtil.assertPilot(sco135, 8, 0, false, 2, 2);
 		race2AssertUtil.assertPilot(ir027, 8, 0, false, 3, 3);
@@ -140,7 +140,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 		race2AssertUtil.assertPilot(sco159, 0, 0, true, 0, 13);
 		race2AssertUtil.assertDone(12);
 
-		RaceAssertUtil race3AssertUtil = new RaceAssertUtil(scores, race3);
+		RaceAssertUtil race3AssertUtil = new RaceAssertUtil(scores, race3, true);
 		race3AssertUtil.assertPilot(sco023, 9, 0, false, 0, 1);
 		race3AssertUtil.assertPilot(sco200, 9, 0, false, 2, 2);
 		race3AssertUtil.assertPilot(ir027, 9, 0, false, 3, 3);
@@ -161,7 +161,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 		race3AssertUtil.assertPilot(sco197, 0, 0, true, 0, 11);
 		race3AssertUtil.assertDone(12);
 
-		RaceAssertUtil race4AssertUtil = new RaceAssertUtil(scores, race4);
+		RaceAssertUtil race4AssertUtil = new RaceAssertUtil(scores, race4, true);
 		race4AssertUtil.assertPilot(sco023, 10, 0, false, 0, 1);
 		race4AssertUtil.assertPilot(ir027, 10, 0, false, 2, 2);
 		race4AssertUtil.assertPilot(sco135, 10, 0, false, 3, 3);
@@ -219,7 +219,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 
 			Scores scores = scorer.scoreEvent(event1, Predicates.in(getEventResultsPilots(series, event1)));
 
-			RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1);
+			RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1, true);
 			race1AssertUtil.assertPilot(ir027, 6, 0, false, 0, 1);
 			race1AssertUtil.assertPilot(sco200, 6, 0, false, 2, 2);
 			race1AssertUtil.assertPilot(sco019, 6, 0, false, 3, 3);
@@ -240,7 +240,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 			race1AssertUtil.assertPilot(sco197, 0, 0, true, 0, 12);
 			race1AssertUtil.assertDone(12);
 
-			RaceAssertUtil race2AssertUtil = new RaceAssertUtil(scores, race2);
+			RaceAssertUtil race2AssertUtil = new RaceAssertUtil(scores, race2, true);
 			race2AssertUtil.assertPilot(sco200, 8, 0, false, 0, 1);
 			race2AssertUtil.assertPilot(sco135, 8, 0, false, 2, 2);
 			race2AssertUtil.assertPilot(ir027, 8, 0, false, 3, 3);
@@ -261,7 +261,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 			race2AssertUtil.assertPilot(sco159, 0, 0, true, 0, 13);
 			race2AssertUtil.assertDone(12);
 
-			RaceAssertUtil race3AssertUtil = new RaceAssertUtil(scores, race3);
+			RaceAssertUtil race3AssertUtil = new RaceAssertUtil(scores, race3, true);
 			race3AssertUtil.assertPilot(sco023, 9, 0, false, 0, 1);
 			race3AssertUtil.assertPilot(sco200, 9, 0, false, 2, 2);
 			race3AssertUtil.assertPilot(ir027, 9, 0, false, 3, 3);
@@ -282,7 +282,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 			race3AssertUtil.assertPilot(sco197, 0, 0, true, 0, 11);
 			race3AssertUtil.assertDone(12);
 
-			RaceAssertUtil race4AssertUtil = new RaceAssertUtil(scores, race4);
+			RaceAssertUtil race4AssertUtil = new RaceAssertUtil(scores, race4, true);
 			race4AssertUtil.assertPilot(sco023, 10, 0, false, 0, 1);
 			race4AssertUtil.assertPilot(ir027, 10, 0, false, 2, 2);
 			race4AssertUtil.assertPilot(sco135, 10, 0, false, 3, 3);
@@ -342,7 +342,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 
 			Scores scores = scorer.scoreRace(race1, Predicates.in(getEventResultsPilots(series, event1)));
 
-			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race1);
+			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race1, true);
 			raceAssertUtil.assertPilot(ir027, 6, 0, false, 0, 1);
 			raceAssertUtil.assertPilot(sco200, 6, 0, false, 2, 2);
 			raceAssertUtil.assertPilot(sco019, 6, 0, false, 3, 3);
@@ -398,7 +398,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 
 			Scores scores = scorer.scoreRace(race2, Predicates.in(getEventResultsPilots(series, event1)));
 
-			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race2);
+			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race2, true);
 			raceAssertUtil.assertPilot(sco200, 8, 0, false, 0, 1);
 			raceAssertUtil.assertPilot(sco135, 8, 0, false, 2, 2);
 			raceAssertUtil.assertPilot(ir027, 8, 0, false, 3, 3);
@@ -456,7 +456,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 
 			Scores scores = scorer.scoreRace(race3, Predicates.in(getEventResultsPilots(series, event1)));
 
-			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race3);
+			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race3, true);
 			raceAssertUtil.assertPilot(sco023, 9, 0, false, 0, 1);
 			raceAssertUtil.assertPilot(sco200, 9, 0, false, 2, 2);
 			raceAssertUtil.assertPilot(ir027, 9, 0, false, 3, 3);
@@ -514,7 +514,7 @@ public class Series2008Top3Event1Scores extends CCSeries2008 {
 
 			Scores scores = scorer.scoreRace(race4, Predicates.in(getEventResultsPilots(series, event1)));
 
-			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race4);
+			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race4, true);
 			raceAssertUtil.assertPilot(sco023, 10, 0, false, 0, 1);
 			raceAssertUtil.assertPilot(ir027, 10, 0, false, 2, 2);
 			raceAssertUtil.assertPilot(sco135, 10, 0, false, 3, 3);

@@ -62,7 +62,7 @@ public class ExportSeries {
 		BufferedWriter bw;
 		bw = Files.newWriter(new File("target" + File.separator + fileName + "_tabs.xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/xml/xsl/results-html-menu.xsl\"?>\n"); //$NON-NLS-1$
+		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-menu.xsl\"?>\n"); //$NON-NLS-1$
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
@@ -79,7 +79,7 @@ public class ExportSeries {
 
 		bw = Files.newWriter(new File("target" + File.separator + fileName + "_simple.xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/xml/xsl/results-html-simple.xsl\"?>\n"); //$NON-NLS-1$
+		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-simple.xsl\"?>\n"); //$NON-NLS-1$
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
@@ -96,7 +96,7 @@ public class ExportSeries {
 
 		bw = Files.newWriter(new File("target" + File.separator + fileName + "_split-series1.xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/xml/xsl/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
+		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
@@ -115,7 +115,7 @@ public class ExportSeries {
 		for (int i = 1; i <= scores.getData().getEventResults().size(); i++) {
 			bw = Files.newWriter(new File("target" + File.separator + fileName + "_split-event" + i + ".xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 			bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-			bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/xml/xsl/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
+			bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
 			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
@@ -135,7 +135,7 @@ public class ExportSeries {
 		for (int i = 1; i <= scores.getData().getRaceResults().size(); i++) {
 			bw = Files.newWriter(new File("target" + File.separator + fileName + "_split-race" + i + ".xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 			bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-			bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/xml/xsl/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
+			bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
 			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$

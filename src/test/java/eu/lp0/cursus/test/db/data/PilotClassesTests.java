@@ -157,19 +157,19 @@ public class PilotClassesTests extends AbstractDatabaseTest {
 			Assert.assertNotNull(pilot3);
 
 			if (correctDirection) {
-				Assert.assertArrayEquals(Ordering.usingToString().sortedCopy(Arrays.asList(pilot1, pilot3)).toArray(),
-						Ordering.usingToString().sortedCopy(class1.getPilots()).toArray());
-				Assert.assertArrayEquals(Ordering.usingToString().sortedCopy(Arrays.asList(pilot1, pilot2)).toArray(),
-						Ordering.usingToString().sortedCopy(class2.getPilots()).toArray());
-				Assert.assertArrayEquals(Ordering.usingToString().sortedCopy(Arrays.asList(pilot2, pilot3)).toArray(),
-						Ordering.usingToString().sortedCopy(class3.getPilots()).toArray());
+				Assert.assertArrayEquals(Ordering.usingToString().immutableSortedCopy(Arrays.asList(pilot1, pilot3)).toArray(),
+						Ordering.usingToString().immutableSortedCopy(class1.getPilots()).toArray());
+				Assert.assertArrayEquals(Ordering.usingToString().immutableSortedCopy(Arrays.asList(pilot1, pilot2)).toArray(),
+						Ordering.usingToString().immutableSortedCopy(class2.getPilots()).toArray());
+				Assert.assertArrayEquals(Ordering.usingToString().immutableSortedCopy(Arrays.asList(pilot2, pilot3)).toArray(),
+						Ordering.usingToString().immutableSortedCopy(class3.getPilots()).toArray());
 
-				Assert.assertArrayEquals(Ordering.usingToString().sortedCopy(Arrays.asList(class1, class2)).toArray(),
-						Ordering.usingToString().sortedCopy(pilot1.getClasses()).toArray());
-				Assert.assertArrayEquals(Ordering.usingToString().sortedCopy(Arrays.asList(class2, class3)).toArray(),
-						Ordering.usingToString().sortedCopy(pilot2.getClasses()).toArray());
-				Assert.assertArrayEquals(Ordering.usingToString().sortedCopy(Arrays.asList(class3, class1)).toArray(),
-						Ordering.usingToString().sortedCopy(pilot3.getClasses()).toArray());
+				Assert.assertArrayEquals(Ordering.usingToString().immutableSortedCopy(Arrays.asList(class1, class2)).toArray(),
+						Ordering.usingToString().immutableSortedCopy(pilot1.getClasses()).toArray());
+				Assert.assertArrayEquals(Ordering.usingToString().immutableSortedCopy(Arrays.asList(class2, class3)).toArray(),
+						Ordering.usingToString().immutableSortedCopy(pilot2.getClasses()).toArray());
+				Assert.assertArrayEquals(Ordering.usingToString().immutableSortedCopy(Arrays.asList(class3, class1)).toArray(),
+						Ordering.usingToString().immutableSortedCopy(pilot3.getClasses()).toArray());
 			} else {
 				Assert.assertEquals(0, class1.getPilots().size());
 				Assert.assertEquals(0, class2.getPilots().size());

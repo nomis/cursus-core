@@ -75,7 +75,7 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 		ListMultimap<Pilot, Penalty> cancelLaps = ArrayListMultimap.create(EXPECTED_MAXIMUM_PENALTIES, scores.getPilots().size());
 		ListMultimap<Pilot, Penalty> adjustLaps = ArrayListMultimap.create(EXPECTED_MAXIMUM_PENALTIES, scores.getPilots().size());
 		for (RaceAttendee attendee : Maps.filterKeys(race.getAttendees(), Predicates.in(scores.getPilots())).values()) {
-			for (Penalty penalty : Iterables.concat(Ordering.natural().sortedCopy(attendee.getPenalties()),
+			for (Penalty penalty : Iterables.concat(Ordering.natural().immutableSortedCopy(attendee.getPenalties()),
 					scores.getSimulatedRacePenalties(attendee.getPilot(), race))) {
 				if (penalty.getValue() != 0) {
 					switch (penalty.getType()) {
@@ -148,7 +148,7 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 			origPilotOrder.addAll(noLaps);
 
 			for (Integer lapCount : changed) {
-				raceOrder.replaceValues(lapCount, Ordering.explicit(origPilotOrder).sortedCopy(raceOrder.get(lapCount)));
+				raceOrder.replaceValues(lapCount, Ordering.explicit(origPilotOrder).immutableSortedCopy(raceOrder.get(lapCount)));
 			}
 
 			return getPilotOrder(raceOrder);
@@ -215,7 +215,7 @@ public class GenericRaceLapsData<T extends ScoredData & RacePenaltiesData> exten
 
 	protected List<Pilot> getPilotOrder(ListMultimap<Integer, Pilot> raceOrder) {
 		List<Pilot> pilotOrder = new ArrayList<Pilot>(scores.getPilots().size());
-		for (Integer lap : Ordering.natural().reverse().sortedCopy(raceOrder.keySet())) {
+		for (Integer lap : Ordering.natural().reverse().immutableSortedCopy(raceOrder.keySet())) {
 			pilotOrder.addAll(raceOrder.get(lap));
 		}
 		return pilotOrder;

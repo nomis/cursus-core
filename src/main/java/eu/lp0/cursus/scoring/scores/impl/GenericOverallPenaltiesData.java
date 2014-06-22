@@ -43,7 +43,7 @@ public class GenericOverallPenaltiesData<T extends ScoredData & RacePenaltiesDat
 		@Override
 		public Map<Event, Set<Race>> get() {
 			Map<Event, Set<Race>> eventRaces = new LinkedHashMap<Event, Set<Race>>(scores.getEvents().size() * 2);
-			for (Event event : Ordering.natural().sortedCopy(scores.getEvents())) {
+			for (Event event : Ordering.natural().immutableSortedCopy(scores.getEvents())) {
 				eventRaces.put(event, ImmutableSet.copyOf(event.getRaces()));
 			}
 			return eventRaces;

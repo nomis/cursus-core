@@ -56,7 +56,7 @@ public class GenericRaceDiscardsData<T extends ScoredData & RacePointsData> exte
 					return ComparisonChain.start().compare(racePoints.get(o2), racePoints.get(o1)).compare(o1, o2).result();
 				}
 				// Use all races where the score is not null
-			}).sortedCopy(Maps.filterValues(racePoints, Predicates.notNull()).keySet()), discards));
+			}).immutableSortedCopy(Maps.filterValues(racePoints, Predicates.notNull()).keySet()), discards));
 		}
 
 		return Collections.emptyList();

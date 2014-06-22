@@ -75,14 +75,14 @@ public class PilotRacePlacingComparator<T extends ScoredData & RacePointsData & 
 		public List<Integer> get() {
 			switch (method) {
 			case INCLUDING_DISCARDS:
-				return Ordering.natural().sortedCopy(scores.getRacePoints(pilot).values());
+				return Ordering.natural().immutableSortedCopy(scores.getRacePoints(pilot).values());
 
 			case EXCLUDING_DISCARDS:
-				return Ordering.natural().sortedCopy(
+				return Ordering.natural().immutableSortedCopy(
 						Maps.filterKeys(scores.getRacePoints(pilot), Predicates.not(Predicates.in(scores.getDiscardedRaces(pilot)))).values());
 
 			case EXCLUDING_SIMULATED:
-				return Ordering.natural().sortedCopy(
+				return Ordering.natural().immutableSortedCopy(
 						Maps.filterKeys(scores.getRacePoints(pilot), Predicates.not(Predicates.in(scores.getSimulatedRacePoints(pilot)))).values());
 			}
 			return null;

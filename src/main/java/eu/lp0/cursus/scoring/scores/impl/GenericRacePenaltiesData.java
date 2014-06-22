@@ -68,7 +68,7 @@ public class GenericRacePenaltiesData<T extends ScoredData & RacePointsData> ext
 
 		int autoPenalties = countPreviousAutomaticPenalties(pilot, race);
 		int penalties = 0;
-		for (Penalty penalty : Iterables.concat(Ordering.natural().sortedCopy(attendee.getPenalties()), getSimulatedRacePenalties(pilot, race))) {
+		for (Penalty penalty : Iterables.concat(Ordering.natural().immutableSortedCopy(attendee.getPenalties()), getSimulatedRacePenalties(pilot, race))) {
 			switch (penalty.getType()) {
 			case AUTOMATIC:
 				if (penalty.getValue() >= 0) {

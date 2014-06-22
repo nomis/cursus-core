@@ -90,7 +90,7 @@
     <raceNumber number="14" organisation="IR"/>
    </pilot>
    <pilot xml:id="Pilot2bc625ef38c31">
-    <name xml:space="preserve">IR016@2013</name>
+    <name xml:space="preserve">IR016@2010</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Ireland</country>
     <raceNumber number="16" organisation="IR"/>
@@ -108,7 +108,7 @@
     <raceNumber number="27" organisation="IR"/>
    </pilot>
    <pilot xml:id="Pilot2bc625ef38c34">
-    <name xml:space="preserve">IR053@2012</name>
+    <name xml:space="preserve">IR053@2010</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Ireland</country>
     <raceNumber number="53" organisation="IR"/>
@@ -126,7 +126,7 @@
     <raceNumber number="85" organisation="IR"/>
    </pilot>
    <pilot xml:id="Pilot2bc625ef38c37">
-    <name xml:space="preserve">IR181@2012</name>
+    <name xml:space="preserve">IR181@2010</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Ireland</country>
     <raceNumber number="181" organisation="IR"/>

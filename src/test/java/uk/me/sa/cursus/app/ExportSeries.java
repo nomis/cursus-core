@@ -64,6 +64,9 @@ public class ExportSeries {
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
+			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
+		}
 		bw.write("</cursus>\n"); //$NON-NLS-1$
 		bw.close();
 
@@ -73,6 +76,9 @@ public class ExportSeries {
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
+			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
+		}
 		bw.write("</cursus>\n"); //$NON-NLS-1$
 		bw.close();
 
@@ -82,6 +88,9 @@ public class ExportSeries {
 		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
+			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
+		}
 		bw.write("\t<split prefix=\"" + fileName + "_split-\" type=\"series\" index=\"1\" suffix=\".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		bw.write("</cursus>\n"); //$NON-NLS-1$
 		bw.close();
@@ -93,6 +102,9 @@ public class ExportSeries {
 			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
+				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
+			}
 			bw.write("\t<split prefix=\"" + fileName + "_split-\" type=\"event\" index=\"" + i + "\" suffix=\".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			bw.write("</cursus>\n"); //$NON-NLS-1$
 			bw.close();
@@ -105,6 +117,9 @@ public class ExportSeries {
 			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
 			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
 			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
+			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
+				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
+			}
 			bw.write("\t<split prefix=\"" + fileName + "_split-\" type=\"race\" index=\"" + i + "\" suffix=\".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			bw.write("</cursus>\n"); //$NON-NLS-1$
 			bw.close();

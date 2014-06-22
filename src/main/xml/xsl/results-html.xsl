@@ -178,6 +178,8 @@
 		<xsl:variable name="dnp" select="$penalties and $class = 'series' and s:overallOrder/s:overallScore/d:penalty[@type = 'EVENT_NON_ATTENDANCE']"/>
 		<!-- Determine if there are any penalties -->
 		<xsl:variable name="notes" select="($class != 'series' and ($penalties or /s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=$races/@race]/d:raceAttendee/d:penalty)) or (not($dnp) and s:overallOrder/s:overallScore/d:penalty) or ($dnp and s:overallOrder/s:overallScore/d:penalty[@type != 'EVENT_NON_ATTENDANCE'])"/>
+		<!-- Top country results -->
+		<xsl:variable name="topCountry" select="$flags[@name='top-country']"/>
 
 		<h1><xsl:value-of select="$name"/></h1>
 		<table>
@@ -265,6 +267,8 @@
 						<xsl:variable name="zPilotClasses" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:member"/>
 						<!-- Count the people with the same position and use it to add a "=" -->
 						<xsl:variable name="joint" select="count(../s:overallScore[@position=current()/@position]) > 1"/>
+						<!-- Determine if all points are simulated to 0 -->
+						<xsl:variable name="allSimulatedZero" select="not($races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@simulated != 'true' or $races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@points != 0)"/>
 
 						<tr>
 							<th class="pos left"><xsl:value-of select="@position"/><xsl:if test="$joint">=</xsl:if></th>
@@ -280,7 +284,10 @@
 							<xsl:for-each select="$races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]">
 								<td>
 									<xsl:attribute name="class" xml:space="preserve">race pts <xsl:if test="@simulated = 'true'">sim</xsl:if> <xsl:if test="@discarded = 'true'">dis</xsl:if></xsl:attribute>
-									<xsl:value-of select="@points"/>
+									<!-- Hide points if they are simulated to 0 in top country mode -->
+									<xsl:if test="not($topCountry) or @points > 0 or @simulated != 'true'">
+										<xsl:value-of select="@points"/>
+									</xsl:if>
 								</td>
 								<xsl:if test="$laps">
 									<td class="race laps"><xsl:value-of select="@laps"/></td>
@@ -303,11 +310,23 @@
 										<td class="over pen"><xsl:value-of select="@penalties - $dnpCount"/></td>
 										<td class="over dnp"><xsl:value-of select="$dnpCount"/></td>
 									</xsl:when>
-									<xsl:otherwise><td class="over pen"><xsl:value-of select="@penalties"/></td></xsl:otherwise>
+									<xsl:otherwise>
+										<td class="over pen">
+											<!-- Hide penalties if they are all simulated and 0 in top country mode -->
+											<xsl:if test="not($topCountry) or not($allSimulatedZero) or @penalties != 0">
+												<xsl:value-of select="@penalties"/>
+											</xsl:if>
+										</td>
+									</xsl:otherwise>
 								</xsl:choose>
 							</xsl:if>
 
-							<td class="over pts"><xsl:value-of select="@points"/></td>
+							<td class="over pts">
+								<!-- Hide points if they are all simulated and 0 in top country mode -->
+								<xsl:if test="not($topCountry) or not($allSimulatedZero) or @points != 0">
+									<xsl:value-of select="@points"/>
+								</xsl:if>
+							</td>
 							<!-- Count the people with the same position and use it to add a "=" -->
 							<th class="pos right"><xsl:value-of select="@position"/><xsl:if test="$joint">=</xsl:if></th>
 

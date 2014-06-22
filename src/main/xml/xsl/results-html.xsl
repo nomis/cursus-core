@@ -291,7 +291,7 @@
 						<xsl:variable name="allSimulatedZero" select="not($races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@simulated != 'true' or $races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@points != 0)"/>
 
 						<tr>
-							<xsl:attribute name="class" xml:space="preserve">pilot num-org-<xsl:call-template name="str2css"><xsl:with-param name="in" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:raceNumber/@organisation"/></xsl:call-template> country-<xsl:call-template name="str2css"><xsl:with-param name="in" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:country"/></xsl:call-template></xsl:attribute>
+							<xsl:attribute name="class">pilot num-org-<xsl:call-template name="str2css"><xsl:with-param name="in" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:raceNumber/@organisation"/></xsl:call-template><xsl:text> </xsl:text>country-<xsl:call-template name="str2css"><xsl:with-param name="in" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:country"/></xsl:call-template></xsl:attribute>
 							<th class="pos left"><xsl:value-of select="@position"/><xsl:if test="$joint">=</xsl:if></th>
 							<td class="pilot name"><xsl:value-of select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:name"/></td>
 							<xsl:for-each select="$classes">
@@ -304,7 +304,7 @@
 							<!-- For each race score for this pilot -->
 							<xsl:for-each select="$races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]">
 								<td>
-									<xsl:attribute name="class" xml:space="preserve">race pts <xsl:if test="@simulated = 'true'">sim</xsl:if> <xsl:if test="@discarded = 'true'">dis</xsl:if></xsl:attribute>
+									<xsl:attribute name="class">race pts<xsl:if test="@simulated = 'true'"> sim</xsl:if><xsl:if test="@discarded = 'true'"> dis</xsl:if></xsl:attribute>
 									<!-- Hide points if they are simulated to 0 in top country mode -->
 									<xsl:if test="not($topCountry) or @points > 0 or @simulated != 'true'">
 										<xsl:value-of select="@points"/>

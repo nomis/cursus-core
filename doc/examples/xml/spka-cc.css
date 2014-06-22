@@ -1,5 +1,5 @@
 @media screen {
-	tr.pilot.num-org-SCO { color: #0065BD; }
-	tr.pilot.num-org-IR { color: #009B48; }
+	tr.pilot.country-Scotland { color: #0065BD; }
+	tr.pilot.country-Ireland { color: #009B48; }
 	tbody tr.pilot:hover { color: inherit; }
 }

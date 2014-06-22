@@ -31,6 +31,26 @@
 	<xsl:variable name="flags" select="/r:cursus/r:flag"/>
 	<xsl:variable name="classes" select="/r:cursus/r:class"/>
 
+	<xsl:template name="str2css">
+		<xsl:param name="in"/>
+		<xsl:variable name="inLen" select="string-length($in)" />
+		<xsl:choose>
+			<xsl:when test="$inLen = 0"/>
+			<!-- [_a-zA-Z0-9-] -->
+			<xsl:when test="$inLen = 1 and contains('_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-', $in)"><xsl:value-of select="$in"/></xsl:when>
+			<xsl:when test="$inLen = 1">_</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="mid" select="floor($inLen div 2)" />
+				<xsl:call-template name="str2css">
+					<xsl:with-param name="in" select="substring($in, 1, $mid)" />
+				</xsl:call-template>
+				<xsl:call-template name="str2css">
+					<xsl:with-param name="in" select="substring($in, $mid+1, $inLen - $mid)" />
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
 	<xsl:template match="s:seriesResults" mode="r:name"><xsl:value-of select="/s:cursus/d:series[@xml:id=current()/@series]/d:name"/></xsl:template>
 	<xsl:template match="s:eventResults" mode="r:name"><xsl:value-of select="/s:cursus/d:series/d:events/d:event[@xml:id=current()/@event]/d:name"/></xsl:template>
 	<xsl:template match="s:raceResults" mode="r:name"><xsl:value-of select="/s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=current()/@race]/d:name"/></xsl:template>
@@ -271,7 +291,7 @@
 						<xsl:variable name="allSimulatedZero" select="not($races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@simulated != 'true' or $races/s:raceOrder/s:raceScore[@pilot=current()/@pilot]/@points != 0)"/>
 
 						<tr>
-							<xsl:attribute name="class" xml:space="preserve">pilot num-org-<xsl:value-of select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:raceNumber/@organisation"/></xsl:attribute>
+							<xsl:attribute name="class" xml:space="preserve">pilot num-org-<xsl:call-template name="str2css"><xsl:with-param name="in" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:raceNumber/@organisation"/></xsl:call-template> country-<xsl:call-template name="str2css"><xsl:with-param name="in" select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:country"/></xsl:call-template></xsl:attribute>
 							<th class="pos left"><xsl:value-of select="@position"/><xsl:if test="$joint">=</xsl:if></th>
 							<td class="pilot name"><xsl:value-of select="/s:cursus/d:series/d:pilots/d:pilot[@xml:id=current()/@pilot]/d:name"/></td>
 							<xsl:for-each select="$classes">

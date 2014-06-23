@@ -32,6 +32,8 @@ ul.menu li:hover { background: #ff8; }
 
 @media print {
 	ul.menu { display: none; }
+	h1 { page-break-after: avoid; }
+	table { page-break-before: avoid; page-break-inside: avoid; }
 	.race.pts.dis { text-decoration: line-through; }
 	.race.pts.sim { text-decoration: underline; }
 }

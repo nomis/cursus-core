@@ -72,6 +72,7 @@
 				<ul class="menu">
 					<xsl:for-each select="s:seriesResults|s:eventResults|s:raceResults">
 						<xsl:variable name="index"><xsl:apply-templates select="." mode="r:index"/></xsl:variable>
+						<xsl:variable name="id"><xsl:apply-templates select="." mode="r:id"/></xsl:variable>
 						<li>
 							<xsl:attribute name="class"><xsl:value-of select="$index"/><xsl:if test="$index = $this"> current</xsl:if></xsl:attribute>
 							<xsl:text> </xsl:text>
@@ -80,7 +81,7 @@
 								<xsl:otherwise>
 									<a>
 										<xsl:variable name="desc"><xsl:apply-templates select="." mode="r:desc"/></xsl:variable>
-										<xsl:attribute name="href"><xsl:value-of select="$split/@prefix"/><xsl:value-of select="$index"/><xsl:value-of select="$split/@suffix"/></xsl:attribute>
+										<xsl:attribute name="href"><xsl:value-of select="$split/@prefix"/><xsl:value-of select="$id"/><xsl:value-of select="$split/@suffix"/></xsl:attribute>
 										<xsl:if test="$desc != ''">
 											<xsl:attribute name="title">
 												<xsl:value-of select="$desc"/>

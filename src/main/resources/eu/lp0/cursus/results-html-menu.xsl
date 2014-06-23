@@ -53,8 +53,8 @@
 				<style type="text/css">
 					<!-- Turn the sections on and off based on the current target -->
 					<xsl:for-each select="s:seriesResults|s:eventResults|s:raceResults">
-						#<xsl:apply-templates select="." mode="r:index"/>:not(:target) { display: none; }
-						#<xsl:apply-templates select="." mode="r:index"/>:target { display: block; }
+						#<xsl:apply-templates select="." mode="r:id"/>:not(:target) { display: none; }
+						#<xsl:apply-templates select="." mode="r:id"/>:target { display: block; }
 					</xsl:for-each>
 				</style>
 			</head>
@@ -63,13 +63,13 @@
 				<!-- Menu for series/event/race results -->
 				<ul class="menu">
 					<xsl:for-each select="s:seriesResults|s:eventResults|s:raceResults">
-						<xsl:variable name="index"><xsl:apply-templates select="." mode="r:index"/></xsl:variable>
+						<xsl:variable name="id"><xsl:apply-templates select="." mode="r:id"/></xsl:variable>
 						<li>
-							<xsl:attribute name="class"><xsl:value-of select="$index"/></xsl:attribute>
+							<xsl:attribute name="class"><xsl:value-of select="$id"/></xsl:attribute>
 							<xsl:text> </xsl:text>
 							<a>
 								<xsl:variable name="desc"><xsl:apply-templates select="." mode="r:desc"/></xsl:variable>
-								<xsl:attribute name="href">#<xsl:value-of select="$index"/></xsl:attribute>
+								<xsl:attribute name="href">#<xsl:value-of select="$id"/></xsl:attribute>
 								<xsl:if test="$desc != ''">
 									<xsl:attribute name="title">
 										<xsl:value-of select="$desc"/>
@@ -84,7 +84,7 @@
 				<!-- Tables for series/event/race results -->
 				<xsl:for-each select="s:seriesResults|s:eventResults|s:raceResults">
 					<div>
-						<xsl:attribute name="id"><xsl:apply-templates select="." mode="r:index"/></xsl:attribute>
+						<xsl:attribute name="id"><xsl:apply-templates select="." mode="r:id"/></xsl:attribute>
 						<xsl:apply-templates select="." mode="r:body"/>
 					</div>
 				</xsl:for-each>

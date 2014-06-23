@@ -57,10 +57,6 @@
 	<xsl:template match="s:eventResults" mode="r:desc"><xsl:value-of select="/s:cursus/d:series/d:events/d:event[@xml:id=current()/@event]/d:description"/></xsl:template>
 	<xsl:template match="s:raceResults" mode="r:desc"><xsl:value-of select="/s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=current()/@race]/d:description"/></xsl:template>
 
-	<xsl:template match="s:seriesResults" mode="r:class">series</xsl:template>
-	<xsl:template match="s:eventResults" mode="r:class">event</xsl:template>
-	<xsl:template match="s:raceResults" mode="r:class">race</xsl:template>
-
 	<xsl:template match="s:seriesResults" mode="r:type">Overall</xsl:template>
 	<xsl:template match="s:eventResults" mode="r:type">Event</xsl:template>
 	<xsl:template match="s:raceResults" mode="r:type">Race</xsl:template>
@@ -68,6 +64,10 @@
 	<xsl:template match="s:seriesResults" mode="r:index">series<xsl:value-of select="count(preceding-sibling::s:seriesResults)+1"/></xsl:template>
 	<xsl:template match="s:eventResults" mode="r:index">event<xsl:value-of select="count(preceding-sibling::s:eventResults)+1"/></xsl:template>
 	<xsl:template match="s:raceResults" mode="r:index">race<xsl:value-of select="count(preceding-sibling::s:raceResults)+1"/></xsl:template>
+
+	<xsl:template match="s:seriesResults" mode="r:id">s<xsl:value-of select="count(preceding-sibling::s:seriesResults)+1"/></xsl:template>
+	<xsl:template match="s:eventResults" mode="r:id">e<xsl:value-of select="count(preceding-sibling::s:eventResults)+1"/></xsl:template>
+	<xsl:template match="s:raceResults" mode="r:id">r<xsl:value-of select="count(preceding-sibling::s:raceResults)+1"/></xsl:template>
 
 	<xsl:template match="d:event|d:race" mode="r:th">
 		<xsl:param name="level"/>

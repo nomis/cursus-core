@@ -85,6 +85,7 @@
 				<xsl:for-each select="s:seriesResults|s:eventResults|s:raceResults">
 					<div>
 						<xsl:attribute name="id"><xsl:apply-templates select="." mode="r:id"/></xsl:attribute>
+						<h1><xsl:apply-templates select="." mode="r:name"/></h1>
 						<xsl:apply-templates select="." mode="r:body"/>
 					</div>
 				</xsl:for-each>
@@ -115,7 +116,7 @@
 		<xsl:choose>
 			<xsl:when test="$results">
 				<a>
-					<xsl:attribute name="href">#<xsl:apply-templates select="$results" mode="r:index"/></xsl:attribute>
+					<xsl:attribute name="href">#<xsl:apply-templates select="$results" mode="r:id"/></xsl:attribute>
 					<xsl:if test="d:description != ''">
 						<xsl:attribute name="title">
 							<xsl:apply-templates select="." mode="r:description">

@@ -226,8 +226,6 @@
 	</xsl:template>
 
 	<xsl:template match="s:seriesResults|s:eventResults|s:raceResults" mode="r:internal">
-		<!-- Name of results -->
-		<xsl:param name="name"/>
 		<!-- Description of results -->
 		<xsl:param name="desc"/>
 		<!-- Level of results -->
@@ -252,7 +250,6 @@
 		<!-- Top country results -->
 		<xsl:variable name="topCountry" select="$flags[@name='top-country']"/>
 
-		<h1><xsl:value-of select="$name"/></h1>
 		<table>
 			<xsl:attribute name="class">results normal <xsl:value-of select="$level"/></xsl:attribute>
 			<thead>

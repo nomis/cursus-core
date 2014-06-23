@@ -95,6 +95,7 @@
 						</li>
 					</xsl:for-each>
 				</ul>
+				<h1><xsl:apply-templates select="$results" mode="r:name"/></h1>
 				<xsl:apply-templates select="$results" mode="r:body"/>
 				<xsl:copy-of select="document($footer/@href)"/>
 			</body>

@@ -38,6 +38,14 @@
 		<xsl:apply-templates select="document(r:load/@href)/s:cursus" mode="r:page"/>
 	</xsl:template>
 
+	<xsl:template match="s:seriesResults|s:eventResults|s:raceResults" mode="r:simple">
+		<h1>
+			<xsl:attribute name="id"><xsl:apply-templates select="." mode="r:id"/></xsl:attribute>
+			<xsl:apply-templates select="." mode="r:name"/>
+		</h1>
+		<xsl:apply-templates select="." mode="r:body"/>
+	</xsl:template>
+
 	<xsl:template match="/s:cursus" mode="r:page">
 		<html>
 			<head>
@@ -53,7 +61,7 @@
 			</head>
 			<body>
 				<xsl:copy-of select="document($header/@href)"/>
-				<xsl:apply-templates select="s:seriesResults|s:eventResults|s:raceResults" mode="r:body"/>
+				<xsl:apply-templates select="s:seriesResults|s:eventResults|s:raceResults" mode="r:simple"/>
 				<xsl:copy-of select="document($footer/@href)"/>
 			</body>
 		</html>

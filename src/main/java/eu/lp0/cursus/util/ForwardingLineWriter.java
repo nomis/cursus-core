@@ -62,27 +62,10 @@ public class ForwardingLineWriter extends Writer {
 	}
 
 	@Override
-	public final Writer append(char c) throws IOException {
+	public final void write(int c) throws IOException {
 		Preconditions.checkState(buffer != null);
-		buffer.append(c);
+		buffer.append((char)c);
 		flushBuffer();
-		return this;
-	}
-
-	@Override
-	public final Writer append(CharSequence csq, int start, int end) throws IOException {
-		Preconditions.checkState(buffer != null);
-		buffer.append(csq, start, end);
-		flushBuffer();
-		return this;
-	}
-
-	@Override
-	public final Writer append(CharSequence csq) throws IOException {
-		Preconditions.checkState(buffer != null);
-		buffer.append(csq);
-		flushBuffer();
-		return this;
 	}
 
 	@Override
@@ -93,9 +76,9 @@ public class ForwardingLineWriter extends Writer {
 	}
 
 	@Override
-	public final void write(int c) throws IOException {
+	public final void write(char[] cbuf, int off, int len) throws IOException {
 		Preconditions.checkState(buffer != null);
-		buffer.append(c);
+		buffer.append(cbuf, off, len);
 		flushBuffer();
 	}
 
@@ -110,13 +93,6 @@ public class ForwardingLineWriter extends Writer {
 	public final void write(String str) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(str);
-		flushBuffer();
-	}
-
-	@Override
-	public final void write(char[] cbuf, int off, int len) throws IOException {
-		Preconditions.checkState(buffer != null);
-		buffer.append(cbuf, off, len);
 		flushBuffer();
 	}
 

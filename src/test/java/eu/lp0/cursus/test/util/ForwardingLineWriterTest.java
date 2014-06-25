@@ -179,4 +179,16 @@ public class ForwardingLineWriterTest {
 
 		Assert.assertEquals("test1test2test3\ntest4addedtest5\n\ntest6\ntest7\ntest8\n\ntest9", new String(output.toByteArray()));
 	}
+
+	@SuppressWarnings("nls")
+	@Test
+	public void test6() throws Exception {
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		ForwardingLineWriter lineWriter = new ForwardingLineWriter(new PrintWriter(output));
+		lineWriter.write(60);
+		lineWriter.append((char)62);
+		lineWriter.close();
+
+		Assert.assertEquals("<>", new String(output.toByteArray()));
+	}
 }

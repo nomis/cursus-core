@@ -34,32 +34,35 @@ public class ForwardingLineWriter extends Writer {
 	private void flushBuffer() throws IOException {
 		int newLine;
 		while ((newLine = buffer.indexOf("\n")) != -1) { //$NON-NLS-1$
-			writeLine(buffer.substring(0, newLine + 1), false);
+			String line = buffer.substring(0, newLine + 1);
 			buffer.replace(0, buffer.length() - (newLine + 1), buffer.substring(newLine + 1));
 			buffer.setLength(buffer.length() - (newLine + 1));
+			writeLine(line);
 		}
 	}
 
 	@Override
-	public void flush() throws IOException {
+	public final void flush() throws IOException {
 		if (buffer == null) {
 			return;
+		}
+		flushBuffer();
+		if (buffer.length() > 0) {
+			writeLine(buffer.toString());
+			buffer.setLength(0);
 		}
 		writer.flush();
 	}
 
 	@Override
 	public void close() throws IOException {
-		if (buffer == null) {
-			return;
-		}
-		writeLine(buffer.toString(), true);
+		flush();
 		writer.close();
 		buffer = null;
 	}
 
 	@Override
-	public Writer append(char c) throws IOException {
+	public final Writer append(char c) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(c);
 		flushBuffer();
@@ -67,7 +70,7 @@ public class ForwardingLineWriter extends Writer {
 	}
 
 	@Override
-	public Writer append(CharSequence csq, int start, int end) throws IOException {
+	public final Writer append(CharSequence csq, int start, int end) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(csq, start, end);
 		flushBuffer();
@@ -75,7 +78,7 @@ public class ForwardingLineWriter extends Writer {
 	}
 
 	@Override
-	public Writer append(CharSequence csq) throws IOException {
+	public final Writer append(CharSequence csq) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(csq);
 		flushBuffer();
@@ -83,35 +86,35 @@ public class ForwardingLineWriter extends Writer {
 	}
 
 	@Override
-	public void write(char[] cbuf) throws IOException {
+	public final void write(char[] cbuf) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(cbuf);
 		flushBuffer();
 	}
 
 	@Override
-	public void write(int c) throws IOException {
+	public final void write(int c) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(c);
 		flushBuffer();
 	}
 
 	@Override
-	public void write(String str, int off, int len) throws IOException {
+	public final void write(String str, int off, int len) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(str, off, len);
 		flushBuffer();
 	}
 
 	@Override
-	public void write(String str) throws IOException {
+	public final void write(String str) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(str);
 		flushBuffer();
 	}
 
 	@Override
-	public void write(char[] cbuf, int off, int len) throws IOException {
+	public final void write(char[] cbuf, int off, int len) throws IOException {
 		Preconditions.checkState(buffer != null);
 		buffer.append(cbuf, off, len);
 		flushBuffer();
@@ -119,9 +122,5 @@ public class ForwardingLineWriter extends Writer {
 
 	protected void writeLine(String line) throws IOException {
 		writer.write(line);
-	}
-
-	protected void writeLine(String line, boolean close) throws IOException {
-		writeLine(line);
 	}
 }

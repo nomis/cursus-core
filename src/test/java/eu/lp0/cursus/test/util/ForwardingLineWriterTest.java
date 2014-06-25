@@ -87,11 +87,18 @@ public class ForwardingLineWriterTest {
 	public void test3() throws Exception {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		ForwardingLineWriter lineWriter = new ForwardingLineWriter(new PrintWriter(output)) {
+			int lineNo = 0;
+
 			@Override
-			protected void writeLine(String line, boolean close) throws IOException {
+			protected void writeLine(String line) throws IOException {
 				super.writeLine(line);
-				if (close) {
+				if (lineNo % 2 == 0) {
 					super.writeLine("added\n");
+				}
+				lineNo++;
+
+				if (line.endsWith("\n")) {
+					flush();
 				}
 			}
 		};
@@ -109,6 +116,67 @@ public class ForwardingLineWriterTest {
 		lineWriter.write("");
 		lineWriter.close();
 
+		Assert.assertEquals("test1test2test3\nadded\ntest4test5\n\nadded\ntest6\ntest7\nadded\ntest8\n\nadded\ntest9", new String(output.toByteArray()));
+	}
+
+	@SuppressWarnings("nls")
+	@Test
+	public void test4() throws Exception {
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		ForwardingLineWriter lineWriter = new ForwardingLineWriter(new PrintWriter(output)) {
+			@Override
+			public void close() throws IOException {
+				flush();
+				writeLine("added\n");
+				super.close();
+			}
+		};
+		lineWriter.write("");
+		lineWriter.write("test1");
+		lineWriter.write("test2");
+		lineWriter.write("test3\n");
+		lineWriter.write("test4");
+		lineWriter.write("test5");
+		lineWriter.write("\n");
+		lineWriter.write("\n");
+		lineWriter.write("test6\ntest7\ntest8\n");
+		lineWriter.write("\n");
+		lineWriter.write("test9");
+		lineWriter.write("");
+		lineWriter.close();
+
 		Assert.assertEquals("test1test2test3\ntest4test5\n\ntest6\ntest7\ntest8\n\ntest9added\n", new String(output.toByteArray()));
+	}
+
+	@SuppressWarnings("nls")
+	@Test
+	public void test5() throws Exception {
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		ForwardingLineWriter lineWriter = new ForwardingLineWriter(new PrintWriter(output)) {
+			@Override
+			protected void writeLine(String line) throws IOException {
+				super.writeLine(line);
+				if (line.equals("test4")) {
+					super.writeLine("added");
+				}
+			}
+		};
+		lineWriter.write("");
+		lineWriter.write("test1");
+		lineWriter.flush();
+		lineWriter.write("test2");
+		lineWriter.write("test3\n");
+		lineWriter.write("test4");
+		lineWriter.flush();
+		lineWriter.write("test5");
+		lineWriter.write("\n");
+		lineWriter.write("\n");
+		lineWriter.write("test6\ntest7\ntest8\n");
+		lineWriter.write("\n");
+		lineWriter.write("test9");
+		lineWriter.write("");
+		lineWriter.close();
+
+		Assert.assertEquals("test1test2test3\ntest4addedtest5\n\ntest6\ntest7\ntest8\n\ntest9", new String(output.toByteArray()));
 	}
 }

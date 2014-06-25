@@ -85,7 +85,7 @@ public class ForwardingLineWriter extends Writer {
 	@Override
 	public final void write(String str, int off, int len) throws IOException {
 		Preconditions.checkState(buffer != null);
-		buffer.append(str, off, len);
+		buffer.append(str, off, off + len);
 		flushBuffer();
 	}
 

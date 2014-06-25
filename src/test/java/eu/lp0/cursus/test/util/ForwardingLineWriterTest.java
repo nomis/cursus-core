@@ -191,4 +191,15 @@ public class ForwardingLineWriterTest {
 
 		Assert.assertEquals("<>", new String(output.toByteArray()));
 	}
+
+	@SuppressWarnings("nls")
+	@Test
+	public void test7() throws Exception {
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		ForwardingLineWriter lineWriter = new ForwardingLineWriter(new PrintWriter(output));
+		lineWriter.write("hello world", 3, 6);
+		lineWriter.close();
+
+		Assert.assertEquals("lo wor", new String(output.toByteArray()));
+	}
 }

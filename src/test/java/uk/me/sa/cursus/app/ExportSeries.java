@@ -17,15 +17,19 @@
  */
 package uk.me.sa.cursus.app;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.Map;
 
+import com.google.common.collect.Iterables;
+import com.google.common.io.ByteSource;
 import com.google.common.io.Files;
 
 import eu.lp0.cursus.db.Database;
 import eu.lp0.cursus.db.DatabaseSession;
+import eu.lp0.cursus.publish.html.XSLTHTMLGenerator;
 import eu.lp0.cursus.test.AbstractSeries;
+import eu.lp0.cursus.xml.data.entity.DataXMLClass;
 import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 
 public class ExportSeries {
@@ -59,97 +63,28 @@ public class ExportSeries {
 	private void export(ScoresXMLFile scores) throws Exception {
 		scores.to(new File("target" + File.separator + fileName + ".xml")); //$NON-NLS-1$ //$NON-NLS-2$
 
-		BufferedWriter bw;
-		bw = Files.newWriter(new File("target" + File.separator + fileName + "_tabs.xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-menu.xsl\"?>\n"); //$NON-NLS-1$
-		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
-		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
-		for (String styleSheet : styleSheets) {
-			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-		bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
-		bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
+		XSLTHTMLGenerator gen = new XSLTHTMLGenerator(fileName + ".xml", fileName, "../../../src/main/resources/eu/lp0/cursus", scores); //$NON-NLS-1$ //$NON-NLS-2$
+
+		gen.setLongNames(true);
+		gen.getStyleSheets().add("spka.css"); //$NON-NLS-1$
+		gen.getStyleSheets().addAll(Arrays.asList(styleSheets));
+		gen.getFlags().put("compact-race", "10"); //$NON-NLS-1$ //$NON-NLS-2$
+		gen.getFlags().put("compact-event", "10"); //$NON-NLS-1$ //$NON-NLS-2$
 		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
-			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
-		}
-		bw.write("</cursus>\n"); //$NON-NLS-1$
-		bw.close();
-
-		bw = Files.newWriter(new File("target" + File.separator + fileName + "_simple.xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-simple.xsl\"?>\n"); //$NON-NLS-1$
-		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
-		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
-		for (String styleSheet : styleSheets) {
-			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-		bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
-		bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
-		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
-			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
-		}
-		bw.write("</cursus>\n"); //$NON-NLS-1$
-		bw.close();
-
-		bw = Files.newWriter(new File("target" + File.separator + fileName + "_split-s1.xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-		bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
-		bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
-		bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
-		for (String styleSheet : styleSheets) {
-			bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-		bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
-		bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
-		if (getClass().getName().contains("Top")) { //$NON-NLS-1$
-			bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
-		}
-		bw.write("\t<split prefix=\"" + fileName + "_split-\" type=\"series\" index=\"1\" suffix=\".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		bw.write("</cursus>\n"); //$NON-NLS-1$
-		bw.close();
-
-		for (int i = 1; i <= scores.getData().getEventResults().size(); i++) {
-			bw = Files.newWriter(new File("target" + File.separator + fileName + "_split-e" + i + ".xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-			bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-			bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
-			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
-			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
-			for (String styleSheet : styleSheets) {
-				bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-			}
-			bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
-			bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
-			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
-				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
-			}
-			bw.write("\t<split prefix=\"" + fileName + "_split-\" type=\"event\" index=\"" + i + "\" suffix=\".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			bw.write("</cursus>\n"); //$NON-NLS-1$
-			bw.close();
+			gen.getFlags().put("top-country", null); //$NON-NLS-1$
 		}
 
-		for (int i = 1; i <= scores.getData().getRaceResults().size(); i++) {
-			bw = Files.newWriter(new File("target" + File.separator + fileName + "_split-r" + i + ".xml"), Charset.forName("UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-			bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //$NON-NLS-1$
-			bw.write("<?xml-stylesheet type=\"text/xsl\" href=\"../../../src/main/resources/eu/lp0/cursus/results-html-split.xsl\"?>\n"); //$NON-NLS-1$
-			bw.write("<cursus xmlns=\"urn:oid:1.3.6.1.4.1.39777.1.0.1.2.1\">\n"); //$NON-NLS-1$
-			bw.write("\t<load href=\"" + fileName + ".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
-			bw.write("\t<stylesheet href=\"spka.css\"/>\n"); //$NON-NLS-1$
-			for (String styleSheet : styleSheets) {
-				bw.write("\t<stylesheet href=\"" + styleSheet + "\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		for (DataXMLClass class_ : scores.getData().getSeries().getClasses()) {
+			if (class_.getName().equals("16\" Wheel")) { //$NON-NLS-1$
+				gen.getClasses().put(class_.getName(), "16\""); //$NON-NLS-1$
+			} else if (class_.getName().equals("Junior")) { //$NON-NLS-1$
+				gen.getClasses().put(class_.getName(), class_.getName());
 			}
-			bw.write("\t<flag name=\"compact-race\">10</flag>\n"); //$NON-NLS-1$
-			bw.write("\t<flag name=\"compact-event\">10</flag>\n"); //$NON-NLS-1$
-			if (getClass().getName().contains("Top")) { //$NON-NLS-1$
-				bw.write("\t<flag name=\"top-country\"/>\n"); //$NON-NLS-1$
-			}
-			bw.write("\t<split prefix=\"" + fileName + "_split-\" type=\"race\" index=\"" + i + "\" suffix=\".xml\"/>\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			bw.write("</cursus>\n"); //$NON-NLS-1$
-			bw.close();
+		}
+
+		for (Map.Entry<String, ByteSource> page : Iterables
+				.concat(gen.getMenuPage().entrySet(), gen.getSimplePage().entrySet(), gen.getSplitPages().entrySet())) {
+			page.getValue().copyTo(Files.asByteSink(new File("target" + File.separator + page.getKey()))); //$NON-NLS-1$
 		}
 	}
 }

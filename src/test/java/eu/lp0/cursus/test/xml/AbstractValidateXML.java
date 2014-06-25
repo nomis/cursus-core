@@ -15,15 +15,7 @@
 	You should have received a copy of the GNU Affero General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.spka.cursus.test;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Validator;
+package eu.lp0.cursus.test.xml;
 
 import org.fisly.cursus.test.europe_2011.FISLYSeries2011;
 import org.junit.Test;
@@ -42,13 +34,9 @@ import org.spka.cursus.test.series_2011.Series2011;
 import org.spka.cursus.test.series_2012.Series2012;
 import org.spka.cursus.test.series_2013.Series2013;
 
-import eu.lp0.cursus.db.Database;
-import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.test.AbstractSeries;
-import eu.lp0.cursus.test.xml.Namespace;
-import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 
-public class ValidateScoresXML {
+public abstract class AbstractValidateXML {
 	@Test
 	public void fisly2011() throws Exception {
 		check(new FISLYSeries2011());
@@ -149,55 +137,5 @@ public class ValidateScoresXML {
 		check(new CCSeries2014(true));
 	}
 
-	private static void check(AbstractSeries series) throws Exception {
-		List<byte[]> files = new ArrayList<byte[]>();
-
-		series.createAllData();
-
-		Database db = series.getDatabase();
-		db.startSession();
-		try {
-			DatabaseSession.begin();
-			for (ScoresXMLFile scoresFile : series.createScores()) {
-				files.add(validate(scoresFile));
-			}
-			DatabaseSession.commit();
-		} finally {
-			db.endSession();
-		}
-		db.close(true);
-
-		for (byte[] data : files) {
-			ScoresXMLFile import_ = new ScoresXMLFile();
-			import_.from(new ByteArrayInputStream(data));
-			import_.getData();
-
-			// TODO export, compare
-			// ScoresXML file = import_.getData();
-			// Scores seriesScores;
-			// List<Scores> eventScores = new ArrayList<Scores>();
-			// List<Scores> raceScores = new ArrayList<Scores>();
-			// XMLScores xmlScores = new XMLScores(file);
-			// seriesScores = xmlScores.newInstance(file.getSeriesResults());
-			// for (ScoresXMLEventResults scores : file.getEventResults()) {
-			// eventScores.add(xmlScores.newInstance(scores));
-			// }
-			// for (ScoresXMLRaceResults scores : file.getRaceResults()) {
-			// raceScores.add(xmlScores.newInstance(scores));
-			// }
-		}
-
-	}
-
-	private static byte[] validate(ScoresXMLFile scores) throws Exception {
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		scores.to(os);
-
-		ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
-
-		Validator validator = Namespace.SCORES_V1.newValidator();
-		validator.validate(new StreamSource(is));
-
-		return os.toByteArray();
-	}
+	protected abstract void check(AbstractSeries series) throws Exception;
 }

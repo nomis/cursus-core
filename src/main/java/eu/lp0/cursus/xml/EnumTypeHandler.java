@@ -17,6 +17,7 @@
  */
 package eu.lp0.cursus.xml;
 
+import java.util.Locale;
 import java.util.Properties;
 
 import org.beanio.types.ConfigurableTypeHandler;
@@ -24,7 +25,17 @@ import org.beanio.types.TypeConversionException;
 import org.beanio.types.TypeHandler;
 
 public class EnumTypeHandler<T extends Enum<T>> implements ConfigurableTypeHandler {
+	private enum Convert {
+		ASIS,
+
+		LOWERCASE,
+
+		UPPERCASE;
+	}
+
 	private Class<T> type;
+	private Convert read = Convert.ASIS;
+	private Convert write = Convert.ASIS;
 
 	@SuppressWarnings({ "rawtypes" })
 	@Override
@@ -34,6 +45,20 @@ public class EnumTypeHandler<T extends Enum<T>> implements ConfigurableTypeHandl
 
 	@Override
 	public Object parse(String text) throws TypeConversionException {
+		switch (read) {
+		case LOWERCASE:
+			text = text.toLowerCase(Locale.ROOT);
+			break;
+
+		case UPPERCASE:
+			text = text.toUpperCase(Locale.ROOT);
+			break;
+
+		case ASIS:
+		default:
+			break;
+		}
+
 		return Enum.valueOf(type, text);
 	}
 
@@ -43,7 +68,24 @@ public class EnumTypeHandler<T extends Enum<T>> implements ConfigurableTypeHandl
 		if (value == null) {
 			return null;
 		}
-		return ((T)value).name();
+
+		String name = ((T)value).name();
+
+		switch (write) {
+		case LOWERCASE:
+			name = name.toLowerCase(Locale.ROOT);
+			break;
+
+		case UPPERCASE:
+			name = name.toUpperCase(Locale.ROOT);
+			break;
+
+		case ASIS:
+		default:
+			break;
+		}
+
+		return name;
 	}
 
 	@Override
@@ -55,5 +97,13 @@ public class EnumTypeHandler<T extends Enum<T>> implements ConfigurableTypeHandl
 	@SuppressWarnings("unchecked")
 	public void setEnum(String value) throws ClassNotFoundException {
 		type = (Class<T>)Class.forName(value);
+	}
+
+	public void setRead(Convert value) {
+		read = value;
+	}
+
+	public void setWrite(Convert value) {
+		write = value;
 	}
 }

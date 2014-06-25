@@ -62,7 +62,11 @@
 
 	<xs:element name="flag">
 		<xs:complexType>
-			<xs:attribute name="name" type="flags" use="required"/>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="flags" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
 

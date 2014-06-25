@@ -96,6 +96,10 @@ public class XMLScores {
 		}
 	}
 
+	public ScoresXML getData() {
+		return scoresXML;
+	}
+
 	public GenericScores newInstance(ScoresXMLSeriesResults results) {
 		return newInstance(results, new Subset(this, results));
 	}

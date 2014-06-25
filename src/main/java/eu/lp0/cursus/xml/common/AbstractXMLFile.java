@@ -17,6 +17,7 @@
  */
 package eu.lp0.cursus.xml.common;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,12 +29,15 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.charset.Charset;
 
 import org.beanio.BeanReader;
 import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.ByteSource;
+
+import eu.lp0.cursus.util.PackageConstants;
 import eu.lp0.cursus.xml.ExportException;
 import eu.lp0.cursus.xml.ImportException;
 
@@ -41,7 +45,7 @@ public abstract class AbstractXMLFile<T> {
 	private static StreamFactory factory = StreamFactory.newInstance();
 
 	static {
-		factory.loadResource("eu/lp0/cursus/beanio.xml"); //$NON-NLS-1$
+		factory.loadResource(PackageConstants.RESOURCE_PATH + "/beanio.xml"); //$NON-NLS-1$
 	}
 
 	private final Class<T> type;
@@ -64,15 +68,21 @@ public abstract class AbstractXMLFile<T> {
 		this.data = data;
 	}
 
-	public void from(InputStream stream) throws ImportException {
-		from(new InputStreamReader(stream, Charset.forName("UTF-8"))); //$NON-NLS-1$
+	public final void from(InputStream stream) throws ImportException {
+		from(new InputStreamReader(stream, Charsets.UTF_8));
 	}
 
-	public void to(OutputStream stream) throws ExportException {
-		to(new OutputStreamWriter(stream, Charset.forName("UTF-8"))); //$NON-NLS-1$
+	public final void to(OutputStream stream) throws ExportException {
+		to(new OutputStreamWriter(stream, Charsets.UTF_8));
 	}
 
-	public void from(File file) throws ImportException {
+	public final ByteSource toByteSource() throws ExportException {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		to(out);
+		return ByteSource.wrap(out.toByteArray());
+	}
+
+	public final void from(File file) throws ImportException {
 		FileInputStream in;
 		try {
 			in = new FileInputStream(file);
@@ -90,7 +100,7 @@ public abstract class AbstractXMLFile<T> {
 		}
 	}
 
-	public void to(File file) throws ExportException {
+	public final void to(File file) throws ExportException {
 		FileOutputStream out;
 		try {
 			out = new FileOutputStream(file);

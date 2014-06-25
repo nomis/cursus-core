@@ -28,7 +28,7 @@ public class ReflectionsUtil {
 	public static synchronized Reflections getInstance() {
 		if (reflections == null) {
 			ConfigurationBuilder config = new ConfigurationBuilder();
-			config.setUrls(ClasspathHelper.forPackage("eu.lp0.cursus", ClasspathHelper.contextClassLoader())); //$NON-NLS-1$
+			config.setUrls(ClasspathHelper.forPackage(PackageConstants.NAME, ClasspathHelper.contextClassLoader()));
 			config.setScanners(new SubTypesScanner());
 
 			reflections = new Reflections(config);

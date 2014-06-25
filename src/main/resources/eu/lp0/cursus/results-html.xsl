@@ -297,8 +297,20 @@
 				<tr>
 					<th class="pos left">Position</th>
 					<th class="pilot name">Name</th>
+					<xsl:variable name="dClasses" select="/s:cursus/d:series/d:classes/d:class"/>
 					<xsl:for-each select="$classes">
-						<th class="class"><xsl:value-of select="r:output"/></th>
+						<xsl:variable name="className" select="r:name"/>
+						<xsl:variable name="classOutput" select="r:output"/>
+						<xsl:variable name="classDesc" select="$dClasses/d:name[text()=$className]/../d:description"/>
+						<th class="class">
+							<xsl:attribute name="title">
+								<xsl:choose>
+									<xsl:when test="$className = $classOutput"><xsl:value-of select="$classDesc"/></xsl:when>
+									<xsl:otherwise><xsl:value-of select="$className"/><xsl:if test="$classDesc != $className and $classDesc != ''"> (<xsl:value-of select="$classDesc"/>)</xsl:if></xsl:otherwise>
+								</xsl:choose>
+							</xsl:attribute>
+							<xsl:value-of select="$classOutput"/>
+						</th>
 					</xsl:for-each>
 					<th class="pilot num">Race <abbr title="Number">No.</abbr></th>
 

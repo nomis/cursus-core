@@ -139,9 +139,18 @@
 				</a>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:apply-templates select="." mode="r:name">
-					<xsl:with-param name="level" select="$level"/>
-				</xsl:apply-templates>
+				<span>
+					<xsl:if test="d:description != ''">
+						<xsl:attribute name="title">
+							<xsl:apply-templates select="." mode="r:description">
+								<xsl:with-param name="level" select="$level"/>
+							</xsl:apply-templates>
+						</xsl:attribute>
+					</xsl:if>
+					<xsl:apply-templates select="." mode="r:name">
+						<xsl:with-param name="level" select="$level"/>
+					</xsl:apply-templates>
+				</span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

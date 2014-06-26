@@ -96,25 +96,30 @@
 
 	<xsl:template match="d:event" mode="r:th">
 		<xsl:param name="level"/>
+		<xsl:param name="this"/>
 		<xsl:apply-templates select="." mode="th">
 			<xsl:with-param name="results" select="/s:cursus/s:eventResults[@event=current()/@xml:id]"/>
 			<xsl:with-param name="level" select="$level"/>
+			<xsl:with-param name="this" select="$this"/>
 		</xsl:apply-templates>
 	</xsl:template>
 
 	<xsl:template match="d:race" mode="r:th">
 		<xsl:param name="level"/>
+		<xsl:param name="this"/>
 		<xsl:apply-templates select="." mode="th">
 			<xsl:with-param name="results" select="/s:cursus/s:raceResults[@race=current()/@xml:id]"/>
 			<xsl:with-param name="level" select="$level"/>
+			<xsl:with-param name="this" select="$this"/>
 		</xsl:apply-templates>
 	</xsl:template>
 
 	<xsl:template match="d:event|d:race" mode="th">
 		<xsl:param name="results"/>
 		<xsl:param name="level"/>
+		<xsl:param name="this"/>
 		<xsl:choose>
-			<xsl:when test="$results">
+			<xsl:when test="$results and $results != $this">
 				<a>
 					<xsl:attribute name="href">#<xsl:apply-templates select="$results" mode="r:id"/></xsl:attribute>
 					<xsl:if test="d:description != ''">
@@ -130,9 +135,18 @@
 				</a>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:apply-templates select="." mode="r:name">
-					<xsl:with-param name="level" select="$level"/>
-				</xsl:apply-templates>
+				<span>
+					<xsl:if test="d:description != ''">
+						<xsl:attribute name="title">
+							<xsl:apply-templates select="." mode="r:description">
+								<xsl:with-param name="level" select="$level"/>
+							</xsl:apply-templates>
+						</xsl:attribute>
+					</xsl:if>
+					<xsl:apply-templates select="." mode="r:name">
+						<xsl:with-param name="level" select="$level"/>
+					</xsl:apply-templates>
+				</span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

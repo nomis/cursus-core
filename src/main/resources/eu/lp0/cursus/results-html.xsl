@@ -239,6 +239,7 @@
 		<!-- Parent of these results -->
 		<xsl:param name="parent"/>
 
+		<xsl:variable name="this" select="."/>
 		<!-- Output laps if these are race results -->
 		<xsl:variable name="laps" select="count($events) = 0"/>
 		<!-- Determine if there are any penalties -->
@@ -268,6 +269,7 @@
 								</xsl:attribute>
 								<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event[@xml:id=current()/@event]" mode="r:th">
 									<xsl:with-param name="level" select="$level"/>
+									<xsl:with-param name="this" select="$this"/>
 								</xsl:apply-templates>
 						</th>
 					</xsl:for-each>
@@ -290,6 +292,7 @@
 						<xsl:if test="$parent">
 							<xsl:apply-templates select="$parent" mode="r:th">
 								<xsl:with-param name="level" select="$level"/>
+								<xsl:with-param name="this" select="$this"/>
 							</xsl:apply-templates>
 						</xsl:if>
 					</th>
@@ -319,6 +322,7 @@
 						<th class="race">
 							<xsl:apply-templates select="/s:cursus/d:series/d:events/d:event/d:races/d:race[@xml:id=current()/@race]" mode="r:th">
 								<xsl:with-param name="level" select="$level"/>
+								<xsl:with-param name="this" select="$this"/>
 							</xsl:apply-templates>
 						</th>
 						<xsl:if test="$laps">

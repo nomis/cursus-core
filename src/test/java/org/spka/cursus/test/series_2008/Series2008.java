@@ -22,13 +22,13 @@ import org.spka.cursus.test.AbstractSPKASeries;
 
 import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.db.data.RaceAttendee;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
+import eu.lp0.cursus.db.data.Sex;
 
 public class Series2008 extends AbstractSPKASeries {
 	public Series2008() {
@@ -862,7 +862,7 @@ public class Series2008 extends AbstractSPKASeries {
 			race10.getAttendees().put(sco197, new RaceAttendee(race10, sco197, RaceAttendee.Type.PILOT));
 			race10.getAttendees().put(sco200, new RaceAttendee(race10, sco200, RaceAttendee.Type.PILOT));
 			race10.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race10, "81,200,154,179,23,117,197,60,21,19,158"); //$NON-NLS-1$
+			addLaps(race10, "81,200,154,179,23,117,197,60,21,19"); //$NON-NLS-1$
 			addLaps(race10, "81,200,154,179,23,117,197,60,21"); //$NON-NLS-1$
 			addLaps(race10, "81,200,154,179,23,117,197,60,21"); //$NON-NLS-1$
 			addLaps(race10, "81,200,154,179,23,117,197,60,21"); //$NON-NLS-1$

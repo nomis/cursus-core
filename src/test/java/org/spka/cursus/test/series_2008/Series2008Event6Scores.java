@@ -283,9 +283,9 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 		race10AssertUtil.assertPilot(sco060, 5, 0, false, 8, 9);
 		race10AssertUtil.assertPilot(sco021, 4, 0, false, 9, 10);
 		race10AssertUtil.assertPilot(sco019, 1, 0, false, 10, 11);
-		race10AssertUtil.assertPilot(sco158, 1, 0, false, 11, 12);
-		race10AssertUtil.assertPilot(sco071, 0, 0, false, 13, 13);
-		race10AssertUtil.assertPilot(sco136, 0, 0, false, 13, 13);
+		race10AssertUtil.assertPilot(sco071, 0, 0, false, 13, 12);
+		race10AssertUtil.assertPilot(sco136, 0, 0, false, 13, 12);
+		race10AssertUtil.assertPilot(sco158, 0, 0, false, 13, 12);
 		race10AssertUtil.assertDone(1);
 
 		RaceAssertUtil race11AssertUtil = new RaceAssertUtil(scores, race11);
@@ -336,7 +336,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 		overallAssertUtil.assertPilot(sco197, 0, 78, 11, 13, 13, 12);
 		overallAssertUtil.assertPilot(sco021, 1, 84, 12, 13, 13, 12);
 		overallAssertUtil.assertPilot(sco136, 0, 91, 13, 13, 13, 13);
-		overallAssertUtil.assertPilot(sco158, 0, 98, 14, 13, 13, 13);
+		overallAssertUtil.assertPilot(sco158, 0, 100, 14, 13, 13, 13);
 		overallAssertUtil.assertOrder();
 	}
 
@@ -387,7 +387,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 			race10AssertUtil.assertPilot(sco060, 5, 0, false, 8, 9);
 			race10AssertUtil.assertPilot(sco021, 4, 0, false, 9, 10);
 			race10AssertUtil.assertPilot(sco019, 1, 0, false, 10, 11);
-			race10AssertUtil.assertPilot(sco158, 1, 0, false, 11, 12);
+			race10AssertUtil.assertPilot(sco158, 0, 0, false, 13, 12);
 			race10AssertUtil.assertDone(1);
 
 			RaceAssertUtil race11AssertUtil = new RaceAssertUtil(scores, race11);
@@ -432,7 +432,7 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 			overallAssertUtil.assertPilot(sco019, 0, 22, 9, 10);
 			overallAssertUtil.assertPilot(sco021, 0, 27, 10, 11);
 			overallAssertUtil.assertPilot(sco060, 0, 27, 10, 11);
-			overallAssertUtil.assertPilot(sco158, 0, 29, 12, 11);
+			overallAssertUtil.assertPilot(sco158, 0, 29, 12, 13);
 			overallAssertUtil.assertOrder();
 
 			DatabaseSession.commit();
@@ -516,8 +516,8 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 			raceAssertUtil.assertPilot(sco060, 5, 0, false, 8, 8);
 			raceAssertUtil.assertPilot(sco021, 4, 0, false, 9, 9);
 			raceAssertUtil.assertPilot(sco019, 1, 0, false, 10, 10);
-			raceAssertUtil.assertPilot(sco158, 1, 0, false, 11, 11);
-			raceAssertUtil.assertPilot(sco159, 0, 0, true, 13, 12);
+			raceAssertUtil.assertPilot(sco158, 0, 0, false, 13, 11);
+			raceAssertUtil.assertPilot(sco159, 0, 0, true, 13, 11);
 			raceAssertUtil.assertDone(1);
 
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
@@ -531,8 +531,8 @@ public class Series2008Event6Scores extends Series2008Event5Scores {
 			overallAssertUtil.assertPilot(sco060, 0, 8, 8);
 			overallAssertUtil.assertPilot(sco021, 0, 9, 9);
 			overallAssertUtil.assertPilot(sco019, 0, 10, 10);
-			overallAssertUtil.assertPilot(sco158, 0, 11, 11);
-			overallAssertUtil.assertPilot(sco159, 0, 13, 12);
+			overallAssertUtil.assertPilot(sco158, 0, 13, 11);
+			overallAssertUtil.assertPilot(sco159, 0, 13, 11);
 			overallAssertUtil.assertOrder();
 
 			DatabaseSession.commit();

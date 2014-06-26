@@ -35,6 +35,7 @@ import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
 
 import com.google.common.base.Charsets;
+import com.google.common.io.ByteSink;
 import com.google.common.io.ByteSource;
 
 import eu.lp0.cursus.util.PackageConstants;
@@ -60,6 +61,11 @@ public abstract class AbstractXMLFile<T> {
 		this.data = data;
 	}
 
+	public AbstractXMLFile(Class<T> type, ByteSource data) throws ImportException {
+		this.type = type;
+		from(data);
+	}
+
 	public T getData() {
 		return data;
 	}
@@ -72,8 +78,24 @@ public abstract class AbstractXMLFile<T> {
 		from(new InputStreamReader(stream, Charsets.UTF_8));
 	}
 
+	public final void from(ByteSource in) throws ImportException {
+		try {
+			from(in.openStream());
+		} catch (IOException e) {
+			throw new ImportException(e);
+		}
+	}
+
 	public final void to(OutputStream stream) throws ExportException {
 		to(new OutputStreamWriter(stream, Charsets.UTF_8));
+	}
+
+	public final void to(ByteSink out) throws ExportException {
+		try {
+			to(out.openStream());
+		} catch (IOException e) {
+			throw new ExportException(e);
+		}
 	}
 
 	public final ByteSource toByteSource() throws ExportException {

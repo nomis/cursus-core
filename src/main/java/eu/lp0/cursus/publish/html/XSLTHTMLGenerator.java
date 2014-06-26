@@ -73,7 +73,7 @@ public class XSLTHTMLGenerator {
 	private List<String> footers = new ArrayList<String>();
 	private List<String> styleSheets = new ArrayList<String>();
 	private Map<String, String> flags = new TreeMap<String, String>();
-	private Map<String, String> classes = new TreeMap<String, String>();
+	private Map<String, String> classes = new LinkedHashMap<String, String>();
 
 	public XSLTHTMLGenerator(String scoresFileName, String fileNamePrefix, ScoresXML scores) {
 		this(scoresFileName, fileNamePrefix, null, scores.getSeriesResults(), scores.getEventResults(), scores.getRaceResults());

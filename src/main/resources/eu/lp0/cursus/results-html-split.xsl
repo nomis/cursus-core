@@ -125,7 +125,7 @@
 		<xsl:choose>
 			<xsl:when test="$results and $index != $this">
 				<a>
-					<xsl:attribute name="href"><xsl:value-of select="$split/@prefix"/><xsl:apply-templates select="$results" mode="r:index"/><xsl:value-of select="$split/@suffix"/></xsl:attribute>
+					<xsl:attribute name="href"><xsl:value-of select="$split/@prefix"/><xsl:apply-templates select="$results" mode="r:id"/><xsl:value-of select="$split/@suffix"/></xsl:attribute>
 					<xsl:if test="d:description != ''">
 						<xsl:attribute name="title">
 							<xsl:apply-templates select="." mode="r:description">

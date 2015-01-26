@@ -665,7 +665,9 @@ public class Series2014 extends AbstractSPKASeries {
 			race10.getAttendees().put(sco296, new RaceAttendee(race10, sco296, RaceAttendee.Type.PILOT));
 			race10.getAttendees().put(sco315, new RaceAttendee(race10, sco315, RaceAttendee.Type.PILOT));
 			race10.getAttendees().put(sco528, new RaceAttendee(race10, sco528, RaceAttendee.Type.PILOT));
-			race10.getAttendees().put(sco561, new RaceAttendee(race10, sco561, RaceAttendee.Type.PILOT));
+			RaceAttendee att561 = new RaceAttendee(race10, sco561, RaceAttendee.Type.PILOT);
+			att561.getPenalties().add(new Penalty(Penalty.Type.AUTOMATIC, "Hit a mark")); //$NON-NLS-1$
+			race10.getAttendees().put(sco561, att561);
 			race10.getAttendees().put(sco808, new RaceAttendee(race10, sco808, RaceAttendee.Type.PILOT));
 			race10.getTallies().add(new RaceTally(RaceTally.Type.START));
 			addLaps(race10, "69,116,179,808,528,156,296,315"); //$NON-NLS-1$

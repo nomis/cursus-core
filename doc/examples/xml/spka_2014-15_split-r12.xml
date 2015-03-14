@@ -5,7 +5,7 @@
  <stylesheet href="spka.css"/>
  <flag name="compact-event">10</flag>
  <flag name="compact-race">10</flag>
- <split index="1" prefix="spka_2014-15_split-" suffix=".xml" type="event"/>
+ <split index="12" prefix="spka_2014-15_split-" suffix=".xml" type="race"/>
  <class>
   <name>Junior</name>
   <output>Junior</output>

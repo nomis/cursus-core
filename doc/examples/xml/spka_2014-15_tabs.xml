@@ -9,4 +9,8 @@
   <name>Junior</name>
   <output>Junior</output>
  </class>
+ <class>
+  <name>16" Wheel</name>
+  <output>16"</output>
+ </class>
 </cursus>

@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012-2014  Simon Arlott
+	Copyright 2012-2015  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -203,11 +203,11 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 			if (scores.getRaces().size() == 1) {
 				System.out.print("\t" + scores.getLaps(pilot, scores.getRaces().get(0))); //$NON-NLS-1$
 			}
-			System.out.print("\t" + scores.getOverallPenalties(pilot)); //$NON-NLS-1$ 
+			System.out.print("\t" + scores.getOverallPenalties(pilot)); //$NON-NLS-1$
 			for (i = 1; i <= scores.getDiscardCount(); i++) {
-				System.out.print("\t" + scores.getRaceDiscard(pilot, i)); //$NON-NLS-1$ 
+				System.out.print("\t" + scores.getRaceDiscard(pilot, i)); //$NON-NLS-1$
 			}
-			System.out.println("\t" + scores.getOverallPoints(pilot)); //$NON-NLS-1$ 
+			System.out.println("\t" + scores.getOverallPoints(pilot)); //$NON-NLS-1$
 		}
 	}
 
@@ -224,6 +224,10 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 	}
 
 	protected void addLaps(Race race, String laps) {
+		if (laps.isEmpty()) {
+			return;
+		}
+
 		laps: for (String lap : laps.split(",", -1)) { //$NON-NLS-1$
 			for (Pilot pilot : race.getAttendees().keySet()) {
 				if (pilot.getRaceNumber().getNumber() == Integer.parseInt(lap)) {

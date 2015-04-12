@@ -243,6 +243,7 @@ public class Series2014 extends AbstractSPKASeries {
 			series.getPilots().add(sco296);
 
 			sco315 = new Pilot(series, "SCO315@2011", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco315.getClasses().add(_16inWheel);
 			series.getPilots().add(sco315);
 
 			sco528 = new Pilot(series, "SCO528@2011", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$

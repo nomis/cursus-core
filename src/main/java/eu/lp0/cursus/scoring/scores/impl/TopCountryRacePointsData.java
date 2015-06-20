@@ -96,7 +96,7 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 				}
 
 				// Truncate all other countries down to the lowest country
-				for (String country : countryPilots.keySet()) {
+				for (String country : ImmutableList.copyOf(countryPilots.keySet())) {
 					if (countryPilots.get(country).size() > count) {
 						countryPilots.replaceValues(country, Iterables.limit(ImmutableList.copyOf(countryPilots.get(country)), count));
 					}

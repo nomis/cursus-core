@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012, 2014  Simon Arlott
+	Copyright 2012, 2014-2015  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -21,6 +21,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
@@ -32,11 +34,13 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 import eu.lp0.cursus.db.data.Event;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
 import eu.lp0.cursus.scoring.data.Scores;
+import eu.lp0.cursus.util.PilotRaceNumberComparator;
 
 public class TopCountryRacePointsData<T extends Scores> extends GenericRacePointsData<T> {
 	private final int minCount;
@@ -78,8 +82,19 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 				int count = lazyCount.get().get(race.getEvent());
 				Multimap<String, Pilot> countryPilots = LinkedHashMultimap.create();
 
+				// Add pilots who completed the race
 				for (Pilot pilot : scores.getLapOrder(race)) {
 					if (countryPilots.get(pilot.getCountry()).size() < count) {
+						countryPilots.put(pilot.getCountry(), pilot);
+					}
+				}
+
+				// Add pilots who didn't complete the race up to minCount
+				// TODO prefer pilots with the best contribution in all previous races
+				SortedSet<Pilot> sortedPilots = new TreeSet<Pilot>(new PilotRaceNumberComparator());
+				sortedPilots.addAll(Sets.intersection(scores.getPilots(), race.getAttendees().keySet()));
+				for (Pilot pilot : sortedPilots) {
+					if (countryPilots.get(pilot.getCountry()).size() < minCount) {
 						countryPilots.put(pilot.getCountry(), pilot);
 					}
 				}
@@ -88,7 +103,7 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 					if (countryPilots.get(country).size() < count) {
 						count = Math.min(count, countryPilots.get(country).size());
 
-						// If country has less than minCount, ignore this race
+						// If a country still has less than minCount, ignore this race
 						if (count < minCount) {
 							count = 0;
 						}
@@ -125,6 +140,11 @@ public class TopCountryRacePointsData<T extends Scores> extends GenericRacePoint
 	@Override
 	protected boolean calculateSimulatedRacePoints(Pilot pilot, Race race) {
 		return !lazyScoredPilots.get().get(race).contains(pilot);
+	}
+
+	@Override
+	protected int getPointsForNoLaps(Pilot pilot, Race race) {
+		return lazyScoredPilots.get().get(race).size() + 1;
 	}
 
 	@Override

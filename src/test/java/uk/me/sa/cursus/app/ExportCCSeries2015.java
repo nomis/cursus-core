@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2014  Simon Arlott
+	Copyright 2015  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -17,14 +17,14 @@
  */
 package uk.me.sa.cursus.app;
 
-import org.spka.cursus.test.cc_2014.CCSeries2014;
+import org.spka.cursus.test.cc_2015.CCSeries2015;
 
-public class ExportCCSeries2014Top3 extends ExportSeries {
-	public ExportCCSeries2014Top3() {
-		super("cc_2014_top3", new CCSeries2014(true), "spka-cc.css"); //$NON-NLS-1$ //$NON-NLS-2$
+public class ExportCCSeries2015 extends ExportSeries {
+	public ExportCCSeries2015() {
+		super("cc_2015_normal", new CCSeries2015(false), "spka-cc.css"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public static void main(String[] args) throws Exception {
-		new ExportCCSeries2014Top3().export();
+		new ExportCCSeries2015().export();
 	}
 }

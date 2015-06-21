@@ -1,53 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cursus xmlns="urn:oid:1.3.6.1.4.1.39777.1.0.1.1.1" xmlns:d="urn:oid:1.3.6.1.4.1.39777.1.0.1.0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" generator="cursus-core 0.5.0" xsi:schemaLocation="urn:oid:1.3.6.1.4.1.39777.1.0.1.0.1 https://xsd.s85.org/urn/oid/1.3.6.1.4.1.39777.1.0.1.0.1 urn:oid:1.3.6.1.4.1.39777.1.0.1.1.1 https://xsd.s85.org/urn/oid/1.3.6.1.4.1.39777.1.0.1.1.1">
- <series xmlns="urn:oid:1.3.6.1.4.1.39777.1.0.1.0.1" xml:id="Series478ba1b804c">
+ <series xmlns="urn:oid:1.3.6.1.4.1.39777.1.0.1.0.1" xml:id="Series23fbeca64d8">
   <name xml:space="preserve">Celtic Challenge 2015</name>
   <description xml:space="preserve"/>
   <classes/>
   <pilots>
-   <pilot xml:id="Pilot478ba1b803c">
+   <pilot xml:id="Pilot23fbeca64c6">
+    <name xml:space="preserve">SCO066@2013</name>
+    <sex>MALE</sex>
+    <country xml:space="preserve">Scotland</country>
+    <raceNumber number="66" organisation="SCO"/>
+   </pilot>
+   <pilot xml:id="Pilot23fbeca64c7">
     <name xml:space="preserve">SCO087@2009</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="87" organisation="SCO"/>
    </pilot>
-   <pilot xml:id="Pilot478ba1b803d">
+   <pilot xml:id="Pilot23fbeca64c8">
     <name xml:space="preserve">SCO116@2010</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="116" organisation="SCO"/>
    </pilot>
-   <pilot xml:id="Pilot478ba1b803e">
+   <pilot xml:id="Pilot23fbeca64c9">
     <name xml:space="preserve">SCO156@2010</name>
     <sex>FEMALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="156" organisation="SCO"/>
    </pilot>
-   <pilot xml:id="Pilot478ba1b803f">
+   <pilot xml:id="Pilot23fbeca64ca">
     <name xml:space="preserve">SCO159@2005</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="159" organisation="SCO"/>
    </pilot>
-   <pilot xml:id="Pilot478ba1b8040">
+   <pilot xml:id="Pilot23fbeca64cb">
     <name xml:space="preserve">SCO808@2010</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Scotland</country>
     <raceNumber number="808" organisation="SCO"/>
    </pilot>
-   <pilot xml:id="Pilot478ba1b8041">
+   <pilot xml:id="Pilot23fbeca64cc">
     <name xml:space="preserve">IR016@2010</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Ireland</country>
     <raceNumber number="16" organisation="IR"/>
    </pilot>
-   <pilot xml:id="Pilot478ba1b8042">
+   <pilot xml:id="Pilot23fbeca64cd">
     <name xml:space="preserve">IR027@2005</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Ireland</country>
     <raceNumber number="27" organisation="IR"/>
    </pilot>
-   <pilot xml:id="Pilot478ba1b8043">
+   <pilot xml:id="Pilot23fbeca64ce">
     <name xml:space="preserve">IR181@2010</name>
     <sex>MALE</sex>
     <country xml:space="preserve">Ireland</country>
@@ -55,170 +61,308 @@
    </pilot>
   </pilots>
   <events>
-   <event xml:id="Event478ba1b804d">
+   <event xml:id="Event23fbeca64d9">
     <name xml:space="preserve">Race Event 1</name>
-    <description xml:space="preserve">Luce Bay (20/06/2015)</description>
+    <description xml:space="preserve">Luce Bay (20/06/2015 and 21/06/2015)</description>
     <races>
-     <race xml:id="Race478ba1b804e">
+     <race xml:id="Race23fbeca64da">
       <name xml:space="preserve">Race 1</name>
       <description xml:space="preserve">Luce Bay (20/06/2015)</description>
-      <raceAttendee pilot="Pilot478ba1b803c" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b803d" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b803e" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b803f" type="PILOT">
+      <raceAttendee pilot="Pilot23fbeca64c7" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c8" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c9" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ca" type="PILOT">
        <penalty type="AUTOMATIC" value="1">
         <reason>Hit mark 4</reason>
        </penalty>
       </raceAttendee>
-      <raceAttendee pilot="Pilot478ba1b8040" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b8041" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b8042" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b8043" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cb" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cc" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cd" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ce" type="PILOT"/>
      </race>
-     <race xml:id="Race478ba1b8057">
+     <race xml:id="Race23fbeca64e3">
       <name xml:space="preserve">Race 2</name>
       <description xml:space="preserve">Luce Bay (20/06/2015)</description>
-      <raceAttendee pilot="Pilot478ba1b803c" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b803d" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b803e" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b803f" type="PILOT">
+      <raceAttendee pilot="Pilot23fbeca64c7" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c8" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c9" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ca" type="PILOT">
        <penalty type="AUTOMATIC" value="1">
         <reason>Hit mark 4</reason>
        </penalty>
       </raceAttendee>
-      <raceAttendee pilot="Pilot478ba1b8040" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b8041" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b8042" type="PILOT"/>
-      <raceAttendee pilot="Pilot478ba1b8043" type="PILOT">
+      <raceAttendee pilot="Pilot23fbeca64cb" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cc" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cd" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ce" type="PILOT">
        <penalty type="AUTOMATIC" value="1">
         <reason>Pushing into the wind</reason>
        </penalty>
       </raceAttendee>
      </race>
+     <race xml:id="Race23fbeca64ec">
+      <name xml:space="preserve">Race 3</name>
+      <description xml:space="preserve">Luce Bay (21/06/2015)</description>
+      <raceAttendee pilot="Pilot23fbeca64c6" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c7" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c8" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c9" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ca" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cb" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cc" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cd" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ce" type="PILOT"/>
+     </race>
+     <race xml:id="Race23fbeca64f6">
+      <name xml:space="preserve">Race 4</name>
+      <description xml:space="preserve">Luce Bay (21/06/2015)</description>
+      <raceAttendee pilot="Pilot23fbeca64c6" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c7" type="PILOT">
+       <penalty type="AUTOMATIC" value="1">
+        <reason>Hit mark 5</reason>
+       </penalty>
+      </raceAttendee>
+      <raceAttendee pilot="Pilot23fbeca64c8" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64c9" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ca" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cb" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cc" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64cd" type="PILOT"/>
+      <raceAttendee pilot="Pilot23fbeca64ce" type="PILOT"/>
+     </race>
     </races>
    </event>
   </events>
  </series>
- <seriesResults discards="0" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf" series="Series478ba1b804c">
-  <event ref="Event478ba1b804d"/>
+ <seriesResults discards="0" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf" series="Series23fbeca64d8">
+  <event ref="Event23fbeca64d9"/>
   <overallOrder>
-   <overallScore penalties="1" pilot="Pilot478ba1b8043" points="1" position="1"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8040" points="4" position="2"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8042" points="8" position="3"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803d" points="8" position="4"/>
-   <overallScore penalties="2" pilot="Pilot478ba1b803f" points="10" position="5"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8041" points="14" position="6"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803c" points="0" position="7"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803e" points="0" position="7"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64ce" points="1" position="1"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cb" points="11" position="2"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cd" points="12" position="3"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c8" points="15" position="4"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c9" points="5" position="5"/>
+   <overallScore penalties="2" pilot="Pilot23fbeca64ca" points="10" position="6"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64c7" points="6" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cc" points="26" position="8"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9"/>
   </overallOrder>
-  <seriesEventResults event="Event478ba1b804d">
-   <eventRaceResults fleet="8" race="Race478ba1b804e">
+  <seriesEventResults event="Event23fbeca64d9">
+   <eventRaceResults fleet="9" race="Race23fbeca64da">
     <raceOrder>
-     <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot478ba1b8043" points="0" position="1" simulated="false"/>
-     <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot478ba1b8040" points="2" position="2" simulated="false"/>
-     <raceScore discarded="false" laps="3" penalties="1" pilot="Pilot478ba1b803f" points="3" position="3" simulated="false"/>
-     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b803d" points="4" position="4" simulated="false"/>
-     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8042" points="5" position="5" simulated="false"/>
-     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b8041" points="7" position="6" simulated="false"/>
-     <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803c" points="0" position="7" simulated="true"/>
-     <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803e" points="0" position="8" simulated="true"/>
+     <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+     <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2" simulated="false"/>
+     <raceScore discarded="false" laps="3" penalties="1" pilot="Pilot23fbeca64ca" points="3" position="3" simulated="false"/>
+     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cd" points="5" position="5" simulated="false"/>
+     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6" simulated="false"/>
+     <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+     <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="8" simulated="true"/>
+     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
     </raceOrder>
    </eventRaceResults>
-   <eventRaceResults fleet="8" race="Race478ba1b8057">
+   <eventRaceResults fleet="9" race="Race23fbeca64e3">
     <raceOrder>
-     <raceScore discarded="false" laps="2" penalties="1" pilot="Pilot478ba1b8043" points="0" position="1" simulated="false"/>
-     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8040" points="2" position="2" simulated="false"/>
-     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8042" points="3" position="3" simulated="false"/>
-     <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803d" points="4" position="4" simulated="false"/>
-     <raceScore discarded="false" laps="1" penalties="1" pilot="Pilot478ba1b803f" points="5" position="5" simulated="false"/>
-     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b8041" points="7" position="6" simulated="false"/>
-     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b803c" points="0" position="7" simulated="true"/>
-     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b803e" points="0" position="7" simulated="true"/>
+     <raceScore discarded="false" laps="2" penalties="1" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2" simulated="false"/>
+     <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cd" points="3" position="3" simulated="false"/>
+     <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+     <raceScore discarded="false" laps="1" penalties="1" pilot="Pilot23fbeca64ca" points="5" position="5" simulated="false"/>
+     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6" simulated="false"/>
+     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="7" simulated="true"/>
+     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7" simulated="true"/>
+    </raceOrder>
+   </eventRaceResults>
+   <eventRaceResults fleet="9" race="Race23fbeca64ec">
+    <raceOrder>
+     <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+     <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2" simulated="false"/>
+     <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64cb" points="3" position="3" simulated="false"/>
+     <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+     <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c9" points="5" position="5" simulated="false"/>
+     <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64cc" points="6" position="6" simulated="false"/>
+     <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+     <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64ca" points="0" position="8" simulated="true"/>
+     <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
+    </raceOrder>
+   </eventRaceResults>
+   <eventRaceResults fleet="9" race="Race23fbeca64f6">
+    <raceOrder>
+     <raceScore discarded="false" laps="6" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+     <raceScore discarded="false" laps="6" penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2" simulated="false"/>
+     <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c8" points="3" position="3" simulated="false"/>
+     <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64cb" points="4" position="4" simulated="false"/>
+     <raceScore discarded="false" laps="4" penalties="1" pilot="Pilot23fbeca64c7" points="5" position="5" simulated="false"/>
+     <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64cc" points="6" position="6" simulated="false"/>
+     <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7" simulated="true"/>
+     <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64ca" points="0" position="8" simulated="true"/>
+     <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
     </raceOrder>
    </eventRaceResults>
   </seriesEventResults>
  </seriesResults>
- <eventResults discards="0" event="Event478ba1b804d" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
-  <event ref="Event478ba1b804d"/>
+ <eventResults discards="0" event="Event23fbeca64d9" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
+  <event ref="Event23fbeca64d9"/>
   <overallOrder>
-   <overallScore penalties="1" pilot="Pilot478ba1b8043" points="1" position="1"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8040" points="4" position="2"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8042" points="8" position="3"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803d" points="8" position="4"/>
-   <overallScore penalties="2" pilot="Pilot478ba1b803f" points="10" position="5"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8041" points="14" position="6"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803c" points="0" position="7"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803e" points="0" position="7"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64ce" points="1" position="1"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cb" points="11" position="2"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cd" points="12" position="3"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c8" points="15" position="4"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c9" points="5" position="5"/>
+   <overallScore penalties="2" pilot="Pilot23fbeca64ca" points="10" position="6"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64c7" points="6" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cc" points="26" position="8"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9"/>
   </overallOrder>
-  <eventRaceResults fleet="8" race="Race478ba1b804e">
+  <eventRaceResults fleet="9" race="Race23fbeca64da">
    <raceOrder>
-    <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot478ba1b8043" points="0" position="1" simulated="false"/>
-    <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot478ba1b8040" points="2" position="2" simulated="false"/>
-    <raceScore discarded="false" laps="3" penalties="1" pilot="Pilot478ba1b803f" points="3" position="3" simulated="false"/>
-    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b803d" points="4" position="4" simulated="false"/>
-    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8042" points="5" position="5" simulated="false"/>
-    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b8041" points="7" position="6" simulated="false"/>
-    <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803c" points="0" position="7" simulated="true"/>
-    <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803e" points="0" position="8" simulated="true"/>
+    <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+    <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2" simulated="false"/>
+    <raceScore discarded="false" laps="3" penalties="1" pilot="Pilot23fbeca64ca" points="3" position="3" simulated="false"/>
+    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cd" points="5" position="5" simulated="false"/>
+    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6" simulated="false"/>
+    <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+    <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="8" simulated="true"/>
+    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
    </raceOrder>
   </eventRaceResults>
-  <eventRaceResults fleet="8" race="Race478ba1b8057">
+  <eventRaceResults fleet="9" race="Race23fbeca64e3">
    <raceOrder>
-    <raceScore discarded="false" laps="2" penalties="1" pilot="Pilot478ba1b8043" points="0" position="1" simulated="false"/>
-    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8040" points="2" position="2" simulated="false"/>
-    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8042" points="3" position="3" simulated="false"/>
-    <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803d" points="4" position="4" simulated="false"/>
-    <raceScore discarded="false" laps="1" penalties="1" pilot="Pilot478ba1b803f" points="5" position="5" simulated="false"/>
-    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b8041" points="7" position="6" simulated="false"/>
-    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b803c" points="0" position="7" simulated="true"/>
-    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b803e" points="0" position="7" simulated="true"/>
+    <raceScore discarded="false" laps="2" penalties="1" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2" simulated="false"/>
+    <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cd" points="3" position="3" simulated="false"/>
+    <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+    <raceScore discarded="false" laps="1" penalties="1" pilot="Pilot23fbeca64ca" points="5" position="5" simulated="false"/>
+    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6" simulated="false"/>
+    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="7" simulated="true"/>
+    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7" simulated="true"/>
+   </raceOrder>
+  </eventRaceResults>
+  <eventRaceResults fleet="9" race="Race23fbeca64ec">
+   <raceOrder>
+    <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+    <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2" simulated="false"/>
+    <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64cb" points="3" position="3" simulated="false"/>
+    <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+    <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c9" points="5" position="5" simulated="false"/>
+    <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64cc" points="6" position="6" simulated="false"/>
+    <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+    <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64ca" points="0" position="8" simulated="true"/>
+    <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
+   </raceOrder>
+  </eventRaceResults>
+  <eventRaceResults fleet="9" race="Race23fbeca64f6">
+   <raceOrder>
+    <raceScore discarded="false" laps="6" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+    <raceScore discarded="false" laps="6" penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2" simulated="false"/>
+    <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c8" points="3" position="3" simulated="false"/>
+    <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64cb" points="4" position="4" simulated="false"/>
+    <raceScore discarded="false" laps="4" penalties="1" pilot="Pilot23fbeca64c7" points="5" position="5" simulated="false"/>
+    <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64cc" points="6" position="6" simulated="false"/>
+    <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7" simulated="true"/>
+    <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64ca" points="0" position="8" simulated="true"/>
+    <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
    </raceOrder>
   </eventRaceResults>
  </eventResults>
- <raceResults fleet="8" race="Race478ba1b804e" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
-  <event ref="Event478ba1b804d"/>
+ <raceResults fleet="9" race="Race23fbeca64da" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
+  <event ref="Event23fbeca64d9"/>
   <overallOrder>
-   <overallScore penalties="0" pilot="Pilot478ba1b8043" points="0" position="1"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8040" points="2" position="2"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803d" points="4" position="3"/>
-   <overallScore penalties="1" pilot="Pilot478ba1b803f" points="4" position="3"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8042" points="5" position="5"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8041" points="7" position="6"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803c" points="0" position="7"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803e" points="0" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c8" points="4" position="3"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64ca" points="4" position="3"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cd" points="5" position="5"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7"/>
   </overallOrder>
   <raceOrder>
-   <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot478ba1b8043" points="0" position="1" simulated="false"/>
-   <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot478ba1b8040" points="2" position="2" simulated="false"/>
-   <raceScore discarded="false" laps="3" penalties="1" pilot="Pilot478ba1b803f" points="3" position="3" simulated="false"/>
-   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b803d" points="4" position="4" simulated="false"/>
-   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8042" points="5" position="5" simulated="false"/>
-   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b8041" points="7" position="6" simulated="false"/>
-   <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803c" points="0" position="7" simulated="true"/>
-   <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803e" points="0" position="8" simulated="true"/>
+   <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+   <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2" simulated="false"/>
+   <raceScore discarded="false" laps="3" penalties="1" pilot="Pilot23fbeca64ca" points="3" position="3" simulated="false"/>
+   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cd" points="5" position="5" simulated="false"/>
+   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6" simulated="false"/>
+   <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+   <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="8" simulated="true"/>
   </raceOrder>
  </raceResults>
- <raceResults fleet="8" race="Race478ba1b8057" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
-  <event ref="Event478ba1b804d"/>
+ <raceResults fleet="9" race="Race23fbeca64e3" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
+  <event ref="Event23fbeca64d9"/>
   <overallOrder>
-   <overallScore penalties="1" pilot="Pilot478ba1b8043" points="1" position="1"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8040" points="2" position="2"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8042" points="3" position="3"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803d" points="4" position="4"/>
-   <overallScore penalties="1" pilot="Pilot478ba1b803f" points="6" position="5"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b8041" points="7" position="6"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803c" points="0" position="7"/>
-   <overallScore penalties="0" pilot="Pilot478ba1b803e" points="0" position="7"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64ce" points="1" position="1"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cd" points="3" position="3"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64ca" points="6" position="5"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7"/>
   </overallOrder>
   <raceOrder>
-   <raceScore discarded="false" laps="2" penalties="1" pilot="Pilot478ba1b8043" points="0" position="1" simulated="false"/>
-   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8040" points="2" position="2" simulated="false"/>
-   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot478ba1b8042" points="3" position="3" simulated="false"/>
-   <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot478ba1b803d" points="4" position="4" simulated="false"/>
-   <raceScore discarded="false" laps="1" penalties="1" pilot="Pilot478ba1b803f" points="5" position="5" simulated="false"/>
-   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b8041" points="7" position="6" simulated="false"/>
-   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b803c" points="0" position="7" simulated="true"/>
-   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot478ba1b803e" points="0" position="7" simulated="true"/>
+   <raceScore discarded="false" laps="2" penalties="1" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cb" points="2" position="2" simulated="false"/>
+   <raceScore discarded="false" laps="2" penalties="0" pilot="Pilot23fbeca64cd" points="3" position="3" simulated="false"/>
+   <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+   <raceScore discarded="false" laps="1" penalties="1" pilot="Pilot23fbeca64ca" points="5" position="5" simulated="false"/>
+   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64cc" points="7" position="6" simulated="false"/>
+   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7" simulated="true"/>
+  </raceOrder>
+ </raceResults>
+ <raceResults fleet="9" race="Race23fbeca64ec" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
+  <event ref="Event23fbeca64d9"/>
+  <overallOrder>
+   <overallScore penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cb" points="3" position="3"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c9" points="5" position="5"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cc" points="6" position="6"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c6" points="0" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64ca" points="0" position="7"/>
+  </overallOrder>
+  <raceOrder>
+   <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+   <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2" simulated="false"/>
+   <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64cb" points="3" position="3" simulated="false"/>
+   <raceScore discarded="false" laps="7" penalties="0" pilot="Pilot23fbeca64c8" points="4" position="4" simulated="false"/>
+   <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c9" points="5" position="5" simulated="false"/>
+   <raceScore discarded="false" laps="1" penalties="0" pilot="Pilot23fbeca64cc" points="6" position="6" simulated="false"/>
+   <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c7" points="0" position="7" simulated="true"/>
+   <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64ca" points="0" position="8" simulated="true"/>
+   <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
+  </raceOrder>
+ </raceResults>
+ <raceResults fleet="9" race="Race23fbeca64f6" scorer="d4f1b715-f838-51c3-9274-f52a02162ecf">
+  <event ref="Event23fbeca64d9"/>
+  <overallOrder>
+   <overallScore penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c8" points="3" position="3"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cb" points="4" position="4"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64cc" points="6" position="5"/>
+   <overallScore penalties="1" pilot="Pilot23fbeca64c7" points="6" position="5"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c6" points="0" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7"/>
+   <overallScore penalties="0" pilot="Pilot23fbeca64ca" points="0" position="7"/>
+  </overallOrder>
+  <raceOrder>
+   <raceScore discarded="false" laps="6" penalties="0" pilot="Pilot23fbeca64ce" points="0" position="1" simulated="false"/>
+   <raceScore discarded="false" laps="6" penalties="0" pilot="Pilot23fbeca64cd" points="2" position="2" simulated="false"/>
+   <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64c8" points="3" position="3" simulated="false"/>
+   <raceScore discarded="false" laps="5" penalties="0" pilot="Pilot23fbeca64cb" points="4" position="4" simulated="false"/>
+   <raceScore discarded="false" laps="4" penalties="1" pilot="Pilot23fbeca64c7" points="5" position="5" simulated="false"/>
+   <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64cc" points="6" position="6" simulated="false"/>
+   <raceScore discarded="false" laps="4" penalties="0" pilot="Pilot23fbeca64c9" points="0" position="7" simulated="true"/>
+   <raceScore discarded="false" laps="3" penalties="0" pilot="Pilot23fbeca64ca" points="0" position="8" simulated="true"/>
+   <raceScore discarded="false" laps="0" penalties="0" pilot="Pilot23fbeca64c6" points="0" position="9" simulated="true"/>
   </raceOrder>
  </raceResults>
 </cursus>

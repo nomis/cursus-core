@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2011-2014  Simon Arlott
+	Copyright 2011-2015  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -29,6 +29,6 @@ public class SPKAConstants {
 
 	public static final int EVENT_NON_ATTENDANCE_POINTS_2011 = 1;
 
-	public static final String NAME_2012 = "SPKA 2012/13..2014/15+"; //$NON-NLS-1$
+	public static final String NAME_2012 = "SPKA 2012/13..2015/16+"; //$NON-NLS-1$
 	public static final String UUID_2012 = "a1ef6257-8242-51fc-84af-de1a6785fb73"; //$NON-NLS-1$
 }

@@ -501,7 +501,7 @@ public class Series2015 extends AbstractSPKASeries {
 			race7.getAttendees().put(sco159, new RaceAttendee(race7, sco159, RaceAttendee.Type.PILOT));
 			race7.getAttendees().put(sco808, new RaceAttendee(race7, sco808, RaceAttendee.Type.PILOT));
 			race7.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race7, "116,87,808,159,66"); //$NON-NLS-1$
+			addLaps(race7, "116,87,808,159,66,156"); //$NON-NLS-1$
 			addLaps(race7, "116,808,159,87"); //$NON-NLS-1$
 			addLaps(race7, "116,808,159"); //$NON-NLS-1$
 			addLaps(race7, "116,808"); //$NON-NLS-1$

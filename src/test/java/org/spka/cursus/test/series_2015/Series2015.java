@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2015  Simon Arlott
+	Copyright 2015-2016  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -38,6 +38,7 @@ public class Series2015 extends AbstractSPKASeries {
 	protected static final int SERIES_FLEET = 11;
 	protected static final int SERIES_FLEET_AT_EVENT1 = 7;
 	protected static final int SERIES_FLEET_AT_EVENT2 = 11;
+	protected static final int SERIES_FLEET_AT_EVENT3 = 13;
 
 	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
 	protected static final String EVENT1_DESC = "West Sands (31/10/2015 and 01/11/2015)"; //$NON-NLS-1$
@@ -71,8 +72,16 @@ public class Series2015 extends AbstractSPKASeries {
 	protected static final String RACE8_DESC = "Luce Bay (06/12/2015)"; //$NON-NLS-1$
 	protected static final int RACE8_PILOTS = 6;
 
+	protected static final String EVENT3_NAME = "Race Event 3"; //$NON-NLS-1$
+	protected static final String EVENT3_DESC = "West Sands (13/02/2016)"; //$NON-NLS-1$
+	protected static final int EVENT3_FLEET = 8;
+	protected static final String RACE9_NAME = "Race 9"; //$NON-NLS-1$
+	protected static final String RACE9_DESC = "West Sands (13/02/2016)"; //$NON-NLS-1$
+	protected static final int RACE9_PILOTS = 8;
+
 	protected Class junior;
 	protected Class _16inWheel;
+	protected Pilot sco000;
 	protected Pilot sco018;
 	protected Pilot sco060;
 	protected Pilot sco066;
@@ -82,6 +91,7 @@ public class Series2015 extends AbstractSPKASeries {
 	protected Pilot sco153;
 	protected Pilot sco156;
 	protected Pilot sco159;
+	protected Pilot sco179;
 	protected Pilot sco296;
 	protected Pilot sco808;
 
@@ -96,12 +106,15 @@ public class Series2015 extends AbstractSPKASeries {
 	private Race _race6;
 	private Race _race7;
 	private Race _race8;
+	private Event _event3;
+	private Race _race9;
 
 	@Override
 	public void createAllData() throws Exception {
 		createDatabase();
 		createEvent1Races();
 		createEvent2Races();
+		createEvent3Races();
 	}
 
 	protected void createSeriesData() throws Exception {
@@ -124,6 +137,10 @@ public class Series2015 extends AbstractSPKASeries {
 			series.getClasses().add(_16inWheel);
 
 			// Add all the pilots
+			sco000 = new Pilot(series, "SCO000@2016", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco000.getClasses().add(_16inWheel);
+			series.getPilots().add(sco000);
+
 			sco018 = new Pilot(series, "SCO018@2010", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco018.getClasses().add(_16inWheel);
 			series.getPilots().add(sco018);
@@ -153,6 +170,9 @@ public class Series2015 extends AbstractSPKASeries {
 
 			sco159 = new Pilot(series, "SCO159@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco159);
+
+			sco179 = new Pilot(series, "SCO179@2005", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			series.getPilots().add(sco179);
 
 			sco296 = new Pilot(series, "SCO296@2013", Sex.FEMALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco296);
@@ -548,6 +568,77 @@ public class Series2015 extends AbstractSPKASeries {
 			DatabaseSession.commit();
 
 			_race8 = race8;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createEvent3Data() throws Exception {
+		createSeriesData();
+
+		if (_event3 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+
+			Event event3 = new Event(series, EVENT3_NAME, EVENT3_DESC);
+			series.getEvents().add(event3);
+			eventDAO.persist(event3);
+
+			DatabaseSession.commit();
+
+			_event3 = event3;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createEvent3Races() throws Exception {
+		createRace9Data();
+	}
+
+	protected void createRace9Data() throws Exception {
+		createEvent3Data();
+
+		if (_race9 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event3 = eventDAO.find(series, EVENT3_NAME);
+
+			Race race9 = new Race(event3, RACE9_NAME, RACE9_DESC);
+			event3.getRaces().add(race9);
+			race9.getAttendees().put(sco000, new RaceAttendee(race9, sco000, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco018, new RaceAttendee(race9, sco018, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco066, new RaceAttendee(race9, sco066, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco116, new RaceAttendee(race9, sco116, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco156, new RaceAttendee(race9, sco156, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco179, new RaceAttendee(race9, sco179, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco296, new RaceAttendee(race9, sco296, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco808, new RaceAttendee(race9, sco808, RaceAttendee.Type.PILOT));
+			race9.getTallies().add(new RaceTally(RaceTally.Type.START));
+			addLaps(race9, "116,179,808,18,66,156,0"); //$NON-NLS-1$
+			addLaps(race9, "116,179,808,156,66,0"); //$NON-NLS-1$
+			addLaps(race9, "116,179,808,66,156"); //$NON-NLS-1$
+			addLaps(race9, "116,179,808,156,66"); //$NON-NLS-1$
+			addLaps(race9, "116,808,179,156,66"); //$NON-NLS-1$
+			addLaps(race9, "116,808,179"); //$NON-NLS-1$
+			addLaps(race9, "116"); //$NON-NLS-1$
+			raceDAO.persist(race9);
+
+			DatabaseSession.commit();
+
+			_race9 = race9;
 		} finally {
 			db.endSession();
 		}

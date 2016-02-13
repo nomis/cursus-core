@@ -81,7 +81,6 @@ public class Series2015 extends AbstractSPKASeries {
 
 	protected Class junior;
 	protected Class _16inWheel;
-	protected Pilot sco000;
 	protected Pilot sco018;
 	protected Pilot sco060;
 	protected Pilot sco066;
@@ -94,6 +93,7 @@ public class Series2015 extends AbstractSPKASeries {
 	protected Pilot sco179;
 	protected Pilot sco296;
 	protected Pilot sco808;
+	protected Pilot sco884;
 
 	private Series _series;
 	private Event _event1;
@@ -137,10 +137,6 @@ public class Series2015 extends AbstractSPKASeries {
 			series.getClasses().add(_16inWheel);
 
 			// Add all the pilots
-			sco000 = new Pilot(series, "SCO000@2016", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
-			sco000.getClasses().add(_16inWheel);
-			series.getPilots().add(sco000);
-
 			sco018 = new Pilot(series, "SCO018@2010", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			sco018.getClasses().add(_16inWheel);
 			series.getPilots().add(sco018);
@@ -179,6 +175,10 @@ public class Series2015 extends AbstractSPKASeries {
 
 			sco808 = new Pilot(series, "SCO808@2010", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
 			series.getPilots().add(sco808);
+
+			sco884 = new Pilot(series, "SCO884@2016", Sex.MALE, "Scotland"); //$NON-NLS-1$ //$NON-NLS-2$
+			sco884.getClasses().add(_16inWheel);
+			series.getPilots().add(sco884);
 
 			createRaceNumbers(series.getPilots());
 
@@ -618,7 +618,6 @@ public class Series2015 extends AbstractSPKASeries {
 
 			Race race9 = new Race(event3, RACE9_NAME, RACE9_DESC);
 			event3.getRaces().add(race9);
-			race9.getAttendees().put(sco000, new RaceAttendee(race9, sco000, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco018, new RaceAttendee(race9, sco018, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco066, new RaceAttendee(race9, sco066, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco116, new RaceAttendee(race9, sco116, RaceAttendee.Type.PILOT));
@@ -626,9 +625,10 @@ public class Series2015 extends AbstractSPKASeries {
 			race9.getAttendees().put(sco179, new RaceAttendee(race9, sco179, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco296, new RaceAttendee(race9, sco296, RaceAttendee.Type.PILOT));
 			race9.getAttendees().put(sco808, new RaceAttendee(race9, sco808, RaceAttendee.Type.PILOT));
+			race9.getAttendees().put(sco884, new RaceAttendee(race9, sco884, RaceAttendee.Type.PILOT));
 			race9.getTallies().add(new RaceTally(RaceTally.Type.START));
-			addLaps(race9, "116,179,808,18,66,156,0"); //$NON-NLS-1$
-			addLaps(race9, "116,179,808,156,66,0"); //$NON-NLS-1$
+			addLaps(race9, "116,179,808,18,66,156,884"); //$NON-NLS-1$
+			addLaps(race9, "116,179,808,156,66,884"); //$NON-NLS-1$
 			addLaps(race9, "116,179,808,66,156"); //$NON-NLS-1$
 			addLaps(race9, "116,179,808,156,66"); //$NON-NLS-1$
 			addLaps(race9, "116,808,179,156,66"); //$NON-NLS-1$

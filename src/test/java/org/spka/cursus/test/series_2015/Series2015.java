@@ -102,6 +102,19 @@ public class Series2015 extends AbstractSPKASeries {
 	protected static final String RACE15_DESC = "West Sands (10/04/2016)"; //$NON-NLS-1$
 	protected static final int RACE15_PILOTS = 9;
 
+	protected static final String EVENT5_NAME = "Race Event 5"; //$NON-NLS-1$
+	protected static final String EVENT5_DESC = "West Sands (07/05/2016)"; //$NON-NLS-1$
+	protected static final int EVENT5_FLEET = 7;
+	protected static final String RACE16_NAME = "Race 16"; //$NON-NLS-1$
+	protected static final String RACE16_DESC = "West Sands (07/05/2016)"; //$NON-NLS-1$
+	protected static final int RACE16_PILOTS = 7;
+	protected static final String RACE17_NAME = "Race 17"; //$NON-NLS-1$
+	protected static final String RACE17_DESC = "West Sands (07/05/2016)"; //$NON-NLS-1$
+	protected static final int RACE17_PILOTS = 7;
+	protected static final String RACE18_NAME = "Race 18"; //$NON-NLS-1$
+	protected static final String RACE18_DESC = "West Sands (07/05/2016)"; //$NON-NLS-1$
+	protected static final int RACE18_PILOTS = 7;
+
 	protected Class junior;
 	protected Class _16inWheel;
 	protected Pilot sco018;
@@ -139,6 +152,10 @@ public class Series2015 extends AbstractSPKASeries {
 	private Race _race13;
 	private Race _race14;
 	private Race _race15;
+	private Event _event5;
+	private Race _race16;
+	private Race _race17;
+	private Race _race18;
 
 	@Override
 	public void createAllData() throws Exception {
@@ -147,6 +164,7 @@ public class Series2015 extends AbstractSPKASeries {
 		createEvent2Races();
 		createEvent3Races();
 		createEvent4Races();
+		createEvent5Races();
 	}
 
 	protected void createSeriesData() throws Exception {
@@ -958,6 +976,163 @@ public class Series2015 extends AbstractSPKASeries {
 			DatabaseSession.commit();
 
 			_race15 = race15;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createEvent5Data() throws Exception {
+		createSeriesData();
+
+		if (_event5 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+
+			Event event5 = new Event(series, EVENT5_NAME, EVENT5_DESC);
+			series.getEvents().add(event5);
+			eventDAO.persist(event5);
+
+			DatabaseSession.commit();
+
+			_event5 = event5;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createEvent5Races() throws Exception {
+		createRace16Data();
+		createRace17Data();
+		createRace18Data();
+	}
+
+	protected void createRace16Data() throws Exception {
+		createEvent5Data();
+
+		if (_race16 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event5 = eventDAO.find(series, EVENT5_NAME);
+
+			Race race16 = new Race(event5, RACE16_NAME, RACE16_DESC);
+			event5.getRaces().add(race16);
+			race16.getAttendees().put(sco018, new RaceAttendee(race16, sco018, RaceAttendee.Type.PILOT));
+			race16.getAttendees().put(sco066, new RaceAttendee(race16, sco066, RaceAttendee.Type.PILOT));
+			race16.getAttendees().put(sco116, new RaceAttendee(race16, sco116, RaceAttendee.Type.PILOT));
+			race16.getAttendees().put(sco159, new RaceAttendee(race16, sco159, RaceAttendee.Type.PILOT));
+			race16.getAttendees().put(sco179, new RaceAttendee(race16, sco179, RaceAttendee.Type.PILOT));
+			race16.getAttendees().put(sco296, new RaceAttendee(race16, sco296, RaceAttendee.Type.PILOT));
+			race16.getAttendees().put(sco884, new RaceAttendee(race16, sco884, RaceAttendee.Type.PILOT));
+			race16.getTallies().add(new RaceTally(RaceTally.Type.START));
+			addLaps(race16, "179,116,159,18,66,884,296"); //$NON-NLS-1$
+			addLaps(race16, "179,116,159,18,66,884,296"); //$NON-NLS-1$
+			addLaps(race16, "179,116,159,18,66,296,884"); //$NON-NLS-1$
+			addLaps(race16, "179,116,159,18,66,296,884"); //$NON-NLS-1$
+			addLaps(race16, "179,116,159,18,66,296"); //$NON-NLS-1$
+			addLaps(race16, "116,179,159,18,66"); //$NON-NLS-1$
+			addLaps(race16, "116,179,159,18,66"); //$NON-NLS-1$
+			addLaps(race16, "116,179"); //$NON-NLS-1$
+			raceDAO.persist(race16);
+
+			DatabaseSession.commit();
+
+			_race16 = race16;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createRace17Data() throws Exception {
+		createEvent5Data();
+
+		if (_race17 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event5 = eventDAO.find(series, EVENT5_NAME);
+
+			Race race17 = new Race(event5, RACE17_NAME, RACE17_DESC);
+			event5.getRaces().add(race17);
+			race17.getAttendees().put(sco018, new RaceAttendee(race17, sco018, RaceAttendee.Type.PILOT));
+			race17.getAttendees().put(sco066, new RaceAttendee(race17, sco066, RaceAttendee.Type.PILOT));
+			race17.getAttendees().put(sco116, new RaceAttendee(race17, sco116, RaceAttendee.Type.PILOT));
+			race17.getAttendees().put(sco159, new RaceAttendee(race17, sco159, RaceAttendee.Type.PILOT));
+			race17.getAttendees().put(sco179, new RaceAttendee(race17, sco179, RaceAttendee.Type.PILOT));
+			race17.getAttendees().put(sco296, new RaceAttendee(race17, sco296, RaceAttendee.Type.PILOT));
+			race17.getAttendees().put(sco884, new RaceAttendee(race17, sco884, RaceAttendee.Type.PILOT));
+			race17.getTallies().add(new RaceTally(RaceTally.Type.START));
+			addLaps(race17, "116,66,18,159,884,296,179"); //$NON-NLS-1$
+			addLaps(race17, "116,18,66,296,159,179"); //$NON-NLS-1$
+			addLaps(race17, "116,18,66,159,296,179"); //$NON-NLS-1$
+			addLaps(race17, "116,18,66,159,296,179"); //$NON-NLS-1$
+			addLaps(race17, "116,18,66,159,296"); //$NON-NLS-1$
+			addLaps(race17, "116,18,66,159"); //$NON-NLS-1$
+			addLaps(race17, "116,18,66"); //$NON-NLS-1$
+			addLaps(race17, "116"); //$NON-NLS-1$
+			raceDAO.persist(race17);
+
+			DatabaseSession.commit();
+
+			_race17 = race17;
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void createRace18Data() throws Exception {
+		createEvent5Data();
+
+		if (_race18 != null) {
+			return;
+		}
+
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event5 = eventDAO.find(series, EVENT5_NAME);
+
+			Race race18 = new Race(event5, RACE18_NAME, RACE18_DESC);
+			event5.getRaces().add(race18);
+			race18.getAttendees().put(sco018, new RaceAttendee(race18, sco018, RaceAttendee.Type.PILOT));
+			race18.getAttendees().put(sco066, new RaceAttendee(race18, sco066, RaceAttendee.Type.PILOT));
+			race18.getAttendees().put(sco116, new RaceAttendee(race18, sco116, RaceAttendee.Type.PILOT));
+			race18.getAttendees().put(sco159, new RaceAttendee(race18, sco159, RaceAttendee.Type.PILOT));
+			race18.getAttendees().put(sco179, new RaceAttendee(race18, sco179, RaceAttendee.Type.PILOT));
+			race18.getAttendees().put(sco296, new RaceAttendee(race18, sco296, RaceAttendee.Type.PILOT));
+			race18.getAttendees().put(sco884, new RaceAttendee(race18, sco884, RaceAttendee.Type.PILOT));
+			race18.getTallies().add(new RaceTally(RaceTally.Type.START));
+			addLaps(race18, "116,179,159,18,296,884,66"); //$NON-NLS-1$
+			addLaps(race18, "116,179,159,18,296,884,66"); //$NON-NLS-1$
+			addLaps(race18, "116,179,159,18,296,66,884"); //$NON-NLS-1$
+			addLaps(race18, "116,179,159,18,296"); //$NON-NLS-1$
+			addLaps(race18, "116,179,159,18,296"); //$NON-NLS-1$
+			addLaps(race18, "116,179,159,18"); //$NON-NLS-1$
+			addLaps(race18, "116,179,159,18"); //$NON-NLS-1$
+			addLaps(race18, "116,179"); //$NON-NLS-1$
+			raceDAO.persist(race18);
+
+			DatabaseSession.commit();
+
+			_race18 = race18;
 		} finally {
 			db.endSession();
 		}

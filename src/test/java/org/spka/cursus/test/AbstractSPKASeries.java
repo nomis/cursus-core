@@ -17,6 +17,8 @@
  */
 package org.spka.cursus.test;
 
+import static eu.lp0.cursus.db.data.RaceTally.Type.START;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -33,12 +35,16 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Sets;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import eu.lp0.cursus.db.DatabaseSession;
 import eu.lp0.cursus.db.data.Event;
+import eu.lp0.cursus.db.data.Penalty;
 import eu.lp0.cursus.db.data.Pilot;
 import eu.lp0.cursus.db.data.Race;
+import eu.lp0.cursus.db.data.RaceAttendee;
 import eu.lp0.cursus.db.data.RaceNumber;
 import eu.lp0.cursus.db.data.RaceTally;
 import eu.lp0.cursus.db.data.Series;
+import eu.lp0.cursus.db.data.Sex;
 import eu.lp0.cursus.scoring.data.Scores;
 import eu.lp0.cursus.test.AbstractSeries;
 import eu.lp0.cursus.xml.scores.ScoresXMLFile;
@@ -209,6 +215,137 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 			}
 			System.out.println("\t" + scores.getOverallPoints(pilot)); //$NON-NLS-1$
 		}
+	}
+
+	protected void addSeries() throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = new Series(SERIES_NAME);
+			seriesDAO.persist(series);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void addPilot(String name, Sex sex, String country, String... classes) throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Pilot pilot = new Pilot(series, name, sex, country);
+			pilot.setRaceNumber(RaceNumber.valueOfFor(pilot.getName().split("@")[0], pilot)); //$NON-NLS-1$
+			series.getPilots().add(pilot);
+			seriesDAO.persist(series);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void addEvent(int number, String desc) throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+
+			Event event = new Event(series, "Race Event " + number, desc); //$NON-NLS-1$
+			series.getEvents().add(event);
+			eventDAO.persist(event);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void addRace(int eventNumber, int raceNumber, String desc) throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event = eventDAO.find(series, "Race Event " + eventNumber); //$NON-NLS-1$
+
+			Race race = new Race(event, "Race " + raceNumber, desc); //$NON-NLS-1$
+			event.getRaces().add(race);
+			race.getTallies().add(new RaceTally(START));
+			raceDAO.persist(race);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void addAttendees(int eventNumber, int raceNumber, RaceAttendee.Type type, String... pilotNames) throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event = eventDAO.find(series, "Race Event " + eventNumber); //$NON-NLS-1$
+			Race race = raceDAO.find(event, "Race " + raceNumber); //$NON-NLS-1$
+			for (String pilotName : pilotNames) {
+				Pilot pilot = findPilot(pilotName);
+				race.getAttendees().put(pilot, new RaceAttendee(race, pilot, RaceAttendee.Type.PILOT));
+			}
+			raceDAO.persist(race);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void addLaps(int eventNumber, int raceNumber, String laps) {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event = eventDAO.find(series, "Race Event " + eventNumber); //$NON-NLS-1$
+			Race race = raceDAO.find(event, "Race " + raceNumber); //$NON-NLS-1$
+			addLaps(race, laps);
+			raceDAO.persist(race);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected void addPenalty(int eventNumber, int raceNumber, String pilotName, Penalty penalty) throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event = eventDAO.find(series, "Race Event " + eventNumber); //$NON-NLS-1$
+			Race race = raceDAO.find(event, "Race " + raceNumber); //$NON-NLS-1$
+			race.getAttendees().get(findPilot(pilotName)).getPenalties().add(penalty);
+			raceDAO.persist(race);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	protected Pilot findPilot(String name) throws Exception {
+		Series series = seriesDAO.find(SERIES_NAME);
+		for (Pilot pilot : series.getPilots()) {
+			if (pilot.getName().startsWith(name + "@")) { //$NON-NLS-1$
+				return pilot;
+			}
+		}
+		throw new Exception("Pilot " + name + " not found"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	protected void createRaceNumbers(Collection<Pilot> pilots) {

@@ -19,6 +19,8 @@ package eu.lp0.cursus.test;
 
 import java.util.List;
 
+import eu.lp0.cursus.db.DatabaseSession;
+import eu.lp0.cursus.db.data.Series;
 import eu.lp0.cursus.scoring.scorer.Scorer;
 import eu.lp0.cursus.scoring.scorer.ScorerFactory;
 import eu.lp0.cursus.test.db.AbstractDatabaseTest;
@@ -41,7 +43,19 @@ public abstract class AbstractSeries extends AbstractDatabaseTest {
 		return scorer;
 	}
 
-	public abstract void createAllData() throws Exception;
+	public void createAllData() throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = new Series(SERIES_NAME);
+			seriesDAO.persist(series);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
 
 	public abstract List<ScoresXMLFile> createScores() throws Exception;
 }

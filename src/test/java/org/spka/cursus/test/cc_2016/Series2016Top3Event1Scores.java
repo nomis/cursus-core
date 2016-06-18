@@ -56,7 +56,7 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Event event1 = eventDAO.find(series, EVENT1_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
 			Scores scores = scorer.scoreSeries(series, getSeriesResultsPilots(series, event1), Predicates.in(getSeriesResultsPilots(series, event1)));
 			checkSeriesAtEvent1(scores);
 
@@ -73,7 +73,7 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Event event1 = eventDAO.find(series, EVENT1_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
 
 			List<Race> races = new ArrayList<Race>();
 			races.addAll(event1.getRaces());
@@ -90,72 +90,72 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 
 	private void checkSeriesAtEvent1(Scores scores) throws Exception {
 		Series series = seriesDAO.find(SERIES_NAME);
-		Event event1 = eventDAO.find(series, EVENT1_NAME);
-		Race race1 = raceDAO.find(event1, RACE1_NAME);
-		Race race2 = raceDAO.find(event1, RACE2_NAME);
-		Race race3 = raceDAO.find(event1, RACE3_NAME);
-		Race race4 = raceDAO.find(event1, RACE4_NAME);
+		Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
+		Race race1 = raceDAO.find(event1, "Race 1"); //$NON-NLS-1$
+		Race race2 = raceDAO.find(event1, "Race 2"); //$NON-NLS-1$
+		Race race3 = raceDAO.find(event1, "Race 3"); //$NON-NLS-1$
+		Race race4 = raceDAO.find(event1, "Race 4"); //$NON-NLS-1$
 
 		Assert.assertEquals(SERIES_FLEET_AT_EVENT1, scores.getPilots().size());
 
 		RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1, true);
-		race1AssertUtil.assertPilot(sco116, 7, 0, false, 0, 1);
-		race1AssertUtil.assertPilot(ir021, 7, 0, false, 2, 2);
-		race1AssertUtil.assertPilot(sco808, 7, 0, false, 3, 3);
-		race1AssertUtil.assertPilot(ir053, 7, 0, false, 4, 4);
-		race1AssertUtil.assertPilot(ir085, 6, 0, false, 5, 5);
-		race1AssertUtil.assertPilot(sco159, 6, 0, false, 6, 6);
-		race1AssertUtil.assertPilot(ir077, 5, 0, true, 0, 7);
-		race1AssertUtil.assertPilot(ir023, 4, 0, true, 0, 8);
-		race1AssertUtil.assertPilot(ir016, 0, 0, true, 0, 9);
+		race1AssertUtil.assertPilot(findPilot("SCO116"), 7, 0, false, 0, 1); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("IR021"), 7, 0, false, 2, 2); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("SCO808"), 7, 0, false, 3, 3); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("IR053"), 7, 0, false, 4, 4); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("IR085"), 6, 0, false, 5, 5); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("SCO159"), 6, 0, false, 6, 6); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("IR077"), 5, 0, true, 0, 7); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("IR023"), 4, 0, true, 0, 8); //$NON-NLS-1$
+		race1AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 9); //$NON-NLS-1$
 		race1AssertUtil.assertDone(3);
 
 		RaceAssertUtil race2AssertUtil = new RaceAssertUtil(scores, race2, true);
-		race2AssertUtil.assertPilot(ir021, 4, 0, false, 0, 1);
-		race2AssertUtil.assertPilot(sco116, 4, 0, false, 2, 2);
-		race2AssertUtil.assertPilot(ir053, 4, 0, false, 3, 3);
-		race2AssertUtil.assertPilot(ir077, 3, 0, false, 4, 4);
-		race2AssertUtil.assertPilot(sco159, 3, 0, false, 5, 5);
-		race2AssertUtil.assertPilot(sco808, 1, 0, false, 6, 6);
-		race2AssertUtil.assertPilot(ir023, 1, 0, true, 0, 7);
-		race2AssertUtil.assertPilot(ir016, 0, 0, true, 0, 8);
-		race2AssertUtil.assertPilot(ir085, 0, 0, true, 0, 8);
+		race2AssertUtil.assertPilot(findPilot("IR021"), 4, 0, false, 0, 1); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("SCO116"), 4, 0, false, 2, 2); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("IR053"), 4, 0, false, 3, 3); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("IR077"), 3, 0, false, 4, 4); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("SCO159"), 3, 0, false, 5, 5); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("SCO808"), 1, 0, false, 6, 6); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("IR023"), 1, 0, true, 0, 7); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 8); //$NON-NLS-1$
+		race2AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8); //$NON-NLS-1$
 		race2AssertUtil.assertDone(3);
 
 		RaceAssertUtil race3AssertUtil = new RaceAssertUtil(scores, race3, true);
-		race3AssertUtil.assertPilot(sco808, 5, 1, false, 0, 1);
-		race3AssertUtil.assertPilot(sco116, 5, 0, false, 2, 2);
-		race3AssertUtil.assertPilot(sco159, 5, 0, false, 3, 3);
-		race3AssertUtil.assertPilot(ir053, 5, 0, false, 4, 4);
-		race3AssertUtil.assertPilot(ir021, 5, 0, false, 5, 5);
-		race3AssertUtil.assertPilot(ir077, 5, 0, false, 6, 6);
-		race3AssertUtil.assertPilot(ir085, 2, 0, true, 0, 7);
-		race3AssertUtil.assertPilot(ir016, 1, 0, true, 0, 8);
-		race3AssertUtil.assertPilot(ir023, 0, 0, true, 0, 9);
+		race3AssertUtil.assertPilot(findPilot("SCO808"), 5, 1, false, 0, 1); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("SCO116"), 5, 0, false, 2, 2); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("SCO159"), 5, 0, false, 3, 3); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("IR053"), 5, 0, false, 4, 4); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("IR021"), 5, 0, false, 5, 5); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("IR077"), 5, 0, false, 6, 6); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("IR085"), 2, 0, true, 0, 7); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("IR016"), 1, 0, true, 0, 8); //$NON-NLS-1$
+		race3AssertUtil.assertPilot(findPilot("IR023"), 0, 0, true, 0, 9); //$NON-NLS-1$
 		race3AssertUtil.assertDone(3);
 
 		RaceAssertUtil race4AssertUtil = new RaceAssertUtil(scores, race4, true);
-		race4AssertUtil.assertPilot(ir053, 4, 0, false, 0, 1);
-		race4AssertUtil.assertPilot(sco116, 4, 0, false, 2, 2);
-		race4AssertUtil.assertPilot(sco808, 4, 0, false, 3, 3);
-		race4AssertUtil.assertPilot(sco159, 4, 0, false, 4, 4);
-		race4AssertUtil.assertPilot(ir077, 3, 0, false, 5, 5);
-		race4AssertUtil.assertPilot(ir021, 3, 0, false, 6, 6);
-		race4AssertUtil.assertPilot(ir023, 1, 0, true, 0, 7);
-		race4AssertUtil.assertPilot(ir016, 0, 0, true, 0, 8);
-		race4AssertUtil.assertPilot(ir085, 0, 0, true, 0, 8);
+		race4AssertUtil.assertPilot(findPilot("IR053"), 4, 0, false, 0, 1); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("SCO116"), 4, 0, false, 2, 2); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("SCO808"), 4, 0, false, 3, 3); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("SCO159"), 4, 0, false, 4, 4); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("IR077"), 3, 0, false, 5, 5); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("IR021"), 3, 0, false, 6, 6); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("IR023"), 1, 0, true, 0, 7); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 8); //$NON-NLS-1$
+		race4AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8); //$NON-NLS-1$
 		race4AssertUtil.assertDone(3);
 
 		OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-		overallAssertUtil.assertPilot(sco116, 0, 6, 1);
-		overallAssertUtil.assertPilot(ir053, 0, 11, 2);
-		overallAssertUtil.assertPilot(ir021, 0, 13, 3);
-		overallAssertUtil.assertPilot(sco808, 1, 13, 4);
-		overallAssertUtil.assertPilot(sco159, 0, 18, 5);
-		overallAssertUtil.assertPilot(ir085, 0, 5, 6);
-		overallAssertUtil.assertPilot(ir077, 0, 15, 7);
-		overallAssertUtil.assertPilot(ir016, 0, 0, 8);
-		overallAssertUtil.assertPilot(ir023, 0, 0, 8);
+		overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 6, 1); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("IR053"), 0, 11, 2); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("IR021"), 0, 13, 3); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("SCO808"), 1, 13, 4); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 18, 5); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("IR085"), 0, 5, 6); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("IR077"), 0, 15, 7); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 8); //$NON-NLS-1$
+		overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 8); //$NON-NLS-1$
 		overallAssertUtil.assertOrder();
 	}
 
@@ -166,72 +166,72 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Event event1 = eventDAO.find(series, EVENT1_NAME);
-			Race race1 = raceDAO.find(event1, RACE1_NAME);
-			Race race2 = raceDAO.find(event1, RACE2_NAME);
-			Race race3 = raceDAO.find(event1, RACE3_NAME);
-			Race race4 = raceDAO.find(event1, RACE4_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
+			Race race1 = raceDAO.find(event1, "Race 1"); //$NON-NLS-1$
+			Race race2 = raceDAO.find(event1, "Race 2"); //$NON-NLS-1$
+			Race race3 = raceDAO.find(event1, "Race 3"); //$NON-NLS-1$
+			Race race4 = raceDAO.find(event1, "Race 4"); //$NON-NLS-1$
 
 			Scores scores = scorer.scoreEvent(event1, Predicates.in(getEventResultsPilots(series, event1)));
 
 			RaceAssertUtil race1AssertUtil = new RaceAssertUtil(scores, race1, true);
-			race1AssertUtil.assertPilot(sco116, 7, 0, false, 0, 1);
-			race1AssertUtil.assertPilot(ir021, 7, 0, false, 2, 2);
-			race1AssertUtil.assertPilot(sco808, 7, 0, false, 3, 3);
-			race1AssertUtil.assertPilot(ir053, 7, 0, false, 4, 4);
-			race1AssertUtil.assertPilot(ir085, 6, 0, false, 5, 5);
-			race1AssertUtil.assertPilot(sco159, 6, 0, false, 6, 6);
-			race1AssertUtil.assertPilot(ir077, 5, 0, true, 0, 7);
-			race1AssertUtil.assertPilot(ir023, 4, 0, true, 0, 8);
-			race1AssertUtil.assertPilot(ir016, 0, 0, true, 0, 9);
+			race1AssertUtil.assertPilot(findPilot("SCO116"), 7, 0, false, 0, 1); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("IR021"), 7, 0, false, 2, 2); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("SCO808"), 7, 0, false, 3, 3); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("IR053"), 7, 0, false, 4, 4); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("IR085"), 6, 0, false, 5, 5); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("SCO159"), 6, 0, false, 6, 6); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("IR077"), 5, 0, true, 0, 7); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("IR023"), 4, 0, true, 0, 8); //$NON-NLS-1$
+			race1AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 9); //$NON-NLS-1$
 			race1AssertUtil.assertDone(3);
 
 			RaceAssertUtil race2AssertUtil = new RaceAssertUtil(scores, race2, true);
-			race2AssertUtil.assertPilot(ir021, 4, 0, false, 0, 1);
-			race2AssertUtil.assertPilot(sco116, 4, 0, false, 2, 2);
-			race2AssertUtil.assertPilot(ir053, 4, 0, false, 3, 3);
-			race2AssertUtil.assertPilot(ir077, 3, 0, false, 4, 4);
-			race2AssertUtil.assertPilot(sco159, 3, 0, false, 5, 5);
-			race2AssertUtil.assertPilot(sco808, 1, 0, false, 6, 6);
-			race2AssertUtil.assertPilot(ir023, 1, 0, true, 0, 7);
-			race2AssertUtil.assertPilot(ir016, 0, 0, true, 0, 8);
-			race2AssertUtil.assertPilot(ir085, 0, 0, true, 0, 8);
+			race2AssertUtil.assertPilot(findPilot("IR021"), 4, 0, false, 0, 1); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("SCO116"), 4, 0, false, 2, 2); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("IR053"), 4, 0, false, 3, 3); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("IR077"), 3, 0, false, 4, 4); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("SCO159"), 3, 0, false, 5, 5); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("SCO808"), 1, 0, false, 6, 6); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("IR023"), 1, 0, true, 0, 7); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 8); //$NON-NLS-1$
+			race2AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8); //$NON-NLS-1$
 			race2AssertUtil.assertDone(3);
 
 			RaceAssertUtil race3AssertUtil = new RaceAssertUtil(scores, race3, true);
-			race3AssertUtil.assertPilot(sco808, 5, 1, false, 0, 1);
-			race3AssertUtil.assertPilot(sco116, 5, 0, false, 2, 2);
-			race3AssertUtil.assertPilot(sco159, 5, 0, false, 3, 3);
-			race3AssertUtil.assertPilot(ir053, 5, 0, false, 4, 4);
-			race3AssertUtil.assertPilot(ir021, 5, 0, false, 5, 5);
-			race3AssertUtil.assertPilot(ir077, 5, 0, false, 6, 6);
-			race3AssertUtil.assertPilot(ir085, 2, 0, true, 0, 7);
-			race3AssertUtil.assertPilot(ir016, 1, 0, true, 0, 8);
-			race3AssertUtil.assertPilot(ir023, 0, 0, true, 0, 9);
+			race3AssertUtil.assertPilot(findPilot("SCO808"), 5, 1, false, 0, 1); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("SCO116"), 5, 0, false, 2, 2); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("SCO159"), 5, 0, false, 3, 3); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("IR053"), 5, 0, false, 4, 4); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("IR021"), 5, 0, false, 5, 5); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("IR077"), 5, 0, false, 6, 6); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("IR085"), 2, 0, true, 0, 7); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("IR016"), 1, 0, true, 0, 8); //$NON-NLS-1$
+			race3AssertUtil.assertPilot(findPilot("IR023"), 0, 0, true, 0, 9); //$NON-NLS-1$
 			race3AssertUtil.assertDone(3);
 
 			RaceAssertUtil race4AssertUtil = new RaceAssertUtil(scores, race4, true);
-			race4AssertUtil.assertPilot(ir053, 4, 0, false, 0, 1);
-			race4AssertUtil.assertPilot(sco116, 4, 0, false, 2, 2);
-			race4AssertUtil.assertPilot(sco808, 4, 0, false, 3, 3);
-			race4AssertUtil.assertPilot(sco159, 4, 0, false, 4, 4);
-			race4AssertUtil.assertPilot(ir077, 3, 0, false, 5, 5);
-			race4AssertUtil.assertPilot(ir021, 3, 0, false, 6, 6);
-			race4AssertUtil.assertPilot(ir023, 1, 0, true, 0, 7);
-			race4AssertUtil.assertPilot(ir016, 0, 0, true, 0, 8);
-			race4AssertUtil.assertPilot(ir085, 0, 0, true, 0, 8);
+			race4AssertUtil.assertPilot(findPilot("IR053"), 4, 0, false, 0, 1); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("SCO116"), 4, 0, false, 2, 2); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("SCO808"), 4, 0, false, 3, 3); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("SCO159"), 4, 0, false, 4, 4); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("IR077"), 3, 0, false, 5, 5); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("IR021"), 3, 0, false, 6, 6); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("IR023"), 1, 0, true, 0, 7); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 8); //$NON-NLS-1$
+			race4AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8); //$NON-NLS-1$
 			race4AssertUtil.assertDone(3);
 
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-			overallAssertUtil.assertPilot(sco116, 0, 6, 1);
-			overallAssertUtil.assertPilot(ir053, 0, 11, 2);
-			overallAssertUtil.assertPilot(ir021, 0, 13, 3);
-			overallAssertUtil.assertPilot(sco808, 1, 13, 4);
-			overallAssertUtil.assertPilot(sco159, 0, 18, 5);
-			overallAssertUtil.assertPilot(ir085, 0, 5, 6);
-			overallAssertUtil.assertPilot(ir077, 0, 15, 7);
-			overallAssertUtil.assertPilot(ir016, 0, 0, 8);
-			overallAssertUtil.assertPilot(ir023, 0, 0, 8);
+			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 6, 1); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 11, 2); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR021"), 0, 13, 3); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO808"), 1, 13, 4); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 18, 5); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 5, 6); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 15, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 8); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 8); //$NON-NLS-1$
 			overallAssertUtil.assertOrder();
 
 			DatabaseSession.commit();
@@ -247,33 +247,33 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Event event1 = eventDAO.find(series, EVENT1_NAME);
-			Race race1 = raceDAO.find(event1, RACE1_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
+			Race race1 = raceDAO.find(event1, "Race 1"); //$NON-NLS-1$
 
 			Scores scores = scorer.scoreRace(race1, Predicates.in(getEventResultsPilots(series, event1)));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race1, true);
-			raceAssertUtil.assertPilot(sco116, 7, 0, false, 0, 1);
-			raceAssertUtil.assertPilot(ir021, 7, 0, false, 2, 2);
-			raceAssertUtil.assertPilot(sco808, 7, 0, false, 3, 3);
-			raceAssertUtil.assertPilot(ir053, 7, 0, false, 4, 4);
-			raceAssertUtil.assertPilot(ir085, 6, 0, false, 5, 5);
-			raceAssertUtil.assertPilot(sco159, 6, 0, false, 6, 6);
-			raceAssertUtil.assertPilot(ir077, 5, 0, true, 0, 7);
-			raceAssertUtil.assertPilot(ir023, 4, 0, true, 0, 8);
-			raceAssertUtil.assertPilot(ir016, 0, 0, true, 0, 9);
+			raceAssertUtil.assertPilot(findPilot("SCO116"), 7, 0, false, 0, 1); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR021"), 7, 0, false, 2, 2); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO808"), 7, 0, false, 3, 3); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR053"), 7, 0, false, 4, 4); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR085"), 6, 0, false, 5, 5); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO159"), 6, 0, false, 6, 6); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR077"), 5, 0, true, 0, 7); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR023"), 4, 0, true, 0, 8); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 9); //$NON-NLS-1$
 			raceAssertUtil.assertDone(3);
 
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-			overallAssertUtil.assertPilot(sco116, 0, 0, 1);
-			overallAssertUtil.assertPilot(ir021, 0, 2, 2);
-			overallAssertUtil.assertPilot(sco808, 0, 3, 3);
-			overallAssertUtil.assertPilot(ir053, 0, 4, 4);
-			overallAssertUtil.assertPilot(ir085, 0, 5, 5);
-			overallAssertUtil.assertPilot(sco159, 0, 6, 6);
-			overallAssertUtil.assertPilot(ir016, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir023, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir077, 0, 0, 7);
+			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 0, 1); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR021"), 0, 2, 2); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO808"), 0, 3, 3); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 4, 4); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 5, 5); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 6, 6); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 0, 7); //$NON-NLS-1$
 			overallAssertUtil.assertOrder();
 
 			DatabaseSession.commit();
@@ -289,33 +289,33 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Event event1 = eventDAO.find(series, EVENT1_NAME);
-			Race race2 = raceDAO.find(event1, RACE2_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
+			Race race2 = raceDAO.find(event1, "Race 2"); //$NON-NLS-1$
 
 			Scores scores = scorer.scoreRace(race2, Predicates.in(getEventResultsPilots(series, event1)));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race2, true);
-			raceAssertUtil.assertPilot(ir021, 4, 0, false, 0, 1);
-			raceAssertUtil.assertPilot(sco116, 4, 0, false, 2, 2);
-			raceAssertUtil.assertPilot(ir053, 4, 0, false, 3, 3);
-			raceAssertUtil.assertPilot(ir077, 3, 0, false, 4, 4);
-			raceAssertUtil.assertPilot(sco159, 3, 0, false, 5, 5);
-			raceAssertUtil.assertPilot(sco808, 1, 0, false, 6, 6);
-			raceAssertUtil.assertPilot(ir023, 1, 0, true, 0, 7);
-			raceAssertUtil.assertPilot(ir016, 0, 0, true, 0, 8);
-			raceAssertUtil.assertPilot(ir085, 0, 0, true, 0, 8);
+			raceAssertUtil.assertPilot(findPilot("IR021"), 4, 0, false, 0, 1); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO116"), 4, 0, false, 2, 2); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR053"), 4, 0, false, 3, 3); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR077"), 3, 0, false, 4, 4); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO159"), 3, 0, false, 5, 5); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO808"), 1, 0, false, 6, 6); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR023"), 1, 0, true, 0, 7); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 8); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8); //$NON-NLS-1$
 			raceAssertUtil.assertDone(3);
 
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-			overallAssertUtil.assertPilot(ir021, 0, 0, 1);
-			overallAssertUtil.assertPilot(sco116, 0, 2, 2);
-			overallAssertUtil.assertPilot(ir053, 0, 3, 3);
-			overallAssertUtil.assertPilot(ir077, 0, 4, 4);
-			overallAssertUtil.assertPilot(sco159, 0, 5, 5);
-			overallAssertUtil.assertPilot(sco808, 0, 6, 6);
-			overallAssertUtil.assertPilot(ir016, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir023, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir085, 0, 0, 7);
+			overallAssertUtil.assertPilot(findPilot("IR021"), 0, 0, 1); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 2, 2); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 3, 3); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 4, 4); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 5, 5); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO808"), 0, 6, 6); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 0, 7); //$NON-NLS-1$
 			overallAssertUtil.assertOrder();
 
 			DatabaseSession.commit();
@@ -331,33 +331,33 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Event event1 = eventDAO.find(series, EVENT1_NAME);
-			Race race3 = raceDAO.find(event1, RACE3_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
+			Race race3 = raceDAO.find(event1, "Race 3"); //$NON-NLS-1$
 
 			Scores scores = scorer.scoreRace(race3, Predicates.in(getEventResultsPilots(series, event1)));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race3, true);
-			raceAssertUtil.assertPilot(sco808, 5, 1, false, 0, 1);
-			raceAssertUtil.assertPilot(sco116, 5, 0, false, 2, 2);
-			raceAssertUtil.assertPilot(sco159, 5, 0, false, 3, 3);
-			raceAssertUtil.assertPilot(ir053, 5, 0, false, 4, 4);
-			raceAssertUtil.assertPilot(ir021, 5, 0, false, 5, 5);
-			raceAssertUtil.assertPilot(ir077, 5, 0, false, 6, 6);
-			raceAssertUtil.assertPilot(ir085, 2, 0, true, 0, 7);
-			raceAssertUtil.assertPilot(ir016, 1, 0, true, 0, 8);
-			raceAssertUtil.assertPilot(ir023, 0, 0, true, 0, 9);
+			raceAssertUtil.assertPilot(findPilot("SCO808"), 5, 1, false, 0, 1); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO116"), 5, 0, false, 2, 2); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO159"), 5, 0, false, 3, 3); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR053"), 5, 0, false, 4, 4); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR021"), 5, 0, false, 5, 5); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR077"), 5, 0, false, 6, 6); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR085"), 2, 0, true, 0, 7); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR016"), 1, 0, true, 0, 8); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR023"), 0, 0, true, 0, 9); //$NON-NLS-1$
 			raceAssertUtil.assertDone(3);
 
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-			overallAssertUtil.assertPilot(sco808, 1, 1, 1);
-			overallAssertUtil.assertPilot(sco116, 0, 2, 2);
-			overallAssertUtil.assertPilot(sco159, 0, 3, 3);
-			overallAssertUtil.assertPilot(ir053, 0, 4, 4);
-			overallAssertUtil.assertPilot(ir021, 0, 5, 5);
-			overallAssertUtil.assertPilot(ir077, 0, 6, 6);
-			overallAssertUtil.assertPilot(ir016, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir023, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir085, 0, 0, 7);
+			overallAssertUtil.assertPilot(findPilot("SCO808"), 1, 1, 1); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 2, 2); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 3, 3); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 4, 4); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR021"), 0, 5, 5); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 6, 6); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 0, 7); //$NON-NLS-1$
 			overallAssertUtil.assertOrder();
 
 			DatabaseSession.commit();
@@ -373,33 +373,33 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
-			Event event1 = eventDAO.find(series, EVENT1_NAME);
-			Race race4 = raceDAO.find(event1, RACE4_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1"); //$NON-NLS-1$
+			Race race4 = raceDAO.find(event1, "Race 4"); //$NON-NLS-1$
 
 			Scores scores = scorer.scoreRace(race4, Predicates.in(getEventResultsPilots(series, event1)));
 
 			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race4, true);
-			raceAssertUtil.assertPilot(ir053, 4, 0, false, 0, 1);
-			raceAssertUtil.assertPilot(sco116, 4, 0, false, 2, 2);
-			raceAssertUtil.assertPilot(sco808, 4, 0, false, 3, 3);
-			raceAssertUtil.assertPilot(sco159, 4, 0, false, 4, 4);
-			raceAssertUtil.assertPilot(ir077, 3, 0, false, 5, 5);
-			raceAssertUtil.assertPilot(ir021, 3, 0, false, 6, 6);
-			raceAssertUtil.assertPilot(ir023, 1, 0, true, 0, 7);
-			raceAssertUtil.assertPilot(ir016, 0, 0, true, 0, 8);
-			raceAssertUtil.assertPilot(ir085, 0, 0, true, 0, 8);
+			raceAssertUtil.assertPilot(findPilot("IR053"), 4, 0, false, 0, 1); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO116"), 4, 0, false, 2, 2); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO808"), 4, 0, false, 3, 3); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("SCO159"), 4, 0, false, 4, 4); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR077"), 3, 0, false, 5, 5); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR021"), 3, 0, false, 6, 6); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR023"), 1, 0, true, 0, 7); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 8); //$NON-NLS-1$
+			raceAssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8); //$NON-NLS-1$
 			raceAssertUtil.assertDone(3);
 
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-			overallAssertUtil.assertPilot(ir053, 0, 0, 1);
-			overallAssertUtil.assertPilot(sco116, 0, 2, 2);
-			overallAssertUtil.assertPilot(sco808, 0, 3, 3);
-			overallAssertUtil.assertPilot(sco159, 0, 4, 4);
-			overallAssertUtil.assertPilot(ir077, 0, 5, 5);
-			overallAssertUtil.assertPilot(ir021, 0, 6, 6);
-			overallAssertUtil.assertPilot(ir016, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir023, 0, 0, 7);
-			overallAssertUtil.assertPilot(ir085, 0, 0, 7);
+			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 0, 1); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 2, 2); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO808"), 0, 3, 3); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 4, 4); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 5, 5); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR021"), 0, 6, 6); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 7); //$NON-NLS-1$
+			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 0, 7); //$NON-NLS-1$
 			overallAssertUtil.assertOrder();
 
 			DatabaseSession.commit();

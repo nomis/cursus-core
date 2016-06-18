@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2013-2014  Simon Arlott
+	Copyright 2013-2014,2016  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,9 @@ import java.util.Locale;
 import org.junit.Ignore;
 import org.spka.cursus.scoring.AbstractSPKAScorer;
 import org.spka.cursus.scoring.Scorer2005;
+import org.spka.cursus.scoring.Scorer2010;
 import org.spka.cursus.scoring.Scorer2011;
+import org.spka.cursus.scoring.Scorer2012;
 import org.spka.cursus.test.AbstractSPKASeries;
 
 import com.google.common.base.Predicates;
@@ -102,7 +104,7 @@ public class CreateSPKATests extends AbstractDataTest {
 
 			out.println("/*");
 			out.println("	cursus - Race series management program");
-			out.println("	Copyright 2014  Simon Arlott");
+			out.println("	Copyright 2016  Simon Arlott");
 			out.println("");
 			out.println("	This program is free software: you can redistribute it and/or modify");
 			out.println("	it under the terms of the GNU Affero General Public License as published by");
@@ -261,14 +263,14 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("");
 				out.println("		Assert.assertEquals(SERIES_FLEET_AT_" + eventConstantName + ", scores.getPilots().size());");
 
-				if (scorer instanceof AbstractSPKAScorer && !(scorer instanceof Scorer2005)) {
+				if (scorer instanceof AbstractSPKAScorer && !(scorer instanceof Scorer2005) && !(scorer instanceof Scorer2012)) {
 					for (Event event : series.getEvents()) {
 						for (Race race : event.getRaces()) {
 							out.print("		Assert.assertEquals(");
-							if (scorer instanceof Scorer2011) {
-								out.print("SERIES_FLEET_AT_" + eventConstantName);
-							} else {
+							if (scorer instanceof Scorer2010) {
 								out.print(race.getName().replace("Race ", "RACE") + "_PILOTS");
+							} else if (scorer instanceof Scorer2011) {
+								out.print("SERIES_FLEET_AT_" + eventConstantName);
 							}
 							out.println(", scores.getFleetSize(" + race.getName().replace("Race ", "race") + "));");
 						}

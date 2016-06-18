@@ -46,7 +46,7 @@ public class Series2015 extends AbstractSPKASeries {
 
 	protected static final String EVENT1_NAME = "Race Event 1"; //$NON-NLS-1$
 	protected static final String EVENT1_DESC = "West Sands (31/10/2015 and 01/11/2015)"; //$NON-NLS-1$
-	protected static final int EVENT1_FLEET = 10;
+	protected static final int EVENT1_FLEET = 7;
 	protected static final String RACE1_NAME = "Race 1"; //$NON-NLS-1$
 	protected static final String RACE1_DESC = "West Sands (31/10/2015)"; //$NON-NLS-1$
 	protected static final int RACE1_PILOTS = 7;

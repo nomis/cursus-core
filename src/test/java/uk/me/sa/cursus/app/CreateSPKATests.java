@@ -162,6 +162,7 @@ public class CreateSPKATests extends AbstractDataTest {
 			}
 			out.println();
 			out.println(" */");
+			out.println("@SuppressWarnings(\"nls\")");
 			out.println("public class " + className + " extends " + superClass + " {");
 
 			if (cc && superClass.startsWith("CC")) {
@@ -194,7 +195,7 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("			DatabaseSession.begin();");
 				out.println("");
 				out.println("			Series series = seriesDAO.find(SERIES_NAME);");
-				out.println("			Event " + eventFieldName + " = eventDAO.find(series, " + eventConstantName + "_NAME);");
+				out.println("			Event " + eventFieldName + " = eventDAO.find(series, \"" + eventName + "\");");
 				out.println("			Scores scores = scorer.scoreSeries(series, getSeriesResultsPilots(series, " + eventFieldName
 						+ "), Predicates.in(getSeriesResultsPilots(series, " + eventFieldName + ")));");
 				out.println("			checkSeriesAt" + eventMethodName + "(scores);");
@@ -218,8 +219,8 @@ public class CreateSPKATests extends AbstractDataTest {
 						continue;
 					}
 
-					out.println("			Event " + event.getName().replace("Race Event ", "event").replace("Non-Event ", "nonEvent") + " = eventDAO.find(series, "
-							+ event.getName().replace("Race Event ", "EVENT").replace("Non-Event ", "NON_EVENT") + "_NAME);");
+					out.println("			Event " + event.getName().replace("Race Event ", "event").replace("Non-Event ", "nonEvent") + " = eventDAO.find(series, \""
+							+ event.getName() + "\");");
 				}
 				out.println("");
 				out.println("			List<Race> races = new ArrayList<Race>();");
@@ -251,12 +252,11 @@ public class CreateSPKATests extends AbstractDataTest {
 						continue;
 					}
 
-					out.println("		Event " + event.getName().replace("Race Event ", "event") + " = eventDAO.find(series, "
-							+ event.getName().replace("Race Event ", "EVENT") + "_NAME);");
+					out.println("		Event " + event.getName().replace("Race Event ", "event") + " = eventDAO.find(series, \"" + event.getName() + "\");");
 
 					for (Race race : event.getRaces()) {
 						out.println("		Race " + race.getName().replace("Race ", "race") + " = raceDAO.find(" + event.getName().replace("Race Event ", "event")
-								+ ", " + race.getName().replace("Race ", "RACE") + "_NAME);");
+								+ ", \"" + race.getName() + "\");");
 					}
 				}
 
@@ -290,7 +290,7 @@ public class CreateSPKATests extends AbstractDataTest {
 								simulPilots++;
 							}
 
-							out.println("		" + raceName + "AssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+							out.println("		" + raceName + "AssertUtil.assertPilot(findPilot(\"" + pilot.getName().split("@")[0] + "\"), "
 									+ seriesScores.getLaps(pilot, race) + ", " + seriesScores.getRacePenalties(pilot, race) + ", "
 									+ seriesScores.hasSimulatedRacePoints(pilot, race) + ", " + seriesScores.getRacePoints(pilot, race) + ", "
 									+ seriesScores.getRacePosition(pilot, race) + ");");
@@ -304,7 +304,7 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("		OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);");
 
 				for (Pilot pilot : seriesScores.getOverallOrder()) {
-					out.print("		overallAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+					out.print("		overallAssertUtil.assertPilot(findPilot(\"" + pilot.getName().split("@")[0] + "\"), "
 							+ seriesScores.getOverallPenalties(pilot) + ", " + seriesScores.getOverallPoints(pilot) + ", "
 							+ seriesScores.getOverallPosition(pilot));
 					for (Race race : seriesScores.getDiscardedRaces(pilot)) {
@@ -326,7 +326,7 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("			DatabaseSession.begin();");
 				out.println("");
 				out.println("			Series series = seriesDAO.find(SERIES_NAME);");
-				out.println("			Event " + eventFieldName + " = eventDAO.find(series, " + eventConstantName + "_NAME);");
+				out.println("			Event " + eventFieldName + " = eventDAO.find(series, \"" + eventName + "\");");
 				out.println("			Assert.assertEquals(0, " + eventFieldName + ".getRaces().size());");
 				out.println("");
 				out.println("			DatabaseSession.commit();");
@@ -345,11 +345,10 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("			DatabaseSession.begin();");
 				out.println("");
 				out.println("			Series series = seriesDAO.find(SERIES_NAME);");
-				out.println("			Event " + eventFieldName + " = eventDAO.find(series, " + eventConstantName + "_NAME);");
+				out.println("			Event " + eventFieldName + " = eventDAO.find(series, \"" + eventName + "\");");
 
 				for (Race race : fileEvent.getRaces()) {
-					out.println("			Race " + race.getName().replace("Race ", "race") + " = raceDAO.find(" + eventFieldName + ", "
-							+ race.getName().replace("Race ", "RACE") + "_NAME);");
+					out.println("			Race " + race.getName().replace("Race ", "race") + " = raceDAO.find(" + eventFieldName + ", \"" + race.getName() + "\");");
 				}
 
 				out.println("");
@@ -380,7 +379,7 @@ public class CreateSPKATests extends AbstractDataTest {
 							simulPilots++;
 						}
 
-						out.println("			" + raceName + "AssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+						out.println("			" + raceName + "AssertUtil.assertPilot(findPilot(\"" + pilot.getName().split("@")[0] + "\"), "
 								+ eventScores.getLaps(pilot, race) + ", " + eventScores.getRacePenalties(pilot, race) + ", "
 								+ eventScores.hasSimulatedRacePoints(pilot, race) + ", " + eventScores.getRacePoints(pilot, race) + ", "
 								+ eventScores.getRacePosition(pilot, race) + ");");
@@ -393,7 +392,7 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);");
 
 				for (Pilot pilot : eventScores.getOverallOrder()) {
-					out.print("			overallAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+					out.print("			overallAssertUtil.assertPilot(findPilot(\"" + pilot.getName().split("@")[0] + "\"), "
 							+ eventScores.getOverallPenalties(pilot) + ", " + eventScores.getOverallPoints(pilot) + ", "
 							+ eventScores.getOverallPosition(pilot));
 					for (Race race : eventScores.getDiscardedRaces(pilot)) {
@@ -423,8 +422,8 @@ public class CreateSPKATests extends AbstractDataTest {
 					out.println("			DatabaseSession.begin();");
 					out.println("");
 					out.println("			Series series = seriesDAO.find(SERIES_NAME);");
-					out.println("			Event " + eventFieldName + " = eventDAO.find(series, " + eventConstantName + "_NAME);");
-					out.println("			Race " + raceName + " = raceDAO.find(" + eventFieldName + ", " + race.getName().replace("Race ", "RACE") + "_NAME);");
+					out.println("			Event " + eventFieldName + " = eventDAO.find(series, \"" + eventName + "\");");
+					out.println("			Race " + raceName + " = raceDAO.find(" + eventFieldName + ", \"" + race.getName() + "\");");
 					out.println("");
 					out.println("			Scores scores = scorer.scoreRace(" + raceName + ", Predicates.in(getEventResultsPilots(series, " + eventFieldName + ")));");
 
@@ -448,10 +447,9 @@ public class CreateSPKATests extends AbstractDataTest {
 							simulPilots++;
 						}
 
-						out.println("			raceAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
-								+ raceScores.getLaps(pilot, race) + ", " + raceScores.getRacePenalties(pilot, race) + ", "
-								+ raceScores.hasSimulatedRacePoints(pilot, race) + ", " + raceScores.getRacePoints(pilot, race) + ", "
-								+ raceScores.getRacePosition(pilot, race) + ");");
+						out.println("			raceAssertUtil.assertPilot(findPilot(\"" + pilot.getName().split("@")[0] + "\"), " + raceScores.getLaps(pilot, race)
+								+ ", " + raceScores.getRacePenalties(pilot, race) + ", " + raceScores.hasSimulatedRacePoints(pilot, race) + ", "
+								+ raceScores.getRacePoints(pilot, race) + ", " + raceScores.getRacePosition(pilot, race) + ");");
 					}
 
 					out.println("			raceAssertUtil.assertDone(" + simulPilots + ");");
@@ -460,7 +458,7 @@ public class CreateSPKATests extends AbstractDataTest {
 					out.println("			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);");
 
 					for (Pilot pilot : raceScores.getOverallOrder()) {
-						out.println("			overallAssertUtil.assertPilot(" + pilot.getName().split("@")[0].toLowerCase(Locale.ROOT) + ", "
+						out.println("			overallAssertUtil.assertPilot(findPilot(\"" + pilot.getName().split("@")[0] + "\"), "
 								+ raceScores.getOverallPenalties(pilot) + ", " + raceScores.getOverallPoints(pilot) + ", "
 								+ raceScores.getOverallPosition(pilot) + ");");
 					}

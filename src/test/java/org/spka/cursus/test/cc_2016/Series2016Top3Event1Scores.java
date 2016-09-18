@@ -96,6 +96,7 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 		Race race2 = raceDAO.find(event1, "Race 2");
 		Race race3 = raceDAO.find(event1, "Race 3");
 		Race race4 = raceDAO.find(event1, "Race 4");
+		Race race5 = raceDAO.find(event1, "Race 5");
 
 		Assert.assertEquals(SERIES_FLEET_AT_EVENT1, scores.getPilots().size());
 
@@ -147,14 +148,26 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 		race4AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8);
 		race4AssertUtil.assertDone(3);
 
+		RaceAssertUtil race5AssertUtil = new RaceAssertUtil(scores, race5, true);
+		race5AssertUtil.assertPilot(findPilot("IR021"), 2, 1, false, 0, 1);
+		race5AssertUtil.assertPilot(findPilot("SCO116"), 2, 0, false, 2, 2);
+		race5AssertUtil.assertPilot(findPilot("IR077"), 2, 0, false, 3, 3);
+		race5AssertUtil.assertPilot(findPilot("IR053"), 1, 0, false, 4, 4);
+		race5AssertUtil.assertPilot(findPilot("SCO808"), 1, 0, false, 5, 5);
+		race5AssertUtil.assertPilot(findPilot("SCO159"), 1, 0, false, 6, 6);
+		race5AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 7);
+		race5AssertUtil.assertPilot(findPilot("IR023"), 0, 0, true, 0, 7);
+		race5AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 7);
+		race5AssertUtil.assertDone(3);
+
 		OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-		overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 6, 1);
-		overallAssertUtil.assertPilot(findPilot("IR053"), 0, 11, 2);
-		overallAssertUtil.assertPilot(findPilot("IR021"), 0, 13, 3);
-		overallAssertUtil.assertPilot(findPilot("SCO808"), 1, 13, 4);
-		overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 18, 5);
-		overallAssertUtil.assertPilot(findPilot("IR085"), 0, 5, 6);
-		overallAssertUtil.assertPilot(findPilot("IR077"), 0, 15, 7);
+		overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 8, 1);
+		overallAssertUtil.assertPilot(findPilot("IR021"), 1, 14, 2);
+		overallAssertUtil.assertPilot(findPilot("IR053"), 0, 15, 3);
+		overallAssertUtil.assertPilot(findPilot("SCO808"), 1, 18, 4);
+		overallAssertUtil.assertPilot(findPilot("IR077"), 0, 18, 5);
+		overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 24, 6);
+		overallAssertUtil.assertPilot(findPilot("IR085"), 0, 5, 7);
 		overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 8);
 		overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 8);
 		overallAssertUtil.assertOrder();
@@ -172,6 +185,7 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			Race race2 = raceDAO.find(event1, "Race 2");
 			Race race3 = raceDAO.find(event1, "Race 3");
 			Race race4 = raceDAO.find(event1, "Race 4");
+			Race race5 = raceDAO.find(event1, "Race 5");
 
 			Scores scores = scorer.scoreEvent(event1, Predicates.in(getEventResultsPilots(series, event1)));
 
@@ -223,14 +237,26 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			race4AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 8);
 			race4AssertUtil.assertDone(3);
 
+			RaceAssertUtil race5AssertUtil = new RaceAssertUtil(scores, race5, true);
+			race5AssertUtil.assertPilot(findPilot("IR021"), 2, 1, false, 0, 1);
+			race5AssertUtil.assertPilot(findPilot("SCO116"), 2, 0, false, 2, 2);
+			race5AssertUtil.assertPilot(findPilot("IR077"), 2, 0, false, 3, 3);
+			race5AssertUtil.assertPilot(findPilot("IR053"), 1, 0, false, 4, 4);
+			race5AssertUtil.assertPilot(findPilot("SCO808"), 1, 0, false, 5, 5);
+			race5AssertUtil.assertPilot(findPilot("SCO159"), 1, 0, false, 6, 6);
+			race5AssertUtil.assertPilot(findPilot("IR016"), 0, 0, true, 0, 7);
+			race5AssertUtil.assertPilot(findPilot("IR023"), 0, 0, true, 0, 7);
+			race5AssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 7);
+			race5AssertUtil.assertDone(3);
+
 			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
-			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 6, 1);
-			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 11, 2);
-			overallAssertUtil.assertPilot(findPilot("IR021"), 0, 13, 3);
-			overallAssertUtil.assertPilot(findPilot("SCO808"), 1, 13, 4);
-			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 18, 5);
-			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 5, 6);
-			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 15, 7);
+			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 8, 1);
+			overallAssertUtil.assertPilot(findPilot("IR021"), 1, 14, 2);
+			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 15, 3);
+			overallAssertUtil.assertPilot(findPilot("SCO808"), 1, 18, 4);
+			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 18, 5);
+			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 24, 6);
+			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 5, 7);
 			overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 8);
 			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 8);
 			overallAssertUtil.assertOrder();
@@ -399,6 +425,46 @@ public class Series2016Top3Event1Scores extends CCSeries2016 {
 			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 5, 5);
 			overallAssertUtil.assertPilot(findPilot("IR021"), 0, 6, 6);
 			overallAssertUtil.assertPilot(findPilot("IR016"), 0, 0, 7);
+			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 7);
+			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 0, 7);
+			overallAssertUtil.assertOrder();
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
+	@Test
+	public final void checkRace5() throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event1 = eventDAO.find(series, "Race Event 1");
+			Race race5 = raceDAO.find(event1, "Race 5");
+
+			Scores scores = scorer.scoreRace(race5, Predicates.in(getEventResultsPilots(series, event1)));
+
+			RaceAssertUtil raceAssertUtil = new RaceAssertUtil(scores, race5, true);
+			raceAssertUtil.assertPilot(findPilot("IR021"), 2, 1, false, 0, 1);
+			raceAssertUtil.assertPilot(findPilot("SCO116"), 2, 0, false, 2, 2);
+			raceAssertUtil.assertPilot(findPilot("IR077"), 2, 0, false, 3, 3);
+			raceAssertUtil.assertPilot(findPilot("IR053"), 1, 0, false, 4, 4);
+			raceAssertUtil.assertPilot(findPilot("SCO808"), 1, 0, false, 5, 5);
+			raceAssertUtil.assertPilot(findPilot("SCO159"), 1, 0, false, 6, 6);
+			raceAssertUtil.assertPilot(findPilot("IR023"), 0, 0, true, 0, 7);
+			raceAssertUtil.assertPilot(findPilot("IR085"), 0, 0, true, 0, 7);
+			raceAssertUtil.assertDone(2);
+
+			OverallAssertUtil overallAssertUtil = new OverallAssertUtil(scores);
+			overallAssertUtil.assertPilot(findPilot("IR021"), 1, 1, 1);
+			overallAssertUtil.assertPilot(findPilot("SCO116"), 0, 2, 2);
+			overallAssertUtil.assertPilot(findPilot("IR077"), 0, 3, 3);
+			overallAssertUtil.assertPilot(findPilot("IR053"), 0, 4, 4);
+			overallAssertUtil.assertPilot(findPilot("SCO808"), 0, 5, 5);
+			overallAssertUtil.assertPilot(findPilot("SCO159"), 0, 6, 6);
 			overallAssertUtil.assertPilot(findPilot("IR023"), 0, 0, 7);
 			overallAssertUtil.assertPilot(findPilot("IR085"), 0, 0, 7);
 			overallAssertUtil.assertOrder();

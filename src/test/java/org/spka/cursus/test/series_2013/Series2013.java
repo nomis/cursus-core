@@ -20,16 +20,16 @@ package org.spka.cursus.test.series_2013;
 import org.spka.cursus.scoring.SPKAConstants;
 import org.spka.cursus.test.AbstractSPKASeries;
 
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Class;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Sex;
-import eu.lp0.cursus.db.data.Penalty;
-import eu.lp0.cursus.db.data.Pilot;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.RaceTally;
-import eu.lp0.cursus.db.data.Series;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Class;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Penalty;
+import uk.uuid.cursus.db.data.Pilot;
+import uk.uuid.cursus.db.data.Race;
+import uk.uuid.cursus.db.data.RaceAttendee;
+import uk.uuid.cursus.db.data.RaceTally;
+import uk.uuid.cursus.db.data.Series;
+import uk.uuid.cursus.db.data.Sex;
 
 public class Series2013 extends AbstractSPKASeries {
 	public Series2013() {

@@ -17,10 +17,10 @@
  */
 package org.spka.cursus.scoring;
 
-import eu.lp0.cursus.scoring.data.RacePointsData;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
-import eu.lp0.cursus.scoring.scores.impl.TopCountryRacePointsData;
+import uk.uuid.cursus.scoring.data.RacePointsData;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.scoring.scores.impl.GenericRacePointsData;
+import uk.uuid.cursus.scoring.scores.impl.TopCountryRacePointsData;
 
 public class CCScoresFactory2013 extends CCScoresFactory2008 {
 	@Override

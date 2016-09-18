@@ -20,11 +20,11 @@ package org.spka.cursus.test.series_2011;
 import org.junit.Assert;
 import org.junit.Test;
 
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.Series;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Race;
+import uk.uuid.cursus.db.data.RaceAttendee;
+import uk.uuid.cursus.db.data.Series;
 
 public class Series2011DataTests extends Series2011 {
 	@Test

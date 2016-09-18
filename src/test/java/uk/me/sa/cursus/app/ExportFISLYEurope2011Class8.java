@@ -22,14 +22,14 @@ import java.io.File;
 import org.fisly.cursus.test.europe_2011.FISLYSeries2011;
 import org.junit.Ignore;
 
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Sex;
-import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scorer.FleetFilter;
-import eu.lp0.cursus.xml.scores.ScoresXML;
-import eu.lp0.cursus.xml.scores.ScoresXMLFile;
-import eu.lp0.cursus.xml.scores.XMLScores;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Series;
+import uk.uuid.cursus.db.data.Sex;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.scoring.scorer.FleetFilter;
+import uk.uuid.cursus.xml.scores.ScoresXML;
+import uk.uuid.cursus.xml.scores.ScoresXMLFile;
+import uk.uuid.cursus.xml.scores.XMLScores;
 
 public class ExportFISLYEurope2011Class8 {
 	public static final File SERIES_FILE_A1 = new File("target/fislyEurope2011Class8_a1.xml"); //$NON-NLS-1$

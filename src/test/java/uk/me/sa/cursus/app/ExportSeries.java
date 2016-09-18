@@ -21,16 +21,16 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Map;
 
+import uk.uuid.cursus.db.Database;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.publish.html.XSLTHTMLGenerator;
+import uk.uuid.cursus.test.AbstractSeries;
+import uk.uuid.cursus.xml.data.entity.DataXMLClass;
+import uk.uuid.cursus.xml.scores.ScoresXMLFile;
+
 import com.google.common.collect.Iterables;
 import com.google.common.io.ByteSource;
 import com.google.common.io.Files;
-
-import eu.lp0.cursus.db.Database;
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.publish.html.XSLTHTMLGenerator;
-import eu.lp0.cursus.test.AbstractSeries;
-import eu.lp0.cursus.xml.data.entity.DataXMLClass;
-import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 
 public class ExportSeries {
 	private final String fileName;
@@ -63,7 +63,7 @@ public class ExportSeries {
 	private void export(ScoresXMLFile scores) throws Exception {
 		scores.to(new File("target" + File.separator + fileName + ".xml")); //$NON-NLS-1$ //$NON-NLS-2$
 
-		XSLTHTMLGenerator gen = new XSLTHTMLGenerator(fileName + ".xml", fileName, "../../../src/main/resources/eu/lp0/cursus", scores); //$NON-NLS-1$ //$NON-NLS-2$
+		XSLTHTMLGenerator gen = new XSLTHTMLGenerator(fileName + ".xml", fileName, "../../../src/main/resources/uk/uuid/cursus", scores); //$NON-NLS-1$ //$NON-NLS-2$
 
 		gen.setLongNames(true);
 		gen.getStyleSheets().add("spka.css"); //$NON-NLS-1$

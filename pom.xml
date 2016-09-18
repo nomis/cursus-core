@@ -7,13 +7,13 @@
 	<name>cursus (Core)</name>
 	<description>Race series management program (Core Library)</description>
 	<parent>
-		<groupId>eu.lp0.cursus</groupId>
+		<groupId>uk.uuid.cursus</groupId>
 		<artifactId>cursus</artifactId>
 		<version>0</version>
 		<relativePath></relativePath>
 	</parent>
 	<scm>
-		<connection>scm:git:git://github.com/lp0/cursus-core.git</connection>
+		<connection>scm:git:https://github.com/lp0/cursus-core.git</connection>
 		<url>https://github.com/lp0/cursus-core/</url>
 	</scm>
 	<developers>

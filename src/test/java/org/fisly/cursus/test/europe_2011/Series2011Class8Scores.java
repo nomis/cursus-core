@@ -21,14 +21,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Sex;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scorer.FleetFilter;
-import eu.lp0.cursus.test.util.OverallAssertUtil;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Race;
+import uk.uuid.cursus.db.data.Series;
+import uk.uuid.cursus.db.data.Sex;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.scoring.scorer.FleetFilter;
+import uk.uuid.cursus.test.util.OverallAssertUtil;
 
 /**
  * Scores for the Class 8 championship (06/06/2011 to 09/09/2011)

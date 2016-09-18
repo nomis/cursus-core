@@ -32,17 +32,17 @@ import org.spka.cursus.scoring.Scorer2011;
 import org.spka.cursus.scoring.Scorer2012;
 import org.spka.cursus.test.AbstractSPKASeries;
 
-import com.google.common.base.Predicates;
+import uk.uuid.cursus.db.Database;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Pilot;
+import uk.uuid.cursus.db.data.Race;
+import uk.uuid.cursus.db.data.Series;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.scoring.scorer.Scorer;
+import uk.uuid.cursus.test.db.AbstractDataTest;
 
-import eu.lp0.cursus.db.Database;
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Pilot;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scorer.Scorer;
-import eu.lp0.cursus.test.db.AbstractDataTest;
+import com.google.common.base.Predicates;
 
 @Ignore
 public class CreateSPKATests extends AbstractDataTest {
@@ -126,9 +126,9 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("import org.junit.Before;");
 				out.println("import org.junit.Test;");
 				out.println("");
-				out.println("import eu.lp0.cursus.db.DatabaseSession;");
-				out.println("import eu.lp0.cursus.db.data.Event;");
-				out.println("import eu.lp0.cursus.db.data.Series;");
+				out.println("import uk.uuid.cursus.db.DatabaseSession;");
+				out.println("import uk.uuid.cursus.db.data.Event;");
+				out.println("import uk.uuid.cursus.db.data.Series;");
 			} else {
 				out.println("import java.util.ArrayList;");
 				out.println("import java.util.List;");
@@ -139,14 +139,14 @@ public class CreateSPKATests extends AbstractDataTest {
 				out.println("");
 				out.println("import com.google.common.base.Predicates;");
 				out.println("");
-				out.println("import eu.lp0.cursus.db.DatabaseSession;");
-				out.println("import eu.lp0.cursus.db.data.Event;");
-				out.println("import eu.lp0.cursus.db.data.Race;");
-				out.println("import eu.lp0.cursus.db.data.Series;");
-				out.println("import eu.lp0.cursus.scoring.data.Scores;");
-				out.println("import eu.lp0.cursus.test.util.OverallAssertUtil;");
+				out.println("import uk.uuid.cursus.db.DatabaseSession;");
+				out.println("import uk.uuid.cursus.db.data.Event;");
+				out.println("import uk.uuid.cursus.db.data.Race;");
+				out.println("import uk.uuid.cursus.db.data.Series;");
+				out.println("import uk.uuid.cursus.scoring.data.Scores;");
+				out.println("import uk.uuid.cursus.test.util.OverallAssertUtil;");
 				if (!className.contains("NonEvent") || anyRaces) {
-					out.println("import eu.lp0.cursus.test.util.RaceAssertUtil;");
+					out.println("import uk.uuid.cursus.test.util.RaceAssertUtil;");
 				}
 			}
 			out.println("");

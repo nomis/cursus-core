@@ -17,15 +17,15 @@
  */
 package org.spka.cursus.test.cc_2016;
 
-import static eu.lp0.cursus.db.data.Penalty.Type.AUTOMATIC;
-import static eu.lp0.cursus.db.data.RaceAttendee.Type.PILOT;
-import static eu.lp0.cursus.db.data.Sex.MALE;
+import static uk.uuid.cursus.db.data.Penalty.Type.AUTOMATIC;
+import static uk.uuid.cursus.db.data.RaceAttendee.Type.PILOT;
+import static uk.uuid.cursus.db.data.Sex.MALE;
 
 import org.fisly.cursus.scoring.FISLYConstants;
 import org.spka.cursus.scoring.CCConstants;
 import org.spka.cursus.test.AbstractSPKASeries;
 
-import eu.lp0.cursus.db.data.Penalty;
+import uk.uuid.cursus.db.data.Penalty;
 
 @SuppressWarnings("nls")
 public class CCSeries2016 extends AbstractSPKASeries {

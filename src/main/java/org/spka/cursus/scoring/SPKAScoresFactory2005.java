@@ -21,12 +21,12 @@ import java.math.RoundingMode;
 
 import org.fisly.cursus.scoring.FISLYScoresFactory2010;
 
-import eu.lp0.cursus.scoring.data.RacePenaltiesData;
-import eu.lp0.cursus.scoring.data.RacePointsData;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scores.impl.AveragingRacePointsData;
-import eu.lp0.cursus.scoring.scores.impl.GenericRacePenaltiesData;
-import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
+import uk.uuid.cursus.scoring.data.RacePenaltiesData;
+import uk.uuid.cursus.scoring.data.RacePointsData;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.scoring.scores.impl.AveragingRacePointsData;
+import uk.uuid.cursus.scoring.scores.impl.GenericRacePenaltiesData;
+import uk.uuid.cursus.scoring.scores.impl.GenericRacePointsData;
 
 public class SPKAScoresFactory2005 extends FISLYScoresFactory2010 {
 	@Override

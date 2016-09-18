@@ -21,9 +21,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Series;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Series;
 
 /**
  * Scores at the end of non-event 1 (01/10/2011 to 02/10/2011)

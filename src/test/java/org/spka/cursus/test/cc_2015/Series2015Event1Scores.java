@@ -26,13 +26,13 @@ import org.junit.Test;
 
 import com.google.common.base.Predicates;
 
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.test.util.OverallAssertUtil;
-import eu.lp0.cursus.test.util.RaceAssertUtil;
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Race;
+import uk.uuid.cursus.db.data.Series;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.test.util.OverallAssertUtil;
+import uk.uuid.cursus.test.util.RaceAssertUtil;
 
 /**
  * Scores at the end of event 1 (20/06/2015 to 21/06/2015)

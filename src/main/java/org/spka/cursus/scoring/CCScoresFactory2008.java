@@ -19,19 +19,19 @@ package org.spka.cursus.scoring;
 
 import org.fisly.cursus.scoring.FISLYScoresFactory2010;
 
-import eu.lp0.cursus.scoring.data.OverallPositionData;
-import eu.lp0.cursus.scoring.data.RaceDiscardsData;
-import eu.lp0.cursus.scoring.data.RacePenaltiesData;
-import eu.lp0.cursus.scoring.data.RacePointsData;
-import eu.lp0.cursus.scoring.data.RacePositionsData;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scores.impl.GenericRaceDiscardsData;
-import eu.lp0.cursus.scoring.scores.impl.GenericRacePenaltiesData;
-import eu.lp0.cursus.scoring.scores.impl.GenericRacePointsData;
-import eu.lp0.cursus.scoring.scores.impl.GenericRacePositionsData;
-import eu.lp0.cursus.scoring.scores.impl.NoDiscards;
-import eu.lp0.cursus.scoring.scores.impl.TopCountryOverallPositionData;
-import eu.lp0.cursus.scoring.scores.impl.TopCountryRacePointsData;
+import uk.uuid.cursus.scoring.data.OverallPositionData;
+import uk.uuid.cursus.scoring.data.RaceDiscardsData;
+import uk.uuid.cursus.scoring.data.RacePenaltiesData;
+import uk.uuid.cursus.scoring.data.RacePointsData;
+import uk.uuid.cursus.scoring.data.RacePositionsData;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.scoring.scores.impl.GenericRaceDiscardsData;
+import uk.uuid.cursus.scoring.scores.impl.GenericRacePenaltiesData;
+import uk.uuid.cursus.scoring.scores.impl.GenericRacePointsData;
+import uk.uuid.cursus.scoring.scores.impl.GenericRacePositionsData;
+import uk.uuid.cursus.scoring.scores.impl.NoDiscards;
+import uk.uuid.cursus.scoring.scores.impl.TopCountryOverallPositionData;
+import uk.uuid.cursus.scoring.scores.impl.TopCountryRacePointsData;
 
 public class CCScoresFactory2008 extends FISLYScoresFactory2010 {
 	@Override

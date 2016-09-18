@@ -17,7 +17,7 @@
  */
 package org.spka.cursus.test;
 
-import static eu.lp0.cursus.db.data.RaceTally.Type.START;
+import static uk.uuid.cursus.db.data.RaceTally.Type.START;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,24 +30,25 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+import uk.uuid.cursus.db.DatabaseSession;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Penalty;
+import uk.uuid.cursus.db.data.Pilot;
+import uk.uuid.cursus.db.data.Race;
+import uk.uuid.cursus.db.data.RaceAttendee;
+import uk.uuid.cursus.db.data.RaceNumber;
+import uk.uuid.cursus.db.data.RaceTally;
+import uk.uuid.cursus.db.data.Series;
+import uk.uuid.cursus.db.data.Sex;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.test.AbstractSeries;
+import uk.uuid.cursus.xml.scores.ScoresXMLFile;
+
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Sets;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import eu.lp0.cursus.db.DatabaseSession;
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Penalty;
-import eu.lp0.cursus.db.data.Pilot;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.db.data.RaceAttendee;
-import eu.lp0.cursus.db.data.RaceNumber;
-import eu.lp0.cursus.db.data.RaceTally;
-import eu.lp0.cursus.db.data.Series;
-import eu.lp0.cursus.db.data.Sex;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.test.AbstractSeries;
-import eu.lp0.cursus.xml.scores.ScoresXMLFile;
 
 @SuppressFBWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE" })
 public abstract class AbstractSPKASeries extends AbstractSeries {

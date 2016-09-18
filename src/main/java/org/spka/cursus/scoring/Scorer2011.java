@@ -20,13 +20,13 @@ package org.spka.cursus.scoring;
 import java.util.List;
 import java.util.Set;
 
-import com.google.common.base.Predicate;
+import uk.uuid.cursus.db.data.Event;
+import uk.uuid.cursus.db.data.Pilot;
+import uk.uuid.cursus.db.data.Race;
+import uk.uuid.cursus.scoring.data.Scores;
+import uk.uuid.cursus.scoring.scorer.ScoringSystem;
 
-import eu.lp0.cursus.db.data.Event;
-import eu.lp0.cursus.db.data.Pilot;
-import eu.lp0.cursus.db.data.Race;
-import eu.lp0.cursus.scoring.data.Scores;
-import eu.lp0.cursus.scoring.scorer.ScoringSystem;
+import com.google.common.base.Predicate;
 
 @ScoringSystem(uuid = SPKAConstants.UUID_2011, name = SPKAConstants.NAME_2011)
 public class Scorer2011 extends AbstractSPKAScorer {

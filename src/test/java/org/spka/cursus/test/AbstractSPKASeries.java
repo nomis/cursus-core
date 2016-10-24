@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2012-2015  Simon Arlott
+	Copyright 2012-2016  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -249,6 +249,23 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 		}
 	}
 
+	protected void addAlias(String name, String... aliases) throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Pilot pilot = findPilot(name);
+			for (String alias : aliases) {
+				pilot.getRaceNumbers().add(RaceNumber.valueOfFor(alias, pilot));
+			}
+			pilotDAO.persist(pilot);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
 	protected void addEvent(int number, String desc) throws Exception {
 		db.startSession();
 		try {
@@ -368,9 +385,11 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 
 		laps: for (String lap : laps.split(",", -1)) { //$NON-NLS-1$
 			for (Pilot pilot : race.getAttendees().keySet()) {
-				if (pilot.getRaceNumber().getNumber() == Integer.parseInt(lap)) {
-					race.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot)); //$NON-NLS-1$
-					continue laps;
+				for (RaceNumber raceNumber : pilot.getRaceNumbers()) {
+					if (raceNumber.getNumber() == Integer.parseInt(lap)) {
+						race.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot)); //$NON-NLS-1$
+						continue laps;
+					}
 				}
 			}
 			throw new NoSuchElementException("Can't find pilot " + lap); //$NON-NLS-1$

@@ -127,7 +127,7 @@ public class Series2016 extends AbstractSPKASeries {
 	}
 
 	protected void createEvent2Races() throws Exception {
-		addEvent(2, "West Sands (19/11/2016)");
+		addEvent(2, "West Sands (19/11/2016 and 20/11/2016)");
 
 		addRace(2, 7, "West Sands (19/11/2016)");
 		addAttendees(2, 7, PILOT, "SCO045", "SCO116", "SCO156", "SCO159", "SCO179", "SCO296", "SCO808");
@@ -140,5 +140,23 @@ public class Series2016 extends AbstractSPKASeries {
 		addLaps(2, 7, "1,179,159,808");
 		addLaps(2, 7, "1,179,159");
 		addLaps(2, 7, "1,179");
+
+		addRace(2, 8, "West Sands (20/11/2016)");
+		addAttendees(2, 8, PILOT, "SCO045", "SCO116", "SCO156", "SCO179", "SCO296", "SCO808");
+		addLaps(2, 8, "1,808,179");
+		addLaps(2, 8, "1,179,808");
+		addLaps(2, 8, "1,179,808");
+		addLaps(2, 8, "1,179,808");
+		addLaps(2, 8, "1,179,808");
+		addLaps(2, 8, "1,179");
+
+		addRace(2, 9, "West Sands (20/11/2016)");
+		addAttendees(2, 9, PILOT, "SCO045", "SCO116", "SCO156", "SCO179", "SCO296", "SCO808");
+		addLaps(2, 9, "1,179,45,156,808,296");
+		addLaps(2, 9, "1,179,808,156");
+		addLaps(2, 9, "1,179,808,156");
+		addLaps(2, 9, "1,179,808");
+		addLaps(2, 9, "1,179,808");
+		addLaps(2, 9, "1,179");
 	}
 }

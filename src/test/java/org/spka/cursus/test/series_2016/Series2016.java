@@ -24,6 +24,8 @@ import static uk.uuid.cursus.db.data.Sex.MALE;
 import org.spka.cursus.scoring.SPKAConstants;
 import org.spka.cursus.test.AbstractSPKASeries;
 
+import uk.uuid.cursus.db.data.Penalty;
+
 @SuppressWarnings("nls")
 public class Series2016 extends AbstractSPKASeries {
 	public Series2016() {
@@ -38,6 +40,7 @@ public class Series2016 extends AbstractSPKASeries {
 		createDatabase();
 		createEvent1Races();
 		createEvent2Races();
+		createEvent3Races();
 	}
 
 	@Override
@@ -158,5 +161,59 @@ public class Series2016 extends AbstractSPKASeries {
 		addLaps(2, 9, "1,179,808");
 		addLaps(2, 9, "1,179,808");
 		addLaps(2, 9, "1,179");
+	}
+
+	protected void createEvent3Races() throws Exception {
+		addEvent(3, "West Sands (02/04/2017)");
+
+		addRace(3, 10, "West Sands (02/04/2017)");
+		addAttendees(3, 10, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO156", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 10, "1,159,179,808,156");
+		addLaps(3, 10, "1,179,159,808");
+		addLaps(3, 10, "1,179,159,808");
+		addLaps(3, 10, "1,179,159");
+		addLaps(3, 10, "1,179");
+		addLaps(3, 10, "1,179");
+
+		addRace(3, 11, "West Sands (02/04/2017)");
+		addAttendees(3, 11, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO156", "SCO159", "SCO179", "SCO296", "SCO808");
+		addPenalty(3, 11, "SCO159", new Penalty(Penalty.Type.AUTOMATIC, "Hit scoring line mark"));
+		addPenalty(3, 11, "SCO159", new Penalty(Penalty.Type.AUTOMATIC, "Cut through orange line at mark 3"));
+		addLaps(3, 11, "1,179,159,808,45,66,156");
+		addLaps(3, 11, "1,179,808,159,45");
+		addLaps(3, 11, "1,179,808,159,45");
+		addLaps(3, 11, "1,179,808,159,45");
+		addLaps(3, 11, "1,179,808,159");
+		addLaps(3, 11, "1,179,808,159");
+		addLaps(3, 11, "179,1,808,159");
+		addLaps(3, 11, "179,1,808");
+		addLaps(3, 11, "179,1");
+
+		addRace(3, 12, "West Sands (02/04/2017)");
+		addAttendees(3, 12, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO156", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 12, "808,179,1,159,156,66,45");
+		addLaps(3, 12, "179,1,808,156,159,66,45");
+		addLaps(3, 12, "1,179,808,156,159,66,45");
+		addLaps(3, 12, "1,179,808,156,159,66,45");
+		addLaps(3, 12, "1,179,808,156,159,66");
+		addLaps(3, 12, "1,179,156,159,66,808");
+		addLaps(3, 12, "1,179,159,156,808,66");
+		addLaps(3, 12, "1,179,159,156");
+		addLaps(3, 12, "1,179,159");
+		addLaps(3, 12, "1,179");
+		addLaps(3, 12, "179,1");
+
+		addRace(3, 13, "West Sands (02/04/2017)");
+		addAttendees(3, 13, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO156", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 13, "179,1,808,66,159,156,45");
+		addLaps(3, 13, "1,179,808,66,159,156,45");
+		addLaps(3, 13, "1,179,808,159,66,45");
+		addLaps(3, 13, "179,808,1,159,66,45");
+		addLaps(3, 13, "179,808,1,159,66");
+		addLaps(3, 13, "179,808,1,159,66");
+		addLaps(3, 13, "179,808,1,159,66");
+		addLaps(3, 13, "179,808,1,159");
+		addLaps(3, 13, "179,808,1");
+		addLaps(3, 13, "179,808,1");
 	}
 }

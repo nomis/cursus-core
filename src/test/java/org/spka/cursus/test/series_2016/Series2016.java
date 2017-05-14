@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2016  Simon Arlott
+	Copyright 2016-2017  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -41,6 +41,7 @@ public class Series2016 extends AbstractSPKASeries {
 		createEvent1Races();
 		createEvent2Races();
 		createEvent3Races();
+		createEvent4Races();
 	}
 
 	@Override
@@ -51,6 +52,7 @@ public class Series2016 extends AbstractSPKASeries {
 		addPilot("SCO018@2010", MALE, "Scotland");
 		addPilot("SCO045@2016", MALE, "Scotland");
 		addPilot("SCO066@2013", MALE, "Scotland");
+		addPilot("SCO068@2009", MALE, "Scotland");
 		addPilot("SCO087@2009", MALE, "Scotland");
 		addPilot("SCO116@2010", MALE, "Scotland");
 		addPilot("SCO156@2010", MALE, "Scotland");
@@ -59,8 +61,18 @@ public class Series2016 extends AbstractSPKASeries {
 		addPilot("SCO296@2013", FEMALE, "Scotland");
 		addPilot("SCO808@2010", MALE, "Scotland");
 
+		addPilot("K040@2017", MALE, "England");
+		addPilot("K053@2017", FEMALE, "England");
+		addPilot("K060@2017", MALE, "England");
+		addPilot("K101@2017", MALE, "England");
+		addPilot("K176@2017", MALE, "England");
+		addPilot("K705@2017", MALE, "England");
+		addPilot("K854@2015", MALE, "England");
+
 		addAlias("SCO116", "SCO001");
 		addAlias("SCO808", "SCO056");
+
+		addAlias("K176", "SW666");
 	}
 
 	protected void createEvent1Races() throws Exception {
@@ -215,5 +227,41 @@ public class Series2016 extends AbstractSPKASeries {
 		addLaps(3, 13, "179,808,1,159");
 		addLaps(3, 13, "179,808,1");
 		addLaps(3, 13, "179,808,1");
+	}
+
+	protected void createEvent4Races() throws Exception {
+		addEvent(4, "West Sands (14/05/2017)");
+
+		addRace(4, 14, "West Sands (14/05/2017)");
+		addAttendees(4, 14, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808", "K040", "K053", "K060", "K101",
+				"K176", "K705", "K854");
+		addLaps(4, 14, "101,1,40,854,808,179,66,705,53,159,60,666,68,45");
+		addLaps(4, 14, "1,854,101,40,808,179,705,66,159,53,60,68,666");
+		addLaps(4, 14, "101,1,854,40,808,179,705,66,60,53,159,68");
+		addLaps(4, 14, "101,1,854,40,808,179,705,66,53,60,159");
+		addLaps(4, 14, "101,1,854,40,808,705,179");
+		addLaps(4, 14, "101,1,854,40,808");
+
+		addRace(4, 15, "West Sands (14/05/2017)");
+		addAttendees(4, 15, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808", "K040", "K053", "K060", "K101",
+				"K176", "K705", "K854");
+		addLaps(4, 15, "101,1,854,808,60,179,159,66,45");
+		addLaps(4, 15, "101,1,854,808,60,179,159,66,45");
+		addLaps(4, 15, "101,1,854,808,60,179,159,66");
+		addLaps(4, 15, "101,1,854,808,60,179,159,66");
+		addLaps(4, 15, "101,1,854,808,179,60,159");
+		addLaps(4, 15, "101,1,808,854,179,60");
+		addLaps(4, 15, "101,1,808,854");
+
+		addRace(4, 16, "West Sands (14/05/2017)");
+		addAttendees(4, 16, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808", "K040", "K053", "K060", "K101",
+				"K176", "K705", "K854");
+		addPenalty(4, 16, "SCO159", new Penalty(Penalty.Type.AUTOMATIC, "Hit mark 7"));
+		addPenalty(4, 16, "SCO066", new Penalty(Penalty.Type.AUTOMATIC, "Hit finish mark"));
+		addLaps(4, 16, "101,1,854,808,159,66,179");
+		addLaps(4, 16, "101,1,854,808,159,66");
+		addLaps(4, 16, "101,1,854,808,66,159");
+		addLaps(4, 16, "101,1,854,808,159,66");
+		addLaps(4, 16, "101,1,854,808");
 	}
 }

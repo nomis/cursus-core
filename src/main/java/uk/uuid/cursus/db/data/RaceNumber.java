@@ -18,6 +18,7 @@
 package uk.uuid.cursus.db.data;
 
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,15 +29,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import uk.uuid.cursus.db.Constants;
-
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ComparisonChain;
+
+import uk.uuid.cursus.db.Constants;
 
 @Entity(name = "race_no")
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "series_id", "organisation", "number" }) })
 public final class RaceNumber extends AbstractEntity implements Comparable<RaceNumber> {
 	public static final Pattern RACE_NUMBER_PATTERN = Pattern.compile("^([^0-9]+)([0-9]+)$"); //$NON-NLS-1$
+	private static final Pattern RACE_NUMBER_WITHOUT_ORG_PATTERN = Pattern.compile("^([0-9]+)$"); //$NON-NLS-1$
 
 	RaceNumber() {
 	}
@@ -64,7 +66,7 @@ public final class RaceNumber extends AbstractEntity implements Comparable<RaceN
 
 	@Column(nullable = false, length = Constants.MAX_STRING_LEN)
 	public String getOrganisation() {
-		return organisation.toUpperCase(Locale.ENGLISH).replaceAll("[^A-Z]", ""); //$NON-NLS-1$ //$NON-NLS-2$;
+		return organisation.toUpperCase(Locale.ENGLISH).replaceAll("[^A-Z]", ""); //$NON-NLS-1$ //$NON-NLS-2$ ;
 	}
 
 	public void setOrganisation(String organisation) {
@@ -103,6 +105,45 @@ public final class RaceNumber extends AbstractEntity implements Comparable<RaceN
 	@Override
 	public String toString() {
 		return String.format("%s%02d", getOrganisation(), getNumber()); //$NON-NLS-1$
+	}
+
+	public static RaceNumber valueOfFor(String value, Race race) {
+		Matcher matcherWithOrg = RACE_NUMBER_PATTERN.matcher(value);
+		Matcher matcherWithoutOrg = RACE_NUMBER_WITHOUT_ORG_PATTERN.matcher(value);
+		String organisation;
+		int number;
+
+		if (matcherWithOrg.matches()) {
+			organisation = matcherWithOrg.group(1);
+			number = Integer.valueOf(matcherWithOrg.group(2));
+		} else if (matcherWithoutOrg.matches()) {
+			organisation = null;
+			number = Integer.valueOf(matcherWithoutOrg.group(1));
+		} else {
+			throw new IllegalArgumentException("Unable to parse race number: " + value); //$NON-NLS-1$
+		}
+
+		RaceNumber pilot = null;
+		for (RaceAttendee attendee : race.getAttendees().values()) {
+			for (RaceNumber raceNumber : attendee.getPilot().getRaceNumbers()) {
+				if (raceNumber.getNumber() == number) {
+					if (organisation == null) {
+						if (pilot != null) {
+							throw new NoSuchElementException("Ambiguous race number: " + value); //$NON-NLS-1$
+						}
+						pilot = raceNumber;
+					} else if (raceNumber.getOrganisation().equals(organisation)) {
+						pilot = raceNumber;
+					}
+				}
+			}
+		}
+
+		if (pilot == null) {
+			throw new NoSuchElementException("Can't find pilot: " + value); //$NON-NLS-1$
+		}
+
+		return pilot;
 	}
 
 	public static RaceNumber valueOfFor(String value, Pilot pilot) {

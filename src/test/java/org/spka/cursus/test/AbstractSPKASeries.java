@@ -25,11 +25,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Sets;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import uk.uuid.cursus.db.DatabaseSession;
 import uk.uuid.cursus.db.data.Event;
 import uk.uuid.cursus.db.data.Penalty;
@@ -43,12 +47,6 @@ import uk.uuid.cursus.db.data.Sex;
 import uk.uuid.cursus.scoring.data.Scores;
 import uk.uuid.cursus.test.AbstractSeries;
 import uk.uuid.cursus.xml.scores.ScoresXMLFile;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Sets;
-
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 @SuppressFBWarnings({ "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE" })
 public abstract class AbstractSPKASeries extends AbstractSeries {
@@ -384,15 +382,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 		}
 
 		laps: for (String lap : laps.split(",", -1)) { //$NON-NLS-1$
-			for (Pilot pilot : race.getAttendees().keySet()) {
-				for (RaceNumber raceNumber : pilot.getRaceNumbers()) {
-					if (raceNumber.getNumber() == Integer.parseInt(lap)) {
-						race.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", pilot)); //$NON-NLS-1$
-						continue laps;
-					}
-				}
-			}
-			throw new NoSuchElementException("Can't find pilot " + lap); //$NON-NLS-1$
+			race.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", RaceNumber.valueOfFor(lap, race).getPilot())); //$NON-NLS-1$
 		}
 	}
 }

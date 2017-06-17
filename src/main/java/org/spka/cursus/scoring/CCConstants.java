@@ -28,7 +28,7 @@ public class CCConstants {
 
 	public static final int TOP_COUNTRY_PILOTS_2009 = 6;
 
-	public static final String NAME_2013 = "Celtic Challenge 2013..2016+"; //$NON-NLS-1$
+	public static final String NAME_2013 = "Celtic Challenge 2013..2017+"; //$NON-NLS-1$
 	public static final String UUID_2013 = "d4f1b715-f838-51c3-9274-f52a02162ecf"; //$NON-NLS-1$
 
 	public static final int TOP_COUNTRY_MIN_PILOTS_2013 = 3;

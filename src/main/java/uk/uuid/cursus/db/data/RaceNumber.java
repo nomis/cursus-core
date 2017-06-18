@@ -146,6 +146,45 @@ public final class RaceNumber extends AbstractEntity implements Comparable<RaceN
 		return pilot;
 	}
 
+	public static RaceNumber valueOfFor(String value, Series series) {
+		Matcher matcherWithOrg = RACE_NUMBER_PATTERN.matcher(value);
+		Matcher matcherWithoutOrg = RACE_NUMBER_WITHOUT_ORG_PATTERN.matcher(value);
+		String organisation;
+		int number;
+
+		if (matcherWithOrg.matches()) {
+			organisation = matcherWithOrg.group(1);
+			number = Integer.valueOf(matcherWithOrg.group(2));
+		} else if (matcherWithoutOrg.matches()) {
+			organisation = null;
+			number = Integer.valueOf(matcherWithoutOrg.group(1));
+		} else {
+			throw new IllegalArgumentException("Unable to parse race number: " + value); //$NON-NLS-1$
+		}
+
+		RaceNumber pilot = null;
+		for (Pilot seriesPilot : series.getPilots()) {
+			for (RaceNumber raceNumber : seriesPilot.getRaceNumbers()) {
+				if (raceNumber.getNumber() == number) {
+					if (organisation == null) {
+						if (pilot != null) {
+							throw new NoSuchElementException("Ambiguous race number: " + value); //$NON-NLS-1$
+						}
+						pilot = raceNumber;
+					} else if (raceNumber.getOrganisation().equals(organisation)) {
+						pilot = raceNumber;
+					}
+				}
+			}
+		}
+
+		if (pilot == null) {
+			throw new NoSuchElementException("Can't find pilot: " + value); //$NON-NLS-1$
+		}
+
+		return pilot;
+	}
+
 	public static RaceNumber valueOfFor(String value, Pilot pilot) {
 		Matcher matcher = RACE_NUMBER_PATTERN.matcher(value);
 		Preconditions.checkArgument(matcher.matches(), "Unable to parse race number: %s", value); //$NON-NLS-1$

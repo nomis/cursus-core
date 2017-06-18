@@ -231,13 +231,17 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 	}
 
 	protected void addPilot(String name, Sex sex, String country, String... classes) throws Exception {
+		addPilot(name, name.split("@")[0], sex, country, classes); //$NON-NLS-1$
+	}
+
+	protected void addPilot(String name, String raceNumber, Sex sex, String country, String... classes) throws Exception {
 		db.startSession();
 		try {
 			DatabaseSession.begin();
 
 			Series series = seriesDAO.find(SERIES_NAME);
 			Pilot pilot = new Pilot(series, name, sex, country);
-			pilot.setRaceNumber(RaceNumber.valueOfFor(pilot.getName().split("@")[0], pilot)); //$NON-NLS-1$
+			pilot.setRaceNumber(RaceNumber.valueOfFor(raceNumber, pilot));
 			series.getPilots().add(pilot);
 			seriesDAO.persist(series);
 
@@ -309,7 +313,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 			Event event = eventDAO.find(series, "Race Event " + eventNumber); //$NON-NLS-1$
 			Race race = raceDAO.find(event, "Race " + raceNumber); //$NON-NLS-1$
 			for (String pilotName : pilotNames) {
-				Pilot pilot = findPilot(pilotName);
+				Pilot pilot = RaceNumber.valueOfFor(pilotName, series).getPilot();
 				race.getAttendees().put(pilot, new RaceAttendee(race, pilot, RaceAttendee.Type.PILOT));
 			}
 			raceDAO.persist(race);
@@ -345,7 +349,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 			Series series = seriesDAO.find(SERIES_NAME);
 			Event event = eventDAO.find(series, "Race Event " + eventNumber); //$NON-NLS-1$
 			Race race = raceDAO.find(event, "Race " + raceNumber); //$NON-NLS-1$
-			race.getAttendees().get(findPilot(pilotName)).getPenalties().add(penalty);
+			RaceNumber.valueOfFor(pilotName, race).getPilot().getRaces().get(race).getPenalties().add(penalty);
 			raceDAO.persist(race);
 
 			DatabaseSession.commit();
@@ -381,7 +385,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 			return;
 		}
 
-		laps: for (String lap : laps.split(",", -1)) { //$NON-NLS-1$
+		for (String lap : laps.split(",", -1)) { //$NON-NLS-1$
 			race.getTallies().add(new RaceTally(RaceTally.Type.LAP, "", RaceNumber.valueOfFor(lap, race).getPilot())); //$NON-NLS-1$
 		}
 	}

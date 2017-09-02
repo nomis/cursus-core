@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2014  Simon Arlott
+	Copyright 2014,2017  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -21,6 +21,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.google.common.collect.Iterables;
+import com.google.common.io.ByteSource;
+import com.google.common.io.Files;
+
 import uk.uuid.cursus.db.Database;
 import uk.uuid.cursus.db.DatabaseSession;
 import uk.uuid.cursus.publish.html.XSLTHTMLGenerator;
@@ -28,18 +32,20 @@ import uk.uuid.cursus.test.AbstractSeries;
 import uk.uuid.cursus.xml.data.entity.DataXMLClass;
 import uk.uuid.cursus.xml.scores.ScoresXMLFile;
 
-import com.google.common.collect.Iterables;
-import com.google.common.io.ByteSource;
-import com.google.common.io.Files;
-
 public class ExportSeries {
 	private final String fileName;
 	private final AbstractSeries series;
+	private final boolean local;
 	private final String[] styleSheets;
 
 	public ExportSeries(String fileName, AbstractSeries series, String... styleSheets) {
+		this(fileName, series, true, styleSheets);
+	}
+
+	public ExportSeries(String fileName, AbstractSeries series, boolean local, String... styleSheets) {
 		this.fileName = fileName;
 		this.series = series;
+		this.local = local;
 		this.styleSheets = styleSheets;
 	}
 
@@ -63,7 +69,7 @@ public class ExportSeries {
 	private void export(ScoresXMLFile scores) throws Exception {
 		scores.to(new File("target" + File.separator + fileName + ".xml")); //$NON-NLS-1$ //$NON-NLS-2$
 
-		XSLTHTMLGenerator gen = new XSLTHTMLGenerator(fileName + ".xml", fileName, "../../../src/main/resources/uk/uuid/cursus", scores); //$NON-NLS-1$ //$NON-NLS-2$
+		XSLTHTMLGenerator gen = new XSLTHTMLGenerator(fileName + ".xml", fileName, local ? "../../../src/main/resources/uk/uuid/cursus" : null, scores); //$NON-NLS-1$ //$NON-NLS-2$
 
 		gen.setLongNames(true);
 		gen.getStyleSheets().add("spka.css"); //$NON-NLS-1$
@@ -82,8 +88,8 @@ public class ExportSeries {
 			}
 		}
 
-		for (Map.Entry<String, ByteSource> page : Iterables
-				.concat(gen.getMenuPage().entrySet(), gen.getSimplePage().entrySet(), gen.getSplitPages().entrySet())) {
+		for (Map.Entry<String, ByteSource> page : Iterables.concat(gen.getMenuPage().entrySet(), gen.getSimplePage().entrySet(),
+				gen.getSplitPages().entrySet())) {
 			page.getValue().copyTo(Files.asByteSink(new File("target" + File.separator + page.getKey()))); //$NON-NLS-1$
 		}
 	}

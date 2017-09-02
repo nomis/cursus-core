@@ -324,6 +324,25 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 		}
 	}
 
+	protected void addAllAttendees(int eventNumber, int raceNumber) throws Exception {
+		db.startSession();
+		try {
+			DatabaseSession.begin();
+
+			Series series = seriesDAO.find(SERIES_NAME);
+			Event event = eventDAO.find(series, "Race Event " + eventNumber); //$NON-NLS-1$
+			Race race = raceDAO.find(event, "Race " + raceNumber); //$NON-NLS-1$
+			for (Pilot pilot : series.getPilots()) {
+				race.getAttendees().put(pilot, new RaceAttendee(race, pilot, RaceAttendee.Type.PILOT));
+			}
+			raceDAO.persist(race);
+
+			DatabaseSession.commit();
+		} finally {
+			db.endSession();
+		}
+	}
+
 	protected void addLaps(int eventNumber, int raceNumber, String laps) {
 		db.startSession();
 		try {

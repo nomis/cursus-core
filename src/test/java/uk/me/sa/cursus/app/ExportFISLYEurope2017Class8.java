@@ -17,16 +17,24 @@
  */
 package uk.me.sa.cursus.app;
 
+import org.fisly.cursus.scoring.FISLYConstants;
 import org.fisly.cursus.test.europe_2017.FISLYSeries2017;
+import org.spka.cursus.scoring.CCConstants;
 
 public class ExportFISLYEurope2017Class8 extends ExportSeries {
-	public ExportFISLYEurope2017Class8(String type, String desc) {
-		super("fislyEurope2017Class8_" + type, new FISLYSeries2017(type, desc), false); //$NON-NLS-1$
+	public ExportFISLYEurope2017Class8(String type, String desc, String scorer) {
+		super("fislyEurope2017Class8_" + type, new FISLYSeries2017(type, desc, scorer), false); //$NON-NLS-1$
+	}
+
+	public ExportFISLYEurope2017Class8(String type, String desc, String scorer, String... stylesheets) {
+		super("fislyEurope2017Class8_" + type, new FISLYSeries2017(type, desc, scorer), false, stylesheets); //$NON-NLS-1$
 	}
 
 	public static void main(String[] args) throws Exception {
-		new ExportFISLYEurope2017Class8("a", "Combined").export(); //$NON-NLS-1$ //$NON-NLS-2$
-		new ExportFISLYEurope2017Class8("m", "Men").export(); //$NON-NLS-1$ //$NON-NLS-2$
-		new ExportFISLYEurope2017Class8("f", "Ladies").export(); //$NON-NLS-1$ //$NON-NLS-2$
+		new ExportFISLYEurope2017Class8("a", "Combined", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
+		new ExportFISLYEurope2017Class8("m", "Men", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
+		new ExportFISLYEurope2017Class8("f", "Women", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
+		new ExportFISLYEurope2017Class8("c", "Top Country", CCConstants.UUID_2008, "spka-cc.css").export(); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		new ExportFISLYEurope2017Class8("x", "Top Country", CCConstants.UUID_2013, "spka-cc.css").export(); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	}
 }

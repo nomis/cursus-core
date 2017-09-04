@@ -94,7 +94,7 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 	/**
 	 * Get all the pilots in a Scotland series
 	 */
-	public Set<Pilot> getSeriesResultsPilots(final Series series) throws Exception {
+	public Set<Pilot> getSeriesResultsPilots(final Series series) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {

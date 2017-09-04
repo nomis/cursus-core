@@ -23,7 +23,6 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
-import org.fisly.cursus.scoring.FISLYConstants;
 import org.spka.cursus.test.AbstractSPKASeries;
 
 import com.google.common.base.Predicate;
@@ -41,19 +40,39 @@ import uk.uuid.cursus.db.data.Sex;
 public class FISLYSeries2017 extends AbstractSPKASeries {
 	private String type;
 
-	public FISLYSeries2017(String type, String desc) {
-		super("FISLY European Championships 2017 (" + desc + ")", FISLYConstants.UUID_2010); //$NON-NLS-1$
+	public FISLYSeries2017(String type, String desc, String scorer) {
+		super("FISLY European Championships 2017 (" + desc + ")", scorer); //$NON-NLS-1$
 		this.type = type;
 	}
 
 	@Override
-	public Set<Pilot> getSeriesResultsPilots(final Series series) throws Exception {
+	public Set<Pilot> getSeriesResultsPilots(final Series series) {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				return type.equals("a") || pilot.getSex().name().charAt(0) == type.toUpperCase().charAt(0);
+				if (type.equals("c") || type.equals("x")) {
+					if (pilot.getCountry().equals("Denmark")) {
+						return false;
+					}
+					if (pilot.getCountry().equals("Belgium")) {
+						return false;
+					}
+					return true;
+				} else {
+					return type.equals("a") || pilot.getSex().name().charAt(0) == type.toUpperCase().charAt(0);
+				}
 			}
 		});
+	}
+
+	@Override
+	public Set<Pilot> getSeriesResultsPilots(final Series series, final Event event) {
+		return getSeriesResultsPilots(series);
+	}
+
+	@Override
+	protected boolean isStrictCountryFilter() {
+		return true;
 	}
 
 	@Override

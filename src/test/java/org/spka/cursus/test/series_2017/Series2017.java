@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2017  Simon Arlott
+	Copyright 2017-2018  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -37,6 +37,7 @@ public class Series2017 extends AbstractSPKASeries {
 	public void createAllData() throws Exception {
 		createDatabase();
 		createEvent1Races();
+		createEvent2Races();
 	}
 
 	@Override
@@ -44,7 +45,9 @@ public class Series2017 extends AbstractSPKASeries {
 		super.createDatabase();
 
 		addSeries();
+		addPilot("SCO018@2010", MALE, "Scotland");
 		addPilot("SCO045@2016", MALE, "Scotland");
+		addPilot("SCO068@2009", MALE, "Scotland");
 		addPilot("SCO116@2010", MALE, "Scotland");
 		addPilot("SCO159@2005", MALE, "Scotland");
 		addPilot("SCO179@2005", MALE, "Scotland");
@@ -53,6 +56,10 @@ public class Series2017 extends AbstractSPKASeries {
 		addPilot("SCO808@2010", MALE, "Scotland");
 
 		addAlias("SCO116", "SCO001");
+		addAlias("SCO116", "SCO011");
+		addAlias("SCO159", "SCO015");
+		addAlias("SCO179", "SCO079");
+		addAlias("SCO808", "SCO080");
 	}
 
 	protected void createEvent1Races() throws Exception {
@@ -72,5 +79,44 @@ public class Series2017 extends AbstractSPKASeries {
 		addRace(1, 3, "West Sands (08/10/2017)");
 		addAttendees(1, 3, PILOT, "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
 		addLaps(1, 3, "1,808,1,1,808,159");
+	}
+
+	protected void createEvent2Races() throws Exception {
+		addEvent(2, "Luce Bay (24/02/2018)");
+
+		addRace(2, 4, "Luce Bay (24/02/2018)");
+		addAttendees(2, 4, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(2, 4, "11,79,80,18,15,45,296,68");
+		addLaps(2, 4, "11,79,80,18,45,296,68");
+		addLaps(2, 4, "11,79,80,18,45,296,68");
+		addLaps(2, 4, "11,79,80,18,45,296,68");
+		addLaps(2, 4, "11,79,80,18,45,296");
+		addLaps(2, 4, "11,79,80,18,45");
+		addLaps(2, 4, "11,79,80,18,45");
+		addLaps(2, 4, "11,79,80,18,45");
+		addLaps(2, 4, "11,79");
+		addLaps(2, 4, "11,79");
+
+		addRace(2, 5, "Luce Bay (24/02/2018)");
+		addAttendees(2, 5, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(2, 5, "11,80,68,18,15,45,296");
+		addLaps(2, 5, "11,80,68,18,45,15,296");
+		addLaps(2, 5, "11,80,68,45,15");
+		addLaps(2, 5, "11,80,68,45,15");
+		addLaps(2, 5, "11,80,68,45,15");
+		addLaps(2, 5, "11,80,68,45,15");
+		addLaps(2, 5, "11,80,68");
+		addLaps(2, 5, "11");
+
+		addRace(2, 6, "Luce Bay (24/02/2018)");
+		addAttendees(2, 6, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(2, 6, "11,79,80,45,15,68,296");
+		addLaps(2, 6, "11,79,80,45,15,68,296");
+		addLaps(2, 6, "11,79,80,45,68,15,296");
+		addLaps(2, 6, "11,79,80,45,68,15,296");
+		addLaps(2, 6, "11,79,80,45,68,15");
+		addLaps(2, 6, "11,79,80,45,68,15");
+		addLaps(2, 6, "11,79,80");
+		addLaps(2, 6, "11,79");
 	}
 }

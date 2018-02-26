@@ -24,6 +24,8 @@ import static uk.uuid.cursus.db.data.Sex.MALE;
 import org.spka.cursus.scoring.SPKAConstants;
 import org.spka.cursus.test.AbstractSPKASeries;
 
+import uk.uuid.cursus.db.data.Penalty;
+
 @SuppressWarnings("nls")
 public class Series2017 extends AbstractSPKASeries {
 	public Series2017() {
@@ -47,6 +49,7 @@ public class Series2017 extends AbstractSPKASeries {
 		addSeries();
 		addPilot("SCO018@2010", MALE, "Scotland");
 		addPilot("SCO045@2016", MALE, "Scotland");
+		addPilot("SCO066@2013", MALE, "Scotland");
 		addPilot("SCO068@2009", MALE, "Scotland");
 		addPilot("SCO116@2010", MALE, "Scotland");
 		addPilot("SCO159@2005", MALE, "Scotland");
@@ -82,7 +85,7 @@ public class Series2017 extends AbstractSPKASeries {
 	}
 
 	protected void createEvent2Races() throws Exception {
-		addEvent(2, "Luce Bay (24/02/2018)");
+		addEvent(2, "Luce Bay (24/02/2018 and 25/02/2018)");
 
 		addRace(2, 4, "Luce Bay (24/02/2018)");
 		addAttendees(2, 4, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
@@ -118,5 +121,48 @@ public class Series2017 extends AbstractSPKASeries {
 		addLaps(2, 6, "11,79,80,45,68,15");
 		addLaps(2, 6, "11,79,80");
 		addLaps(2, 6, "11,79");
+
+		addRace(2, 7, "Luce Bay (25/02/2018)");
+		addAttendees(2, 7, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
+		addPenalty(2, 7, "SCO561", new Penalty(Penalty.Type.AUTOMATIC, "Hit mark 7"));
+		addLaps(2, 7, "11,80,79,66,18,68,45,296,561");
+		addLaps(2, 7, "11,79,80,66,18,68,45,296");
+		addLaps(2, 7, "11,79,80,66,18,68,45,296");
+		addLaps(2, 7, "11,79,80,66,18,68,45,296");
+		addLaps(2, 7, "11,80,79,66,68,18,45");
+		addLaps(2, 7, "11,80,79,66,68,18,45");
+		addLaps(2, 7, "11,80,79,66,68");
+		addLaps(2, 7, "11,80,79");
+
+		addRace(2, 8, "Luce Bay (25/02/2018)");
+		addAttendees(2, 8, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
+		addPenalty(2, 8, "SCO159", new Penalty(Penalty.Type.AUTOMATIC, "Hit mark 6"));
+		addLaps(2, 8, "11,79,80,66,68,18,45,296");
+		addLaps(2, 8, "11,79,80,66,68,18,45,296");
+		addLaps(2, 8, "11,79,80,68,66,18,45");
+		addLaps(2, 8, "79,11,80,66,18,68,45");
+		addLaps(2, 8, "79,11,80,66,18,68");
+		addLaps(2, 8, "79,11,80");
+
+		addRace(2, 9, "Luce Bay (25/02/2018)");
+		addAttendees(2, 9, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
+		addLaps(2, 9, "11,79,80,68,66,18,15,45,296");
+		addLaps(2, 9, "11,79,80,68,66,15,18,45,296");
+		addLaps(2, 9, "11,79,80,68,66,18,15,45,296");
+		addLaps(2, 9, "11,79,80,68,18,15,45,296");
+		addLaps(2, 9, "11,79,80,68,18,15,45");
+		addLaps(2, 9, "11,79,80,68,18");
+		addLaps(2, 9, "11,79,80");
+
+		addRace(2, 10, "Luce Bay (25/02/2018)");
+		addAttendees(2, 10, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
+		addLaps(2, 10, "11,79,80,66,68,15,45,296");
+		addLaps(2, 10, "11,79,80,68,66,15,45,296");
+		addLaps(2, 10, "11,79,80,68,66,15,45,296");
+		addLaps(2, 10, "11,79,80,68,15,66,45,296");
+		addLaps(2, 10, "11,79,80,68,15,66,45");
+		addLaps(2, 10, "11,79,80,68,15,66");
+		addLaps(2, 10, "11,79,80");
+		addPenalty(2, 10, "SCO116", new Penalty(Penalty.Type.AUTOMATIC, "Failed to give priority on start line"));
 	}
 }

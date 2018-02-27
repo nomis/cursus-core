@@ -88,7 +88,7 @@ public class Series2017 extends AbstractSPKASeries {
 		addEvent(2, "Luce Bay (24/02/2018 and 25/02/2018)");
 
 		addRace(2, 4, "Luce Bay (24/02/2018)");
-		addAttendees(2, 4, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addAttendees(2, 4, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
 		addLaps(2, 4, "11,79,80,18,15,45,296,68");
 		addLaps(2, 4, "11,79,80,18,45,296,68");
 		addLaps(2, 4, "11,79,80,18,45,296,68");
@@ -101,7 +101,7 @@ public class Series2017 extends AbstractSPKASeries {
 		addLaps(2, 4, "11,79");
 
 		addRace(2, 5, "Luce Bay (24/02/2018)");
-		addAttendees(2, 5, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addAttendees(2, 5, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
 		addLaps(2, 5, "11,80,68,18,15,45,296");
 		addLaps(2, 5, "11,80,68,18,45,15,296");
 		addLaps(2, 5, "11,80,68,45,15");
@@ -112,7 +112,7 @@ public class Series2017 extends AbstractSPKASeries {
 		addLaps(2, 5, "11");
 
 		addRace(2, 6, "Luce Bay (24/02/2018)");
-		addAttendees(2, 6, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addAttendees(2, 6, PILOT, "SCO018", "SCO045", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO561", "SCO808");
 		addLaps(2, 6, "11,79,80,45,15,68,296");
 		addLaps(2, 6, "11,79,80,45,15,68,296");
 		addLaps(2, 6, "11,79,80,45,68,15,296");

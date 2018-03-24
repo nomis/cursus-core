@@ -40,6 +40,7 @@ public class Series2017 extends AbstractSPKASeries {
 		createDatabase();
 		createEvent1Races();
 		createEvent2Races();
+		createEvent3Races();
 	}
 
 	@Override
@@ -164,5 +165,43 @@ public class Series2017 extends AbstractSPKASeries {
 		addLaps(2, 10, "11,79,80,68,15,66");
 		addLaps(2, 10, "11,79,80");
 		addPenalty(2, 10, "SCO116", new Penalty(Penalty.Type.AUTOMATIC, "Failed to give priority on start line"));
+	}
+
+	protected void createEvent3Races() throws Exception {
+		addEvent(3, "West Sands (24/03/2018)");
+
+		addRace(3, 11, "West Sands (24/03/2018)");
+		addAttendees(3, 11, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 11, "79,1,80,18,66,15,68");
+		addLaps(3, 11, "79,1,80,15,66,68");
+		addLaps(3, 11, "79,1,80,15,66");
+		addLaps(3, 11, "79,1,80");
+		addLaps(3, 11, "79,1");
+
+		addRace(3, 12, "West Sands (24/03/2018)");
+		addAttendees(3, 12, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 12, "79,1,66,80,18,68,15");
+		addLaps(3, 12, "79,1,66,80,68,18,15");
+		addLaps(3, 12, "79,1,80,66,18,68");
+		addLaps(3, 12, "79,1,66,80");
+		addLaps(3, 12, "1,79");
+
+		addRace(3, 13, "West Sands (24/03/2018)");
+		addAttendees(3, 13, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 13, "1,80,18,15,79,66,45");
+		addLaps(3, 13, "1,80,79,18,15,45");
+		addLaps(3, 13, "1,80,79,18,15");
+		addLaps(3, 13, "1,80,18,79");
+		addLaps(3, 13, "1,80,79,18");
+		addLaps(3, 13, "1,80");
+
+		addRace(3, 14, "West Sands (24/03/2018)");
+		addAttendees(3, 14, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 14, "1,79,15,80,68,66,45");
+		addLaps(3, 14, "1,79,80,15,68,66,45");
+		addLaps(3, 14, "1,79,80,15,68,66,45");
+		addLaps(3, 14, "1,79,80,68,15,66,45");
+		addLaps(3, 14, "1,79,80,15,68");
+		addLaps(3, 14, "79,80,1");
 	}
 }

@@ -25,6 +25,7 @@ import org.spka.cursus.scoring.SPKAConstants;
 import org.spka.cursus.test.AbstractSPKASeries;
 
 import uk.uuid.cursus.db.data.Penalty;
+import uk.uuid.cursus.db.data.Penalty.Type;
 
 @SuppressWarnings("nls")
 public class Series2017 extends AbstractSPKASeries {
@@ -168,7 +169,7 @@ public class Series2017 extends AbstractSPKASeries {
 	}
 
 	protected void createEvent3Races() throws Exception {
-		addEvent(3, "West Sands (24/03/2018)");
+		addEvent(3, "West Sands (24/03/2018 and 25/03/2018)");
 
 		addRace(3, 11, "West Sands (24/03/2018)");
 		addAttendees(3, 11, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
@@ -203,5 +204,44 @@ public class Series2017 extends AbstractSPKASeries {
 		addLaps(3, 14, "1,79,80,68,15,66,45");
 		addLaps(3, 14, "1,79,80,15,68");
 		addLaps(3, 14, "79,80,1");
+
+		addRace(3, 15, "West Sands (25/03/2018)");
+		addAttendees(3, 15, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addPenalty(3, 15, "SCO018", new Penalty(Type.AUTOMATIC, "Hit safety line mark"));
+		addLaps(3, 15, "1,79,80,68,15,66,18,45");
+		addLaps(3, 15, "1,79,80,68,15,18,45,66");
+		addLaps(3, 15, "1,79,80,15,68,18,66,45");
+		addLaps(3, 15, "79,1,80,15,68,45,66");
+		addLaps(3, 15, "79,1,80,15,68");
+		addLaps(3, 15, "1,79,80,68,15");
+		addLaps(3, 15, "1,79,80");
+		addLaps(3, 15, "1,79,80");
+
+		addRace(3, 16, "West Sands (25/03/2018)");
+		addAttendees(3, 16, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 16, "1,79,80,68,15,18,66");
+		addLaps(3, 16, "1,79,80,15,68,66");
+		addLaps(3, 16, "1,80,79,15,68");
+		addLaps(3, 16, "1,80,79,15");
+		addLaps(3, 16, "1,80,79");
+		addLaps(3, 16, "1,80,79");
+
+		addRace(3, 17, "West Sands (25/03/2018)");
+		addAttendees(3, 17, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 17, "1,79,80,68,15,18,66,45");
+		addLaps(3, 17, "1,79,80,68,15,18,45,66");
+		addLaps(3, 17, "1,79,80,68,15,18,45,66");
+		addLaps(3, 17, "1,79,80,68,15,45,66,18");
+		addLaps(3, 17, "1,79,80,15");
+		addLaps(3, 17, "1,79,80");
+		addLaps(3, 17, "1,79");
+
+		addRace(3, 18, "West Sands (25/03/2018)");
+		addAttendees(3, 18, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 18, "1,79,80,68,15,66,45,18");
+		addLaps(3, 18, "1,79,80,68,15,66,45");
+		addLaps(3, 18, "1,79,80,68,15,66");
+		addLaps(3, 18, "79,80,1,68");
+		addLaps(3, 18, "79,80,1");
 	}
 }

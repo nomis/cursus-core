@@ -42,6 +42,7 @@ public class Series2017 extends AbstractSPKASeries {
 		createEvent1Races();
 		createEvent2Races();
 		createEvent3Races();
+		createEvent4Races();
 	}
 
 	@Override
@@ -59,6 +60,7 @@ public class Series2017 extends AbstractSPKASeries {
 		addPilot("SCO296@2013", FEMALE, "Scotland");
 		addPilot("SCO561@2012", MALE, "Scotland");
 		addPilot("SCO808@2010", MALE, "Scotland");
+		addPilot("K854@2015", MALE, "England");
 
 		addAlias("SCO116", "SCO001");
 		addAlias("SCO116", "SCO011");
@@ -243,5 +245,36 @@ public class Series2017 extends AbstractSPKASeries {
 		addLaps(3, 18, "1,79,80,68,15,66");
 		addLaps(3, 18, "79,80,1,68");
 		addLaps(3, 18, "79,80,1");
+	}
+
+	protected void createEvent4Races() throws Exception {
+		addEvent(4, "Luce Bay (21/04/2018)");
+
+		addRace(4, 19, "Luce Bay (21/04/2018)");
+		addAttendees(4, 19, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808", "K854");
+		addLaps(4, 19, "1,80,854,66,18,79,45,15,296");
+		addLaps(4, 19, "1,80,854,79,66,18,45");
+		addLaps(4, 19, "1,80,854,79,66,18,45");
+		addLaps(4, 19, "1,80,854,79,66");
+		addLaps(4, 19, "1,80,854,79");
+
+		addRace(4, 20, "Luce Bay (21/04/2018)");
+		addAttendees(4, 20, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808", "K854");
+		addLaps(4, 20, "854,1,80,79,15,18,45,66,296");
+		addLaps(4, 20, "1,854,80,79,15,18,45,66,296");
+		addLaps(4, 20, "1,854,80,79,15,45,18,66,296");
+		addLaps(4, 20, "1,854,79,80,15,18,45,66,296");
+		addLaps(4, 20, "1,854,79,80,15,45,18,66");
+		addLaps(4, 20, "1,854,79,80");
+		addLaps(4, 20, "1,854,79,80");
+
+		addRace(4, 21, "Luce Bay (21/04/2018)");
+		addAttendees(4, 21, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808", "K854");
+		addLaps(4, 21, "1,80,854,79,18,15,45,296");
+		addLaps(4, 21, "1,79,80,854,18,15,45");
+		addLaps(4, 21, "1,79,854,80,18,15,45");
+		addLaps(4, 21, "1,79,854,80,18,15,45");
+		addLaps(4, 21, "1,79,854,80,18");
+		addLaps(4, 21, "1,79,854,80");
 	}
 }

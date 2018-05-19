@@ -43,6 +43,7 @@ public class Series2017 extends AbstractSPKASeries {
 		createEvent2Races();
 		createEvent3Races();
 		createEvent4Races();
+		createEvent5Races();
 	}
 
 	@Override
@@ -276,5 +277,67 @@ public class Series2017 extends AbstractSPKASeries {
 		addLaps(4, 21, "1,79,854,80,18,15,45");
 		addLaps(4, 21, "1,79,854,80,18");
 		addLaps(4, 21, "1,79,854,80");
+	}
+
+	protected void createEvent5Races() throws Exception {
+		addEvent(5, "West Sands (19/05/2018)");
+
+		addRace(5, 22, "West Sands (19/05/2018)");
+		addAttendees(5, 22, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addPenalty(5, 22, "SCO159", new Penalty(Penalty.Type.AUTOMATIC, "Hit mark 4"));
+		addPenalty(5, 22, "SCO159", new Penalty(Penalty.Type.AUTOMATIC, "Hit the chequered flag"));
+		addLaps(5, 22, "1,80,68,66,15,45,79");
+		addLaps(5, 22, "1,80,66,68,15,45,79");
+		addLaps(5, 22, "1,80,66,68,15,45,79");
+		addLaps(5, 22, "1,80,68,66,15,45");
+		addLaps(5, 22, "1,80,66,68,15");
+		addLaps(5, 22, "1,80,68,66");
+		addLaps(5, 22, "1,80");
+
+		addRace(5, 23, "West Sands (19/05/2018)");
+		addAttendees(5, 23, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addPenalty(5, 23, "SCO159", new Penalty(Penalty.Type.AUTOMATIC, "Hit mark 4"));
+		addLaps(5, 23, "1,79,80,66,68,15,18,45");
+		addLaps(5, 23, "1,79,80,15,68,66,18,45");
+		addLaps(5, 23, "1,79,80,15,68,66,18,45");
+		addLaps(5, 23, "1,79,80,15,68,66,18,45");
+		addLaps(5, 23, "1,79,80,15,68,66,18");
+		addLaps(5, 23, "1,79,80,15,68,66");
+		addLaps(5, 23, "1,79");
+
+		addRace(5, 24, "West Sands (19/05/2018)");
+		addAttendees(5, 24, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addPenalty(5, 24, "SCO018", new Penalty(Penalty.Type.AUTOMATIC, "Hit mark 1"));
+		addLaps(5, 24, "79,1,80,66,68,15,18,45,296");
+		addLaps(5, 24, "1,79,80,66,68,15,18,45,296");
+		addLaps(5, 24, "1,79,80,66,68,18,45,15,296");
+		addLaps(5, 24, "1,79,80,66,68,18,45,15");
+		addLaps(5, 24, "1,79,80,66,68,18,45");
+		addLaps(5, 24, "1,79,80,66,68,18");
+		addLaps(5, 24, "1,79,80,66,68");
+		addLaps(5, 24, "1,79,80");
+		addLaps(5, 24, "1,79,80");
+
+		addRace(5, 25, "West Sands (19/05/2018)");
+		addAttendees(5, 25, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(5, 25, "79,1,80,66,15,68,45,18,296");
+		addLaps(5, 25, "79,1,80,66,15,68,18,45,296");
+		addLaps(5, 25, "79,1,80,66,15,68,18,45,296");
+		addLaps(5, 25, "79,1,80,66,15,68,18,45");
+		addLaps(5, 25, "79,1,80,66,15,68,18");
+		addLaps(5, 25, "79,1,80,66,68,15");
+		addLaps(5, 25, "79,1,80");
+
+		addRace(5, 26, "West Sands (19/05/2018)");
+		addAttendees(5, 26, PILOT, "SCO018", "SCO045", "SCO066", "SCO068", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(5, 26, "1,79,80,68,15,18,66,45,296");
+		addLaps(5, 26, "1,79,80,68,15,18,66,45,296");
+		addLaps(5, 26, "1,79,80,68,15,66,45,18,296");
+		addLaps(5, 26, "1,79,80,68,15,66,45,18,296");
+		addLaps(5, 26, "1,79,80,66,68,15,18,45");
+		addLaps(5, 26, "1,79,80,66,68,15,18,45");
+		addLaps(5, 26, "1,79,80,66,68,15");
+		addLaps(5, 26, "1,79,80,66,68");
+		addLaps(5, 26, "1,79");
 	}
 }

@@ -98,7 +98,7 @@ public class CCSeries2018 extends AbstractSPKASeries {
 
 		addRace(1, 3, "Benone Strand (24/06/2018)");
 		addAttendees(1, 3, PILOT, "SCO018", "SCO116", "SCO159", "SCO179", "SCO808");
-		addAttendees(1, 3, PILOT, "IR021", "IR023", "IR053", "IR077", "IR260");
+		addAttendees(1, 3, PILOT, "IR021", "IR053", "IR077", "IR260");
 		addPenalty(1, 3, "IR077", new Penalty(Type.AUTOMATIC, 1, "Hit scoring line cone"));
 		addLaps(1, 3, "SCO1,IR1,79,2,77,80,156,15");
 		addLaps(1, 3, "79,2,IR1,SCO1,77,80,156,15");
@@ -109,7 +109,7 @@ public class CCSeries2018 extends AbstractSPKASeries {
 
 		addRace(1, 4, "Benone Strand (24/06/2018)");
 		addAttendees(1, 4, PILOT, "SCO018", "SCO116", "SCO159", "SCO179", "SCO808");
-		addAttendees(1, 4, PILOT, "IR021", "IR023", "IR053", "IR077", "IR260");
+		addAttendees(1, 4, PILOT, "IR021", "IR053", "IR077", "IR260");
 		addPenalty(1, 4, "IR021", new Penalty(Type.AUTOMATIC, 1, "Hit scoring line mark"));
 		addLaps(1, 4, "SCO1,80,77,IR2,79,IR1,15,156");
 		addLaps(1, 4, "SCO1,2,79,77,80,IR1");

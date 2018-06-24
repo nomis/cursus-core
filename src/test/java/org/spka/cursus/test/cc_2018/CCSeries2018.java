@@ -36,8 +36,8 @@ public class CCSeries2018 extends AbstractSPKASeries {
 		this.top4 = top4;
 	}
 
-	protected static final int SERIES_FLEET = 9;
-	protected static final int SERIES_FLEET_AT_EVENT1 = 9;
+	protected static final int SERIES_FLEET = 10;
+	protected static final int SERIES_FLEET_AT_EVENT1 = 10;
 
 	@Override
 	public void createAllData() throws Exception {

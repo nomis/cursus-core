@@ -109,5 +109,14 @@ public class Series2018 extends AbstractSPKASeries {
 		addLaps(2, 6, "12,66,45,18,80");
 		addLaps(2, 6, "12,66");
 		addLaps(2, 6, "12");
+
+		addRace(2, 7, "West Sands (12/01/2019)");
+		addAttendees(2, 7, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addLaps(2, 7, "12,80,66");
+		addLaps(2, 7, "12,80,66");
+		addLaps(2, 7, "12,80,66");
+		addLaps(2, 7, "12,66,80");
+		addLaps(2, 7, "12,66,80");
+		addLaps(2, 7, "12,66,80");
 	}
 }

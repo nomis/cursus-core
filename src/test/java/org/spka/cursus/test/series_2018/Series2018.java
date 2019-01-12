@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2018  Simon Arlott
+	Copyright 2018-2019  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -30,13 +30,15 @@ public class Series2018 extends AbstractSPKASeries {
 		super("SPKA Race Series 2018/19", SPKAConstants.UUID_2012); //$NON-NLS-1$
 	}
 
-	protected static final int SERIES_FLEET = 7;
+	protected static final int SERIES_FLEET = 8;
 	protected static final int SERIES_FLEET_AT_EVENT1 = 7;
+	protected static final int SERIES_FLEET_AT_EVENT2 = 8;
 
 	@Override
 	public void createAllData() throws Exception {
 		createDatabase();
 		createEvent1Races();
+		createEvent2Races();
 	}
 
 	@Override
@@ -44,6 +46,7 @@ public class Series2018 extends AbstractSPKASeries {
 		super.createDatabase();
 
 		addSeries();
+		addPilot("SCO018@2010", MALE, "Scotland");
 		addPilot("SCO045@2016", MALE, "Scotland");
 		addPilot("SCO066@2013", MALE, "Scotland");
 		addPilot("SCO116@2010", MALE, "Scotland");
@@ -75,5 +78,36 @@ public class Series2018 extends AbstractSPKASeries {
 		addAttendees(1, 3, PILOT, "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
 		addLaps(1, 3, "12,80,79,66,159,12,45,80,79,66,12,80,79,66,159");
 		addLaps(1, 3, "12,45,79,80,159,66");
+	}
+
+	protected void createEvent2Races() throws Exception {
+		addEvent(2, "West Sands (12/01/2019)");
+
+		addRace(2, 4, "West Sands (12/01/2019)");
+		addAttendees(2, 4, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addLaps(2, 4, "12,80,66,18,45,296");
+		addLaps(2, 4, "12,80,66,18,45,296");
+		addLaps(2, 4, "12,80,66,18,45,296");
+		addLaps(2, 4, "12,80,66,18,45");
+		addLaps(2, 4, "12,80,66");
+		addLaps(2, 4, "12");
+
+		addRace(2, 5, "West Sands (12/01/2019)");
+		addAttendees(2, 5, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addLaps(2, 5, "12,80,45,66,18");
+		addLaps(2, 5, "12,80,66,45,18");
+		addLaps(2, 5, "12,80,18,66,45");
+		addLaps(2, 5, "12,80,66,18,45");
+		addLaps(2, 5, "12");
+		addLaps(2, 5, "12");
+
+		addRace(2, 6, "West Sands (12/01/2019)");
+		addAttendees(2, 6, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addLaps(2, 6, "12,80,66,18,45,296");
+		addLaps(2, 6, "12,80,66,18,45,296");
+		addLaps(2, 6, "12,80,66,18,45,296");
+		addLaps(2, 6, "12,66,45,18,80");
+		addLaps(2, 6, "12,66");
+		addLaps(2, 6, "12");
 	}
 }

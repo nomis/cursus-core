@@ -126,14 +126,14 @@ public class Series2018 extends AbstractSPKASeries {
 		addEvent(3, "West Sands (23/02/2019)");
 
 		addRace(3, 8, "West Sands (23/02/2019)");
-		addAttendees(3, 8, PILOT, "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
+		addAttendees(3, 8, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
 		addLaps(3, 8, "12,79,80,66,45");
 		addLaps(3, 8, "12,79,66,80,45");
 		addLaps(3, 8, "12,80,66,79");
 		addLaps(3, 8, "12,80,66,79");
 
 		addRace(3, 9, "West Sands (23/02/2019)");
-		addAttendees(3, 9, PILOT, "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
+		addAttendees(3, 9, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
 		addLaps(3, 9, "79,12,80,66");
 		addLaps(3, 9, "12,79,80,66");
 		addLaps(3, 9, "12,80,66");

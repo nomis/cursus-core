@@ -33,12 +33,14 @@ public class Series2018 extends AbstractSPKASeries {
 	protected static final int SERIES_FLEET = 8;
 	protected static final int SERIES_FLEET_AT_EVENT1 = 7;
 	protected static final int SERIES_FLEET_AT_EVENT2 = 8;
+	protected static final int SERIES_FLEET_AT_EVENT3 = 8;
 
 	@Override
 	public void createAllData() throws Exception {
 		createDatabase();
 		createEvent1Races();
 		createEvent2Races();
+		createEvent3Races();
 	}
 
 	@Override
@@ -84,7 +86,7 @@ public class Series2018 extends AbstractSPKASeries {
 		addEvent(2, "West Sands (12/01/2019)");
 
 		addRace(2, 4, "West Sands (12/01/2019)");
-		addAttendees(2, 4, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addAttendees(2, 4, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
 		addLaps(2, 4, "12,80,66,18,45,296");
 		addLaps(2, 4, "12,80,66,18,45,296");
 		addLaps(2, 4, "12,80,66,18,45,296");
@@ -93,7 +95,7 @@ public class Series2018 extends AbstractSPKASeries {
 		addLaps(2, 4, "12");
 
 		addRace(2, 5, "West Sands (12/01/2019)");
-		addAttendees(2, 5, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addAttendees(2, 5, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
 		addLaps(2, 5, "12,80,45,66,18");
 		addLaps(2, 5, "12,80,66,45,18");
 		addLaps(2, 5, "12,80,18,66,45");
@@ -102,7 +104,7 @@ public class Series2018 extends AbstractSPKASeries {
 		addLaps(2, 5, "12");
 
 		addRace(2, 6, "West Sands (12/01/2019)");
-		addAttendees(2, 6, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addAttendees(2, 6, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
 		addLaps(2, 6, "12,80,66,18,45,296");
 		addLaps(2, 6, "12,80,66,18,45,296");
 		addLaps(2, 6, "12,80,66,18,45,296");
@@ -111,12 +113,30 @@ public class Series2018 extends AbstractSPKASeries {
 		addLaps(2, 6, "12");
 
 		addRace(2, 7, "West Sands (12/01/2019)");
-		addAttendees(2, 7, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO296", "SCO808");
+		addAttendees(2, 7, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
 		addLaps(2, 7, "12,80,66");
 		addLaps(2, 7, "12,80,66");
 		addLaps(2, 7, "12,80,66");
 		addLaps(2, 7, "12,66,80");
 		addLaps(2, 7, "12,66,80");
 		addLaps(2, 7, "12,66,80");
+	}
+
+	protected void createEvent3Races() throws Exception {
+		addEvent(3, "West Sands (23/02/2019)");
+
+		addRace(3, 8, "West Sands (23/02/2019)");
+		addAttendees(3, 8, PILOT, "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 8, "12,79,80,66,45");
+		addLaps(3, 8, "12,79,66,80,45");
+		addLaps(3, 8, "12,80,66,79");
+		addLaps(3, 8, "12,80,66,79");
+
+		addRace(3, 9, "West Sands (23/02/2019)");
+		addAttendees(3, 9, PILOT, "SCO045", "SCO066", "SCO116", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 9, "79,12,80,66");
+		addLaps(3, 9, "12,79,80,66");
+		addLaps(3, 9, "12,80,66");
+		addLaps(3, 9, "12,80,66");
 	}
 }

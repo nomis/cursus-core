@@ -24,6 +24,8 @@ import static uk.uuid.cursus.db.data.Sex.MALE;
 import org.spka.cursus.scoring.SPKAConstants;
 import org.spka.cursus.test.AbstractSPKASeries;
 
+import uk.uuid.cursus.db.data.Penalty;
+
 @SuppressWarnings("nls")
 public class Series2018 extends AbstractSPKASeries {
 	public Series2018() {
@@ -34,6 +36,7 @@ public class Series2018 extends AbstractSPKASeries {
 	protected static final int SERIES_FLEET_AT_EVENT1 = 7;
 	protected static final int SERIES_FLEET_AT_EVENT2 = 8;
 	protected static final int SERIES_FLEET_AT_EVENT3 = 8;
+	protected static final int SERIES_FLEET_AT_EVENT4 = 8;
 
 	@Override
 	public void createAllData() throws Exception {
@@ -41,6 +44,7 @@ public class Series2018 extends AbstractSPKASeries {
 		createEvent1Races();
 		createEvent2Races();
 		createEvent3Races();
+		createEvent4Races();
 	}
 
 	@Override
@@ -57,7 +61,7 @@ public class Series2018 extends AbstractSPKASeries {
 		addPilot("SCO296@2013", FEMALE, "Scotland");
 		addPilot("SCO808@2010", MALE, "Scotland");
 
-		addAlias("SCO116", "SCO012");
+		addAlias("SCO116", "SCO012", "SCO001");
 		addAlias("SCO179", "SCO079");
 		addAlias("SCO808", "SCO080");
 	}
@@ -138,5 +142,42 @@ public class Series2018 extends AbstractSPKASeries {
 		addLaps(3, 9, "12,79,80,66");
 		addLaps(3, 9, "12,80,66");
 		addLaps(3, 9, "12,80,66");
+	}
+
+	protected void createEvent4Races() throws Exception {
+		addEvent(4, "Luce Bay (11/05/2019)");
+
+		addRace(4, 10, "Luce Bay (11/05/2019)");
+		addAttendees(4, 10, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(4, 10, "1,80,66,159,18,45,79");
+		addLaps(4, 10, "1,80,18,159,79,45");
+		addLaps(4, 10, "1,80,159,79,18,45");
+		addLaps(4, 10, "1,80,79,18,159");
+		addLaps(4, 10, "1,80");
+
+		addRace(4, 11, "Luce Bay (11/05/2019)");
+		addAttendees(4, 11, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addPenalty(4, 11, "SCO066", new Penalty(Penalty.Type.AUTOMATIC, "Hit finish mark"));
+		addLaps(4, 11, "79,1,80,66,45,159,18,296");
+		addLaps(4, 11, "1,79,80,66,45,159,18");
+		addLaps(4, 11, "1,79,80,45,66,159,18");
+		addLaps(4, 11, "1,79,80,45,66");
+		addLaps(4, 11, "80,79,1,45");
+
+		addRace(4, 12, "Luce Bay (11/05/2019)");
+		addAttendees(4, 12, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(4, 12, "1,79,80,66,45,296,159");
+		addLaps(4, 12, "1,79,80,66,45,159,296");
+		addLaps(4, 12, "1,79,80,66,45,159");
+		addLaps(4, 12, "1,79,80,66,45");
+		addLaps(4, 12, "1,79,80,66,45");
+
+		addRace(4, 13, "Luce Bay (11/05/2019)");
+		addAttendees(4, 13, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO159", "SCO179", "SCO296", "SCO808");
+		addLaps(4, 13, "1,80,79,66,45,18,296");
+		addLaps(4, 13, "1,80,66,45,18");
+		addLaps(4, 13, "80,1,66,18");
+		addLaps(4, 13, "80,1,66,18");
+		addLaps(4, 13, "80,1,66");
 	}
 }

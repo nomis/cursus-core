@@ -37,6 +37,7 @@ public class Series2018 extends AbstractSPKASeries {
 	protected static final int SERIES_FLEET_AT_EVENT2 = 8;
 	protected static final int SERIES_FLEET_AT_EVENT3 = 8;
 	protected static final int SERIES_FLEET_AT_EVENT4 = 8;
+	protected static final int SERIES_FLEET_AT_EVENT5 = 8;
 
 	@Override
 	public void createAllData() throws Exception {
@@ -45,6 +46,7 @@ public class Series2018 extends AbstractSPKASeries {
 		createEvent2Races();
 		createEvent3Races();
 		createEvent4Races();
+		createEvent5Races();
 	}
 
 	@Override
@@ -179,5 +181,36 @@ public class Series2018 extends AbstractSPKASeries {
 		addLaps(4, 13, "80,1,66,18");
 		addLaps(4, 13, "80,1,66,18");
 		addLaps(4, 13, "80,1,66");
+	}
+
+	protected void createEvent5Races() throws Exception {
+		addEvent(5, "Luce Bay (08/06/2019)");
+
+		addRace(5, 14, "Luce Bay (08/06/2019)");
+		addAttendees(5, 14, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 14, "79,1,80,66,18,45");
+		addLaps(5, 14, "1,79,80,66,18,45");
+		addLaps(5, 14, "1,79,66,80,18,45");
+		addLaps(5, 14, "79,1,66,80,18");
+
+		addRace(5, 15, "Luce Bay (08/06/2019)");
+		addAttendees(5, 15, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 15, "1,80,79,66,18,45");
+		addLaps(5, 15, "1,79,80,66,18,45");
+		addLaps(5, 15, "1,79,80,66,18,45");
+		addLaps(5, 15, "1,79,66,80");
+
+		addRace(5, 16, "Luce Bay (08/06/2019)");
+		addAttendees(5, 16, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 16, "80,1,79,66,18,45");
+		addLaps(5, 16, "1,80,79,66,18,45");
+		addLaps(5, 16, "1,80,79,66,18");
+
+		addRace(5, 17, "Luce Bay (08/06/2019)");
+		addAttendees(5, 17, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 17, "1,79,80,66,18,45");
+		addLaps(5, 17, "1,80,66,18,79");
+		addLaps(5, 17, "1,66,80,18,79");
+		addLaps(5, 17, "1,66,80,18");
 	}
 }

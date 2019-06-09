@@ -184,7 +184,7 @@ public class Series2018 extends AbstractSPKASeries {
 	}
 
 	protected void createEvent5Races() throws Exception {
-		addEvent(5, "Luce Bay (08/06/2019)");
+		addEvent(5, "Luce Bay (08/06/2019 and 09/06/2019)");
 
 		addRace(5, 14, "Luce Bay (08/06/2019)");
 		addAttendees(5, 14, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
@@ -212,5 +212,35 @@ public class Series2018 extends AbstractSPKASeries {
 		addLaps(5, 17, "1,80,66,18,79");
 		addLaps(5, 17, "1,66,80,18,79");
 		addLaps(5, 17, "1,66,80,18");
+
+		addRace(5, 18, "Luce Bay (09/06/2019)");
+		addAttendees(5, 18, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 18, "79,80,66,18,45,1");
+		addLaps(5, 18, "79,80,66,18,45,1");
+		addLaps(5, 18, "79,80,66,18,45,1");
+		addLaps(5, 18, "79,66,1,80");
+
+		addRace(5, 19, "Luce Bay (09/06/2019)");
+		addAttendees(5, 19, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 19, "1,79,66,80,45,18");
+		addLaps(5, 19, "79,1,66,80,45,18");
+		addLaps(5, 19, "79,1,66,80,18,45");
+		addLaps(5, 19, "79,1,66,80");
+
+		addRace(5, 20, "Luce Bay (09/06/2019)");
+		addAttendees(5, 20, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 20, "79,1,80,66,18,45");
+		addLaps(5, 20, "79,1,80,66,18,45");
+		addLaps(5, 20, "79,1,80,66,18,45");
+		addLaps(5, 20, "79,1,80,66,18");
+		addLaps(5, 20, "79,1,80,66");
+
+		addRace(5, 21, "Luce Bay (09/06/2019)");
+		addAttendees(5, 21, PILOT, "SCO018", "SCO045", "SCO066", "SCO116", "SCO179", "SCO808");
+		addLaps(5, 21, "1,80,79,66,18,45");
+		addLaps(5, 21, "79,80,66,18,45");
+		addLaps(5, 21, "79,80,66,18,45");
+		addLaps(5, 21, "79,80,66,18");
+		addLaps(5, 21, "79,80,66,18");
 	}
 }

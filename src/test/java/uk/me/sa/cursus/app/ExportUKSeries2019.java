@@ -35,8 +35,8 @@ public class ExportUKSeries2019 extends ExportSeries {
 		new ExportUKSeries2019("m", "Men", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
 		new ExportUKSeries2019("f", "Women", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
 		new ExportUKSeries2019("c", "Top Country", CCConstants.UUID_2013, "spka-cc.css").export(); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		new ExportUKSeries2019("dp", "Depowerable Kites", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
-		new ExportUKSeries2019("fb", "Fixed Bridle Kites", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
+		new ExportUKSeries2019("d", "Depowerable Kites", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
+		new ExportUKSeries2019("b", "Fixed Bridle Kites", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
 		new ExportUKSeries2019("w", "16\" Wheels", FISLYConstants.UUID_2010).export(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 }

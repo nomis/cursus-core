@@ -56,9 +56,9 @@ public class UKSeries2019 extends AbstractSPKASeries {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				if (type.equals("dp")) {
+				if (type.equals("d")) {
 					return pilot.getClasses().contains(classDAO.find(series, "DP"));
-				} else if (type.equals("fb")) {
+				} else if (type.equals("b")) {
 					return pilot.getClasses().contains(classDAO.find(series, "FB"));
 				} else if (type.equals("w")) {
 					return pilot.getClasses().contains(classDAO.find(series, "16in"));
@@ -78,9 +78,9 @@ public class UKSeries2019 extends AbstractSPKASeries {
 		return Sets.filter(series.getPilots(), new Predicate<Pilot>() {
 			@Override
 			public boolean apply(@Nonnull Pilot pilot) {
-				if (type.equals("dp")) {
+				if (type.equals("d")) {
 					return pilot.getClasses().contains(classDAO.find(series, "DP" + event.getName().substring(event.getName().length() - 1)));
-				} else if (type.equals("fb")) {
+				} else if (type.equals("b")) {
 					return pilot.getClasses().contains(classDAO.find(series, "FB" + event.getName().substring(event.getName().length() - 1)));
 				} else if (type.equals("w")) {
 					return pilot.getClasses().contains(classDAO.find(series, "16in"));

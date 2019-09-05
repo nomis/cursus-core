@@ -127,8 +127,8 @@ public class UKSeries2019 extends AbstractSPKASeries {
 
 		addAlias("SCO066", "SCO004");
 		addAlias("SCO116", "SCO001");
-		addAlias("SCO179", "SCO003");
-		addAlias("SCO808", "SCO002");
+		addAlias("SCO179", "SCO002");
+		addAlias("SCO808", "SCO003");
 		addAlias("K020", "SCO011");
 	}
 

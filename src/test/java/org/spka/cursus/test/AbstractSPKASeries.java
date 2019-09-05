@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
+import javax.persistence.NoResultException;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -242,6 +243,16 @@ public abstract class AbstractSPKASeries extends AbstractSeries {
 			Series series = seriesDAO.find(SERIES_NAME);
 			Pilot pilot = new Pilot(series, name, sex, country);
 			pilot.setRaceNumber(RaceNumber.valueOfFor(raceNumber, pilot));
+			for (String clsName : classes) {
+				uk.uuid.cursus.db.data.Class cls;
+				try {
+					cls = classDAO.find(series, clsName);
+				} catch (NoResultException e) {
+					cls = new uk.uuid.cursus.db.data.Class(series, clsName);
+					series.getClasses().add(cls);
+				}
+				pilot.getClasses().add(cls);
+			}
 			series.getPilots().add(pilot);
 			seriesDAO.persist(series);
 

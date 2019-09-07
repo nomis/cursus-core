@@ -200,7 +200,6 @@ public class UKSeries2019 extends AbstractSPKASeries {
 		addRace(3, 8, "Luce Bay (07/09/2019)");
 		addAttendees(3, 8, PILOT, "SCO045", "SCO066", "SCO116", "SCO156", "SCO179", "SCO808", "K020");
 		addAttendees(3, 8, PILOT, "K040", "K053", "K060", "K101", "K169", "K171", "K176", "K705", "K854", "K862", "K866");
-		addPenalty(3, 8, "SCO116", new Penalty(Type.AUTOMATIC, "Hit mark 7"));
 		addLaps(3, 8, "101,1,40,854,866,11,2,4,3,60,53");
 		addLaps(3, 8, "101,1,854,45,40,2,866,11,4,60,3,176");
 		addLaps(3, 8, "101,1,854,40,2,866,11,4,53,3,45");

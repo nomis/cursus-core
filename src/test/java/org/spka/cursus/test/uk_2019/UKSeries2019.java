@@ -188,6 +188,14 @@ public class UKSeries2019 extends AbstractSPKASeries {
 		addLaps(3, 6, "2,11,101,4,1,866");
 		addLaps(3, 6, "101,40,2,854,11,53,3,1,866,176");
 		addLaps(3, 6, "101,11,2,3,4,40,1,854,53,866");
+
+		addRace(3, 7, "Luce Bay (07/09/2019)");
+		addAttendees(3, 7, PILOT, "SCO045", "SCO066", "SCO116", "SCO156", "SCO179", "SCO808", "K020");
+		addAttendees(3, 7, PILOT, "K040", "K053", "K060", "K101", "K169", "K171", "K176", "K705", "K854", "K862", "K866");
+		addLaps(3, 7, "854,40,101,1,2,866,11,3,4,53,60");
+		addLaps(3, 7, "854,40,101,1,2,11,4,60,866");
+		addLaps(3, 7, "854,40,53,101,2,1,11,3,4");
+		addLaps(3, 7, "854,40,60,101,2,11,3,4,866,156,53,1,176");
 	}
 
 	protected void createEvent4Races() throws Exception {

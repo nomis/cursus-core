@@ -215,5 +215,13 @@ public class UKSeries2019 extends AbstractSPKASeries {
 		addAttendees(4, 9, PILOT, "SCO045", "SCO066", "SCO087", "SCO116", "SCO156", "SCO179", "SCO808", "K020");
 		addAttendees(4, 9, PILOT, "K040", "K053", "K060", "K101", "K169", "K176", "K705", "K854", "K862", "K866");
 		addLaps(4, 9, "11,866,60,1,40,101,3,53,176,2,4,45,87");
+
+		addRace(4, 10, "Luce Bay (08/09/2019)");
+		addAttendees(4, 10, PILOT, "SCO045", "SCO066", "SCO087", "SCO116", "SCO156", "SCO179", "SCO808", "K020");
+		addAttendees(4, 10, PILOT, "K040", "K053", "K060", "K101", "K169", "K176", "K705", "K854", "K862", "K866");
+		addLaps(4, 10, "40,101,866,854,11,53,2,4,60,1,3,176,87");
+		addLaps(4, 10, "2,40,45,101,866,854,11,53,169,4,1,60,3");
+		// addLaps(4, 10, "2");
+		addLaps(4, 10, "176,87");
 	}
 }

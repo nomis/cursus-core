@@ -106,6 +106,7 @@ public class UKSeries2019 extends AbstractSPKASeries {
 		addSeries();
 		addPilot("SCO045@2016", MALE, "Scotland", "DP", "DP1", "DP2", "DP3", "DP4");
 		addPilot("SCO066@2013", MALE, "Scotland", "DP", "DP1", "DP2", "DP3", "DP4");
+		addPilot("SCO087@2009", MALE, "Scotland", "FB", "FB1", "FB2", "FB3", "FB4");
 		addPilot("SCO116@2010", MALE, "Scotland", "DP", "DP1", "DP2", "DP3", "DP4");
 		addPilot("SCO156@2010", MALE, "Scotland", "FB", "FB1", "FB2", "FB3", "FB4");
 		addPilot("SCO179@2005", MALE, "Scotland", "DP", "DP1", "DP2", "DP3", "DP4");
@@ -209,5 +210,10 @@ public class UKSeries2019 extends AbstractSPKASeries {
 
 	protected void createEvent4Races() throws Exception {
 		addEvent(4, "Luce Bay (08/09/2019)");
+
+		addRace(4, 9, "Luce Bay (08/09/2019)");
+		addAttendees(4, 9, PILOT, "SCO045", "SCO066", "SCO087", "SCO116", "SCO156", "SCO179", "SCO808", "K020");
+		addAttendees(4, 9, PILOT, "K040", "K053", "K060", "K101", "K169", "K176", "K705", "K854", "K862", "K866");
+		addLaps(4, 9, "11,866,60,1,40,101,3,53,176,2,4,45,87");
 	}
 }

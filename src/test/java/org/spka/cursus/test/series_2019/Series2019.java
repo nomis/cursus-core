@@ -66,43 +66,50 @@ public class Series2019 extends AbstractSPKASeries {
 
 		addRace(1, 1, "Luce Bay (05/10/2019)");
 		addAttendees(1, 1, PILOT, "SCO018", "SCO116", "SCO179", "SCO808");
-		addLaps(1, 1, "3,1,2,18,1");
+		addLaps(1, 1, "3,1,2,18");
 		// addLaps(1, 1, "3");
-		addLaps(1, 1, "2,18,1,3,2,3,1,18,2");
+		addLaps(1, 1, "1,2,18,1,3,2,18,1,3,2,3,1,18,2");
 		addLaps(1, 1, "3,1,18,2,3,1,2,18");
 
 		addRace(1, 2, "Luce Bay (05/10/2019)");
 		addAttendees(1, 2, PILOT, "SCO018", "SCO116", "SCO179", "SCO808");
 		addPenalty(1, 2, "SCO808", new Penalty(Penalty.Type.AUTOMATIC, "Ran over start line marker at start"));
+		addLaps(1, 2, "2,1,3,18");
 		addLaps(1, 2, "2,3,1,18,1,3,18,1,3,18,1,3,1,3,18,2");
 
 		addRace(1, 3, "Luce Bay (05/10/2019)");
 		addAttendees(1, 3, PILOT, "SCO018", "SCO116", "SCO179", "SCO808");
+		addLaps(1, 3, "1,3,2,18");
 		addLaps(1, 3, "1,3,2,1,3,2,1,3,2,1,2,3,1,2,3");
 
 		addRace(1, 4, "Luce Bay (05/10/2019)");
 		addAttendees(1, 4, PILOT, "SCO018", "SCO116", "SCO179", "SCO808");
+		addLaps(1, 4, "3,1,2,18");
 		addLaps(1, 4, "1,3,2,18,1,3,2,18,1,3,2,18,1,3,2");
 		addLaps(1, 4, "1,3,2");
 
 		addRace(1, 5, "Luce Bay (06/10/2019)");
 		addAttendees(1, 5, PILOT, "SCO018", "SCO066", "SCO087", "SCO116", "SCO179", "SCO808");
+		addLaps(1, 5, "2,3,4,18,1");
 		addLaps(1, 5, "2,4,3,1,18,2,4,3,87,1,2,18,4");
 		addLaps(1, 5, "3,1,2,4,3,1,2,18,4,3,1,87");
 
 		addRace(1, 6, "Luce Bay (06/10/2019)");
 		addAttendees(1, 6, PILOT, "SCO018", "SCO066", "SCO087", "SCO116", "SCO179", "SCO808");
+		addLaps(1, 6, "2,1,3,4,18,87");
 		addLaps(1, 6, "2,1,3,4,18,1,2,3,87,4,1,18,2");
 		addLaps(1, 6, "3,4,1,2,3,4,1,87,2,3,1,4,2");
 		addLaps(1, 6, "3");
 
 		addRace(1, 7, "Luce Bay (06/10/2019)");
 		addAttendees(1, 7, PILOT, "SCO018", "SCO066", "SCO087", "SCO116", "SCO179", "SCO808");
+		addLaps(1, 7, "2,1,3,4,87");
 		addLaps(1, 7, "3,4,2,3,4,18,2,3,4,2,18");
 		addLaps(1, 7, "3,4,2,18,3,4,2,18");
 
 		addRace(1, 8, "Luce Bay (06/10/2019)");
 		addAttendees(1, 8, PILOT, "SCO018", "SCO066", "SCO087", "SCO116", "SCO179", "SCO808");
+		addLaps(1, 8, "1,3,4,2,18");
 		addLaps(1, 8, "1,3,2,4,18,1,2,4,3,1,2,18");
 		addLaps(1, 8, "3,4,1,2,3,4,18,1,2,3,4,1");
 		addLaps(1, 8, "18,2,3,4");

@@ -18,6 +18,7 @@
 package org.spka.cursus.test.series_2019;
 
 import static uk.uuid.cursus.db.data.RaceAttendee.Type.PILOT;
+import static uk.uuid.cursus.db.data.Sex.FEMALE;
 import static uk.uuid.cursus.db.data.Sex.MALE;
 
 import org.spka.cursus.scoring.SPKAConstants;
@@ -31,13 +32,15 @@ public class Series2019 extends AbstractSPKASeries {
 		super("SPKA Race Series 2019/20", SPKAConstants.UUID_2012); //$NON-NLS-1$
 	}
 
-	protected static final int SERIES_FLEET = 6;
+	protected static final int SERIES_FLEET = 8;
 	protected static final int SERIES_FLEET_AT_EVENT1 = 6;
+	protected static final int SERIES_FLEET_AT_EVENT2 = 8;
 
 	@Override
 	public void createAllData() throws Exception {
 		createDatabase();
 		createEvent1Races();
+		createEvent2Races();
 	}
 
 	@Override
@@ -46,13 +49,13 @@ public class Series2019 extends AbstractSPKASeries {
 
 		addSeries();
 		addPilot("SCO018@2010", MALE, "Scotland");
-		// addPilot("SCO045@2016", MALE, "Scotland");
+		addPilot("SCO045@2016", MALE, "Scotland");
 		addPilot("SCO066@2013", MALE, "Scotland");
 		addPilot("SCO087@2009", MALE, "Scotland");
 		addPilot("SCO116@2010", MALE, "Scotland");
 		// addPilot("SCO159@2005", MALE, "Scotland");
 		addPilot("SCO179@2005", MALE, "Scotland");
-		// addPilot("SCO296@2013", FEMALE, "Scotland");
+		addPilot("SCO296@2013", FEMALE, "Scotland");
 		addPilot("SCO808@2010", MALE, "Scotland");
 
 		addAlias("SCO116", "SCO001");
@@ -113,5 +116,17 @@ public class Series2019 extends AbstractSPKASeries {
 		addLaps(1, 8, "1,3,2,4,18,1,2,4,3,1,2,18");
 		addLaps(1, 8, "3,4,1,2,3,4,18,1,2,3,4,1");
 		addLaps(1, 8, "18,2,3,4");
+	}
+
+	protected void createEvent2Races() throws Exception {
+		addEvent(2, "West Sands (30/11/2019)");
+
+		addRace(2, 9, "West Sands (30/11/2019)");
+		addAttendees(2, 9, PILOT, "SCO045", "SCO116", "SCO179", "SCO296", "SCO808");
+		addLaps(2, 9, "2,3,1,2,3,2,3,2,3,2,2,3,2");
+
+		addRace(2, 10, "West Sands (30/11/2019)");
+		addAttendees(2, 10, PILOT, "SCO045", "SCO116", "SCO179", "SCO296", "SCO808");
+		addLaps(2, 10, "2,1,3,2,1,3,2,1,2,3,1,2,1,3,2,1,3");
 	}
 }

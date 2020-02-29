@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2019  Simon Arlott
+	Copyright 2019-2020  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -35,12 +35,14 @@ public class Series2019 extends AbstractSPKASeries {
 	protected static final int SERIES_FLEET = 8;
 	protected static final int SERIES_FLEET_AT_EVENT1 = 6;
 	protected static final int SERIES_FLEET_AT_EVENT2 = 8;
+	protected static final int SERIES_FLEET_AT_EVENT3 = 8;
 
 	@Override
 	public void createAllData() throws Exception {
 		createDatabase();
 		createEvent1Races();
 		createEvent2Races();
+		createEvent3Races();
 	}
 
 	@Override
@@ -143,5 +145,27 @@ public class Series2019 extends AbstractSPKASeries {
 		addAttendees(2, 13, PILOT, "SCO045", "SCO116", "SCO179", "SCO296", "SCO808");
 		addLaps(2, 13, "1,3,2,45,1,3,2,45,1,3,2,1,45,3,2,1,3,2,45");
 		addLaps(2, 13, "1,3,2,45,1,3,2,45");
+	}
+
+	protected void createEvent3Races() throws Exception {
+		addEvent(3, "West Sands (29/02/2020)");
+
+		addRace(3, 14, "West Sands (29/02/2020)");
+		addAttendees(3, 14, PILOT, "SCO045", "SCO116", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 14, "3,1,45,2,296");
+		addLaps(3, 14, "3,1,45,2,3,1");
+		addLaps(3, 14, "45,2,3,1,45,2,3,1,2,45,3");
+		addLaps(3, 14, "1,2,45,3,1,2,45");
+
+		addRace(3, 15, "West Sands (29/02/2020)");
+		addAttendees(3, 15, PILOT, "SCO045", "SCO116", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 15, "3,1,2,45,1,3,2,296,45,1,3,2");
+		addLaps(3, 15, "1,3,45,296,2,1,3,45,2,1,3,296");
+		addLaps(3, 15, "45,1,2,3,45");
+
+		addRace(3, 16, "West Sands (29/02/2020)");
+		addAttendees(3, 16, PILOT, "SCO045", "SCO116", "SCO179", "SCO296", "SCO808");
+		addLaps(3, 16, "3,1,45,1,3,45,1,3,2,1,3,45");
+		addLaps(3, 16, "1,2,3,45");
 	}
 }

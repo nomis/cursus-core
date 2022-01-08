@@ -13,14 +13,14 @@
 		<relativePath></relativePath>
 	</parent>
 	<scm>
-		<connection>scm:git:https://github.com/lp0/cursus-core.git</connection>
-		<url>https://github.com/lp0/cursus-core/</url>
+		<connection>scm:git:https://github.com/nomis/cursus-core.git</connection>
+		<url>https://github.com/nomis/cursus-core/</url>
 	</scm>
 	<developers>
 		<developer>
 			<id>uk.me.sa</id>
 			<name>Simon Arlott</name>
-			<url>http://sa.me.uk/</url>
+			<url>https://sa.me.uk/</url>
 		</developer>
 	</developers>
 	<properties>

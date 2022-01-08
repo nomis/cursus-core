@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>uk.uuid.cursus</groupId>
 		<artifactId>cursus</artifactId>
-		<version>0</version>
+		<version>0-SNAPSHOT</version>
 		<relativePath></relativePath>
 	</parent>
 	<scm>

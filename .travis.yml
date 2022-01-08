@@ -1,8 +1,0 @@
-language: java
-install:
-  - git clone --depth=1 git://github.com/lp0/cursus.git __cursus__
-  - cd __cursus__
-  - mvn -q -B -V install
-  - cd ..
-  - rm -rf __cursus__
-  - mvn -q -B -V install -DskipTests=true

@@ -1,6 +1,6 @@
 /*
 	cursus - Race series management program
-	Copyright 2011-2014  Simon Arlott
+	Copyright 2011-2014,2022  Simon Arlott
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published by
@@ -24,7 +24,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class MemoryDatabase extends Database {
 	public MemoryDatabase(String name) throws SQLException, InvalidDatabaseException {
-		super(name, "jdbc:h2:mem:" + UUID.randomUUID() + ";TRACE_LEVEL_FILE=4;DB_CLOSE_DELAY=-1", "SA", "", Mode.FORCE_OPEN); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ 
+		super(name, "jdbc:h2:mem:" + UUID.randomUUID() + ";DB_CLOSE_DELAY=-1", "SA", "", Mode.FORCE_OPEN); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ 
 	}
 
 	@Override
